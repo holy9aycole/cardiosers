@@ -219,6 +219,10 @@ export default function Router() {
         }
       ]
     },
+
+    { path: '/login-screen', element: <LoginScreen /> },
+    { path: '/splash-screen', element: <SplashScreen /> },
+
     { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
@@ -314,3 +318,7 @@ const MultiLanguage = Loadable(lazy(() => import('../pages/components-overview/e
 const Animate = Loadable(lazy(() => import('../pages/components-overview/extra/animate')));
 const MegaMenu = Loadable(lazy(() => import('../pages/components-overview/extra/MegaMenu')));
 const FormValidation = Loadable(lazy(() => import('../pages/components-overview/extra/form-validation')));
+
+//  RMZ
+const LoginScreen = Loadable(lazy(() => import('components/LoginScreen')));
+const SplashScreen = Loadable(lazy(() => import('components/SplashScreen')));
