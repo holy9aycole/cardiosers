@@ -8,8 +8,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // material
 import { alpha } from '@mui/material/styles';
 import { Button, Box, Divider, MenuItem, Typography } from '@mui/material';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
+
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useIsMountedRef from '../../hooks/useIsMountedRef';
@@ -29,12 +28,10 @@ const MENU_OPTIONS = [
   {
     label: 'Profile',
     icon: personFill,
-    linkTo: PATH_DASHBOARD.user.profile
   },
   {
     label: 'Settings',
     icon: settings2Fill,
-    linkTo: PATH_DASHBOARD.user.account
   }
 ];
 
