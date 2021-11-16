@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { Icon } from '@iconify/react';
-import menu2Fill from '@iconify/icons-eva/menu-2-fill';
+import PropTypes from "prop-types";
+import { Icon } from "@iconify/react";
+import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { alpha, styled } from "@mui/material/styles";
+import { AppBar, Toolbar, IconButton } from "@mui/material";
 // hooks
-import useCollapseDrawer from '../../hooks/useCollapseDrawer';
+import useCollapseDrawer from "../../hooks/useCollapseDrawer";
 // components
-import { MHidden } from '../../components/@material-extend';
-import Searchbar from './Searchbar';
-import AccountPopover from './AccountPopover';
+// import { MHidden } from "../../components/@material-extend";
+import Searchbar from "./Searchbar";
+import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
 
@@ -20,54 +20,61 @@ const APPBAR_MOBILE = 64;
 const APPBAR_DESKTOP = 92;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
-  boxShadow: 'none',
-  backdropFilter: 'blur(6px)',
-  WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
-  backgroundColor: alpha(theme.palette.background.default, 0.72),
-  [theme.breakpoints.up('lg')]: {
-    width: `calc(100% - ${DRAWER_WIDTH + 1}px)`
-  }
+	boxShadow: "none",
+	backdropFilter: "blur(6px)",
+	WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
+	backgroundColor: alpha("#3D3DD9", 1),
+	[theme.breakpoints.up("lg")]: {
+		width: `calc(100% - ${DRAWER_WIDTH + 1}px)`,
+	},
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
-  minHeight: APPBAR_MOBILE,
-  [theme.breakpoints.up('lg')]: {
-    minHeight: APPBAR_DESKTOP,
-    padding: theme.spacing(0, 5)
-  }
+	minHeight: APPBAR_MOBILE,
+	display: "flex",
+	alignItems: "center",
+  justifyContent:'space-between',
+	padding: "0px 20px",
+	[theme.breakpoints.up("lg")]: {
+		minHeight: APPBAR_DESKTOP,
+		padding: theme.spacing(0, 5),
+	},
 }));
+
+const SearchBarBox = styled('div')(({
+  display:'flex',
+  alignItems:'center'
+}))
 
 // ----------------------------------------------------------------------
 
 DashboardNavbar.propTypes = {
-  onOpenSidebar: PropTypes.func
+	onOpenSidebar: PropTypes.func,
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
-  const { isCollapse } = useCollapseDrawer();
+	const { isCollapse } = useCollapseDrawer();
 
-  return (
-    <RootStyle
-      sx={{
-        ...(isCollapse && {
-          width: { lg: `calc(100% - ${COLLAPSE_WIDTH}px)` }
-        })
-      }}
-    >
-      <ToolbarStyle>
-        <MHidden width="lgUp">
-          <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
-            <Icon icon={menu2Fill} />
-          </IconButton>
-        </MHidden>
-
-        <Searchbar />
-        <Box sx={{ flexGrow: 1 }} />
-
-        <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <AccountPopover />
-        </Stack>
-      </ToolbarStyle>
-    </RootStyle>
-  );
+	return (
+		<RootStyle
+			sx={{
+				...(isCollapse && {
+					width: { lg: `calc(100% - ${COLLAPSE_WIDTH}px)` },
+				}),
+			}}
+		>
+			<ToolbarStyle>
+				<Logo />
+				<SearchBarBox>
+					<Searchbar />
+					<IconButton
+						onClick={onOpenSidebar}
+						sx={{ mr: 1, color: "text.primary" }}
+					>
+						<Icon icon={menu2Fill} />
+					</IconButton>
+				</SearchBarBox>
+			</ToolbarStyle>
+		</RootStyle>
+	);
 }
