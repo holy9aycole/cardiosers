@@ -20,6 +20,9 @@ const Search = styled("div")(({ theme }) => ({
 		marginLeft: theme.spacing(1),
 		width: "auto",
 	},
+	[theme.breakpoints.down('sm')]:{
+		display:'none'
+	}
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -46,11 +49,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 		[theme.breakpoints.up("sm")]: {
 			width: "12ch",
 			"&:focus": {
-				width: "20ch",
+				width: "10ch",
 			},
 		},
 	},
 }));
+
+const StyledMIconButton = styled(MIconButton)(({theme})=>({
+	[theme.breakpoints.down('sm')]:{
+		display:'none'
+	}
+}))
 
 // ----------------------------------------------------------------------
 
@@ -58,7 +67,7 @@ export default function Searchbar() {
 
 	return (
 		<div>
-			<MIconButton>
+			<StyledMIconButton>
 				<Search>
 					<SearchIconWrapper>
 						<SearchIcon />
@@ -68,7 +77,7 @@ export default function Searchbar() {
 						inputProps={{ "aria-label": "search" }}
 					/>
 				</Search>
-			</MIconButton>
+			</StyledMIconButton>
 		</div>
 	);
 }

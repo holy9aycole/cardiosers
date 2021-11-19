@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
 import { AppBar, Toolbar, IconButton } from "@mui/material";
 // hooks
 import useCollapseDrawer from "../../hooks/useCollapseDrawer";
@@ -33,7 +34,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 	minHeight: APPBAR_MOBILE,
 	display: "flex",
 	alignItems: "center",
-  justifyContent:'space-between',
+	justifyContent: "space-between",
 	padding: "0px 20px",
 	[theme.breakpoints.up("lg")]: {
 		minHeight: APPBAR_DESKTOP,
@@ -41,9 +42,36 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 	},
 }));
 
-const SearchBarBox = styled('div')(({
-  display:'flex',
-  alignItems:'center'
+const SearchBarBox = styled("div")({
+	display: "flex",
+	alignItems: "center",
+});
+
+const StyledSearchIcon = styled(SearchIcon)(({ theme }) => ({
+	[theme.breakpoints.up("sm")]: {
+		display: "none",
+	},
+}));
+
+const NavbarHeading = styled("div")(({ theme }) => ({
+	fontSize: 20,
+	fontWeight: "bold",
+	textTransform: "uppercase",
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 15,
+	},
+}));
+
+const StyledLogo = styled(Logo)(({ theme }) => ({
+	[theme.breakpoints.down("sm")]: {
+		display: "none",
+	},
+}));
+
+const StyledSearchbar = styled(Searchbar)(({theme})=>({
+	[theme.breakpoints.down("sm")]: {
+		display: "none",
+	}
 }))
 
 // ----------------------------------------------------------------------
@@ -64,12 +92,14 @@ export default function DashboardNavbar({ onOpenSidebar }) {
 			}}
 		>
 			<ToolbarStyle>
-				<Logo />
+				<StyledLogo />
+				<StyledSearchIcon />
+				<NavbarHeading>What's New</NavbarHeading>
 				<SearchBarBox>
-					<Searchbar />
+					<StyledSearchbar />
 					<IconButton
 						onClick={onOpenSidebar}
-						sx={{ mr: 1, color: "text.primary" }}
+						sx={{ color: "text.primary" }}
 					>
 						<Icon icon={menu2Fill} />
 					</IconButton>
