@@ -3,7 +3,8 @@ import { Card, styled } from "@mui/material";
 
 export const useStyles = makeStyles(() => ({
   cardContainer: {
-    padding: "2% 2%",
+    // border: "1px solid red",
+    padding: "2% 4%",
   },
 
   gridItemContainer: {
