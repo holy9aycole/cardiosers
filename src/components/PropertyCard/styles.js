@@ -1,6 +1,5 @@
 import { makeStyles } from "@mui/styles";
-import { Card } from "@mui/material";
-import { styled } from "@mui/material";
+import { Card, styled } from "@mui/material";
 
 export const useStyles = makeStyles(() => ({
   cardContainer: {
