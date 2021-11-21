@@ -1,5 +1,9 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes, useLocation } from "react-router-dom";
+
+// asssets
+import siteImage from "assets/images/RMZ_Ecoworld.png";
+
 // layouts
 import MainLayout from "../layouts/main";
 import DashboardLayout from "../layouts/dashboard";
@@ -10,6 +14,7 @@ import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
 import LoadingScreen from "../components/LoadingScreen";
+import SustainableCard from "../components/SustainabilityCard/SustainabilityCard";
 
 // ----------------------------------------------------------------------
 
@@ -118,6 +123,7 @@ export default function Router() {
       path: "/property-card",
       element: (
         <PropertyCard
+          RMZ_Ecoworld={siteImage}
           cetegory="IT Park"
           name="RMZ Ecoworld"
           description="An architectural marvel redefining the idea of tech parks in
@@ -125,6 +131,10 @@ export default function Router() {
           time="1h"
         />
       ),
+    },
+    {
+      path: "/sustain-card",
+      element: <SustainableCard />,
     },
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },
@@ -168,8 +178,6 @@ const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 //  RMZ
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
-const PropertyCard = Loadable(
-  lazy(() => import("components/PropertyCard/PropertyCard"))
-);
+const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));

@@ -1,5 +1,8 @@
 import React from "react";
 import { Typography, Grid, Card } from "@mui/material";
+import tag from "assets/images/tag-icon.png";
+import clock from "assets/images/clock-icon.png";
+import mask2 from "assets/images/mask2.png";
 
 import {
   CardFooter,
@@ -10,11 +13,6 @@ import {
   ImageTag,
 } from "./styles";
 
-import siteImage from "../../assets/images/RMZ_Ecoworld.png";
-import tag from "../../assets/images/tag-icon.png";
-import clock from "../../assets/images/clock-icon.png";
-import mask2 from "../../assets/images/mask2.png";
-
 export default function PropertyCard(props) {
   const classes = useStyles();
 
@@ -24,7 +22,7 @@ export default function PropertyCard(props) {
         <Grid item md={6} xs={12} className={classes.cardContainer}>
           <CardHeader>
             <Card className="ImageContainer">
-              <img src={siteImage} alt="site" className="siteImage" />
+              <img src={props.RMZ_Ecoworld} alt="site" className="siteImage" />
               <ImageTag>
                 <img className="tagIcon" src={tag} alt="tag" />
                 <Typography className="tagTitle">{props.cetegory}</Typography>
