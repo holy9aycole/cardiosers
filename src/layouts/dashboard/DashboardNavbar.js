@@ -14,11 +14,8 @@ import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 280;
-const COLLAPSE_WIDTH = 102;
-
 const APPBAR_MOBILE = 64;
-const APPBAR_DESKTOP = 92;
+const APPBAR_DESKTOP = 81;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
 	boxShadow: "none",
@@ -26,7 +23,7 @@ const RootStyle = styled(AppBar)(({ theme }) => ({
 	WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
 	backgroundColor: alpha("#3D3DD9", 1),
 	[theme.breakpoints.up("lg")]: {
-		width: `calc(100% - ${DRAWER_WIDTH + 1}px)`,
+		width: `calc(100% - 0px)`,
 	},
 }));
 
@@ -68,7 +65,7 @@ const StyledLogo = styled(Logo)(({ theme }) => ({
 	},
 }));
 
-const StyledSearchbar = styled(Searchbar)(({theme})=>({
+const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
 	[theme.breakpoints.down("sm")]: {
 		display: "none",
 	}
@@ -78,27 +75,26 @@ const StyledSearchbar = styled(Searchbar)(({theme})=>({
 
 DashboardNavbar.propTypes = {
 	onOpenSidebar: PropTypes.func,
+	title: PropTypes.string
 };
 
-export default function DashboardNavbar({ onOpenSidebar }) {
+export default function DashboardNavbar(props) {
 	const { isCollapse } = useCollapseDrawer();
 
 	return (
 		<RootStyle
 			sx={{
-				...(isCollapse && {
-					width: { lg: `calc(100% - ${COLLAPSE_WIDTH}px)` },
-				}),
+				...(isCollapse),
 			}}
 		>
 			<ToolbarStyle>
 				<StyledLogo />
 				<StyledSearchIcon />
-				<NavbarHeading>What's New</NavbarHeading>
+				<NavbarHeading>{props.title}</NavbarHeading>
 				<SearchBarBox>
 					<StyledSearchbar />
 					<IconButton
-						onClick={onOpenSidebar}
+						onClick={props.onOpenSidebar}
 						sx={{ color: "text.primary" }}
 					>
 						<Icon icon={menu2Fill} />
