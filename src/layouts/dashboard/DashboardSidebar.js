@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // material
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, Drawer, Tooltip, CardActionArea } from '@mui/material';
+import { Box, Drawer, Tooltip, CardActionArea } from '@mui/material';
 // hooks
 import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 
 // components
-import Logo from '../../components/Logo';
 import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 import { MHidden } from '../../components/@material-extend';
@@ -94,6 +93,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const renderContent = (
     <Scrollbar
       sx={{
+        top: '81px',
         height: 1,
         '& .simplebar-content': {
           height: 1,
@@ -102,25 +102,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         }
       }}
     >
-      <Stack
-        spacing={3}
-        sx={{
-          px: 2.5,
-          pt: 3,
-          pb: 2,
-          ...(isCollapse && {
-            alignItems: 'center'
-          })
-        }}
-      >
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Box component={RouterLink} to="/" sx={{ display: 'inline-flex' }}>
-            <Logo />
-          </Box>
-
-        </Stack>
-      </Stack>
-
       <NavSection navConfig={sidebarConfig} isShow={!isCollapse} />
 
       <Box sx={{ flexGrow: 1 }} />
@@ -134,6 +115,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         width: {
           lg: isCollapse ? COLLAPSE_WIDTH : DRAWER_WIDTH
         },
+        zIndex: 0,
         ...(collapseClick && {
           position: 'absolute'
         })
