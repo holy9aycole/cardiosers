@@ -25,7 +25,7 @@ export default function PropertyCard(props) {
               <img src={props.RMZ_Ecoworld} alt="site" className="siteImage" />
               <ImageTag>
                 <img className="tagIcon" src={tag} alt="tag" />
-                <Typography className="tagTitle">{props.cetegory}</Typography>
+                <Typography className="tagTitle">{props.category}</Typography>
               </ImageTag>
             </Card>
           </CardHeader>

@@ -14,7 +14,6 @@ import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
 import LoadingScreen from "../components/LoadingScreen";
-import SustainableCard from "../components/SustainabilityCard/SustainabilityCard";
 
 // ----------------------------------------------------------------------
 
@@ -124,17 +123,13 @@ export default function Router() {
       element: (
         <PropertyCard
           RMZ_Ecoworld={siteImage}
-          cetegory="IT Park"
+          category="IT Park"
           name="RMZ Ecoworld"
           description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
           time="1h"
         />
       ),
-    },
-    {
-      path: "/sustain-card",
-      element: <SustainableCard />,
     },
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },
