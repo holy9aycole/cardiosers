@@ -3,6 +3,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
+import sust from "assets/images/sustainable.png";
 
 // layouts
 import MainLayout from "../layouts/main";
@@ -14,7 +15,7 @@ import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
 import LoadingScreen from "../components/LoadingScreen";
-import SustainableCard from "../components/SustainabilityCard/SustainabilityCard";
+import SustainableCard from "../components/SustainabilityCard";
 
 // ----------------------------------------------------------------------
 
@@ -134,7 +135,13 @@ export default function Router() {
     },
     {
       path: "/sustain-card",
-      element: <SustainableCard />,
+      element: (
+        <SustainableCard
+          sustainImage={sust}
+          title="The 5’S"
+          description="RMZ were the first to use the 5S - hitherto a concept used in manufacturing units – in the real estate industry."
+        />
+      ),
     },
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },

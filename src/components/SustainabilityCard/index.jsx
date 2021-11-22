@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import sust from "assets/images/sustainable.png";
+// import sust from "assets/images/sustainable.png";
 import left from "assets/images/button-arrow-left.png";
 import right from "assets/images/button-arrow-right.png";
 
@@ -18,7 +18,7 @@ import {
   BottomMobile,
 } from "./styles";
 
-export default function SustainabilityCard() {
+export default function SustainabilityCard(props) {
   const classes = useStyles();
 
   return (
@@ -26,15 +26,12 @@ export default function SustainabilityCard() {
       <div className={classes.container}>
         <Grid container className={classes.mainContainer}>
           <Grid items md={6} xs={12}>
-            <SustainableImage src={sust} alt="sustainable" />
+            <SustainableImage src={props.sustainImage} alt="sustainable" />
           </Grid>
           <TextContainer item md={6} xs={12}>
             <Description>
-              <Typography className="text1"> The 5’S</Typography>
-              <Typography className="text2">
-                RMZ were the first to use the 5S - hitherto a concept used in
-                manufacturing units – in the real estate industry.
-              </Typography>
+              <Typography className="text1"> {props.title}</Typography>
+              <Typography className="text2">{props.description}</Typography>
 
               <LeftIconContainer>
                 <img className="leftIcon" src={left} alt="shadow" />
