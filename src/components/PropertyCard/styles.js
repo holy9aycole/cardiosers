@@ -1,9 +1,14 @@
 import { makeStyles } from "@mui/styles";
 import { Card, styled } from "@mui/material";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   cardContainer: {
-    padding: "2% 4%",
+    marginTop: "2%",
+    padding: "2% 2%",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "10%",
+      padding: "0% 0%",
+    },
   },
 
   gridItemContainer: {
