@@ -56,12 +56,6 @@ export const Text1 = styled(Typography)(({ theme }) => ({
     marginLeft: "5%",
     marginTop: "2.5%",
   },
-  //   [theme.breakpoints.only("sm")]: {
-  //     fontSize: "32px",
-  //     width: "80%",
-  //     marginLeft: "5%",
-  //     marginTop: "2.5%",
-  //   },
 }));
 export const Text2 = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
