@@ -40,6 +40,27 @@ export default function PropertyCard(props) {
             <FooterShadow src={mask2} alt="footer shadow" />
           </CardFooter>
         </Grid>
+        <Grid item md={6} xs={12} className={classes.cardContainer}>
+          <CardHeader>
+            <Card className="ImageContainer">
+              <img src={props.RMZ_Ecoworld} alt="site" className="siteImage" />
+              <ImageTag>
+                <img className="tagIcon" src={tag} alt="tag" />
+                <Typography className="tagTitle">{props.category}</Typography>
+              </ImageTag>
+            </Card>
+          </CardHeader>
+
+          <CardFooter>
+            <Typography className="text2">{props.name}</Typography>
+            <Typography className="text3">{props.description}</Typography>
+            <Time>
+              <img className="clock" src={clock} alt="clock" />
+              <Typography className="ago">{props.time} ago</Typography>
+            </Time>
+            <FooterShadow src={mask2} alt="footer shadow" />
+          </CardFooter>
+        </Grid>
       </Grid>
     </>
   );

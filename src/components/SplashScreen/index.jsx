@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { Typography } from "@mui/material";
 import { useStyles } from "./styles";
 
@@ -18,7 +18,7 @@ function SplashScreen() {
         <div className={`col-lg p-2 ${classes.content}`}>
           <div className="row">
             <img
-            className = {classes.logo}
+              className={classes.logo}
               alt="logo"
               src="https://qph.fs.quoracdn.net/main-qimg-9d50a5cdb7105f795cd43497094a0cd3-lq"
             />
