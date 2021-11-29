@@ -1,6 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
+import BrandCard from "components/BrandCard";
+
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
@@ -14,8 +16,10 @@ import GuestGuard from "../guards/GuestGuard";
 import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
+
 import LoadingScreen from "../components/LoadingScreen";
 import SustainableCard from "../components/SustainabilityCard";
+import Test from "../components/Test";
 
 // ----------------------------------------------------------------------
 
@@ -120,10 +124,24 @@ export default function Router() {
 
     { path: "/login-screen", element: <LoginScreen /> },
     { path: "/splash-screen", element: <SplashScreen /> },
+    { path: "/test", element: <Test /> },
     {
       path: "/property-card",
       element: (
         <PropertyCard
+          RMZ_Ecoworld={siteImage}
+          cetegory="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+    Bangalore, India."
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/brand-card",
+      element: (
+        <BrandCard
           RMZ_Ecoworld={siteImage}
           cetegory="IT Park"
           name="RMZ Ecoworld"

@@ -3,7 +3,7 @@ import { Grid, styled } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
   mainContainer: {
-    border: "1px solid red",
+    // border: "1px solid red",
   },
   container: {
     width: "70%",
@@ -41,6 +41,9 @@ export const Description = styled("div")(({ theme }) => ({
   height: "auto",
   marginTop: "25%",
   position: "relative",
+  background: "transparent",
+  // border: "1px solid red",
+
   [theme.breakpoints.down("md")]: {
     width: "90%",
     marginTop: "5%",
@@ -75,6 +78,8 @@ export const Shadow = styled("img")(({ theme }) => ({
   position: "absolute",
   width: "100%",
   height: "100%",
+  // border: "1px solid green",
+  zIndex: 5,
   top: "22.5%",
 
   right: 0,
@@ -101,7 +106,10 @@ export const LeftIconContainer = styled("div")(({ theme }) => ({
   boShadow: "0px 15px 20px #00000033",
 
   alignItems: "center",
+
   cursor: "pointer",
+  zIndex: 10,
+  // pointerEvents: "none",
 
   width: "41px",
   height: "41px",
@@ -123,6 +131,8 @@ export const RightIconContainer = styled("div")(({ theme }) => ({
 
   alignItems: "center",
   cursor: "pointer",
+
+  zIndex: 10,
 
   width: "41px",
   height: "41px",
