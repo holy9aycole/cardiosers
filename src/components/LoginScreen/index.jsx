@@ -1,78 +1,30 @@
 import React from "react";
-import {
-  Stack,
+ import {
+  
   TextField,
-  Card,
-  CardHeader,
-  CardContent,
-  FormHelperText,
   Button,
-  Container,
-  Box,
-  Grid,
-} from "@mui/material";
-import { motion } from "framer-motion";
-import { useStyles, RootStyle, HeroOverlayStyle, ContentStyle } from "./styles";
-import {
-  varFadeIn,
-  varWrapEnter,
-  varFadeInRight
-} from "../animate";
+  Typography
+} from "@mui/material"; 
+
+import { useStyles } from "./styles";
+import Logo from '../../assets/images/rmz-logo.svg'
+import mailIcon from '../../assets/images/email-icon.svg'
 
 function LoginScreen() {
   const classes = useStyles();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  
   return (
     <>
-      <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle
-          alt="overlay"
-          src="https://static.vecteezy.com/system/resources/previews/002/203/921/non_2x/empty-square-neon-background-free-vector.jpg"
-          variants={varFadeIn}
-        />
-
-        <Container maxWidth="lg">
-          <ContentStyle>
-            <motion.div variants={varFadeInRight}>
-              <Grid container justifyContent="center">
-                <img
-                  alt="logo"
-                  src="https://qph.fs.quoracdn.net/main-qimg-9d50a5cdb7105f795cd43497094a0cd3-lq"
-                />
-              </Grid>
-            </motion.div>
-
-            <motion.div variants={varFadeInRight}>
-              <Card className={classes.card}>
-                <CardHeader />
-                <CardContent>
-                  <form onSubmit={handleSubmit}>
-                    <Stack spacing={3}>
-                      <TextField label="Enter Your Email" />
-                      <Button
-                        fullWidth
-                        color="info"
-                        size="large"
-                        type="submit"
-                        variant="contained"
-                      >
-                        Get OTP
-                      </Button>
-                      <FormHelperText focused className={classes.formText}>
-                        Check your email inbox for OTP
-                      </FormHelperText>
-                    </Stack>
-                  </form>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </ContentStyle>
-        </Container>
-      </RootStyle>
-      <Box sx={{ height: { md: "100vh" } }} />
+     <div className={classes.mainContainer}>
+        <img src={Logo} alt="" className={classes.logo}/>
+        <Typography className={classes.text2}>FUTURE OF SPACE<sup style={{fontSize:"8px"}}> TM</sup></Typography>
+        <div className={classes.formContainer}>
+            <img src={mailIcon} alt="" className={classes.mailicon}/>
+            <TextField label="Enter you Email" className={classes.textField}/>
+            <Button className={classes.button}>GET OTP</Button>
+            <Typography className={classes.text1}>Check you email inbox for OTP</Typography>
+        </div>
+     </div>
     </>
   );
 }

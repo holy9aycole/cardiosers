@@ -13,7 +13,7 @@ function Index() {
     const classes = useStyles();
     return (
         <>
-         <Navbar/>
+        <Navbar/>
         <MainContainer>
             <Text1>We are the<br/> Future of Space</Text1>
             <IndiaMap src={indiaMap} alt="" />

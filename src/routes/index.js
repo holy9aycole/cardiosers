@@ -134,6 +134,7 @@ export default function Router() {
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },
     { path: "/property", element: <Property /> },
+    
 
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
@@ -178,3 +179,4 @@ const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import('Screens/Property')));
+

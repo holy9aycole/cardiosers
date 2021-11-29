@@ -1,48 +1,63 @@
 import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/material/styles";
-import { motion } from "framer-motion";
-import { Stack } from "@mui/material";
+import LoginBg from '../../assets/images/login-web.png'
 
-export const useStyles = makeStyles(() => ({
-  formText: {
-    color: "white",
+
+export const useStyles = makeStyles((theme) => ({
+  mainContainer:{
+    backgroundImage: `url(${LoginBg})`,
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    height:"100vh",
+    paddingTop:"100px",
   },
-  card: {
-    backgroundColor: "transparent",
-    border: "2px solid",
+  logo:{
+   // position:"absolute",
+    display:"block",
+    margin:"auto",
+    width:"100px",
+    [theme.breakpoints.up('xl')]:{
+      width:"160px",
+    }
   },
+  formContainer:{
+    border: '1px solid #3D3DD9',
+    borderRadius: '30px',
+    opacity: 1,
+    backgroundColor:"#0f15a2",
+     mixBlendMode:"luminosity",
+    width:"40vw",
+    padding:"80px 70px 40px 70px",
+    margin:"40px auto"
+  },
+  button:{
+    backgroundColor:"#3d3dd9",
+    color:"#ffffff",
+    width:"100%",
+    opacity:1,
+    marginTop:"2rem",
+    position:"relative",
+    height:"45px"
+  },
+  textField:{
+    // backgroundColor:"#3dedd9",
+    width:"100%",
+    borderRadius:"6px"
+  },
+  text1:{
+    color:"#ffffff",
+    fontSize:"14px",
+    textAlign:"center",
+    marginTop:"10px",
+    opacity:0.8
+  },
+  mailicon:{
+    position:"relative",
+    left:"90%",
+    marginBottom:"-30px"
+  },
+  text2:{
+    color:"#ffffff",
+    textAlign:"center"
+  }
 }));
 
-export const RootStyle = styled(motion.div)(({ theme }) => ({
-  position: "relative",
-  backgroundColor: theme.palette.grey[400],
-  [theme.breakpoints.up("md")]: {
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    position: "fixed",
-    alignItems: "center",
-  },
-}));
-
-export const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(
-  ({ theme }) => ({
-    zIndex: 10,
-    maxWidth: 520,
-    margin: "auto",
-    textAlign: "center",
-    position: "relative",
-    paddingTop: theme.spacing(15),
-    paddingBottom: theme.spacing(15),
-  })
-);
-
-export const HeroOverlayStyle = styled(motion.img)({
-  zIndex: 9,
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  position: "absolute",
-});
