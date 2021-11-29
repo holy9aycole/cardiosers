@@ -1,35 +1,25 @@
 import React from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import { Typography } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Grid, Typography } from "@mui/material";
 import { useStyles } from "./styles";
+import Image1 from '../../assets/images/splash-web.png'
+import Logo from '../../assets/images/rmz-logo (1).svg'
+import Image2 from '../../assets/images/MaskGroup6.svg'
 
 function SplashScreen() {
   const classes = useStyles();
   return (
-    <div>
-      <div className="row">
-        <div className="col-lg p-0">
-          <img
-            className={`${classes.image}`}
-            alt="img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYZ6ttL6asWwZCW6cPMthT-Z463W7N_wRZqA&usqp=CAU"
-          />
-        </div>
-        <div className={`col-lg p-2 ${classes.content}`}>
-          <div className="row">
-            <img
-              className={classes.logo}
-              alt="logo"
-              src="https://qph.fs.quoracdn.net/main-qimg-9d50a5cdb7105f795cd43497094a0cd3-lq"
-            />
-          </div>
-          <div className="row">
-            <Typography variant="h1" color="white">
-              CRAFTING SPACES THAT CONNECT SOCIALLY
-            </Typography>
-          </div>
-        </div>
-      </div>
+    <div className={classes.mainContainer}>
+      <Grid container>
+        <Grid item sm={6}>
+          <img src={Image1} alt="" className={classes.image1}/>
+        </Grid>
+        <Grid item sm={6} className={classes.container2}>
+          <img src={Logo} alt="" className={classes.logo}/>
+          <Typography className={classes.text1}>CRAFTING SPACES<br/> THAT CONNECT<br/> SOCIALLY</Typography>
+          <img src={Image2} alt="" className={classes.image2}/>
+        </Grid>
+      </Grid>
     </div>
   );
 }
