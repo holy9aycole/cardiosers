@@ -6,6 +6,7 @@ import BrandCard from "components/BrandCard";
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
+import Logo from "assets/images/rmz-logo.png";
 
 // layouts
 import MainLayout from "../layouts/main";
@@ -142,6 +143,7 @@ export default function Router() {
       path: "/brand-card",
       element: (
         <BrandCard
+          Logo={Logo}
           RMZ_Ecoworld={siteImage}
           cetegory="IT Park"
           name="RMZ Ecoworld"
