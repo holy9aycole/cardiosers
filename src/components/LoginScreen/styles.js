@@ -1,6 +1,21 @@
 import { makeStyles } from "@mui/styles";
+import {styled} from '@mui/material/styles';
 import LoginBg from '../../assets/images/login-web.png'
 
+export const FormContainer = styled('div')(({theme}) => ({
+  border: '1px solid #3D3DD9',
+  borderRadius: '30px',
+  opacity: 1,
+  backgroundColor:"#0f15a2",
+  mixBlendMode:"luminosity",
+  width:"40vw",
+  padding:"80px 70px 40px 70px",
+  margin:"40px auto",
+  display:"block",
+  [theme.breakpoints.down('xs')]:{
+    display:"none"
+  }
+}));
 
 export const useStyles = makeStyles((theme) => ({
   mainContainer:{
@@ -24,10 +39,13 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: '30px',
     opacity: 1,
     backgroundColor:"#0f15a2",
-     mixBlendMode:"luminosity",
+    mixBlendMode:"luminosity",
     width:"40vw",
     padding:"80px 70px 40px 70px",
-    margin:"40px auto"
+    margin:"40px auto",
+    [theme.breakpoints.down('xs')]:{
+      position:"absolute"
+    }
   },
   button:{
     backgroundColor:"#3d3dd9",

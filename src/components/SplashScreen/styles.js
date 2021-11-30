@@ -2,12 +2,13 @@ import { makeStyles } from "@mui/styles";
 import {styled} from '@mui/material/styles'
 import { Typography, Grid } from "@mui/material";
 
-export const Button = styled('img')(({theme}) => ({
+export const Button1 = styled('img')(({theme}) => ({
   width:"12px",
   marginLeft:"18px",
   marginTop:"12px",
   [theme.breakpoints.down('sm')]:{
-      
+      width:"10px",
+      marginLeft:"15px"
   }
 }));
 
@@ -21,8 +22,11 @@ export const ButtonContainer = styled('div')(({theme}) => ({
   marginLeft:"10%",
   marginTop:"50px",
   boxShadow: '0px 15px 20px #00000033',
-  [theme.breakpoints.down('xs')]:{
-      marginLeft:"90%",
+  [theme.breakpoints.down('sm')]:{
+      marginLeft:"70%",
+      width:"60px",
+      height:"60px",
+      marginTop:"10px"
   }
 }));
 
@@ -30,9 +34,11 @@ export const ButtonLine = styled('img')(({theme}) => ({
  position:"relative",
  left:"16%",
  top:"-90px",
+ display:"block",
   [theme.breakpoints.down('sm')]:{
       margin:"120px auto",
-      width:"100vw"
+      width:"100vw",
+      display:"none"
   }
 }));
 
@@ -42,27 +48,37 @@ export const Text1 = styled(Typography)(({theme}) => ({
   marginLeft:"10%",
   marginTop:"60px",
   [theme.breakpoints.down('sm')]:{
-      fontSize:"30px",
+      fontSize:"25px",
+      marginTop:"30px"
   }
 }));
 
 export const Container2 = styled(Grid)(({theme}) => ({
   backgroundColor: "#2C2C7E",
   zIndex:10,
-  
-  [theme.breakpoints.down('xs')]:{
+  // borderTopLeftRadius:"50px",
+  [theme.breakpoints.down('sm')]:{
       borderTopLeftRadius:"50px",
+      borderTopRightRadius:"50px",
+      marginTop:"-70px",
+      width:"100vw",
+      height:"600px",
   }
 }));
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   image1: {
     width: "100%",
-    height:"auto"
+    height:"auto",
+    [theme.breakpoints.down('sm')]:{
+      height:"60vh",
+      width:"100vw"
+    }
   },
   container2: {
       backgroundColor: "#2C2C7E",
-      zIndex:10
+      zIndex:10,
+      
   },
   logo: {
       width: "15%",
@@ -83,6 +99,15 @@ export const useStyles = makeStyles(() => ({
     color:"#ffffff",
     marginLeft:"10%",
     marginTop:"60px",
-    
+  },
+  skipButton:{
+    position:"relative",
+    top:"50px",
+    left:"10%",
+    color:"white",
+    display:"none",
+    [theme.breakpoints.down('sm')]:{
+      display:"block"
+    }
   }
 }));
