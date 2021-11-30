@@ -1,6 +1,3 @@
-// mock api
-import './_apis_';
-
 // i18n
 import './locales/i18n';
 
@@ -10,8 +7,6 @@ import './utils/highlight';
 // scroll bar
 import 'simplebar/src/simplebar.css';
 
-// map
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 // lightbox
 import 'react-image-lightbox/style.css';

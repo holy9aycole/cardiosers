@@ -50,7 +50,8 @@ export default function DashboardLayout() {
           }),
           ...(collapseClick && {
             ml: '102px'
-          })
+          }),
+          backgroundColor: '#EEEEEE'
         }}
       >
         <Outlet />
