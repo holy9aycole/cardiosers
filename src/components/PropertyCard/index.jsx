@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Grid, Card } from "@mui/material";
+
 import tag from "assets/images/tag-icon.png";
 import clock from "assets/images/clock-icon.png";
 import mask2 from "assets/images/mask2.png";

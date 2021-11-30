@@ -16,7 +16,7 @@ import sidebarConfig from "./SidebarConfig";
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 400;
 const COLLAPSE_WIDTH = 102;
 
 const RootStyle = styled("div")(({ theme }) => ({
@@ -105,6 +105,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           display: "flex",
           flexDirection: "column",
         },
+        background: '#EEEEEE'
       }}
     >
       <NavSection navConfig={sidebarConfig} isShow={!isCollapse} />

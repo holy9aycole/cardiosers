@@ -3,6 +3,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
+import sust from "assets/images/sustainable.png";
 
 // layouts
 import MainLayout from "../layouts/main";
@@ -10,9 +11,9 @@ import DashboardLayout from "../layouts/dashboard";
 import LogoOnlyLayout from "../layouts/LogoOnlyLayout";
 // guards
 import GuestGuard from "../guards/GuestGuard";
-import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
+
 import LoadingScreen from "../components/LoadingScreen";
 
 // ----------------------------------------------------------------------
@@ -75,9 +76,7 @@ export default function Router() {
     {
       path: "dashboard",
       element: (
-        <AuthGuard>
-          <DashboardLayout />
-        </AuthGuard>
+        <DashboardLayout />
       ),
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
@@ -96,10 +95,7 @@ export default function Router() {
       path: "*",
       element: <LogoOnlyLayout />,
       children: [
-        { path: "coming-soon", element: <ComingSoon /> },
         { path: "maintenance", element: <Maintenance /> },
-        { path: "pricing", element: <Pricing /> },
-        { path: "payment", element: <Payment /> },
         { path: "500", element: <Page500 /> },
         { path: "404", element: <NotFound /> },
         { path: "*", element: <Navigate to="/404" replace /> },
@@ -108,12 +104,6 @@ export default function Router() {
     {
       path: "/",
       element: <MainLayout />,
-      children: [
-        { element: <LandingPage /> },
-        { path: "about-us", element: <About /> },
-        { path: "contact-us", element: <Contact /> },
-        { path: "faqs", element: <Faqs /> },
-      ],
     },
 
     { path: "/login-screen", element: <LoginScreen /> },
@@ -128,6 +118,16 @@ export default function Router() {
           description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
           time="1h"
+        />
+      ),
+    },
+    {
+      path: "/sustain-card",
+      element: (
+        <SustainableCard
+          sustainImage={sust}
+          title="The 5’S"
+          description="RMZ were the first to use the 5S - hitherto a concept used in manufacturing units – in the real estate industry."
         />
       ),
     },
@@ -161,14 +161,7 @@ const RMZEcoworld = Loadable(
   lazy(() => import("../Screens/Dashboard/RMZEcoworld"))
 );
 // Main
-const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
-const About = Loadable(lazy(() => import("../pages/About")));
-const Contact = Loadable(lazy(() => import("../pages/Contact")));
-const Faqs = Loadable(lazy(() => import("../pages/Faqs")));
-const ComingSoon = Loadable(lazy(() => import("../pages/ComingSoon")));
 const Maintenance = Loadable(lazy(() => import("../pages/Maintenance")));
-const Pricing = Loadable(lazy(() => import("../pages/Pricing")));
-const Payment = Loadable(lazy(() => import("../pages/Payment")));
 const Page500 = Loadable(lazy(() => import("../pages/Page500")));
 const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 
@@ -176,6 +169,7 @@ const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import('Screens/Property')));
