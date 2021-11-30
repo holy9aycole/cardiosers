@@ -1,38 +1,37 @@
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 // material
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, Drawer, Tooltip, CardActionArea } from '@mui/material';
+import { alpha, styled } from "@mui/material/styles";
+import { Box, Drawer, Tooltip, CardActionArea } from "@mui/material";
 // hooks
-import useCollapseDrawer from '../../hooks/useCollapseDrawer';
+import useCollapseDrawer from "../../hooks/useCollapseDrawer";
 
 // components
-import Logo from '../../components/Logo';
-import Scrollbar from '../../components/Scrollbar';
-import NavSection from '../../components/NavSection';
-import { MHidden } from '../../components/@material-extend';
+import Scrollbar from "../../components/Scrollbar";
+import NavSection from "../../components/NavSection";
+import { MHidden } from "../../components/@material-extend";
 //
-import sidebarConfig from './SidebarConfig';
+import sidebarConfig from "./SidebarConfig";
 
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
 const COLLAPSE_WIDTH = 102;
 
-const RootStyle = styled('div')(({ theme }) => ({
-  [theme.breakpoints.up('lg')]: {
+const RootStyle = styled("div")(({ theme }) => ({
+  [theme.breakpoints.up("lg")]: {
     flexShrink: 0,
-    transition: theme.transitions.create('width', {
-      duration: theme.transitions.duration.complex
-    })
-  }
+    transition: theme.transitions.create("width", {
+      duration: theme.transitions.duration.complex,
+    }),
+  },
 }));
 // ----------------------------------------------------------------------
 
 IconCollapse.propTypes = {
   onToggleCollapse: PropTypes.func,
-  collapseClick: PropTypes.bool
+  collapseClick: PropTypes.bool,
 };
 
 function IconCollapse({ onToggleCollapse, collapseClick }) {
@@ -43,29 +42,29 @@ function IconCollapse({ onToggleCollapse, collapseClick }) {
         sx={{
           width: 18,
           height: 18,
-          display: 'flex',
-          cursor: 'pointer',
-          borderRadius: '50%',
-          alignItems: 'center',
-          color: 'text.primary',
-          justifyContent: 'center',
-          border: 'solid 1px currentColor',
+          display: "flex",
+          cursor: "pointer",
+          borderRadius: "50%",
+          alignItems: "center",
+          color: "text.primary",
+          justifyContent: "center",
+          border: "solid 1px currentColor",
           ...(collapseClick && {
-            borderWidth: 2
-          })
+            borderWidth: 2,
+          }),
         }}
       >
         <Box
           sx={{
             width: 8,
             height: 8,
-            borderRadius: '50%',
-            bgcolor: 'currentColor',
-            transition: (theme) => theme.transitions.create('all'),
+            borderRadius: "50%",
+            bgcolor: "currentColor",
+            transition: (theme) => theme.transitions.create("all"),
             ...(collapseClick && {
               width: 0,
-              height: 0
-            })
+              height: 0,
+            }),
           }}
         />
       </CardActionArea>
@@ -75,14 +74,19 @@ function IconCollapse({ onToggleCollapse, collapseClick }) {
 
 DashboardSidebar.propTypes = {
   isOpenSidebar: PropTypes.bool,
-  onCloseSidebar: PropTypes.func
+  onCloseSidebar: PropTypes.func,
 };
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
 
-  const { isCollapse, collapseClick, collapseHover, onHoverEnter, onHoverLeave } =
-    useCollapseDrawer();
+  const {
+    isCollapse,
+    collapseClick,
+    collapseHover,
+    onHoverEnter,
+    onHoverLeave,
+  } = useCollapseDrawer();
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -94,37 +98,18 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const renderContent = (
     <Scrollbar
       sx={{
+        top: "81px",
         height: 1,
-        '& .simplebar-content': {
+        "& .simplebar-content": {
           height: 1,
-          display: 'flex',
-          flexDirection: 'column'
-        }
+          display: "flex",
+          flexDirection: "column",
+        },
       }}
     >
-      <Stack
-        spacing={3}
-        sx={{
-          px: 2.5,
-          pt: 3,
-          pb: 2,
-          ...(isCollapse && {
-            alignItems: 'center'
-          })
-        }}
-      >
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Box component={RouterLink} to="/" sx={{ display: 'inline-flex' }}>
-            <Logo />
-          </Box>
-
-        </Stack>
-      </Stack>
-
       <NavSection navConfig={sidebarConfig} isShow={!isCollapse} />
 
       <Box sx={{ flexGrow: 1 }} />
-
     </Scrollbar>
   );
 
@@ -132,11 +117,12 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     <RootStyle
       sx={{
         width: {
-          lg: isCollapse ? COLLAPSE_WIDTH : DRAWER_WIDTH
+          lg: isCollapse ? COLLAPSE_WIDTH : DRAWER_WIDTH,
         },
+        zIndex: 0,
         ...(collapseClick && {
-          position: 'absolute'
-        })
+          position: "absolute",
+        }),
       }}
     >
       <MHidden width="lgUp">
@@ -144,7 +130,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           open={isOpenSidebar}
           onClose={onCloseSidebar}
           PaperProps={{
-            sx: { width: DRAWER_WIDTH }
+            sx: { width: DRAWER_WIDTH },
           }}
         >
           {renderContent}
@@ -160,18 +146,19 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           PaperProps={{
             sx: {
               width: DRAWER_WIDTH,
-              bgcolor: 'background.default',
+              bgcolor: "background.default",
               ...(isCollapse && {
-                width: COLLAPSE_WIDTH
+                width: COLLAPSE_WIDTH,
               }),
               ...(collapseHover && {
                 borderRight: 0,
-                backdropFilter: 'blur(6px)',
-                WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
+                backdropFilter: "blur(6px)",
+                WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
                 boxShadow: (theme) => theme.customShadows.z20,
-                bgcolor: (theme) => alpha(theme.palette.background.default, 0.88)
-              })
-            }
+                bgcolor: (theme) =>
+                  alpha(theme.palette.background.default, 0.88),
+              }),
+            },
           }}
         >
           {renderContent}

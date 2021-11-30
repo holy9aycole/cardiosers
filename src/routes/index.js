@@ -16,8 +16,6 @@ import AuthGuard from "../guards/AuthGuard";
 // components
 
 import LoadingScreen from "../components/LoadingScreen";
-import SustainableCard from "../components/SustainabilityCard";
-// import Test from "../components/Test";
 
 // ----------------------------------------------------------------------
 
@@ -127,7 +125,7 @@ export default function Router() {
       element: (
         <PropertyCard
           RMZ_Ecoworld={siteImage}
-          cetegory="IT Park"
+          category="IT Park"
           name="RMZ Ecoworld"
           description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
@@ -188,5 +186,6 @@ const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));

@@ -1,5 +1,5 @@
 import { Link as ScrollLink } from 'react-scroll';
-import { useLocation, Outlet } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // material
 import { Box, Link, Container, Typography } from '@mui/material';
 // components
@@ -16,10 +16,8 @@ export default function MainLayout() {
 
   return (
     <>
-      <MainNavbar />
-      <div>
-        <Outlet />
-      </div>
+      <MainNavbar title="What's New" />
+
 
       {!isHome ? (
         <MainFooter />
@@ -40,7 +38,7 @@ export default function MainLayout() {
             <Typography variant="caption" component="p">
               © All rights reserved
               <br /> made by &nbsp;
-              <Link href="https://minimals.cc/">minimals.cc</Link>
+              <Link href="https://minimals.cc/">Manbal.ai</Link>
             </Typography>
           </Container>
         </Box>
