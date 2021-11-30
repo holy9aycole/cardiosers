@@ -2,6 +2,12 @@ import { makeStyles } from "@mui/styles";
 import {styled} from '@mui/material/styles'
 import { Typography, Grid } from "@mui/material";
 
+export const MainContainer = styled('div')(() => ({
+  height:"100vh",
+  overflow:"hidden",
+  
+}));
+
 export const Button1 = styled('img')(({theme}) => ({
   width:"12px",
   marginLeft:"18px",
@@ -56,7 +62,6 @@ export const Text1 = styled(Typography)(({theme}) => ({
 export const Container2 = styled(Grid)(({theme}) => ({
   backgroundColor: "#2C2C7E",
   zIndex:10,
-  // borderTopLeftRadius:"50px",
   [theme.breakpoints.down('sm')]:{
       borderTopLeftRadius:"50px",
       borderTopRightRadius:"50px",
@@ -66,20 +71,29 @@ export const Container2 = styled(Grid)(({theme}) => ({
   }
 }));
 
+export const Image1 = styled('img')(({theme}) => ({
+  width: "100%",
+  height:"auto",
+  [theme.breakpoints.down('sm')]:{
+    height:"60vh",
+    width:"100vw"
+  }
+}));
+
+export const Logo = styled('img')(({theme}) => ({
+  width: "100%",
+  height:"auto",
+  [theme.breakpoints.down('sm')]:{
+    height:"60vh",
+    width:"100vw"
+  }
+}));
+
+
+
 export const useStyles = makeStyles((theme) => ({
-  image1: {
-    width: "100%",
-    height:"auto",
-    [theme.breakpoints.down('sm')]:{
-      height:"60vh",
-      width:"100vw"
-    }
-  },
-  container2: {
-      backgroundColor: "#2C2C7E",
-      zIndex:10,
-      
-  },
+  
+  
   logo: {
       width: "15%",
       marginTop:"12%",
@@ -90,10 +104,7 @@ export const useStyles = makeStyles((theme) => ({
     bottom:0,
     zIndex:-1
   },
-  mainContainer:{
-    height:"100vh",
-    overflow:"hidden",
-  },
+  
   text1:{
     fontSize:"50px",
     color:"#ffffff",
