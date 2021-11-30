@@ -9,7 +9,7 @@ export const IndiaMap = styled('img')(({theme}) => ({
     margin:"0px auto",
     width:"50vw",
     [theme.breakpoints.down('sm')]:{
-        margin:"120px auto",
+        margin:"140px auto",
         width:"100vw"
     }
 }));
@@ -33,9 +33,10 @@ export const Text1 = styled(Typography)(({theme}) => ({
         lineHeight:"50px",
         position:"absolute",
         marginLeft:"60px",
-        [theme.breakpoints.down('xs')]:{
-            fontSize:"24px",
-            marginLeft:"30px"
+        [theme.breakpoints.down('sm')]:{
+            fontSize:"35px",
+            marginLeft:"30px",
+            lineHeight:"40px"
         }
 }));
 
@@ -66,21 +67,27 @@ export const Text1 = styled(Typography)(({theme}) => ({
         left:"45.5%",
         marginTop:"-26%",
         display:"block",
-        [theme.breakpoints.down('xs')]:{
+        [theme.breakpoints.down('sm')]:{
             display:"none"
         }
     },
     locationPoint1:{
         position:"absolute",
         left:"50%",
-        marginTop:"-8%"
+        marginTop:"-8%",
+        [theme.breakpoints.down('sm')]:{
+            display:"none"
+        }
     },
     border1:{
         borderLeft:"1px solid blue",
         position:"fixed",
         left:"51%",
         height:"200px",
-        marginTop:"-23%"
+        marginTop:"-23%",
+        [theme.breakpoints.down('sm')]:{
+            display:"none"
+        }
     },
     text1:{
         color:"#3d3dd9",
