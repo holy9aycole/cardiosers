@@ -12,8 +12,16 @@ export const FormContainer = styled('div')(({theme}) => ({
   padding:"80px 70px 40px 70px",
   margin:"40px auto",
   display:"block",
-  [theme.breakpoints.down('xs')]:{
-    display:"none"
+  [theme.breakpoints.down('sm')]:{
+    width:"100vw",
+    position:"absolute",
+    bottom:0,
+    margin:0,
+    borderBottomLeftRadius:0,
+    borderBottomRightRadius:0,
+    backgroundColor:"#2e2e80",
+    mixBlendMode:"normal",
+    padding:"80px 30px 100px 30px"
   }
 }));
 
@@ -32,6 +40,9 @@ export const useStyles = makeStyles((theme) => ({
     width:"100px",
     [theme.breakpoints.up('xl')]:{
       width:"160px",
+    },
+    [theme.breakpoints.down('sm')]:{
+      width:"120px",
     }
   },
   formContainer:{
