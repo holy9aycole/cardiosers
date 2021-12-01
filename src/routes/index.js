@@ -1,9 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
-import BrandCard from "components/BrandCard";
-import Sustainability from "Screens/Sustainability";
-
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
@@ -158,34 +155,27 @@ export default function Router() {
 
 // Authentication
 const Login = Loadable(lazy(() => import("../pages/authentication/Login")));
-const Register = Loadable(
-  lazy(() => import("../pages/authentication/Register"))
-);
-const ResetPassword = Loadable(
-  lazy(() => import("../pages/authentication/ResetPassword"))
-);
-const VerifyCode = Loadable(
-  lazy(() => import("../pages/authentication/VerifyCode"))
-);
+const Register = Loadable(lazy(() => import("../pages/authentication/Register")));
+const ResetPassword = Loadable(lazy(() => import("../pages/authentication/ResetPassword")));
+const VerifyCode = Loadable(lazy(() => import("../pages/authentication/VerifyCode")));
+
 // Dashboard
-const AllAssets = Loadable(
-  lazy(() => import("../Screens/Dashboard/AllAssets"))
-);
-const RMZEcoworld = Loadable(
-  lazy(() => import("../Screens/Dashboard/RMZEcoworld"))
-);
+const AllAssets = Loadable(lazy(() => import("../Screens/Dashboard/AllAssets")));
+const RMZEcoworld = Loadable(lazy(() => import("../Screens/Dashboard/RMZEcoworld")));
+
 // Main
 const Maintenance = Loadable(lazy(() => import("../pages/Maintenance")));
 const Page500 = Loadable(lazy(() => import("../pages/Page500")));
 const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 
-//  RMZ
+//  RMZ Components
+const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
+const PostCard = Loadable(lazy(() => import("components/PostCard")));
+const BrandCard = Loadable(lazy(() => import("components/BrandCard")))
+
+// RMZ Screens 
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
-const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
-const SustainableCard = Loadable(
-  lazy(() => import("components/SustainabilityCard"))
-);
-const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
-const BrandCard = Loadable(lazy(() => import("components/BrandCard")))
+const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));

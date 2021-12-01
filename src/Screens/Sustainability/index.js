@@ -8,7 +8,7 @@ export default function Sustainability() {
   // const classes = useStyles();
   return (
     <div>
-      <Header title="whats new" />
+      <Header title="sustainability" />
       <div>
         <SustainableCard
           sustainImage={sust}
