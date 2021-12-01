@@ -20,7 +20,8 @@ export const MainContainer = styled('div')(({theme}) => ({
         backgroundSize:"cover",
         paddingTop:"140px",
         [theme.breakpoints.down('xs')]:{
-            height:"100vw",
+            height:"100vh",
+            width:"100vw"
         }
 }));
 
