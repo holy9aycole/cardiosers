@@ -23,7 +23,7 @@ import {
 	MediaDiv,
 } from "./styles";
 
-export default function PostCard({ images = [] }) {
+export default function PostCard({ images = [],title,bodyText }) {
 	const ReadMore = ({ children }) => {
 		const text = children;
 		const [isReadMore, setIsReadMore] = React.useState(true);
@@ -53,11 +53,10 @@ export default function PostCard({ images = [] }) {
 			<StyledContentDiv>
 				<CardContent>
 					<Typography component="div" variant="h5" color="#3D3DD9">
-						Raising the bar for IT parks in Bengaluru
+						{title}
 					</Typography>
 					<ReadMore>
-						We relentlessly pursue innovation. By empowering our team, we
-						promote
+						{bodyText}
 					</ReadMore>
 				</CardContent>
 			</StyledContentDiv>

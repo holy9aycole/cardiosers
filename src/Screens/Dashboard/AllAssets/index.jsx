@@ -9,7 +9,12 @@ export default function AllAssets() {
 
 	return (
 		<div>
-			<PostCard images={images} />
+			<PostCard
+				images={images}
+				title="Raising the bar for IT parks in Bengaluru"
+				bodyText="We relentlessly pursue innovation. By empowering our team, we
+				promote"
+			/>
 			<h1>All assets</h1>
 		</div>
 	);
