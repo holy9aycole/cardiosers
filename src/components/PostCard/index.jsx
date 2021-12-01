@@ -65,8 +65,8 @@ export default function PostCard({ images = [] }) {
 		paddingBottom:0,
 		borderRadius: "4px",
 		background: "#FFFFFF",
-		[theme.breakpoints.down("md")]: {
-			width: "50%",
+		[theme.breakpoints.down("sm")]: {
+			width: "100%",
 		},
 	}));
 
