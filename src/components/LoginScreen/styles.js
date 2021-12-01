@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop:"100px",
   },
   logo:{
-   // position:"absolute",
     display:"block",
     margin:"auto",
     width:"100px",
