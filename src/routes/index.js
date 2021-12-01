@@ -4,6 +4,7 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
+import Logo from "assets/images/rmz-logo.png";
 
 // layouts
 import MainLayout from "../layouts/main";
@@ -113,7 +114,21 @@ export default function Router() {
       element: (
         <PropertyCard
           RMZ_Ecoworld={siteImage}
-          category="IT Park"
+          cetegory="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+    Bangalore, India."
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/brand-card",
+      element: (
+        <BrandCard
+          Logo={Logo}
+          RMZ_Ecoworld={siteImage}
+          cetegory="IT Park"
           name="RMZ Ecoworld"
           description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
@@ -170,3 +185,4 @@ const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
 const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const BrandCard = Loadable(lazy(() => import("components/BrandCard")))
