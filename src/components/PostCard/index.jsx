@@ -14,46 +14,18 @@ import { ReactComponent as ClockIcon } from "assets/clock-icon.svg";
 import { ReactComponent as ShareIcon } from "assets/share-icon.svg";
 
 const useStyles = makeStyles({
-	cardMedia: {
-		width: "60%",
-	},
-	cardMedia2: {
-		width: "100%",
-		marginLeft: 5,
-	},
-	cardMedia3: {
-		width: "100%",
-		marginLeft: 5,
-		marginTop: 5,
-	},
+	cardMedia: {},
+	cardMedia2: {},
+	cardMedia3: {},
 	mediaBoxoutside: {
 		display: "flex",
 		overflow: "hidden",
 	},
-	media: {
-		flexDirection: "column",
-		display: "flex",
-		justifyContent: "space-between",
-	},
-	footer: {
-		display: "flex",
-	},
-	footerdiv: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "space-between",
-		marginRight:5
-	},
-	footerFont: {
-		padding:'0px 16px',
-		fontSize: 13,
-		color: "#3D3DD9"
-	},
-	footerContainer: {
-		display: "flex",
-		justifyContent: "space-between",
-		margin: '20px 10px',
-	},
+	media: {},
+	footer: {},
+	footerdiv: {},
+	footerFont: {},
+	footerContainer: {},
 });
 
 export default function PostCard({ images = [] }) {
@@ -62,10 +34,10 @@ export default function PostCard({ images = [] }) {
 	const StyledCard = styled(Card)(({ theme }) => ({
 		width: "40%",
 		padding: 10,
-		paddingBottom:0,
+		paddingBottom: 0,
 		borderRadius: "4px",
 		background: "#FFFFFF",
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down("md")]: {
 			width: "100%",
 		},
 	}));
@@ -89,6 +61,81 @@ export default function PostCard({ images = [] }) {
 		},
 	});
 
+	const MediaBox = styled("div")({
+		display: "flex",
+		overflow: "hidden",
+	});
+
+	const CardMediaBox1 = styled("div")({
+		width: "60%",
+	});
+
+	const CardMediaBox2 = styled("div")({
+		width: "100%",
+		marginLeft: 5,
+	});
+
+	const CardMediaBox3 = styled("div")({
+		width: "100%",
+		marginLeft: 5,
+		marginTop: 5,
+	});
+
+	const FooterContainer = styled("div")({
+		display: "flex",
+		justifyContent: "space-between",
+		margin: "20px 10px",
+	});
+
+	const Footer = styled("div")({
+		display: "flex",
+	});
+
+	const FooterDiv = styled("div")({
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "space-between",
+		marginRight: 5,
+	});
+
+	const FooterFont = styled(
+		<Typography color="primary" className={classes.footerFont} />
+	)({
+		padding: "0px 16px",
+		fontSize: 13,
+		color: "#3D3DD9",
+	});
+
+	const MediaDiv = styled("div")({
+		flexDirection: "column",
+		display: "flex",
+		justifyContent: "space-between",
+	});
+
+	const ReadMore = ({ children }) => {
+		const text = children;
+		const [isReadMore, setIsReadMore] = React.useState(true);
+		const toggleReadMore = () => {
+			setIsReadMore(!isReadMore);
+		};
+		if (text.length > 50) {
+			return (
+				<Typography variant="subtitle1" color="text.secondary" component="div">
+					{isReadMore ? text.slice(0, 30) : text}
+					<span onClick={toggleReadMore} onKeyDown={toggleReadMore} aria-hidden>
+						{isReadMore ? "[...]" : "."}
+					</span>
+				</Typography>
+			);
+		}
+
+		return (
+			<Typography variant="subtitle1" color="text.secondary" component="div">
+				{text}
+			</Typography>
+		);
+	};
+
 	return (
 		<StyledCard>
 			<StyledContentDiv>
@@ -96,61 +143,56 @@ export default function PostCard({ images = [] }) {
 					<Typography component="div" variant="h5" color="#3D3DD9">
 						Raising the bar for IT parks in Bengaluru
 					</Typography>
-					<Typography
-						variant="subtitle1"
-						color="text.secondary"
-						component="div"
-					>
+					<ReadMore>
 						We relentlessly pursue innovation. By empowering our team, we
-						promote [...]
-					</Typography>
+						promote
+					</ReadMore>
 				</CardContent>
 			</StyledContentDiv>
-			<div className={classes.mediaBoxoutside}>
-				<CardMedia
-					component="img"
-					height="340"
-					image={images[0]}
-					alt="img1"
-					className={classes.cardMedia}
-				/>
-				<div className={classes.media}>
+			<MediaBox>
+				<CardMediaBox1>
 					<CardMedia
 						component="img"
-						height="167.5"
-						image={images[1]}
-						alt="img2"
-						className={classes.cardMedia2}
+						image={images[0]}
+						height="340"
+						alt="img1"
 					/>
-					<CardMedia
-						component="img"
-						height="167.5"
-						image={images[2]}
-						alt="img3"
-						className={classes.cardMedia3}
-					/>
-				</div>
+				</CardMediaBox1>
+				<MediaDiv>
+					<CardMediaBox2>
+						<CardMedia
+							component="img"
+							height="167.5"
+							image={images[1]}
+							alt="img2"
+						/>
+					</CardMediaBox2>
+					<CardMediaBox3>
+						<CardMedia
+							component="img"
+							height="167.5"
+							image={images[2]}
+							alt="img3"
+						/>
+					</CardMediaBox3>
+				</MediaDiv>
 				<StyledButton>+{images.length - 3}</StyledButton>
-			</div>
-			<div className={classes.footerContainer}>
-				<div className={classes.footer}>
-					<div className={classes.footerdiv}>
-						<WebIcon />
-						<Typography color="primary" className={classes.footerFont}>
-							getmorph.com
-						</Typography>
-					</div>
-					<div className={classes.footerdiv}>
+			</MediaBox>
+			<FooterContainer>
+				<Footer>
+					<FooterDiv>
+						<WebIcon width={24} height={24} />
+						<FooterFont>getmorph.com</FooterFont>
+					</FooterDiv>
+					<FooterDiv>
 						<ClockIcon />
-						<Typography color="primary" className={classes.footerFont}>
-						1h ago
-						</Typography>
-					</div>
-				</div>
-				<div className={classes.footerdiv}>
+						<FooterFont>1h ago</FooterFont>
+					</FooterDiv>
+				</Footer>
+				<FooterDiv>
 					<ShareIcon />
-				</div>
-			</div>
+				</FooterDiv>
+			</FooterContainer>
 		</StyledCard>
 	);
 }
