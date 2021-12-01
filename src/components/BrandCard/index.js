@@ -1,20 +1,18 @@
 import React from "react";
 import { Typography, Grid, Card } from "@mui/material";
 
-import tag from "assets/images/tag-icon.png";
-import clock from "assets/images/clock-icon.png";
+import DIcon from "assets/images/download-icon.png";
 import mask2 from "assets/images/mask2.png";
 
 import {
   CardFooter,
   useStyles,
-  Time,
   FooterShadow,
   CardHeader,
-  ImageTag,
+  Download,
 } from "./styles";
 
-export default function PropertyCard(props) {
+export default function BrandCard(props) {
   const classes = useStyles();
 
   return (
@@ -24,42 +22,36 @@ export default function PropertyCard(props) {
           <CardHeader>
             <Card className="ImageContainer">
               <img src={props.RMZ_Ecoworld} alt="site" className="siteImage" />
-              <ImageTag>
-                <img className="tagIcon" src={tag} alt="tag" />
-                <Typography className="tagTitle">{props.category}</Typography>
-              </ImageTag>
             </Card>
+            <img className="Logo" src={props.Logo} alt="rmz logo" />
           </CardHeader>
 
           <CardFooter>
             <Typography className="text2">{props.name}</Typography>
-            <Typography className="text3">{props.description}</Typography>
-            <Time>
-              <img className="clock" src={clock} alt="clock" />
-              <Typography className="ago">{props.time} ago</Typography>
-            </Time>
+            <Typography className="text3">Format: PDF</Typography>
+
             <FooterShadow src={mask2} alt="footer shadow" />
+            <Download onClick={() => alert("cliked...")}>
+              <img src={DIcon} alt="download icon" className="DIcon" />
+            </Download>
           </CardFooter>
         </Grid>
         <Grid item md={6} xs={12} className={classes.cardContainer}>
           <CardHeader>
             <Card className="ImageContainer">
               <img src={props.RMZ_Ecoworld} alt="site" className="siteImage" />
-              <ImageTag>
-                <img className="tagIcon" src={tag} alt="tag" />
-                <Typography className="tagTitle">{props.category}</Typography>
-              </ImageTag>
             </Card>
+            <img className="Logo" src={props.Logo} alt="rmz logo" />
           </CardHeader>
 
           <CardFooter>
             <Typography className="text2">{props.name}</Typography>
-            <Typography className="text3">{props.description}</Typography>
-            <Time>
-              <img className="clock" src={clock} alt="clock" />
-              <Typography className="ago">{props.time} ago</Typography>
-            </Time>
+            <Typography className="text3">Format: PDF</Typography>
+
             <FooterShadow src={mask2} alt="footer shadow" />
+            <Download onClick={() => alert("cliked...")}>
+              <img src={DIcon} alt="download icon" className="DIcon" />
+            </Download>
           </CardFooter>
         </Grid>
       </Grid>
