@@ -1,5 +1,4 @@
 import React from 'react'
-// import {Typography} from '@mui/material'
 import indiaMap from '../../assets/images/india-map.svg'
 import {IndiaMap, MainContainer, Text1} from './styles'
 import Navbar from '../../layouts/dashboard/DashboardNavbar'
