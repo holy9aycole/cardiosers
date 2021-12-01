@@ -4,9 +4,6 @@ import { Card, styled } from "@mui/material";
 export const useStyles = makeStyles((theme) => ({
   cardContainer: {
     padding: "4% 1%",
-    // [theme.breakpoints.only("xs")]: {
-    //   padding: "2% 0px",
-    // },
   },
 
   gridItemContainer: {
@@ -24,7 +21,6 @@ export const CardFooter = styled(Card)(() => ({
   borderRadius: "15px",
   height: "auto",
   width: "100%",
-  // marginTop: "-25px",
   textAlign: "left",
   padding: "0px 35px",
   position: "relative",

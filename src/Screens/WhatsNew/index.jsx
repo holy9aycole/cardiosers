@@ -1,9 +1,36 @@
-import React from 'react'
+import React from "react";
+
+import mask from "assets/images/mask.svg";
+import siteImage from "assets/images/RMZ_Ecoworld.png";
+import PropertyCard from "components/PropertyCard";
+
+import Header from "../../layouts/dashboard/DashboardNavbar";
+
+import { MainContainer, Line, Text1, Text2 } from "./styles";
 
 export default function WhatsNew() {
-    return (
-        <div>
-            <h1>This is what's new</h1>
-        </div>
-    )
+  //   const classes = useStyles();
+  return (
+    <div>
+      <Header title="whats new" />
+      <MainContainer>
+        <img className="shadow" src={mask} alt="shadow" />
+
+        <Line className="line" />
+        <Text1>INNOVATION & ENTREPRENEURSHIP</Text1>
+        <Text2>
+          We relentlessly pursue innovation. By empowering our talented team, we
+          promote entrepreneurship and new ideas to bring our ambitions to life.
+        </Text2>
+        <PropertyCard
+          RMZ_Ecoworld={siteImage}
+          category="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+    Bangalore, India."
+          time="1h"
+        />
+      </MainContainer>
+    </div>
+  );
 }

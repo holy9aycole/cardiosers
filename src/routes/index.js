@@ -1,8 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
-import BrandCard from "components/BrandCard";
-
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
@@ -14,13 +12,10 @@ import DashboardLayout from "../layouts/dashboard";
 import LogoOnlyLayout from "../layouts/LogoOnlyLayout";
 // guards
 import GuestGuard from "../guards/GuestGuard";
-import AuthGuard from "../guards/AuthGuard";
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
 // components
 
 import LoadingScreen from "../components/LoadingScreen";
-import SustainableCard from "../components/SustainabilityCard";
-import Test from "../components/Test";
 
 // ----------------------------------------------------------------------
 
@@ -82,9 +77,7 @@ export default function Router() {
     {
       path: "dashboard",
       element: (
-        <AuthGuard>
-          <DashboardLayout />
-        </AuthGuard>
+        <DashboardLayout />
       ),
       children: [
         { element: <Navigate to="/dashboard/app" replace /> },
@@ -103,10 +96,7 @@ export default function Router() {
       path: "*",
       element: <LogoOnlyLayout />,
       children: [
-        { path: "coming-soon", element: <ComingSoon /> },
         { path: "maintenance", element: <Maintenance /> },
-        { path: "pricing", element: <Pricing /> },
-        { path: "payment", element: <Payment /> },
         { path: "500", element: <Page500 /> },
         { path: "404", element: <NotFound /> },
         { path: "*", element: <Navigate to="/404" replace /> },
@@ -115,17 +105,10 @@ export default function Router() {
     {
       path: "/",
       element: <MainLayout />,
-      children: [
-        { element: <LandingPage /> },
-        { path: "about-us", element: <About /> },
-        { path: "contact-us", element: <Contact /> },
-        { path: "faqs", element: <Faqs /> },
-      ],
     },
 
     { path: "/login-screen", element: <LoginScreen /> },
     { path: "/splash-screen", element: <SplashScreen /> },
-    { path: "/test", element: <Test /> },
     {
       path: "/property-card",
       element: (
@@ -191,14 +174,7 @@ const RMZEcoworld = Loadable(
   lazy(() => import("../Screens/Dashboard/RMZEcoworld"))
 );
 // Main
-const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
-const About = Loadable(lazy(() => import("../pages/About")));
-const Contact = Loadable(lazy(() => import("../pages/Contact")));
-const Faqs = Loadable(lazy(() => import("../pages/Faqs")));
-const ComingSoon = Loadable(lazy(() => import("../pages/ComingSoon")));
 const Maintenance = Loadable(lazy(() => import("../pages/Maintenance")));
-const Pricing = Loadable(lazy(() => import("../pages/Pricing")));
-const Payment = Loadable(lazy(() => import("../pages/Payment")));
 const Page500 = Loadable(lazy(() => import("../pages/Page500")));
 const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 
@@ -206,5 +182,7 @@ const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const BrandCard = Loadable(lazy(() => import("components/BrandCard")))

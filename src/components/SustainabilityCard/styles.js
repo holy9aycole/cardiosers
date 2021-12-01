@@ -2,9 +2,7 @@ import { makeStyles } from "@mui/styles";
 import { Grid, styled } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
-  mainContainer: {
-    // border: "1px solid red",
-  },
+
   container: {
     width: "70%",
     height: "580px",
@@ -42,7 +40,6 @@ export const Description = styled("div")(({ theme }) => ({
   marginTop: "25%",
   position: "relative",
   background: "transparent",
-  // border: "1px solid red",
 
   [theme.breakpoints.down("md")]: {
     width: "90%",
@@ -109,7 +106,6 @@ export const LeftIconContainer = styled("div")(({ theme }) => ({
 
   cursor: "pointer",
   zIndex: 10,
-  // pointerEvents: "none",
 
   width: "41px",
   height: "41px",

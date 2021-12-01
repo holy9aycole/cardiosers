@@ -5,7 +5,7 @@ import { NavLink as RouterLink, matchPath, useLocation } from 'react-router-dom'
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { alpha, useTheme, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Box, List, Collapse, ListItemText, ListItemIcon, ListSubheader, ListItemButton } from '@mui/material';
 
 // ----------------------------------------------------------------------
@@ -25,8 +25,9 @@ const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
   height: 48,
   position: 'relative',
   textTransform: 'capitalize',
-  paddingLeft: theme.spacing(5),
+  paddingLeft: theme.spacing(20),
   paddingRight: theme.spacing(2.5),
+  paddingTop: theme.spacing(5),
   color: theme.palette.text.secondary,
   '&:before': {
     top: 0,
@@ -58,7 +59,6 @@ NavItem.propTypes = {
 };
 
 function NavItem({ item, isShow }) {
-  const theme = useTheme();
   const { pathname } = useLocation();
   const { title, path, icon, info, children } = item;
   const isActiveRoot = path ? !!matchPath({ path, end: false }, pathname) : false;
@@ -72,8 +72,7 @@ function NavItem({ item, isShow }) {
   const activeRootStyle = {
     color: 'primary.main',
     fontWeight: 'fontWeightMedium',
-    bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
-    '&:before': { display: 'block' }
+
   };
 
   const activeSubStyle = {

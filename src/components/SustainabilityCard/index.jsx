@@ -24,7 +24,6 @@ export default function SustainabilityCard(props) {
 
   const slider = useRef(null);
 
-  // const [slideIndex, setSlideIndex] = useState(0);
   const [updateCount, setUpdateCount] = useState(1);
 
   const next = () => {
@@ -57,13 +56,6 @@ export default function SustainabilityCard(props) {
             </Slider>
           </Grid>
           <TextContainer item md={6} xs={12}>
-            {/* <input
-              onChange={(e) => slider.slickGoTo(e.target.value)}
-              value={slideIndex}
-              type="range"
-              min={0}
-              max={3}
-            /> */}
             <Description>
               <Typography className="text1"> {props.title}</Typography>
               <Typography className="text2">{props.description}</Typography>
