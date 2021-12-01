@@ -1,6 +1,5 @@
-import { makeStyles } from "@mui/styles";
 import {styled} from '@mui/material/styles'
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Button } from "@mui/material";
 
 export const MainContainer = styled('div')(() => ({
   height:"100vh",
@@ -90,30 +89,14 @@ export const Logo = styled('img')(({theme}) => ({
   }
 }));
 
-
-
-export const useStyles = makeStyles((theme) => ({
-  
-  
-  logo: {
-      width: "15%",
-      marginTop:"12%",
-      marginLeft:"10%"
-  },
-  image2:{
+export const Image2 = styled('img')(() => ({
     position:"absolute",
     bottom:0,
     zIndex:-1
-  },
-  
-  text1:{
-    fontSize:"50px",
-    color:"#ffffff",
-    marginLeft:"10%",
-    marginTop:"60px",
-  },
-  skipButton:{
-    position:"relative",
+}));
+
+export const SkipButton = styled(Button)(({theme}) => ({
+  position:"relative",
     top:"50px",
     left:"10%",
     color:"white",
@@ -121,5 +104,7 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]:{
       display:"block"
     }
-  }
 }));
+
+
+
