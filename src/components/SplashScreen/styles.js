@@ -5,7 +5,8 @@ import { Typography, Grid } from "@mui/material";
 export const MainContainer = styled('div')(() => ({
   height:"100vh",
   overflow:"hidden",
-  
+  position:"fixed",
+  width:"100vw"
 }));
 
 export const Button1 = styled('img')(({theme}) => ({
@@ -81,11 +82,11 @@ export const Image1 = styled('img')(({theme}) => ({
 }));
 
 export const Logo = styled('img')(({theme}) => ({
-  width: "100%",
-  height:"auto",
+  width: "15%",
+  marginTop:"12%",
+  marginLeft:"10%",
   [theme.breakpoints.down('sm')]:{
-    height:"60vh",
-    width:"100vw"
+    
   }
 }));
 
