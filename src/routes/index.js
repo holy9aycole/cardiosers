@@ -188,3 +188,4 @@ const SustainableCard = Loadable(
 );
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const BrandCard = Loadable(lazy(() => import("components/BrandCard")))

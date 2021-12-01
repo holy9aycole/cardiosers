@@ -7,7 +7,6 @@ import mask2 from "assets/images/mask2.png";
 import {
   CardFooter,
   useStyles,
-  //   Time,
   FooterShadow,
   CardHeader,
   Download,
