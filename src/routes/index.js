@@ -145,6 +145,7 @@ export default function Router() {
     },
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },
+    { path: "/property", element: <Property /> },
     { path: "/sustainability", element: <Sustainability /> },
 
     { path: "*", element: <Navigate to="/404" replace /> },
@@ -178,4 +179,5 @@ const BrandCard = Loadable(lazy(() => import("components/BrandCard")))
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const Property = Loadable(lazy(() => import('Screens/Property')));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
