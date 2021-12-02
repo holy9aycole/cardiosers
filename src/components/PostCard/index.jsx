@@ -1,6 +1,6 @@
 import React from "react";
 // material
-import { Typography, CardContent, CardMedia } from "@mui/material";
+import { CardContent, CardMedia } from "@mui/material";
 
 // assests
 import { ReactComponent as WebIcon } from "assets/web-icon.svg";
@@ -21,9 +21,11 @@ import {
 	FooterDiv,
 	FooterFont,
 	MediaDiv,
+	Title,
+	ReadMoreText
 } from "./styles";
 
-export default function PostCard({ images = [],title,bodyText }) {
+export default function PostCard({ images = [], title, bodyText, link, time, style }) {
 	const ReadMore = ({ children }) => {
 		const text = children;
 		const [isReadMore, setIsReadMore] = React.useState(true);
@@ -32,29 +34,29 @@ export default function PostCard({ images = [],title,bodyText }) {
 		};
 		if (text.length > 50) {
 			return (
-				<Typography variant="subtitle1" color="text.secondary" component="div">
+				<ReadMoreText>
 					{isReadMore ? text.slice(0, 30) : text}
 					<span onClick={toggleReadMore} onKeyDown={toggleReadMore} aria-hidden>
 						{isReadMore ? "[...]" : "."}
 					</span>
-				</Typography>
+				</ReadMoreText>
 			);
 		}
 
 		return (
-			<Typography variant="subtitle1" color="text.secondary" component="div">
+			<ReadMoreText>
 				{text}
-			</Typography>
+			</ReadMoreText>
 		);
 	};
 
 	return (
-		<StyledCard>
+		<StyledCard style={style}>
 			<StyledContentDiv>
 				<CardContent>
-					<Typography component="div" variant="h5" color="#3D3DD9">
+					<Title>
 						{title}
-					</Typography>
+					</Title>
 					<ReadMore>
 						{bodyText}
 					</ReadMore>
@@ -93,11 +95,11 @@ export default function PostCard({ images = [],title,bodyText }) {
 				<Footer>
 					<FooterDiv>
 						<WebIcon width={24} height={24} />
-						<FooterFont>getmorph.com</FooterFont>
+						<FooterFont>{link}</FooterFont>
 					</FooterDiv>
 					<FooterDiv>
 						<ClockIcon />
-						<FooterFont>1h ago</FooterFont>
+						<FooterFont>{time}</FooterFont>
 					</FooterDiv>
 				</Footer>
 				<FooterDiv>
