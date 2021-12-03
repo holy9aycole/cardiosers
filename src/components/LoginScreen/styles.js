@@ -50,7 +50,10 @@ export const useStyles = makeStyles((theme) => ({
     opacity:1,
     marginTop:"2rem",
     position:"relative",
-    height:"45px"
+    height:"45px",
+    '&:hover':{
+      backgroundColor:"#3d3dd9",
+    }
   },
   textField:{
     // backgroundColor:"#3dedd9",
