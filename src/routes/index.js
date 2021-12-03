@@ -106,7 +106,7 @@ export default function Router() {
       element: <MainLayout />,
     },
 
-    { path: "/login-screen", element: <LoginScreen /> },
+  
     { path: "/splash-screen", element: <SplashScreen /> },
     {
       path: "/property-card",
@@ -133,7 +133,7 @@ export default function Router() {
     },
     { path: "/post-card", element: <PostCard /> },
     { path: "/whats-new", element: <WhatsNew /> },
-    { path: "/property", element: <Property /> },
+  
     
 
     { path: "*", element: <Navigate to="/404" replace /> },
@@ -166,11 +166,11 @@ const Page500 = Loadable(lazy(() => import("../pages/Page500")));
 const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 
 //  RMZ
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
 const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const PostCard = Loadable(lazy(() => import("components/PostCard")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
-const Property = Loadable(lazy(() => import('Screens/Property')));
+
 
