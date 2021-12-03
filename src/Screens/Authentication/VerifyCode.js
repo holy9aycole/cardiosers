@@ -5,12 +5,12 @@ import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Link, Container, Typography } from '@mui/material';
 // layouts
-import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
+import LogoOnlyLayout from 'layouts/LogoOnlyLayout';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from 'routes/paths';
 // components
-import Page from '../../components/Page';
-import { VerifyCodeForm } from '../../components/authentication/verify-code';
+import Page from 'components/Page';
+import { VerifyCodeForm } from 'components/authentication/verify-code';
 
 // ----------------------------------------------------------------------
 
@@ -54,7 +54,7 @@ export default function VerifyCode() {
 
           <Typography variant="body2" align="center">
             Don’t have a code? &nbsp;
-            <Link variant="subtitle2" underline="none" onClick={() => {}}>
+            <Link variant="subtitle2" underline="none" onClick={() => { }}>
               Resend code
             </Link>
           </Typography>

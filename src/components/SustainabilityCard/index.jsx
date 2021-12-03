@@ -44,7 +44,7 @@ export default function SustainabilityCard(props) {
   };
 
   return (
-    <div>
+    <>
       <div className={classes.container}>
         <Grid container className={classes.mainContainer}>
           <Grid items md={6} xs={12}>
@@ -100,6 +100,6 @@ export default function SustainabilityCard(props) {
           </TextContainer>
         </Grid>
       </div>
-    </div>
+    </>
   );
 }

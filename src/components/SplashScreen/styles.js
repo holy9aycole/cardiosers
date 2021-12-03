@@ -53,6 +53,7 @@ export const Text1 = styled(Typography)(({theme}) => ({
   color:"#ffffff",
   marginLeft:"10%",
   marginTop:"60px",
+  fontFamily:"IvyPresto",
   [theme.breakpoints.down('sm')]:{
       fontSize:"25px",
       marginTop:"30px"

@@ -4,15 +4,12 @@ import mask from "assets/images/mask.svg";
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import PropertyCard from "components/PropertyCard";
 
-import Header from "../../layouts/dashboard/DashboardNavbar";
-
 import { MainContainer, Line, Text1, Text2 } from "./styles";
 
 export default function WhatsNew() {
   //   const classes = useStyles();
   return (
     <div>
-      <Header title="whats new" />
       <MainContainer>
         <img className="shadow" src={mask} alt="shadow" />
 

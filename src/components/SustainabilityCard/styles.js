@@ -2,8 +2,9 @@ import { makeStyles } from "@mui/styles";
 import { Grid, styled } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
-
   container: {
+    // border: "1px solid red",
+    marginTop: "8%",
     width: "70%",
     height: "580px",
     margin: "auto",
