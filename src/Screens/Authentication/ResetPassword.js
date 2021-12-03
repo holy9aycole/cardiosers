@@ -4,14 +4,14 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography } from '@mui/material';
 // layouts
-import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
+import LogoOnlyLayout from 'layouts/LogoOnlyLayout';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from 'routes/paths';
 // components
-import Page from '../../components/Page';
-import { ResetPasswordForm } from '../../components/authentication/reset-password';
+import Page from 'components/Page';
+import { ResetPasswordForm } from 'components/authentication/reset-password';
 //
-import { SentIcon } from '../../assets';
+import { SentIcon } from 'assets';
 
 // ----------------------------------------------------------------------
 

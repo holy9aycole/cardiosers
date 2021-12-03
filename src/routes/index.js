@@ -93,7 +93,6 @@ export default function Router() {
       path: "*",
       element: <LogoOnlyLayout />,
       children: [
-        { path: "maintenance", element: <Maintenance /> },
         { path: "500", element: <Page500 /> },
         { path: "404", element: <NotFound /> },
         { path: "*", element: <Navigate to="/404" replace /> },
@@ -102,6 +101,11 @@ export default function Router() {
     {
       path: "/",
       element: <MainLayout />,
+      children: [
+        { path: "property", element: <Property /> },
+        { path: "whats-new", element: <WhatsNew /> },
+        { path: "sustainability", element: <Sustainability /> },
+      ],
     },
 
     { path: "/login-screen", element: <LoginScreen /> },
@@ -143,11 +147,6 @@ export default function Router() {
         />
       ),
     },
-    { path: "/post-card", element: <PostCard /> },
-    { path: "/whats-new", element: <WhatsNew /> },
-    { path: "/property", element: <Property /> },
-    { path: "/sustainability", element: <Sustainability /> },
-
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
@@ -155,19 +154,18 @@ export default function Router() {
 // IMPORT COMPONENTS
 
 // Authentication
-const Login = Loadable(lazy(() => import("../pages/authentication/Login")));
-const Register = Loadable(lazy(() => import("../pages/authentication/Register")));
-const ResetPassword = Loadable(lazy(() => import("../pages/authentication/ResetPassword")));
-const VerifyCode = Loadable(lazy(() => import("../pages/authentication/VerifyCode")));
+const Login = Loadable(lazy(() => import("Screens/Authentication/Login")));
+const Register = Loadable(lazy(() => import("Screens/Authentication/Register")));
+const ResetPassword = Loadable(lazy(() => import("Screens/Authentication/ResetPassword")));
+const VerifyCode = Loadable(lazy(() => import("Screens/Authentication/VerifyCode")));
 
 // Dashboard
-const AllAssets = Loadable(lazy(() => import("../Screens/Dashboard/AllAssets")));
-const RMZEcoworld = Loadable(lazy(() => import("../Screens/Dashboard/RMZEcoworld")));
+const AllAssets = Loadable(lazy(() => import("Screens/Dashboard/AllAssets")));
+const RMZEcoworld = Loadable(lazy(() => import("Screens/Dashboard/RMZEcoworld")));
 
 // Main
-const Maintenance = Loadable(lazy(() => import("../pages/Maintenance")));
-const Page500 = Loadable(lazy(() => import("../pages/Page500")));
-const NotFound = Loadable(lazy(() => import("../pages/Page404")));
+const Page500 = Loadable(lazy(() => import("Screens/Page500")));
+const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 //  RMZ Components
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
