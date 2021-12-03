@@ -1,28 +1,9 @@
-import { makeStyles } from "@mui/styles";
+import { Button, Typography, TextField } from '@mui/material'
+import { styled } from '@mui/material/styles';
 import LoginBg from '../../assets/images/login-web.png'
 
-
-export const useStyles = makeStyles((theme) => ({
-  mainContainer:{
-    backgroundImage: `url(${LoginBg})`,
-    backgroundRepeat:"no-repeat",
-    backgroundSize:"cover",
-    height:"100vh",
-    paddingTop:"100px",
-  },
-  logo:{
-    display:"block",
-    margin:"auto",
-    width:"100px",
-    [theme.breakpoints.up('xl')]:{
-      width:"160px",
-    },
-    [theme.breakpoints.down('sm')]:{
-      width:"120px",
-    }
-  },
-  formContainer:{
-    border: '1px solid #3D3DD9',
+export const FormContainer = styled('div')(({theme}) => ({
+  border: '1px solid #3D3DD9',
     borderRadius: '30px',
     opacity: 1,
     backgroundColor:"#0f15a2",
@@ -42,39 +23,58 @@ export const useStyles = makeStyles((theme) => ({
       mixBlendMode:"normal",
       padding:"80px 30px 100px 30px"
     }
-  },
-  button:{
+}));
+
+export const MainContainer = styled('div')(() => ({
+  backgroundImage: `url(${LoginBg})`,
+    backgroundRepeat:"no-repeat",
+    backgroundSize:"cover",
+    height:"100vh",
+    paddingTop:"100px",
+}));
+
+
+export const Button1 = styled(Button)(() => ({
+  backgroundColor:"#3d3dd9",
+  color:"#ffffff",
+  width:"100%",
+  opacity:1,
+  marginTop:"2rem",
+  position:"relative",
+  height:"45px",
+  '&:hover':{
     backgroundColor:"#3d3dd9",
-    color:"#ffffff",
-    width:"100%",
-    opacity:1,
-    marginTop:"2rem",
-    position:"relative",
-    height:"45px",
-    '&:hover':{
-      backgroundColor:"#3d3dd9",
-    }
-  },
-  textField:{
-    // backgroundColor:"#3dedd9",
-    width:"100%",
-    borderRadius:"6px"
-  },
-  text1:{
-    color:"#ffffff",
-    fontSize:"14px",
-    textAlign:"center",
-    marginTop:"10px",
-    opacity:0.8
-  },
-  mailicon:{
-    position:"relative",
-    left:"90%",
-    marginBottom:"-30px"
-  },
-  text2:{
-    color:"#ffffff",
-    textAlign:"center"
   }
+}));
+
+export const Logo = styled('img')(({theme}) => ({
+  display:"block",
+  margin:"auto",
+  width:"100px",
+  [theme.breakpoints.up('xl')]:{
+    width:"160px",
+  },
+  [theme.breakpoints.down('sm')]:{
+    width:"120px",
+  }
+}));
+
+export const TextField1 = styled(TextField)(() => ({
+  width:"100%",
+  borderRadius:"6px"
+}));
+
+export const Text1 = styled(Typography)(() => ({
+  color:"#ffffff",
+  fontSize:"14px",
+  textAlign:"center",
+  marginTop:"10px",
+  opacity:0.8
+}));
+
+export const MailIcon = styled('img')(() => ({
+  position:"relative",
+  left:"90%",
+  marginBottom:"-30px"
 }));
 

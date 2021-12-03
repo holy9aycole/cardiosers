@@ -1,28 +1,31 @@
 import React from "react";
-import {
-  TextField,
-  Button,
-  Typography
-} from "@mui/material"; 
-import { useStyles } from "./styles";
-import Logo from '../../assets/images/rmz-logo.svg'
+import { 
+  MainContainer,
+  Logo,
+  FormContainer,
+  MailIcon,
+  TextField1,
+  Button1,
+  Text1
+ } from "./styles";
+import logo from '../../assets/images/rmz-logo (1).svg'
 import mailIcon from '../../assets/images/email-icon.svg'
 
 function LoginScreen() {
-  const classes = useStyles();
+
   
   return (
     <>
-     <div className={classes.mainContainer}>
-        <img src={Logo} alt="" className={classes.logo}/>
-        <Typography className={classes.text2}>FUTURE OF SPACE<sup style={{fontSize:"8px"}}> TM</sup></Typography>
-        <div className={classes.formContainer}>
-            <img src={mailIcon} alt="" className={classes.mailicon}/>
-            <TextField label="Enter you Email" className={classes.textField}/>
-            <Button className={classes.button}>GET OTP</Button>
-            <Typography className={classes.text1}>Check you email inbox for OTP</Typography>
-        </div>
-     </div>
+     <MainContainer>
+        <Logo src={logo} alt=""/>
+        
+        <FormContainer>
+            <MailIcon src={mailIcon} alt=""/>
+            <TextField1 label="Enter you Email"/>
+            <Button1>GET OTP</Button1>
+            <Text1>Check you email inbox for OTP</Text1>
+        </FormContainer>
+     </MainContainer>
     </>
   );
 }
