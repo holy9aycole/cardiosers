@@ -42,7 +42,10 @@ export const Button1 = styled(Button)(() => ({
     opacity:1,
     marginTop:"2rem",
     position:"relative",
-    height:"45px"
+    height:"45px",
+    '&:hover':{
+      backgroundColor:"#3d3dd9"
+    }
 }));
 
 export const TextField1 = styled(TextField)(() => ({
