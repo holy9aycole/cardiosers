@@ -105,11 +105,13 @@ export default function Router() {
       path: "/",
       element: <MainLayout />,
       children: [
+        { element: <WhatsNew /> },
         { path: "news-feed", element: <NewsFeed /> },
         { path: "property", element: <Property /> },
         { path: "whats-new", element: <WhatsNew /> },
         { path: "sustainability", element: <Sustainability /> },
         { path: "branding", element: <Branding /> },
+        { path: "profile", element: <Profile /> },
       ],
     },
 
@@ -200,3 +202,4 @@ const Property = Loadable(lazy(() => import("Screens/Property")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
+const Profile = Loadable(lazy(() => import("Screens/Profile")));
