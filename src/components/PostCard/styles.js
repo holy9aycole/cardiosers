@@ -1,17 +1,20 @@
-import { Card,Button,Typography,styled } from "@mui/material"
+import { Card, Button, Typography, styled } from "@mui/material"
 
 export const StyledCard = styled(Card)(({ theme }) => ({
-    width: "40%",
+    width: "50%",
     padding: 10,
     paddingBottom: 0,
-    borderRadius: "4px",
+    borderRadius: "0px",
+    boxShadow: 'none',
+    border: 'none',
     background: "#FFFFFF",
     [theme.breakpoints.down("md")]: {
-        width: "95%"
+        width: "100%",
+        margin: 'auto'
     },
 }));
 
-export const StyledContentDiv = styled("div")(()=>({
+export const StyledContentDiv = styled("div")(() => ({
     backgroundImage: "url(assets/Mask Group 18.svg)",
 }));
 
@@ -28,6 +31,19 @@ export const StyledButton = styled(Button)({
         background: "#fff",
         color: "#3D3DD9",
     },
+});
+
+export const Title = styled(Typography)({
+    fontFamily: 'Ivypresto Display',
+    fontSize: '24px',
+    color: '#3D3DD9',
+    marginBottom: '10px'
+});
+
+export const ReadMoreText = styled(Typography)({
+    fontFamily: 'Poppins',
+    fontSize: '16px',
+    color: '#000'
 });
 
 export const MediaBox = styled("div")({
@@ -58,6 +74,7 @@ export const FooterContainer = styled("div")({
 
 export const Footer = styled("div")({
     display: "flex",
+    padding: '10px'
 });
 
 export const FooterDiv = styled("div")({
@@ -69,7 +86,8 @@ export const FooterDiv = styled("div")({
 
 export const FooterFont = styled(Typography)({
     padding: "0px 16px",
-    fontSize: 13,
+    fontSize: '16px',
+    fontFamily: 'Poppins',
     color: "#3D3DD9",
 });
 
