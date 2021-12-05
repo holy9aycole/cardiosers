@@ -7,16 +7,18 @@ import sust from "assets/images/sustainable.png";
 import Logo from "assets/images/rmz-logo.png";
 
 // components
-import LoadingScreen from "../components/LoadingScreen";
+import ForumCard from "components/ForumCard";
+
+import LoadingScreen from "components/LoadingScreen";
 
 // layouts
-import MainLayout from "../layouts/main";
-import DashboardLayout from "../layouts/dashboard";
-import LogoOnlyLayout from "../layouts/LogoOnlyLayout";
+import MainLayout from "layouts/main";
+import DashboardLayout from "Screens/NewsFeed";
+import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
-import GuestGuard from "../guards/GuestGuard";
-// import RoleBasedGuard from '../guards/RoleBasedGuard';
+import GuestGuard from "guards/GuestGuard";
+// import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
 
@@ -76,17 +78,16 @@ export default function Router() {
 
     // Dashboard Routes
     {
-      path: "dashboard",
+      path: "news-feed",
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" replace /> },
-        { path: "app", element: <AllAssets /> },
-        { path: "ecommerce", element: <RMZEcoworld /> },
-        { path: "analytics", element: <AllAssets /> },
-        { path: "banking", element: <RMZEcoworld /> },
-        { path: "booking", element: <AllAssets /> },
-        { path: "booking1", element: <AllAssets /> },
-        { path: "booking2", element: <AllAssets /> },
+        { element: <Navigate to="/news-feed/ecoworld" replace /> },
+        { path: "assets", element: <AllAssets /> },
+        { path: "ecoworld", element: <RMZEcoworld /> },
+        { path: "millenia", element: <RMZEcoworld /> },
+        { path: "ecospace", element: <AllAssets /> },
+        { path: "infinity", element: <AllAssets /> },
+        { path: "paramount", element: <AllAssets /> },
       ],
     },
 
@@ -104,6 +105,8 @@ export default function Router() {
       path: "/",
       element: <MainLayout />,
       children: [
+        { element: <WhatsNew /> },
+        { path: "news-feed", element: <NewsFeed /> },
         { path: "property", element: <Property /> },
         { path: "whats-new", element: <WhatsNew /> },
         { path: "sustainability", element: <Sustainability /> },
@@ -144,6 +147,10 @@ export default function Router() {
       ),
     },
     {
+      path: "/forum-card",
+      element: <ForumCard />,
+    },
+    {
       path: "/sustain-card",
       element: (
         <SustainableCard
@@ -161,13 +168,21 @@ export default function Router() {
 
 // Authentication
 const Login = Loadable(lazy(() => import("Screens/Authentication/Login")));
-const Register = Loadable(lazy(() => import("Screens/Authentication/Register")));
-const ResetPassword = Loadable(lazy(() => import("Screens/Authentication/ResetPassword")));
-const VerifyCode = Loadable(lazy(() => import("Screens/Authentication/VerifyCode")));
+const Register = Loadable(
+  lazy(() => import("Screens/Authentication/Register"))
+);
+const ResetPassword = Loadable(
+  lazy(() => import("Screens/Authentication/ResetPassword"))
+);
+const VerifyCode = Loadable(
+  lazy(() => import("Screens/Authentication/VerifyCode"))
+);
 
 // Dashboard
-const AllAssets = Loadable(lazy(() => import("Screens/Dashboard/AllAssets")));
-const RMZEcoworld = Loadable(lazy(() => import("Screens/Dashboard/RMZEcoworld")));
+const AllAssets = Loadable(lazy(() => import("Screens/NewsFeed/AllAssets")));
+const RMZEcoworld = Loadable(
+  lazy(() => import("Screens/NewsFeed/RMZEcoworld"))
+);
 
 // Main
 const Page500 = Loadable(lazy(() => import("Screens/Page500")));
@@ -184,8 +199,9 @@ const BrandCard = Loadable(lazy(() => import("components/BrandCard")));
 const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
-const Property = Loadable(lazy(() => import('Screens/Property')));
+const Property = Loadable(lazy(() => import("Screens/Property")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
 const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
+const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
