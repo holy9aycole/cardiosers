@@ -109,6 +109,7 @@ export default function Router() {
         { path: "sustainability", element: <Sustainability /> },
         { path: "branding", element: <Branding /> },
         { path: "profile", element: <Profile /> },
+        { path: "about-us", element: <AboutUs /> },
       ],
     },
 
@@ -187,3 +188,4 @@ const Property = Loadable(lazy(() => import('Screens/Property')));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
+const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
