@@ -1,20 +1,17 @@
 import React from "react";
-// import { styled } from "@mui/material";
 
 // assets
 import PostCard from "components/PostCard";
 import img1 from "assets/1.png";
 import img2 from "assets/2.png";
 import img3 from "assets/3.png";
-import { Assets } from 'Screens/Dashboard/AllAssets/styles'
+import { Assets,StyledDiv } from 'Screens/Dashboard/AllAssets/styles'
 
 export default function AllAssets() {
 	const images = [img1, img2, img3, img3, img1];
 
-	// const StyledDiv = 
-
 	return (
-		<div>
+		<StyledDiv>
 			<Assets>All assets</Assets>
 			<PostCard
 				images={images}
@@ -34,6 +31,6 @@ export default function AllAssets() {
 				time="1h ago"
 				style={{ margin: '40px 0px' }}
 			/>
-		</div>
+		</StyledDiv>
 	);
 }
