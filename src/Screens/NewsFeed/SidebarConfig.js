@@ -26,32 +26,32 @@ const sidebarConfig = [
     items: [
       {
         title: "All Assets",
-        path: PATH_DASHBOARD.general.ecommerce,
+        path: PATH_DASHBOARD.general.assets,
         icon: ICONS.ecommerce,
       },
       {
         title: "RMZ Ecoworld",
-        path: PATH_DASHBOARD.general.analytics,
+        path: PATH_DASHBOARD.general.ecoworld,
         icon: ICONS.analytics,
       },
       {
         title: "The Millenia",
-        path: PATH_DASHBOARD.general.banking,
+        path: PATH_DASHBOARD.general.millenia,
         icon: ICONS.banking,
       },
       {
         title: "Ecospace",
-        path: PATH_DASHBOARD.general.booking,
+        path: PATH_DASHBOARD.general.ecospace,
         icon: ICONS.booking,
       },
       {
         title: "RMZ Infinity",
-        path: PATH_DASHBOARD.general.booking,
+        path: PATH_DASHBOARD.general.infinity,
         icon: ICONS.booking,
       },
       {
         title: "RMZ One Paramount",
-        path: PATH_DASHBOARD.general.booking,
+        path: PATH_DASHBOARD.general.paramount,
         icon: ICONS.booking,
       },
     ],

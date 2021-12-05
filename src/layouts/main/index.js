@@ -6,7 +6,28 @@ import Footer from "layouts/main/MainFooter";
 
 export default function MainLayout() {
   const { pathname } = useLocation();
-  const title = pathname.slice(1);
+
+  let title;
+  switch (pathname) {
+    case "/whats-new":
+      title = "WHATS NEW";
+      break;
+
+    case "/property":
+      title = "PROPERTIES";
+      break;
+
+    case "/sustainability":
+      title = "SUSTAINABILITY";
+      break;
+
+    case "/branding":
+      title = "BRANDING";
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <>

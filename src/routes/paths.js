@@ -28,9 +28,11 @@ export const PATH_PAGE = {
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {
-    ecommerce: path(ROOTS_DASHBOARD, "/ecommerce"),
-    analytics: path(ROOTS_DASHBOARD, "/analytics"),
-    banking: path(ROOTS_DASHBOARD, "/banking"),
-    booking: path(ROOTS_DASHBOARD, "/booking"),
+    ecoworld: path(ROOTS_DASHBOARD, "/ecoworld"),
+    assets: path(ROOTS_DASHBOARD, "/assets"),
+    millenia: path(ROOTS_DASHBOARD, "/millenia"),
+    ecospace: path(ROOTS_DASHBOARD, "/ecospace"),
+    infinity: path(ROOTS_DASHBOARD, "/infinity"),
+    paramount: path(ROOTS_DASHBOARD, "/paramount"),
   },
 };
