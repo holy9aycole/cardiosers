@@ -4,16 +4,16 @@ import { Link as RouterLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import { Box, Card, Stack, Link, Alert, Tooltip, Container, Typography, Button } from '@mui/material';
 // routes
-import { PATH_AUTH } from '../../routes/paths';
+import { PATH_AUTH } from 'routes/paths';
 // hooks
-import useAuth from '../../hooks/useAuth';
+import useAuth from 'hooks/useAuth';
 // layouts
-import AuthLayout from '../../layouts/AuthLayout';
+import AuthLayout from 'layouts/AuthLayout';
 // components
-import Page from '../../components/Page';
-import { MHidden } from '../../components/@material-extend';
-import { LoginForm } from '../../components/authentication/login';
-import AuthFirebaseSocials from '../../components/authentication/AuthFirebaseSocial';
+import Page from 'components/Page';
+import { MHidden } from 'components/@material-extend';
+import { LoginForm } from 'components/authentication/login';
+import AuthFirebaseSocials from 'components/authentication/AuthFirebaseSocial';
 
 // ----------------------------------------------------------------------
 

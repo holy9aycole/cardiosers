@@ -5,11 +5,10 @@ import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import { AppBar, Toolbar, IconButton } from "@mui/material";
+import Searchbar from "layouts/main/Searchbar";
 // hooks
 import useCollapseDrawer from "../../hooks/useCollapseDrawer";
 // components
-// import { MHidden } from "../../components/@material-extend";
-import Searchbar from "../dashboard/Searchbar";
 import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
