@@ -11,6 +11,7 @@ const sidebarConfig = [
       { title: "NEWS", path: "/news-feed" },
       { title: "BRANDING", path: "/branding" },
       { title: "CONTACT", path: "/whats-new" },
+      { title: "PROFILE", path: "/profile" },
     ],
   },
 ];
