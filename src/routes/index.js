@@ -116,7 +116,7 @@ export default function Router() {
       ],
     },
 
-    { path: "/login-screen", element: <LoginScreen /> },
+  
     { path: "/splash-screen", element: <SplashScreen /> },
 
     {
@@ -196,7 +196,7 @@ const SustainableCard = Loadable(
 const BrandCard = Loadable(lazy(() => import("components/BrandCard")));
 
 // RMZ Screens
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
