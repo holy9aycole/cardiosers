@@ -8,10 +8,12 @@ export const useStyles = makeStyles((theme) => ({
 
   gridItemContainer: {
     textAlign: "center",
+    marginTop: "7%",
 
     padding: "0px 12%",
     [theme.breakpoints.only("xs")]: {
       padding: "0px 0px",
+      marginTop: "25%",
     },
   },
 }));

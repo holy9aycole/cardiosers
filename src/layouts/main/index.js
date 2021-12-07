@@ -1,48 +1,40 @@
-import { Link as ScrollLink } from 'react-scroll';
-import { useLocation } from 'react-router-dom';
-// material
-import { Box, Link, Container, Typography } from '@mui/material';
-// components
-import Logo from '../../components/Logo';
-//
-import MainNavbar from './MainNavbar';
-import MainFooter from './MainFooter';
+import { Outlet, useLocation } from "react-router-dom";
+import Header from "layouts/main/MainNavbar";
+import Footer from "layouts/main/MainFooter";
 
 // ----------------------------------------------------------------------
 
 export default function MainLayout() {
   const { pathname } = useLocation();
-  const isHome = pathname === '/';
+
+  let title;
+  switch (pathname) {
+    case "/whats-new":
+      title = "WHATS NEW";
+      break;
+
+    case "/property":
+      title = "PROPERTIES";
+      break;
+
+    case "/sustainability":
+      title = "SUSTAINABILITY";
+      break;
+
+    case "/branding":
+      title = "BRANDING";
+      break;
+
+    default:
+      break;
+  }
 
   return (
     <>
-      <MainNavbar title="What's New" />
-
-
-      {!isHome ? (
-        <MainFooter />
-      ) : (
-        <Box
-          sx={{
-            py: 5,
-            textAlign: 'center',
-            position: 'relative',
-            bgcolor: 'background.default'
-          }}
-        >
-          <Container maxWidth="lg">
-            <ScrollLink to="move_top" spy smooth>
-              <Logo sx={{ mb: 1, mx: 'auto', cursor: 'pointer' }} />
-            </ScrollLink>
-
-            <Typography variant="caption" component="p">
-              © All rights reserved
-              <br /> made by &nbsp;
-              <Link href="https://minimals.cc/">Manbal.ai</Link>
-            </Typography>
-          </Container>
-        </Box>
-      )}
+      {/* <MainNavbar title="What's New" /> */}
+      <Header title={title} />
+      <Outlet />
+      <Footer />
     </>
   );
 }

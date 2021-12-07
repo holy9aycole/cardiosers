@@ -88,12 +88,16 @@ export const FooterDiv = styled("div")({
 	marginRight: 5,
 });
 
-export const FooterFont = styled(Typography)({
+export const FooterFont = styled(Typography)(({ theme }) => ({
 	padding: "0px 16px",
 	fontSize: "16px",
 	fontFamily: "Poppins",
 	color: "#3D3DD9",
-});
+	[theme.breakpoints.down("sm")]: {
+		fontSize: "12px",
+		lineHeight: '20px'
+	}
+}));
 
 export const MediaDiv = styled("div")({
 	flexDirection: "column",
