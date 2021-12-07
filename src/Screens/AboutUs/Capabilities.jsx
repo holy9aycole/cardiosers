@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import { Line, Heading, SubHeading, DividerStyled, TabsBox } from "./styles";
+import { HeadLine, Heading, SubHeading, DividerStyled, TabsBox } from "./styles";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -28,7 +28,10 @@ function Capabilities() {
     };
     return (
         <>
-            <Line className="line" />
+            <HeadLine>
+                <div className="line" />
+                <Typography class="text">Capabilities</Typography>
+            </HeadLine>
             <Heading>Innovation is a cornerstone of<br /> RMZ’s culture</Heading>
             <SubHeading>
                 We're here to disrupt the way the world views work and transform the way we work by

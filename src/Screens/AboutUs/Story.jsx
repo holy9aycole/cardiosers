@@ -1,12 +1,16 @@
 import React from 'react'
 import mask from "assets/images/mask.svg";
-import { Line, Heading, SubHeading, DividerStyled } from "./styles";
+import { Typography } from '@mui/material';
+import { HeadLine, Heading, SubHeading, DividerStyled } from "./styles";
 
 function Story() {
     return (
         <>
             <img className="shadow" src={mask} alt="shadow" />
-            <Line className="line" />
+            <HeadLine>
+                <div className="line" />
+                <Typography class="text">Story</Typography>
+            </HeadLine>
             <Heading>Our history is<br /> a continuous pursuit of excellence</Heading>
             <SubHeading>
                 RMZ Corp is one of Asias largest privately-owned real estate owner, investor, and

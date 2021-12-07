@@ -23,16 +23,35 @@ export const MainContainer = styled("div")(({ theme }) => ({
 
 // Story tab
 
-export const Line = styled("div")(({ theme }) => ({
-    marginTop: "6%",
-    width: "12%",
-    height: "2px",
-    border: "1px solid #D6D6D6",
-    marginLeft: "10%",
-    [theme.breakpoints.down("md")]: {
-        width: "15%",
-        marginLeft: "5%",
+export const HeadLine = styled("div")(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'row',
+    '& .line': {
+        marginTop: "6%",
+        width: "12%",
+        height: "1px",
+        border: "1px solid #D6D6D6",
+        marginLeft: "10%",
+        backgroundColor: '#D6D6D6',
+        [theme.breakpoints.down("md")]: {
+            width: "15%",
+            marginLeft: "5%",
+        },
     },
+    '& .text': {
+        fontSize: "16px",
+        lineHeight: '20px',
+        fontWeight: 600,
+        color: "#78909C",
+        fontFamily: "Poppins",
+        marginTop: "5%",
+        marginLeft: "2%",
+        [theme.breakpoints.down("md")]: {
+            fontSize: "13px",
+            marginLeft: "2%",
+            marginTop: "4%",
+        },
+    }
 }));
 
 export const Heading = styled(Typography)(({ theme }) => ({
@@ -78,7 +97,6 @@ export const TabsGrid = styled(Grid)(({ theme }) => ({
     position: 'fixed',
     right: '0px',
     width: '100%',
-    backgroundColor: 'green',
     height: '500px',
     [theme.breakpoints.down("md")]: {
         display: 'none'
@@ -107,13 +125,79 @@ export const TabsBox = styled(Box)(({ theme }) => ({
         width: '90%',
         marginLeft: "5%",
     },
+    '& .tab-style-side': {
+        fontSize: "16px",
+        lineHeight: '20px',
+        margin: '0px 0px 20px 40px',
+        textAlign: 'left',
+        fontFamily: "Poppins",
+        alignItems: 'baseline',
+        '&.Mui-selected': {
+            color: "#3D3DD9",
+        },
+        [theme.breakpoints.down("md")]: {
+            fontSize: "13px",
+        },
+    },
     '& .tab-style': {
         fontSize: "16px",
         lineHeight: '20px',
-        color: "#3D3DD9",
+        textAlign: 'left',
         fontFamily: "Poppins",
+        '&.Mui-selected': {
+            color: "#3D3DD9",
+        },
         [theme.breakpoints.down("md")]: {
             fontSize: "13px",
         },
     }
+}));
+
+// Awards
+
+export const NumberHeading = styled(Typography)(({ theme }) => ({
+    fontSize: "24px",
+    lineHeight: '20px',
+    color: "#2E2E80",
+    letterSpacing: '0.24px',
+    marginBottom: '10px',
+    fontFamily: "Ivypresto Display",
+    [theme.breakpoints.down("md")]: {
+        lineHeight: '24px',
+    },
+}));
+
+export const MainPoints = styled('div')(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    "& .icon-back": {
+        marginTop: '4px',
+        backgroundColor: "#3D3DD9",
+        height: '15px',
+        width: '15px',
+        borderRadius: '20px',
+    },
+    "& .icon": {
+        color: "#0278AE",
+        height: '7px',
+        width: '7px',
+        margin: 'auto',
+        marginTop: '4px'
+    },
+    "& .point": {
+        display: "flex",
+        flexDirection: "row",
+        margin: "12px 0px",
+    },
+    "& .subHeadingPoint": {
+        marginLeft: '10px',
+        fontFamily: "Poppins",
+        fontWeight: 600,
+        fontSize: "16px",
+        lineHeight: '26px',
+        color: '#202020',
+    },
+    [theme.breakpoints.down("md")]: {
+
+    },
 }));
