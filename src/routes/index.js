@@ -18,6 +18,7 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
 import GuestGuard from "guards/GuestGuard";
+import Discussion from "components/Discussion";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
@@ -148,7 +149,31 @@ export default function Router() {
     },
     {
       path: "/forum-card",
-      element: <ForumCard />,
+      element: (
+        <ForumCard
+          heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+          description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+          tag="Design"
+          time="1"
+          comments="17"
+        />
+      ),
+    },
+    {
+      path: "/discussion",
+      element: (
+        <Discussion
+          heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+          description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+          tag="Design"
+          time="1"
+          comments="17"
+        />
+      ),
     },
     {
       path: "/sustain-card",
