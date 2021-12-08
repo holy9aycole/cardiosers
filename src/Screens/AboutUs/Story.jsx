@@ -1,7 +1,7 @@
 import React from 'react'
 import mask from "assets/images/mask.svg";
 import { Typography } from '@mui/material';
-import { HeadLine, Heading, SubHeading, DividerStyled } from "./styles";
+import { HeadLine, Heading, SubHeading, DividerStyled, Metrics } from "./styles";
 
 function Story() {
     return (
@@ -25,6 +25,22 @@ function Story() {
                 18 years and growing rapidly, we are equipped with exponential technologies that
                 will accelerate our vision to build a global 1 million member community by 2026.
             </SubHeading>
+            <Metrics>
+                <div className="first-row">
+                    <div className="border"> <Typography className="first">2021</Typography></div>
+                    <Typography className="main-text">200+<br /><span className="sub-text">Enterprises</span></Typography>
+                    <Typography className="main-text">67M<br /><span className="sub-text">Real Assets (Sft.)</span></Typography>
+                    <Typography className="main-text">0.6M<br /><span className="sub-text">Members</span></Typography>
+                    <Typography className="main-text">$10B<br /><span className="sub-text">Real Assets Value</span></Typography>
+                </div>
+                <div className="first-row">
+                    <div className="border"> <Typography className="first">2026</Typography></div>
+                    <Typography className="main-text">800+<br /><span className="sub-text">Enterprises</span></Typography>
+                    <Typography className="main-text">87M+<br /><span className="sub-text">Real Assets (Sft.)</span></Typography>
+                    <Typography className="main-text">1M<br /><span className="sub-text">Members</span></Typography>
+                    <Typography className="main-text">$15B<br /><span className="sub-text">Real Assets Value</span></Typography>
+                </div>
+            </Metrics>
             <DividerStyled />
         </>
     )

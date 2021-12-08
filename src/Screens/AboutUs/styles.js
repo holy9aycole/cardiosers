@@ -115,6 +115,67 @@ export const DividerStyled = styled(Divider)(({ theme }) => ({
     },
 }));
 
+export const Metrics = styled('div')(({ theme }) => ({
+    display: 'flex',
+    marginTop: '20px',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down("md")]: {
+        flexDirection: 'row',
+    },
+    '& .first-row': {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '85%',
+        paddingLeft: '10%',
+        margin: '20px 0px',
+        justifyContent: 'space-between',
+        [theme.breakpoints.down("md")]: {
+            paddingLeft: '5%',
+            flexDirection: 'column',
+        },
+        '& .main-text': {
+            fontSize: "40px",
+            lineHeight: '20px',
+            letterSpacing: '0.4px',
+            fontFamily: 'Ivypresto Display',
+            color: "#3D3DD9",
+            [theme.breakpoints.down("md")]: {
+                paddingTop: '40px',
+            },
+        },
+        '& .sub-text': {
+            fontSize: "14px",
+            lineHeight: '20px',
+            fontFamily: 'Poppins',
+            fontWeight: 600,
+            color: "#202020",
+            [theme.breakpoints.down("md")]: {
+                fontSize: "13px",
+            },
+        },
+        '& .first': {
+            fontSize: "16px",
+            lineHeight: '20px',
+            paddingRight: '20px',
+            textAlign: 'left',
+            fontFamily: "Poppins",
+            marginTop: '10px',
+            [theme.breakpoints.down("md")]: {
+                fontSize: "13px",
+            },
+        },
+        '& .border': {
+            borderRight: '2px solid #90A4AE',
+            [theme.breakpoints.down("md")]: {
+                borderRight: 'none',
+                borderBottom: '2px solid #90A4AE',
+                width: '50%'
+            },
+        }
+    },
+}));
+
 // Capabilities
 
 export const TabsBox = styled(Box)(({ theme }) => ({
@@ -153,6 +214,64 @@ export const TabsBox = styled(Box)(({ theme }) => ({
     }
 }));
 
+export const CapTabContent = styled('div')(({ theme }) => ({
+    display: "flex",
+    flexDirection: "row",
+    [theme.breakpoints.down("md")]: {
+        flexDirection: "column",
+    },
+    '& .starting': {
+        display: "flex",
+        flexDirection: "row",
+        width: '35%',
+        marginBottom: '10px',
+        [theme.breakpoints.down("md")]: {
+            width: '100%',
+            marginBottom: '10px'
+        },
+        '& .number': {
+            fontSize: "40px",
+            lineHeight: '24px',
+            color: "#ECEFF1",
+            letterSpacing: '0.4px',
+            fontFamily: "Ivypresto Display",
+            marginTop: '10px',
+            [theme.breakpoints.down("md")]: {
+                marginTop: '0px',
+                fontSize: "24px",
+                letterSpacing: '0.24px',
+            },
+        },
+        '& .head': {
+            fontSize: "24px",
+            lineHeight: '34px',
+            color: "#2E2E80",
+            letterSpacing: '0.24px',
+            fontFamily: "Ivypresto Display",
+            marginLeft: '10%',
+            textAlign: 'left',
+            [theme.breakpoints.down("md")]: {
+                fontSize: "16px",
+                lineHeight: '24px',
+                letterSpacing: '0.16px',
+                marginLeft: '5%',
+            },
+        }
+    },
+    '& .last-text': {
+        fontSize: "16px",
+        lineHeight: '28px',
+        color: '#202020',
+        fontFamily: "Poppins",
+        width: '80%',
+        marginBottom: '30px',
+        [theme.breakpoints.down("md")]: {
+            fontSize: "13px",
+            lineHeight: '20px',
+            marginBottom: '30px'
+        },
+    }
+}));
 // Awards
 
 export const NumberHeading = styled(Typography)(({ theme }) => ({
@@ -199,5 +318,17 @@ export const MainPoints = styled('div')(({ theme }) => ({
     },
     [theme.breakpoints.down("md")]: {
 
+    },
+}));
+
+// Timeline
+
+export const MainImage = styled('img')(({ theme }) => ({
+    marginLeft: '10%',
+    marginTop: '10px',
+    width: '80%',
+    [theme.breakpoints.down("md")]: {
+        marginLeft: '5%',
+        width: '90%'
     },
 }));
