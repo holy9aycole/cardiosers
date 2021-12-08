@@ -7,7 +7,7 @@ export const useStyles = makeStyles(() => ({
 
 export const Feed = styled(Card)(({ theme }) => ({
   //   border: ".5px solid red",
-  padding: "10px 10px",
+  padding: "10px 20px",
   borderRadius: "0px",
   width: "40%",
   height: "auto",
@@ -15,6 +15,7 @@ export const Feed = styled(Card)(({ theme }) => ({
   margin: "10px 0px",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
+    padding: "10px 10px",
   },
   [theme.breakpoints.only("sm")]: {
     width: "60%",
@@ -25,14 +26,14 @@ export const Feed = styled(Card)(({ theme }) => ({
   "& .heading": {
     fontSize: "18px",
     fontFamily: "IvyPresto Display",
-    fontWeight: "Regular",
+    fontWeight: 600,
     color: "#3D3DD9",
     letterSpacing: ".44px",
   },
   "& .subheading": {
     fontSize: "16px",
     fontFamily: "Poppins",
-    fontWeight: "Medium",
+    fontWeight: 600,
     color: "#202020",
     margin: "10px 0px 0px 0px",
     [theme.breakpoints.down("sm")]: {
