@@ -11,7 +11,6 @@ import ScrollToTop from './components/ScrollToTop';
 import NotistackProvider from './components/NotistackProvider';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
 import ThemeLocalization from './components/ThemeLocalization';
-import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 import LoadingScreen, { ProgressBarStyle } from './components/LoadingScreen';
 
 // ----------------------------------------------------------------------
@@ -27,7 +26,6 @@ export default function App() {
             <NotistackProvider>
               <GlobalStyles />
               <ProgressBarStyle />
-              <BaseOptionChartStyle />
               <ScrollToTop />
               {isInitialized ? <Router /> : <LoadingScreen />}
             </NotistackProvider>

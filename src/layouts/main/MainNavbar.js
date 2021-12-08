@@ -5,11 +5,11 @@ import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import { AppBar, Toolbar, IconButton } from "@mui/material";
-// hooks
-import useCollapseDrawer from "../../hooks/useCollapseDrawer";
+import Searchbar from "layouts/main/Searchbar";
+
 // components
-// import { MHidden } from "../../components/@material-extend";
-import Searchbar from "../dashboard/Searchbar";
+import { useState } from "react";
+import MainSidebar from "layouts/main/MainSidebar";
 import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
@@ -68,28 +68,23 @@ const StyledLogo = styled(Logo)(({ theme }) => ({
 const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none",
-  }
-}))
+  },
+}));
 
 // ----------------------------------------------------------------------
 
 MainNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 // ----------------------------------------------------------------------
 
 export default function MainNavbar(props) {
-  const { isCollapse } = useCollapseDrawer();
-
+  const [DrawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <RootStyle
-      sx={{
-        ...(isCollapse),
-      }}
-    >
+    <RootStyle>
       <ToolbarStyle>
         <StyledLogo />
         <StyledSearchIcon />
@@ -97,13 +92,18 @@ export default function MainNavbar(props) {
         <SearchBarBox>
           <StyledSearchbar />
           <IconButton
-            onClick={props.onOpenSidebar}
+            onClick={() => setDrawerOpen(true)}
             sx={{ color: "text.primary" }}
           >
             <Icon icon={menu2Fill} />
           </IconButton>
         </SearchBarBox>
       </ToolbarStyle>
+
+      <MainSidebar
+        isDrawerOpen={DrawerOpen}
+        onCloseDrawer={() => setDrawerOpen(false)}
+      />
     </RootStyle>
   );
 }

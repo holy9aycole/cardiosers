@@ -3,17 +3,22 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 
 // asssets
 import siteImage from "assets/images/RMZ_Ecoworld.png";
+import sust from "assets/images/sustainable.png";
+import Logo from "assets/images/rmz-logo.png";
+
+// components
+import ForumCard from "components/ForumCard";
+
+import LoadingScreen from "components/LoadingScreen";
 
 // layouts
-import MainLayout from "../layouts/main";
-import DashboardLayout from "../layouts/dashboard";
-import LogoOnlyLayout from "../layouts/LogoOnlyLayout";
+import MainLayout from "layouts/main";
+import DashboardLayout from "Screens/NewsFeed";
+import LogoOnlyLayout from "layouts/LogoOnlyLayout";
+
 // guards
-import GuestGuard from "../guards/GuestGuard";
-import AuthGuard from "../guards/AuthGuard";
-// import RoleBasedGuard from '../guards/RoleBasedGuard';
-// components
-import LoadingScreen from "../components/LoadingScreen";
+import GuestGuard from "guards/GuestGuard";
+// import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
 
@@ -73,21 +78,16 @@ export default function Router() {
 
     // Dashboard Routes
     {
-      path: "dashboard",
-      element: (
-        <AuthGuard>
-          <DashboardLayout />
-        </AuthGuard>
-      ),
+      path: "news-feed",
+      element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" replace /> },
-        { path: "app", element: <AllAssets /> },
-        { path: "ecommerce", element: <RMZEcoworld /> },
-        { path: "analytics", element: <AllAssets /> },
-        { path: "banking", element: <RMZEcoworld /> },
-        { path: "booking", element: <AllAssets /> },
-        { path: "booking1", element: <AllAssets /> },
-        { path: "booking2", element: <AllAssets /> },
+        { element: <Navigate to="/news-feed/ecoworld" replace /> },
+        { path: "assets", element: <AllAssets /> },
+        { path: "ecoworld", element: <RMZEcoworld /> },
+        { path: "millenia", element: <RMZEcoworld /> },
+        { path: "ecospace", element: <AllAssets /> },
+        { path: "infinity", element: <AllAssets /> },
+        { path: "paramount", element: <AllAssets /> },
       ],
     },
 
@@ -96,10 +96,6 @@ export default function Router() {
       path: "*",
       element: <LogoOnlyLayout />,
       children: [
-        { path: "coming-soon", element: <ComingSoon /> },
-        { path: "maintenance", element: <Maintenance /> },
-        { path: "pricing", element: <Pricing /> },
-        { path: "payment", element: <Payment /> },
         { path: "500", element: <Page500 /> },
         { path: "404", element: <NotFound /> },
         { path: "*", element: <Navigate to="/404" replace /> },
@@ -109,21 +105,26 @@ export default function Router() {
       path: "/",
       element: <MainLayout />,
       children: [
-        { element: <LandingPage /> },
-        { path: "about-us", element: <About /> },
-        { path: "contact-us", element: <Contact /> },
-        { path: "faqs", element: <Faqs /> },
+        { element: <WhatsNew /> },
+        { path: "news-feed", element: <NewsFeed /> },
+        { path: "property", element: <Property /> },
+        { path: "whats-new", element: <WhatsNew /> },
+        { path: "sustainability", element: <Sustainability /> },
+        { path: "branding", element: <Branding /> },
+        { path: "profile", element: <Profile /> },
+        { path: "about-us", element: <AboutUs /> },
       ],
     },
 
     { path: "/login-screen", element: <LoginScreen /> },
     { path: "/splash-screen", element: <SplashScreen /> },
+
     {
       path: "/property-card",
       element: (
         <PropertyCard
           RMZ_Ecoworld={siteImage}
-          category="IT Park"
+          cetegory="IT Park"
           name="RMZ Ecoworld"
           description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
@@ -131,11 +132,37 @@ export default function Router() {
         />
       ),
     },
-    { path: "/post-card", element: <PostCard /> },
-    { path: "/whats-new", element: <WhatsNew /> },
     { path: "/otp", element: <OtpScreen /> },
-    
 
+
+    {
+      path: "/brand-card",
+      element: (
+        <BrandCard
+          Logo={Logo}
+          RMZ_Ecoworld={siteImage}
+          cetegory="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+    Bangalore, India."
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/forum-card",
+      element: <ForumCard />,
+    },
+    {
+      path: "/sustain-card",
+      element: (
+        <SustainableCard
+          sustainImage={sust}
+          title="The 5’S"
+          description="RMZ were the first to use the 5S - hitherto a concept used in manufacturing units – in the real estate industry."
+        />
+      ),
+    },
     { path: "*", element: <Navigate to="/404" replace /> },
   ]);
 }
@@ -143,39 +170,41 @@ export default function Router() {
 // IMPORT COMPONENTS
 
 // Authentication
-const Login = Loadable(lazy(() => import("../pages/authentication/Login")));
+const Login = Loadable(lazy(() => import("Screens/Authentication/Login")));
 const Register = Loadable(
-  lazy(() => import("../pages/authentication/Register"))
+  lazy(() => import("Screens/Authentication/Register"))
 );
 const ResetPassword = Loadable(
-  lazy(() => import("../pages/authentication/ResetPassword"))
+  lazy(() => import("Screens/Authentication/ResetPassword"))
 );
 const VerifyCode = Loadable(
-  lazy(() => import("../pages/authentication/VerifyCode"))
+  lazy(() => import("Screens/Authentication/VerifyCode"))
 );
-// Dashboard
-const AllAssets = Loadable(
-  lazy(() => import("../Screens/Dashboard/AllAssets"))
-);
-const RMZEcoworld = Loadable(
-  lazy(() => import("../Screens/Dashboard/RMZEcoworld"))
-);
-// Main
-const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
-const About = Loadable(lazy(() => import("../pages/About")));
-const Contact = Loadable(lazy(() => import("../pages/Contact")));
-const Faqs = Loadable(lazy(() => import("../pages/Faqs")));
-const ComingSoon = Loadable(lazy(() => import("../pages/ComingSoon")));
-const Maintenance = Loadable(lazy(() => import("../pages/Maintenance")));
-const Pricing = Loadable(lazy(() => import("../pages/Pricing")));
-const Payment = Loadable(lazy(() => import("../pages/Payment")));
-const Page500 = Loadable(lazy(() => import("../pages/Page500")));
-const NotFound = Loadable(lazy(() => import("../pages/Page404")));
 
-//  RMZ
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
-const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
+// Dashboard
+const AllAssets = Loadable(lazy(() => import("Screens/NewsFeed/AllAssets")));
+const RMZEcoworld = Loadable(
+  lazy(() => import("Screens/NewsFeed/RMZEcoworld"))
+);
+
+// Main
+const Page500 = Loadable(lazy(() => import("Screens/Page500")));
+const NotFound = Loadable(lazy(() => import("Screens/Page404")));
+
+//  RMZ Components
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
-const PostCard = Loadable(lazy(() => import("components/PostCard")));
-const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
+const BrandCard = Loadable(lazy(() => import("components/BrandCard")));
+
+// RMZ Screens
+
+const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
+const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const OtpScreen = Loadable(lazy(() => import('components/OtpScreen')));
+const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
+const Property = Loadable(lazy(() => import("Screens/Property")));
+const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
+const Branding = Loadable(lazy(() => import("Screens/Branding")));
+const Profile = Loadable(lazy(() => import("Screens/Profile")));
+const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
+const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
