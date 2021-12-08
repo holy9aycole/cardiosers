@@ -1,12 +1,16 @@
-import { styled,Card } from "@mui/material"
+import { styled, Card } from "@mui/material";
 
-export const Container = styled("div")({
-	padding:10,
-    display:"flex",
-    alignItems:"center"
-});
+export const Container = styled("div")(({ theme }) => ({
+	padding: 10,
+	display: "flex",
+	alignItems: "center",
+    marginTop:100,
+	[theme.breakpoints.down("sm")]: {
+		marginTop: 70,
+	},
+}));
 
 export const ImageCard = styled(Card)({
-    borderRadius: 2,
-    cursor:"pointer"
-})
+	borderRadius: 2,
+	cursor: "pointer",
+});

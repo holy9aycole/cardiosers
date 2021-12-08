@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Lightbox from "react-image-lightbox";
+import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
 import detailedView1 from "assets/images/GalleryDetailed/3.png";
 import detailedView2 from "assets/images/GalleryDetailed/4-1.png";
 import detailedView3 from "assets/images/GalleryDetailed/4.png";
@@ -60,6 +61,7 @@ function GallerySinglePage() {
 
 	return (
 		<>
+		{!open && <DashboardNavbar title="Connecting Spaces"/>}
 			<Container>
 				<ImageList
 					variant="masonry"
