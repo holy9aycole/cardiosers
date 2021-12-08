@@ -332,3 +332,41 @@ export const MainImage = styled('img')(({ theme }) => ({
         width: '90%'
     },
 }));
+
+export const ImgText = styled(Typography)(({ theme }) => ({
+    fontFamily: "Poppins",
+    fontWeight: 600,
+    fontSize: "16px",
+    lineHeight: '20px',
+    color: '#202020',
+    float: 'right',
+    marginTop: '10px',
+    marginRight: '10%',
+    [theme.breakpoints.down("md")]: {
+        fontSize: "16px",
+        float: 'left',
+        margin: '5%'
+    },
+}));
+
+// Achievements
+
+export const ImageGrid = styled(Grid)(({ theme }) => ({
+    marginBottom: 100,
+    marginLeft: '8.5%',
+    width: '81.5%',
+    marginTop: "-40px",
+    position: "relative",
+    [theme.breakpoints.down("md")]: {
+        marginLeft: '4%',
+        width: '81.5%',
+    },
+    [theme.breakpoints.only("sm")]: {
+        marginLeft: '2.5%',
+        width: '92.5%',
+    },
+    [theme.breakpoints.down("sm")]: {
+        marginLeft: '1%',
+        width: '95%',
+    },
+}));

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@mui/material';
 import Time from 'assets/images/timeline.jpg';
-import { HeadLine, Heading, DividerStyled, MainImage } from "./styles";
+import { HeadLine, Heading, DividerStyled, MainImage, ImgText } from "./styles";
 
 function Timeline() {
     return (
@@ -12,6 +12,7 @@ function Timeline() {
             </HeadLine>
             <Heading>Our continuous pursuit to create <br /> the future of spaces</Heading>
             <MainImage src={Time} />
+            <ImgText>First project launched in Bengaluru</ImgText>
             <DividerStyled />
         </>
     )

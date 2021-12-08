@@ -25,6 +25,10 @@ export default function MainLayout() {
       title = "BRANDING";
       break;
 
+    case "/about-us":
+      title = "ABOUT RMZ";
+      break;
+
     default:
       break;
   }

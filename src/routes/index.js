@@ -116,7 +116,7 @@ export default function Router() {
       ],
     },
 
-  
+
     { path: "/splash-screen", element: <SplashScreen /> },
 
     {

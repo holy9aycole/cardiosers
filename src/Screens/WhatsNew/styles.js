@@ -33,6 +33,7 @@ export const Line = styled("div")(({ theme }) => ({
   width: "12%",
   height: "2px",
   border: "1px solid #D6D6D6",
+  backgroundColor: '#D6D6D6',
   marginLeft: "2.4%",
   [theme.breakpoints.down("md")]: {
     width: "15%",
@@ -42,12 +43,13 @@ export const Line = styled("div")(({ theme }) => ({
 
 export const Text1 = styled(Typography)(({ theme }) => ({
   fontSize: "48px",
-  fontWeight: "Regular",
+  lineHeight: '40px',
+  fontWeight: 500,
   textAlign: "left",
   color: "#3D3DD9",
   letterSpacing: "0.48px",
-  fontFamily: "Poppins",
-  marginTop: ".3%",
+  fontFamily: "Ivypresto Display",
+  marginTop: "2%",
   marginLeft: "2.3%",
   width: "80%",
   [theme.breakpoints.down("md")]: {
@@ -59,11 +61,11 @@ export const Text1 = styled(Typography)(({ theme }) => ({
 }));
 export const Text2 = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
-  fontWeight: "Medium",
+  fontWeight: 600,
   textAlign: "left",
   color: "#202020",
   fontFamily: "Poppins",
-  marginTop: ".5%",
+  marginTop: "2%",
   marginLeft: "2.3%",
   width: "65%",
   [theme.breakpoints.down("md")]: {
