@@ -86,7 +86,7 @@ export default function Router() {
 				{ path: "banking", element: <RMZEcoworld /> },
 				{ path: "booking", element: <AllAssets /> },
 				{ path: "booking1", element: <AllAssets /> },
-				{ path: "booking2", element: <AllAssets /> }
+				{ path: "booking2", element: <AllAssets /> },
 			],
 		},
 
@@ -105,6 +105,14 @@ export default function Router() {
 			element: <MainLayout />,
 			children: [
 				{ path: "property", element: <Property /> },
+				{
+					path: "property-city",
+					element: (
+						<PropertyCity
+							locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
+						/>
+					),
+				},
 				{ path: "whats-new", element: <WhatsNew /> },
 				{ path: "sustainability", element: <Sustainability /> },
 				{ path: "branding", element: <Branding /> },
@@ -193,7 +201,10 @@ const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
+const PropertyCity = Loadable(lazy(() => import("Screens/PropertyCity")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const Gallery = Loadable(lazy(() => import("Screens/Gallery")));
-const GallerySingle = Loadable(lazy(() => import("Screens/Gallery/GallerySingle")));
+const GallerySingle = Loadable(
+	lazy(() => import("Screens/Gallery/GallerySingle"))
+);
