@@ -23,7 +23,7 @@ import detailedView17 from "assets/images/GalleryDetailed/17.png";
 import detailedView18 from "assets/images/GalleryDetailed/18-1.png";
 import detailedView19 from "assets/images/GalleryDetailed/18.png";
 import detailedView20 from "assets/images/GalleryDetailed/19.png";
-import { Container,ImageCard } from "./styles";
+import { Container, ImageCard, StyledSwitch } from "./styles";
 
 const images = [
 	detailedView1,
@@ -52,25 +52,31 @@ console.log(images);
 
 function GallerySinglePage() {
 	const [open, setOpen] = useState(false);
-	const [photoIndex, setPhotoIndex] = useState(0)
+	const [photoIndex, setPhotoIndex] = useState(0);
+	const [checked, setChecked] = useState(false);
 
 	const handleOpen = (index) => {
 		setOpen(!open);
-		setPhotoIndex(index)
+		setPhotoIndex(index);
+	};
+
+	const handleChange = (e) => {
+		setChecked(e.target.checked);
 	};
 
 	return (
 		<>
-		{!open && <DashboardNavbar title="Connecting Spaces"/>}
+			{!open && <DashboardNavbar title="Connecting Spaces" />}
 			<Container>
+				<StyledSwitch checked={checked} onChange={handleChange} />
 				<ImageList
 					variant="masonry"
-					cols={window.innerWidth > 600 ? 6 : 2}
-					gap={window.innerWidth > 800 ? 26 : 10}
+					cols={window.innerWidth > 600 ? 7 : 3}
+					gap={10}
 				>
 					{images.map((image, index) => (
 						<ImageListItem key={index}>
-							<ImageCard  onClick={()=>handleOpen(index)}>
+							<ImageCard onClick={() => handleOpen(index)}>
 								<img
 									src={`${image}`}
 									srcSet={`${image}`}
