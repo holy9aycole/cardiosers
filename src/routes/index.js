@@ -8,6 +8,7 @@ import Logo from "assets/images/rmz-logo.png";
 
 // components
 import ForumCard from "components/ForumCard";
+import Discussion from "Screens/Discussion";
 
 import LoadingScreen from "components/LoadingScreen";
 
@@ -18,7 +19,8 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
 import GuestGuard from "guards/GuestGuard";
-import Discussion from "components/Discussion";
+import DiscussionCard from "components/Discussion-card";
+import Forum from "Screens/Forum";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
@@ -114,6 +116,8 @@ export default function Router() {
         { path: "branding", element: <Branding /> },
         { path: "profile", element: <Profile /> },
         { path: "about-us", element: <AboutUs /> },
+        { path: "forum", element: <Forum /> },
+        { path: "discussion", element: <Discussion /> },
       ],
     },
 
@@ -164,7 +168,7 @@ export default function Router() {
     {
       path: "/discussion",
       element: (
-        <Discussion
+        <DiscussionCard
           heading="2021 Looking Forward - The New Normal Crafted Through Architect."
           description="When everybody across the world continues to make the transition back
           to normalcy from lock-down, we are curious about what will happen in

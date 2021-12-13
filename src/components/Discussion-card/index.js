@@ -1,4 +1,4 @@
-import { Typography, Divider, TextareaAutosize } from "@mui/material";
+import { Typography, Divider } from "@mui/material";
 import React from "react";
 import tag from "assets/images/tag-icon.svg";
 import clock from "assets/images/clock-icon.svg";
@@ -14,6 +14,7 @@ import {
   CommentSection,
   TagTime,
   CommentBox,
+  BootstrapInput,
 } from "./styles";
 
 export default function Discussion(props) {
@@ -42,7 +43,6 @@ export default function Discussion(props) {
       </Feed>
       <Comments>
         <Typography className="text3">Comments</Typography>
-
         <Divider className="line" />
         <CommentSection>
           <div className="userContainer">
@@ -69,42 +69,24 @@ export default function Discussion(props) {
           </div>
         </CommentSection>
         <Divider className="commentDivider" />
-        <CommentSection>
-          <div className="userContainer">
-            <div className="user">
-              <img src={user} alt="user" />
-            </div>
-          </div>
-
-          <div className="comment">
-            <Typography className="commentHeading">Sanya Arora</Typography>
-            <Typography className="commentDesc">
-              When everybody across the world continues to make the transition
-              back to normalcy from lock-down, we are curious about what will
-              happen in our society.
-            </Typography>
-            <Divider className="line" />
-            <TagTime>
-              <div className="time">
-                <img src={clock} alt="tag" />
-                <Typography className="ago">1h ago</Typography>
-              </div>
-              <img className="edit" src={edit} alt="edit" />
-            </TagTime>
-          </div>
-        </CommentSection>
       </Comments>
       <CommentBox>
-        <TextareaAutosize
+        <div className={classes.inputContainer}>
+          <BootstrapInput className={classes.input2} />
+        </div>
+
+        {/* <TextareaAutosize
           minRows={5}
           maxRows={5}
           aria-label="maximum height"
           placeholder="Maximum 4 rows"
           defaultValue="Say something..."
           className={classes.input}
-        />
-        <div className="btn" Button>
-          <img src={right} alt="right" />
+        /> */}
+        <div>
+          <div className="btn" Button>
+            <img src={right} alt="right" />
+          </div>
         </div>
       </CommentBox>
     </>

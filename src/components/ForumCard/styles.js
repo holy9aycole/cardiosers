@@ -6,13 +6,14 @@ export const useStyles = makeStyles(() => ({
 }));
 
 export const Feed = styled(Card)(({ theme }) => ({
-  //   border: ".5px solid red",
   padding: "10px 20px",
   borderRadius: "0px",
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px 0px",
+  margin: "10px auto",
+  cursor: "pointer",
+
   [theme.breakpoints.only("xs")]: {
     width: "100%",
     padding: "10px 10px",
@@ -26,14 +27,14 @@ export const Feed = styled(Card)(({ theme }) => ({
   "& .heading": {
     fontSize: "18px",
     fontFamily: "IvyPresto Display",
-    fontWeight: 600,
+    fontWeight: "Medium",
     color: "#3D3DD9",
     letterSpacing: ".44px",
   },
   "& .subheading": {
     fontSize: "16px",
     fontFamily: "Poppins",
-    fontWeight: 600,
+    fontWeight: "Regular",
     color: "#202020",
     margin: "10px 0px 0px 0px",
     [theme.breakpoints.down("sm")]: {
@@ -62,3 +63,46 @@ export const FeedFooter = styled("div")(() => ({
     color: "#78909C",
   },
 }));
+
+// export const CommentBox = styled(Card)(({ theme }) => ({
+//   padding: "20px 20px",
+//   borderRadius: "0px",
+//   width: "40%",
+//   height: "auto",
+//   background: "#FFFFFF",
+//   margin: "10px auto",
+//   display: "flex",
+
+//   justifyContent: "space-between",
+//   [theme.breakpoints.only("xs")]: {
+//     width: "100%",
+//     padding: "10px 10px",
+//   },
+//   [theme.breakpoints.only("sm")]: {
+//     width: "60%",
+//   },
+//   [theme.breakpoints.only("md")]: {
+//     width: "60%",
+//   },
+//   "& .ask": {
+//     margin: "auto",
+//     border: ".5px solid #78909C",
+//     borderRadius: "25px",
+//     background: "#FFFFFF",
+//     height: "50px",
+//     width: "90%",
+//     display: "flex",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     cursor: "pointer",
+//   },
+//   "& .ques": {
+//     fontFamily: "Poppins",
+//     fontWeight: 600,
+//     fontSize: "18px",
+//     color: "#3D3DD9",
+//     letterSpacing: ".48px",
+
+//     marginRight: "5px",
+//   },
+// }));

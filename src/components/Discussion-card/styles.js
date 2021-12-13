@@ -8,7 +8,7 @@ export const BootstrapInput = withStyles((theme) => ({
     border: "1px solid #90A4AE",
     marginTop: "5px",
     backgroundColor: theme.palette.background.paper,
-    width: "300px",
+    // width: "100%",
     height: "50px",
     fontSize: "13.28px",
     paddingLeft: "10px",
@@ -20,7 +20,7 @@ export const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   input: {
     width: "87%",
     border: ".5px solid #90A4AE",
@@ -28,18 +28,32 @@ export const useStyles = makeStyles(() => ({
     fontFamily: "Poppins",
     color: "#90A4AE",
   },
+  input2: {
+    width: "400px",
+    [theme.breakpoints.only("sm")]: {
+      width: "300px",
+    },
+    [theme.breakpoints.only("xs")]: {
+      width: "200px",
+    },
+  },
+  inputContainer: {
+    // border: ".5px solid red",
+    width: "90%",
+  },
 }));
 
 export const Feed = styled(Card)(({ theme }) => ({
   //   border: ".5px solid red",
-  padding: "10px 10px",
+  padding: "10px 20px",
   borderRadius: "0px",
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px 0px",
+  margin: "10px auto",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
+    padding: "10px",
   },
   [theme.breakpoints.only("sm")]: {
     width: "60%",
@@ -50,7 +64,7 @@ export const Feed = styled(Card)(({ theme }) => ({
   "& .heading": {
     fontSize: "18px",
     fontFamily: "IvyPresto Display",
-    fontWeight: "Regular",
+    fontWeight: 600,
     color: "#3D3DD9",
     letterSpacing: ".44px",
   },
@@ -91,13 +105,14 @@ export const FeedFooter = styled("div")(() => ({
 
 export const Comments = styled(Card)(({ theme }) => ({
   borderRadius: "0px",
-  //   padding: "10px 0px",
+  padding: "0px 20px",
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px 0px",
+  margin: "10px auto",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
+    padding: "0px 10px",
   },
   [theme.breakpoints.only("sm")]: {
     width: "60%",
@@ -180,16 +195,17 @@ export const TagTime = styled("div")(() => ({
 }));
 
 export const CommentBox = styled(Card)(({ theme }) => ({
-  padding: "10px 2%",
+  padding: "20px 20px",
   borderRadius: "0px",
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px 0px",
+  margin: "10px auto",
   display: "flex",
   justifyContent: "space-between",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
+    padding: "10px 10px",
   },
   [theme.breakpoints.only("sm")]: {
     width: "60%",

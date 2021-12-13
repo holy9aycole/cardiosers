@@ -24,6 +24,12 @@ export default function MainLayout() {
     case "/branding":
       title = "BRANDING";
       break;
+    case "/forum":
+      title = "FORUM";
+      break;
+    case "/discussion":
+      title = "DISCUSSION";
+      break;
 
     default:
       break;
