@@ -1,12 +1,18 @@
 import { styled, Card } from "@mui/material";
 import Switch from "@mui/material/Switch";
 
+export const ImageContainer = styled("div")({
+	display: "flex",
+	justifyContent: "center",
+});
+
 export const Container = styled("div")(({ theme }) => ({
 	padding: 10,
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
 	marginTop: 81,
+	width: "88vw",
 	[theme.breakpoints.down("sm")]: {
 		marginTop: 60,
 	},
@@ -18,48 +24,72 @@ export const ImageCard = styled(Card)({
 });
 
 export const StyledSwitch = styled(Switch)(({ theme }) => ({
-	left: "45%",
+	left: "46.5%",
 	marginBottom: 10,
-	width: "7%",
-	padding: 10,
-	[theme.breakpoints.down("sm")]: {
-		width: "5%",
+	width: "8.5%",
+	[theme.breakpoints.only("lg")]:{
+		width:"9.5%",
+
 	},
+	[theme.breakpoints.only("sm")]:{
+		width:"24.5%",
+		left:"41.5%"
+	},
+	[theme.breakpoints.only("xs")]:{
+		width:"31.5%",
+		left:"39.5%"
+	},
+	padding: 10,
+	height: 50,
 	"& .MuiSwitch-switchBase": {
-		transform: "translateX(0px)",
-		color: "#FFF",
+		transform: "translateX(7%)",
+		top: 4,
+		left: 1,
 		"&.Mui-checked": {
-			color: "#3D3DD9",
-			transform: "translateX(68px)",
+			color: "#000",
+			opacity: 0.5,
+			[theme.breakpoints.only("xs")]:{
+				transform:"translateX(121%)"
+			},
+			[theme.breakpoints.only("sm")]: {
+				transform: "translateX(156%)",
+			},
+			[theme.breakpoints.up("lg")]: {
+				transform: "translateX(140%)",
+			},
+			[theme.breakpoints.only("xl")]: {
+				transform: "translateX(126%)",
+			},
 			"+ .MuiSwitch-track": {
-				backgroundColor: "#555",
+				backgroundColor: "#3D3DD9",
+				opacity: 1,
+				"&:after": {
+					display: "block",
+				},
 			},
 		},
 	},
 	"& .MuiSwitch-thumb": {
 		boxShadow: "none",
-		width: 16,
-		height: 16,
+		width: 20,
+		height: 20,
 		margin: 2,
 	},
 	"& .MuiSwitch-track": {
-		borderRadius: 22 / 2,
-		backgroundColor: "#3D3DD9",
+		borderRadius: 40 / 2,
+		backgroundColor: "#444",
 		transition: theme.transitions.create(["background-color"], {
 			duration: 500,
 		}),
-		"&:before, &:after": {
-			position: "absolute",
-			top: "50%",
-			transform: "translateY(-50%)",
-			width: 16,
-			height: 16,
-		},
 		"&:after": {
+			display: "none",
+			position: "absolute",
+			transform: "translateY(-50%)",
 			content: "'Videos'",
-			left: "28px",
-			top: "15px",
-			color: "#fff"
-		}
+			left: "16%",
+			top: "50%",
+			color: "#fff",
+			fontSize: "90%",
+		},
 	},
 }));

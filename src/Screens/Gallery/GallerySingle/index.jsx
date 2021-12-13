@@ -23,7 +23,7 @@ import detailedView17 from "assets/images/GalleryDetailed/17.png";
 import detailedView18 from "assets/images/GalleryDetailed/18-1.png";
 import detailedView19 from "assets/images/GalleryDetailed/18.png";
 import detailedView20 from "assets/images/GalleryDetailed/19.png";
-import { Container, ImageCard, StyledSwitch } from "./styles";
+import { Container, ImageCard, StyledSwitch,ImageContainer } from "./styles";
 
 const images = [
 	detailedView1,
@@ -67,27 +67,30 @@ function GallerySinglePage() {
 	return (
 		<>
 			{!open && <DashboardNavbar title="Connecting Spaces" />}
-			<Container>
-				<StyledSwitch checked={checked} onChange={handleChange} />
-				<ImageList
-					variant="masonry"
-					cols={window.innerWidth > 600 ? 7 : 3}
-					gap={10}
-				>
-					{images.map((image, index) => (
-						<ImageListItem key={index}>
-							<ImageCard onClick={() => handleOpen(index)}>
-								<img
-									src={`${image}`}
-									srcSet={`${image}`}
-									alt=""
-									loading="lazy"
-								/>
-							</ImageCard>
-						</ImageListItem>
-					))}
-				</ImageList>
-			</Container>
+			<ImageContainer>
+				<Container>
+					<StyledSwitch checked={checked} onChange={handleChange} />
+					<ImageList
+						variant="masonry"
+						cols={window.innerWidth > 600 ? 7 : 3}
+						gap={10}
+					>
+						{images.map((image, index) => (
+							<ImageListItem key={index}>
+								<ImageCard onClick={() => handleOpen(index)}>
+									<img
+										src={`${image}`}
+										srcSet={`${image}`}
+										alt=""
+										loading="lazy"
+									/>
+								</ImageCard>
+							</ImageListItem>
+						))}
+					</ImageList>
+				</Container>
+			</ImageContainer>
+
 			{open && (
 				<Lightbox
 					mainSrc={images[photoIndex]}
