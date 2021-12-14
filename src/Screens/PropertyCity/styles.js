@@ -1,10 +1,17 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-const { styled, Select } = require("@mui/material");
-
+const {
+	styled,
+	Select,
+	Accordion,
+	AccordionSummary,
+	Typography,
+	CardContent
+} = require("@mui/material");
 
 export const PropertyPage = styled("div")({
 	height: "100%",
+	marginBottom: "100vh",
 });
 
 export const BannerContainer = styled("div")(({ theme }) => ({
@@ -27,7 +34,7 @@ export const BannerImage = styled("img")({
 
 export const Overlay = styled("div")(({ theme }) => ({
 	width: "100%",
-	background: "rgba(61,61,217,0.6)",
+	background: "rgba(61,61,217,0.7)",
 	height: 233,
 	position: "absolute",
 	top: 81,
@@ -42,16 +49,85 @@ export const Overlay = styled("div")(({ theme }) => ({
 
 export const StyledSelect = styled(Select)({
 	width: "30%",
-    marginTop:20,
+	marginTop: 20,
 	position: "relative",
 	left: "50%",
 	transform: "translateX(-50%)",
-    top:"-20%",
-    zIndex:3,
-    border:"1px solid #3D3DD9",
-    color:"#fff"
+	top: "-20%",
+	zIndex: 3,
+	border: "1px solid #3D3DD9",
+	color: "#fff",
+	background: "rgba(0,0,0,0.2)",
 });
 
 export const StyledSelectIcon = styled(ArrowDropDownIcon)({
-    color:"#3D3DD9"
+	color: "#3D3DD9",
+});
+
+export const AccordionContainer = styled("div")({
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
+});
+
+export const StyledAccordion = styled(Accordion)({
+	width: "80%",
+	padding: 20,
+	"& MuiPaper-root-MuiAccordion-root.Mui-expanded": {
+		boxShadow: "none",
+	},
+});
+
+export const StyledAccordionSummary = styled(AccordionSummary)({
+	color: "#90A4AE",
+	"& .Mui-expanded": {
+		color: "#3D3DD9",
+		">p": {
+			fontFamily: "IvyPresto Display",
+			fontSize: 24,
+			transition: "all 300ms ease-in-out",
+		},
+	},
+});
+
+export const AccordionTypography = styled(Typography)({
+	fontFamily: "IvyPresto Display",
+	fontSize: 20,
+});
+
+export const StyledCardContent = styled(CardContent)({
+	background:"#2E2E80",
+	color:"#FFF",
+	height:"16vh",
+	">div":{
+		fontFamily: "IvyPresto Display",
+		fontSize: 24,
+		marginBottom:0
+	},
+	">p":{
+		fontFamily: "Poppins",
+		fontSize: 15,
+		width:"80%"
+	}
+})
+
+export const StyledMask = styled("img")({
+	position:"relative",
+	bottom:"14vh",
+	left:"54%"
+})
+
+export const NextButton = styled("div")({
+	width:50,
+	height:50,
+	borderRadius:50/2,
+	position:"relative",
+	zIndex:2,
+	background:"#3D3DD9",
+	left:"95%",
+	bottom:"25vh",
+	display:"flex",
+	alignItems:"center",
+	justifyContent:"center",
+	cursor:"pointer"
 })
