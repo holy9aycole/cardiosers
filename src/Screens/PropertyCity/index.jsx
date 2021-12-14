@@ -31,8 +31,14 @@ import {
 	NextButton,
 } from "./styles";
 
-function PropertyCity({ locations,micromarketID }) {
+function PropertyCity({ locations, micromarketID }) {
 	const [expanded, setExpanded] = React.useState(false);
+
+	const [area, setArea] = React.useState("Bengaluru");
+
+	const handleAreaChange = (event) => {
+		setArea(event.target.value);
+	};
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
@@ -52,27 +58,33 @@ function PropertyCity({ locations,micromarketID }) {
 
 	return (
 		<PropertyPage>
-			<DashboardNavbar title="Property" />
+			<DashboardNavbar
+				title="Property"
+				titleOptions="Bengaluru"
+				handleChange={handleAreaChange}
+				area={area}
+			/>
 			<BannerContainer>
 				<BannerImage src={banner1} alt="" />
 				<Overlay />
-			</BannerContainer>
-			<StyledSelect IconComponent={StyledSelectIcon}>
-				{locations.map((location, index) => {
-					if (index !== locations.length - 1) {
+				<StyledSelect IconComponent={StyledSelectIcon}>
+					{locations.map((location, index) => {
+						if (index !== locations.length - 1) {
+							return (
+								<MenuItem key={index} value={location} divider>
+									{location}
+								</MenuItem>
+							);
+						}
 						return (
-							<MenuItem key={index} value={location} divider>
+							<MenuItem key={index} value={location}>
 								{location}
 							</MenuItem>
 						);
-					}
-					return (
-						<MenuItem key={index} value={location}>
-							{location}
-						</MenuItem>
-					);
-				})}
-			</StyledSelect>
+					})}
+				</StyledSelect>
+			</BannerContainer>
+
 			<AccordionContainer>
 				<StyledAccordion
 					expanded={expanded === "panel1"}

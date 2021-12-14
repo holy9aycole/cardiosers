@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { Icon } from "@iconify/react";
 import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import { AppBar, Toolbar, IconButton } from "@mui/material";
+import {
+	AppBar,
+	Toolbar,
+	IconButton,
+	MenuItem,
+	FormControl,
+	Select
+} from "@mui/material";
 // hooks
 import useCollapseDrawer from "../../hooks/useCollapseDrawer";
 // components
@@ -54,6 +62,7 @@ const NavbarHeading = styled("div")(({ theme }) => ({
 	fontSize: 20,
 	fontWeight: "bold",
 	textTransform: "uppercase",
+	display: "flex",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: 15,
 	},
@@ -68,29 +77,57 @@ const StyledLogo = styled(Logo)(({ theme }) => ({
 const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
 	[theme.breakpoints.down("sm")]: {
 		display: "none",
-	}
-}))
+	},
+}));
+
+const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
+	marginTop:-3,
+	marginLeft:2,
+	color:"#FFF",
+	fontSize: 20,
+	textTransform: "capitalize",
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 15,
+	},
+}));
 
 // ----------------------------------------------------------------------
 
 DashboardNavbar.propTypes = {
 	onOpenSidebar: PropTypes.func,
-	title: PropTypes.string
+	title: PropTypes.string,
 };
 
 export default function DashboardNavbar(props) {
 	const { isCollapse } = useCollapseDrawer();
 
+
 	return (
 		<RootStyle
 			sx={{
-				...(isCollapse),
+				...isCollapse,
 			}}
 		>
 			<ToolbarStyle>
 				<StyledLogo />
 				<StyledSearchIcon />
-				<NavbarHeading>{props.title}</NavbarHeading>
+				<NavbarHeading>
+					{props.title} -
+					{props.titleOptions && (
+						<FormControl variant="standard" >
+							<NavbarHeadingSelect
+								labelId="demo-simple-select-standard-label"
+								id="demo-simple-select-standard"
+								value={props.area}
+								onChange={props.handleChange}
+							>
+								<MenuItem value="Bengaluru" selected>Bengaluru</MenuItem>
+								<MenuItem value="Mumbai">Mumbai</MenuItem>
+								<MenuItem value="Delhi">Delhi</MenuItem>
+							</NavbarHeadingSelect>
+						</FormControl>
+					)}
+				</NavbarHeading>
 				<SearchBarBox>
 					<StyledSearchbar />
 					<IconButton

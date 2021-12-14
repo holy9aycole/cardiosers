@@ -19,6 +19,11 @@ export const BannerContainer = styled("div")(({ theme }) => ({
 	height: "233px",
 	overflow: "hidden",
 	marginTop: 81,
+	display:"flex",
+	flexDirection:"column",
+	alignItems:"center",
+	justifyContent:"center",
+	marginBottom:20,
 	[theme.breakpoints.down("md")]: {
 		marginTop: 60,
 	},
@@ -28,6 +33,7 @@ export const BannerContainer = styled("div")(({ theme }) => ({
 }));
 
 export const BannerImage = styled("img")({
+	position:"absolute",
 	width: "100%",
 	height: 233,
 });
@@ -50,10 +56,6 @@ export const Overlay = styled("div")(({ theme }) => ({
 export const StyledSelect = styled(Select)({
 	width: "30%",
 	marginTop: 20,
-	position: "relative",
-	left: "50%",
-	transform: "translateX(-50%)",
-	top: "-20%",
 	zIndex: 3,
 	border: "1px solid #3D3DD9",
 	color: "#fff",
