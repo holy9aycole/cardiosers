@@ -112,7 +112,7 @@ export default function DashboardNavbar(props) {
 				<StyledLogo />
 				<StyledSearchIcon />
 				<NavbarHeading>
-					{props.title} -
+					{props.title}
 					{props.titleOptions && (
 						<FormControl variant="standard" >
 							<NavbarHeadingSelect
@@ -121,9 +121,9 @@ export default function DashboardNavbar(props) {
 								value={props.area}
 								onChange={props.handleChange}
 							>
-								<MenuItem value="Bengaluru" selected>Bengaluru</MenuItem>
-								<MenuItem value="Mumbai">Mumbai</MenuItem>
-								<MenuItem value="Delhi">Delhi</MenuItem>
+								<MenuItem value="Bengaluru" selected> - Bengaluru</MenuItem>
+								<MenuItem value="Mumbai"> - Mumbai</MenuItem>
+								<MenuItem value="Delhi"> - Delhi</MenuItem>
 							</NavbarHeadingSelect>
 						</FormControl>
 					)}
