@@ -27,6 +27,7 @@ export const CardFooter = styled(Card)(() => ({
   position: "relative",
   "& .text2": {
     color: "#FFFFFF",
+    fontFamily: 'Ivypresto Display',
     letterSpacing: ".44px",
     fontSize: "22px",
     fontWeight: 400,

@@ -105,7 +105,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           display: "flex",
           flexDirection: "column",
         },
-        background: '#EEEEEE'
+        background: "#EEEEEE",
       }}
     >
       <NavSection navConfig={sidebarConfig} isShow={!isCollapse} />
