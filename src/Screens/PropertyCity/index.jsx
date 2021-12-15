@@ -14,6 +14,7 @@ import YouTube from "react-youtube";
 // Assets
 import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
 import Mask1 from "assets/images/MaskGroup24.svg";
+import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
 import {
 	BannerContainer,
@@ -54,6 +55,14 @@ function PropertyCity({ locations, micromarketID }) {
 		playerVars: {
 			autoplay: 1,
 		},
+	};
+
+	const ReadMoreMobile = ({ children }) => {
+		const text = children;
+		if (window.innerWidth < 600 && text.length > 50) {
+			return <Typography variant="body2">{text.slice(0, 50)}...</Typography>;
+		}
+		return <Typography variant="body2">{text}</Typography>;
 	};
 
 	return (
@@ -97,19 +106,20 @@ function PropertyCity({ locations, micromarketID }) {
 						<Card>
 							<CardMedia
 								component="img"
-								alt="green iguana"
-								height="400"
+								alt="banner1"
+								height={window.innerWidth > 600 ? "400" : "200"}
 								image={banner1}
 							/>
 							<StyledCardContent>
 								<Typography component="div">RMZ Ecoworld</Typography>
-								<Typography variant="body2">
+								<ReadMoreMobile>
 									The profile of the podium blocks boosts the circulation of
 									airflow for the Podium Confluence area, while the Central
 									Plaza still enjoys a comforting breeze during the summer
 									months.
-								</Typography>
-								<StyledMask src={Mask1} />
+								</ReadMoreMobile>
+								{/* <StyledMask src={Mask1} /> */}
+								<StyledMask src={Mask2} />
 								<NextButton>
 									<ArrowForwardIosIcon />
 								</NextButton>
