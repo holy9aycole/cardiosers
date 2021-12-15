@@ -13,7 +13,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import YouTube from "react-youtube";
 // Assets
 import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
-import Mask1 from "assets/images/MaskGroup24.svg";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
 import {
