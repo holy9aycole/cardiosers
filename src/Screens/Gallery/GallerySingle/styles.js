@@ -52,6 +52,9 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 		[theme.breakpoints.only("md")]: {
 			left: 5,
 		},
+		[theme.breakpoints.only("xl")]: {
+			left: 3,
+		},
 		"&.Mui-checked": {
 			color: "#000",
 			opacity: 0.5,
@@ -68,13 +71,16 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 				transform: "translateX(140%)",
 			},
 			[theme.breakpoints.only("xl")]: {
-				transform: "translateX(176%)",
+				transform: "translateX(160%)",
 			},
 			"+ .MuiSwitch-track": {
 				backgroundColor: "#3D3DD9",
 				opacity: 1,
 				"&:after": {
 					display: "block",
+				},
+				"&:before": {
+					display: "none",
 				},
 			},
 		},
@@ -91,15 +97,21 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 		transition: theme.transitions.create(["background-color"], {
 			duration: 500,
 		}),
-		"&:after": {
-			display: "none",
+		"&:after , &:before": {
 			position: "absolute",
 			transform: "translateY(-50%)",
-			content: "'Videos'",
-			left: "16%",
 			top: "50%",
 			color: "#fff",
 			fontSize: "90%",
+		},
+		"&:after": {
+			display: "none",
+			content: "'Videos'",
+			left: "16%",
+		},
+		"&:before": {
+			content: "'Photos'",
+			left: "40%",
 		},
 	},
 }));
