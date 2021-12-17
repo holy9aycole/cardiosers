@@ -19,7 +19,7 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
 import GuestGuard from "guards/GuestGuard";
-import DiscussionCard from "components/Discussion-card";
+import DiscussionCard from "components/DiscussionCard";
 import Forum from "Screens/Forum";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 

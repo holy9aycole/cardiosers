@@ -1,6 +1,6 @@
 import React from "react";
 
-import DiscussionCard from "components/Discussion-card";
+import DiscussionCard from "components/DiscussionCard";
 import { MainContainer } from "./styles";
 
 export default function Discussion() {
