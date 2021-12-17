@@ -1,0 +1,56 @@
+.ril__navButtons {
+	top: 85vh;
+	margin: 0;
+	opacity: 0.7;
+	height: 10%;
+	width: 5.5%;
+}
+
+.ril__navButtonPrev {
+	left: 43%;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.ril__navButtonNext {
+	right: 43%;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 500px) {
+	.ril__navButtons {
+		top: 80vh;
+	}
+	.ril__navButtonPrev {
+		left: 45%;
+	}
+	.ril__navButtonNext {
+		right: 20%;
+	}
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+	.ril__navButtonPrev {
+		left: 55%;
+	}
+	.ril__navButtonNext {
+		right: 20%;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 1120px) {
+	.ril__navButtonPrev {
+		left: 35%;
+	}
+	.ril__navButtonNext {
+		right: 35%;
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.ril__navButtonPrev {
+		left: 20%;
+	}
+	.ril__navButtonNext {
+		right: 20%;
+	}
+}

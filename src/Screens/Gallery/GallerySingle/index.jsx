@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Lightbox from "react-image-lightbox";
+// import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
 import detailedView1 from "assets/images/GalleryDetailed/3.png";
 import detailedView2 from "assets/images/GalleryDetailed/4-1.png";
@@ -23,7 +24,8 @@ import detailedView17 from "assets/images/GalleryDetailed/17.png";
 import detailedView18 from "assets/images/GalleryDetailed/18-1.png";
 import detailedView19 from "assets/images/GalleryDetailed/18.png";
 import detailedView20 from "assets/images/GalleryDetailed/19.png";
-import { Container, ImageCard, StyledSwitch,ImageContainer } from "./styles";
+import { Container, ImageCard, StyledSwitch, ImageContainer } from "./styles";
+import "assets/css/gallery-single.css";
 
 const images = [
 	detailedView1,
@@ -64,6 +66,12 @@ function GallerySinglePage() {
 		setChecked(e.target.checked);
 	};
 
+	// const DownloadButton = (index) => (
+	// 	<div key={index} style={{ backgroundColor: "#3D3DD9" }}>
+	// 		<FileDownloadIcon />
+	// 	</div>
+	// );
+
 	return (
 		<>
 			{!open && <DashboardNavbar title="Connecting Spaces" />}
@@ -103,6 +111,7 @@ function GallerySinglePage() {
 					onMoveNextRequest={() =>
 						setPhotoIndex((photoIndex + 1) % images.length)
 					}
+					// toolbarButtons={[<DownloadButton/>]}
 				/>
 			)}
 		</>
