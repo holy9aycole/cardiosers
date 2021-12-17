@@ -31,6 +31,10 @@ export default function MainLayout() {
       title = "DISCUSSION";
       break;
 
+    case "/about-us":
+      title = "ABOUT RMZ";
+      break;
+
     default:
       break;
   }

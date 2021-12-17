@@ -137,6 +137,9 @@ export default function Router() {
         />
       ),
     },
+    { path: "/otp", element: <OtpScreen /> },
+
+
     {
       path: "/brand-card",
       element: (
@@ -219,14 +222,14 @@ const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 //  RMZ Components
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
-const SustainableCard = Loadable(
-  lazy(() => import("components/SustainabilityCard"))
-);
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const BrandCard = Loadable(lazy(() => import("components/BrandCard")));
 
 // RMZ Screens
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
+const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+const OtpScreen = Loadable(lazy(() => import('components/OtpScreen')));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
