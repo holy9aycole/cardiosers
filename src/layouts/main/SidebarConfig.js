@@ -7,7 +7,7 @@ const sidebarConfig = [
       { title: "SOCIAL EXPERIENCE", path: "/whats-new" },
       { title: "SUSTAINABLITY", path: "/sustainability" },
       { title: "GALLLERY", path: "/whats-new" },
-      { title: "FORUM", path: "/whats-new" },
+      { title: "FORUM", path: "/forum" },
       { title: "NEWS", path: "/news-feed" },
       { title: "BRANDING", path: "/branding" },
       { title: "CONTACT", path: "/whats-new" },

@@ -8,6 +8,7 @@ import Logo from "assets/images/rmz-logo.png";
 
 // components
 import ForumCard from "components/ForumCard";
+import Discussion from "Screens/Discussion";
 
 import LoadingScreen from "components/LoadingScreen";
 
@@ -18,6 +19,8 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
 import GuestGuard from "guards/GuestGuard";
+import DiscussionCard from "components/DiscussionCard";
+import Forum from "Screens/Forum";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
@@ -124,6 +127,8 @@ export default function Router() {
 				{ path: "about-us", element: <AboutUs /> },
 				{ path: "gallery", element: <Gallery /> },
 				{ path: "gallery-single", element: <GallerySingle /> },
+				{ path: "forum", element: <Forum /> },
+				{ path: "discussion", element: <Discussion /> },
 			],
 		},
 		{ path: "/login-screen", element: <LoginScreen /> },
@@ -158,7 +163,31 @@ export default function Router() {
 		},
 		{
 			path: "/forum-card",
-			element: <ForumCard />,
+			element: (
+				<ForumCard
+					heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+					description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+					tag="Design"
+					time="1"
+					comments="17"
+				/>
+			),
+		},
+		{
+			path: "/discussion",
+			element: (
+				<DiscussionCard
+					heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+					description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+					tag="Design"
+					time="1"
+					comments="17"
+				/>
+			),
 		},
 		{
 			path: "/sustain-card",

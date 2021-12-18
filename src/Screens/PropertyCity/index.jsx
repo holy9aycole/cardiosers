@@ -117,7 +117,6 @@ function PropertyCity({ locations, micromarketID }) {
 									Plaza still enjoys a comforting breeze during the summer
 									months.
 								</ReadMoreMobile>
-								{/* <StyledMask src={Mask1} /> */}
 								<StyledMask src={Mask2} />
 								<NextButton>
 									<ArrowForwardIosIcon />

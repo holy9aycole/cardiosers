@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { Icon } from "@iconify/react";
-import menu2Fill from "@iconify/icons-eva/menu-2-fill";
+// import { Icon } from "@iconify/react";
+// import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
@@ -71,6 +71,25 @@ const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
   },
 }));
 
+const IconContainer = styled("div")(() => ({
+  width: "30px",
+  height: "25px",
+}));
+
+const Line = styled("div")(() => ({
+  width: "100%",
+  height: "3px",
+  background: "#FFFFFF",
+  marginBottom: "8.5px",
+}));
+const Line2 = styled("div")(() => ({
+  width: "50%",
+  height: "3px",
+  display: "flex",
+  justifyContent: "flex-start",
+  background: "#FFFFFF",
+}));
+
 // ----------------------------------------------------------------------
 
 MainNavbar.propTypes = {
@@ -91,11 +110,12 @@ export default function MainNavbar(props) {
         <NavbarHeading>{props.title}</NavbarHeading>
         <SearchBarBox>
           <StyledSearchbar />
-          <IconButton
-            onClick={() => setDrawerOpen(true)}
-            sx={{ color: "text.primary" }}
-          >
-            <Icon icon={menu2Fill} />
+          <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
+            <IconContainer>
+              <Line />
+              <Line />
+              <Line2 />
+            </IconContainer>
           </IconButton>
         </SearchBarBox>
       </ToolbarStyle>
