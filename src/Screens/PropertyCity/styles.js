@@ -207,7 +207,7 @@ export const NextButton = styled("div")(({ theme }) => ({
 	cursor: "pointer",
 }));
 
-export const NextArrowDiv = styled("div")({
+export const NextArrowDiv = styled("div")(({ theme }) => ({
 	background: "transparent",
 	height: 40,
 	width: 40,
@@ -221,7 +221,11 @@ export const NextArrowDiv = styled("div")({
 	top: 0,
 	left: "96%",
 	cursor: "pointer",
-});
+	[theme.breakpoints.down("sm")]: {
+		top: "0.3vh",
+		left: "90%",
+	},
+}));
 export const PrevArrowDiv = styled("div")(({ theme }) => ({
 	background: "transparent",
 	height: 40,
@@ -238,5 +242,9 @@ export const PrevArrowDiv = styled("div")(({ theme }) => ({
 	cursor: "pointer",
 	[theme.breakpoints.up("sm")]: {
 		top: 646,
+	},
+	[theme.breakpoints.down("sm")]: {
+		top: "96vh",
+		left: "80%",
 	},
 }));
