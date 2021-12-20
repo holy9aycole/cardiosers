@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 // Youtube Vid
 import YouTube from "react-youtube";
+// Slider
+import Slider from "react-slick";
 // Assets
 import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
@@ -29,6 +32,8 @@ import {
 	StyledCardContent,
 	StyledMask,
 	NextButton,
+	NextArrowDiv,
+	PrevArrowDiv,
 } from "./styles";
 
 function PropertyCity({ locations, micromarketID }) {
@@ -54,6 +59,29 @@ function PropertyCity({ locations, micromarketID }) {
 		playerVars: {
 			autoplay: 1,
 		},
+	};
+
+	const NextArrow = ({ onClick }) => (
+		<NextArrowDiv onClick={onClick}>
+			<ArrowForwardIosIcon />
+		</NextArrowDiv>
+	);
+
+	const PrevArrow = ({ onClick }) => (
+		<PrevArrowDiv onClick={onClick}>
+			<ArrowBackIosIcon />
+		</PrevArrowDiv>
+	);
+
+	const settings = {
+		dots: false,
+		infinite: true,
+		autoplay: false,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		nextArrow: <NextArrow />,
+		prevArrow: <PrevArrow />,
 	};
 
 	const ReadMoreMobile = ({ children }) => {
@@ -133,7 +161,10 @@ function PropertyCity({ locations, micromarketID }) {
 						<AccordionTypography>Micromarket Video</AccordionTypography>
 					</StyledAccordionSummary>
 					<AccordionDetails>
-						<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
+						<Slider {...settings}>
+							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
+							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
+						</Slider>
 					</AccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion

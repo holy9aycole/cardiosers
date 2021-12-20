@@ -206,3 +206,37 @@ export const NextButton = styled("div")(({ theme }) => ({
 	justifyContent: "center",
 	cursor: "pointer",
 }));
+
+export const NextArrowDiv = styled("div")({
+	background: "transparent",
+	height: 40,
+	width: 40,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	"> svg": {
+		fill: "#3D3DD9",
+	},
+	position: "relative",
+	top: 0,
+	left: "96%",
+	cursor: "pointer",
+});
+export const PrevArrowDiv = styled("div")(({ theme }) => ({
+	background: "transparent",
+	height: 40,
+	width: 40,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	"> svg": {
+		fill: "#555",
+	},
+	position: "relative",
+	top: "51.3vh",
+	left: "92%",
+	cursor: "pointer",
+	[theme.breakpoints.up("sm")]: {
+		top: 646,
+	},
+}));
