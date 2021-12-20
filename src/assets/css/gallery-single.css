@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 500px) {
 	.ril__navButtons {
-		top: 80vh;
+		top: 85vh;
 	}
 	.ril__navButtonPrev {
 		left: 45%;
@@ -48,9 +48,9 @@
 
 @media screen and (max-width: 300px) {
 	.ril__navButtonPrev {
-		left: 20%;
+		left: 40%;
 	}
 	.ril__navButtonNext {
-		right: 20%;
+		right: 10%;
 	}
 }

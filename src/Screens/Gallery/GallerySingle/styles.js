@@ -71,7 +71,7 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 				transform: "translateX(140%)",
 			},
 			[theme.breakpoints.only("xl")]: {
-				transform: "translateX(160%)",
+				transform: "translateX(155%)",
 			},
 			"+ .MuiSwitch-track": {
 				backgroundColor: "#3D3DD9",
@@ -113,5 +113,30 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 			content: "'Photos'",
 			left: "40%",
 		},
+	},
+}));
+
+export const FileDownloadButton = styled("div")(({ theme }) => ({
+	backgroundColor: "#3D3DD9",
+	zIndex: 2000,
+	position: "fixed",
+	left: "38%",
+	bottom: "7.5vh",
+	height: "50px",
+	width: "50px",
+	display: "flex",
+	borderRadius: "50%",
+	alignItems: "center",
+	justifyContent: "center",
+	cursor: "pointer",
+	"> svg": {
+		fill: "#FFF",
+	},
+	[theme.breakpoints.down("md")]: {
+		left: "20%",
+	},
+	[theme.breakpoints.down("sm")]: {
+		bottom: "5.5vh",
+		left: "15%",
 	},
 }));
