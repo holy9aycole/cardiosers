@@ -1,13 +1,19 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "layouts/main/MainNavbar";
 import Footer from "layouts/main/MainFooter";
+import { useState } from "react";
 
 // ----------------------------------------------------------------------
 
 export default function MainLayout() {
   const { pathname } = useLocation();
+  const [area, setArea] = useState("Bangalore");
+
+	const handleChange = (e) => setArea(e.target.value);
+
 
   let title;
+  let titleOptions;
   switch (pathname) {
     case "/whats-new":
       title = "WHATS NEW";
@@ -35,6 +41,11 @@ export default function MainLayout() {
       title = "ABOUT RMZ";
       break;
 
+   case "/contact":
+     title ="Contact";
+     titleOptions = ["Bangalore","Delhi","Mumbai"];
+     break;  
+
     default:
       break;
   }
@@ -42,7 +53,7 @@ export default function MainLayout() {
   return (
     <>
       {/* <MainNavbar title="What's New" /> */}
-      <Header title={title} />
+      <Header title={title} titleOptions={titleOptions} area={area} handleChange={handleChange}/>
       <Outlet />
       <Footer />
     </>
