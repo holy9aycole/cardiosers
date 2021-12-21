@@ -5,12 +5,14 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
 import Logo from "assets/images/rmz-logo.png";
+import Restaurant from "assets/images/restaurant.png";
 
 // components
 import ForumCard from "components/ForumCard";
 import Discussion from "Screens/Discussion";
 
 import LoadingScreen from "components/LoadingScreen";
+import SocialExperience from "Screens/Social-Experience";
 
 // layouts
 import MainLayout from "layouts/main";
@@ -21,6 +23,7 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 import GuestGuard from "guards/GuestGuard";
 import DiscussionCard from "components/Discussion-card";
 import Forum from "Screens/Forum";
+import ExperienceCard from "components/Experience-card";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
@@ -118,6 +121,7 @@ export default function Router() {
         { path: "about-us", element: <AboutUs /> },
         { path: "forum", element: <Forum /> },
         { path: "discussion", element: <Discussion /> },
+        { path: "social-experience", element: <SocialExperience /> },
       ],
     },
 
@@ -136,6 +140,23 @@ export default function Router() {
           time="1h"
         />
       ),
+    },
+    {
+      path: "/experience-card",
+      element: (
+        <ExperienceCard
+          RMZ_Ecoworld={Restaurant}
+          cetegory="Restaurant"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+Bangalore, India."
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/social-experience",
+      element: <SocialExperience />,
     },
     {
       path: "/brand-card",

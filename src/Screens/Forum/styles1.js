@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/material";
+import { styled, Button } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
   modal: {
@@ -43,4 +43,21 @@ export const MainContainer = styled("div")(() => ({
   height: "100%",
   textAlign: "center",
   padding: "0px 10%",
+}));
+
+export const Submit = styled(Button)(({ theme }) => ({
+  background: "#3D3DD9",
+  marginTop: "40px",
+  width: "100%",
+  height: "50px",
+  color: "white",
+  display: "block",
+  [theme.breakpoints.only("xs")]: {
+    width: "250px",
+  },
+
+  "&:hover": {
+    background: "#3D3DD9",
+    color: "white",
+  },
 }));
