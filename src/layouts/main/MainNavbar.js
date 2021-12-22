@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-// import { Icon } from "@iconify/react";
-// import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
@@ -9,10 +7,11 @@ import {
 } from "@mui/material";
 import Searchbar from "layouts/main/Searchbar";
 import { useLocation } from "react-router";
+import { Link as RouterLink, } from "react-router-dom";
 // components
 import { useState } from "react";
 import MainSidebar from "layouts/main/MainSidebar";
-import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
+import { ReactComponent as Logo } from "assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
 
@@ -119,7 +118,9 @@ export default function MainNavbar(props) {
   return (
     <RootStyle>
       <ToolbarStyle>
-        <StyledLogo />
+        <RouterLink to="/">
+          <StyledLogo />
+        </RouterLink>
         <StyledSearchIcon />
         <NavbarHeading>{props.title}</NavbarHeading>
         {pathname === '/property-city' &&

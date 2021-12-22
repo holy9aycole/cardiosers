@@ -6,7 +6,6 @@ import GlobalStyles from './theme/globalStyles';
 // hooks
 import useAuth from './hooks/useAuth';
 // components
-import RtlLayout from './components/RtlLayout';
 import ScrollToTop from './components/ScrollToTop';
 import NotistackProvider from './components/NotistackProvider';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
@@ -22,14 +21,12 @@ export default function App() {
     <ThemeConfig>
       <ThemePrimaryColor>
         <ThemeLocalization>
-          <RtlLayout>
-            <NotistackProvider>
-              <GlobalStyles />
-              <ProgressBarStyle />
-              <ScrollToTop />
-              {isInitialized ? <Router /> : <LoadingScreen />}
-            </NotistackProvider>
-          </RtlLayout>
+          <NotistackProvider>
+            <GlobalStyles />
+            <ProgressBarStyle />
+            <ScrollToTop />
+            {isInitialized ? <Router /> : <LoadingScreen />}
+          </NotistackProvider>
         </ThemeLocalization>
       </ThemePrimaryColor>
     </ThemeConfig>

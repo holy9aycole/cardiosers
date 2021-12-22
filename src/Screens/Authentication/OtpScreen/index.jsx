@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import logo from 'assets/images/rmz-logo (1).svg'
+import mailIcon from 'assets/images/email-icon.svg'
 import { FormContainer, Logo, MainContainer, MailIcon, TextField1, OtpContainer, OtpInnerContainer, Button1, ResendButton, OtpTextField } from "./styles";
-
-import logo from '../../assets/images/rmz-logo (1).svg'
-import mailIcon from '../../assets/images/email-icon.svg'
 
 const theme = createTheme({
   components: {

@@ -110,9 +110,10 @@ const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 // RMZ Screens
 
-const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
-const OtpScreen = Loadable(lazy(() => import('components/OtpScreen')));
+const SplashScreen = Loadable(lazy(() => import("Screens/Authentication/SplashScreen")));
+const LoginScreen = Loadable(lazy(() => import("Screens/Authentication/LoginScreen")));
+const OtpScreen = Loadable(lazy(() => import('Screens/Authentication/OtpScreen')));
+
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
 const PropertyCity = Loadable(lazy(() => import("Screens/PropertyCity")));

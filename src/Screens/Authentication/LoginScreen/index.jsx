@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from 'assets/images/rmz-logo (1).svg'
+import mailIcon from 'assets/images/email-icon.svg'
 import {
   MainContainer,
   Logo,
@@ -9,8 +11,6 @@ import {
   Button1,
   Text1
 } from "./styles";
-import logo from '../../assets/images/rmz-logo (1).svg'
-import mailIcon from '../../assets/images/email-icon.svg'
 
 function LoginScreen() {
 
