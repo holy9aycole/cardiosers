@@ -10,7 +10,7 @@ export const Container = styled("div")({
 	justifyContent: "center",
 });
 
-export const ContactCard = styled(Card)({
+export const ContactCard = styled(Card)(({ theme }) => ({
 	width: "20%",
 	height: "10%",
 	position: "absolute",
@@ -20,9 +20,12 @@ export const ContactCard = styled(Card)({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "space-evenly",
-});
+	[theme.breakpoints.down("md")]: {
+		width: "50%",
+	},
+}));
 
-export const CustomButton = styled(IconButton)({
+export const CustomButton = styled(IconButton)(({ theme }) => ({
 	height: 60,
 	width: 60,
 	borderRadius: "50%",
@@ -41,4 +44,8 @@ export const CustomButton = styled(IconButton)({
 			},
 		},
 	},
-});
+	[theme.breakpoints.down("sm")]: {
+		height: 40,
+		width: 40,
+	},
+}));
