@@ -63,8 +63,9 @@
         "react/jsx-props-no-spreading": 0,
         "react/jsx-filename-extension": 0,
         "react/destructuring-assignment": 0,
-        "eslint-disable-next-line jsx-a11y/click-events-have-key-events":0,
-        "eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions":0,
+        "eslint-disable-next-line jsx-a11y/click-events-have-key-events": 0,
+        "eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions": 0,
+        "react/jsx-no-bind": 0,
         "react/jsx-key": "error",
         "react-hooks/rules-of-hooks": "error",
         "no-unused-vars": [

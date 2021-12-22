@@ -12,8 +12,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Youtube Vid
 import YouTube from "react-youtube";
 // Assets
-import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
-import Mask1 from "assets/images/MaskGroup24.svg";
+import MainNavbar from "layouts/main/MainNavbar";
+// import Mask1 from "assets/images/MaskGroup24.svg";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
 import {
@@ -67,9 +67,8 @@ function PropertyCity({ locations, micromarketID }) {
 
 	return (
 		<PropertyPage>
-			<DashboardNavbar
-				title="Property"
-				titleOptions="Bengaluru"
+			<MainNavbar
+				titleOptions="Property"
 				handleChange={handleAreaChange}
 				area={area}
 			/>

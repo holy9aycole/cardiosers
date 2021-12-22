@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
-import { Icon } from "@iconify/react";
-import menu2Fill from "@iconify/icons-eva/menu-2-fill";
+// import { Icon } from "@iconify/react";
+// import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import { AppBar, Toolbar, IconButton } from "@mui/material";
+import {
+  AppBar, Toolbar, IconButton, MenuItem, FormControl, Select
+} from "@mui/material";
 import Searchbar from "layouts/main/Searchbar";
-// hooks
-import useCollapseDrawer from "../../hooks/useCollapseDrawer";
+import { useLocation } from "react-router";
 // components
+import { useState } from "react";
+import MainSidebar from "layouts/main/MainSidebar";
 import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
@@ -67,42 +70,95 @@ const StyledLogo = styled(Logo)(({ theme }) => ({
 const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none",
-  }
-}))
+  },
+}));
+
+const IconContainer = styled("div")(() => ({
+  width: "30px",
+  height: "25px",
+}));
+
+const Line = styled("div")(() => ({
+  width: "100%",
+  height: "3px",
+  background: "#FFFFFF",
+  marginBottom: "8.5px",
+}));
+const Line2 = styled("div")(() => ({
+  width: "50%",
+  height: "3px",
+  display: "flex",
+  justifyContent: "flex-start",
+  background: "#FFFFFF",
+}));
+
+const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
+  marginTop: -3,
+  marginLeft: 2,
+  color: "#FFF",
+  fontSize: 20,
+  textTransform: "capitalize",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 15,
+  },
+}));
 
 // ----------------------------------------------------------------------
 
 MainNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 // ----------------------------------------------------------------------
 
 export default function MainNavbar(props) {
-  const { isCollapse } = useCollapseDrawer();
-
+  const [DrawerOpen, setDrawerOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
-    <RootStyle
-      sx={{
-        ...(isCollapse),
-      }}
-    >
+    <RootStyle>
       <ToolbarStyle>
         <StyledLogo />
         <StyledSearchIcon />
         <NavbarHeading>{props.title}</NavbarHeading>
+        {pathname === '/property-city' &&
+          <NavbarHeading>
+            {props.title}
+            {props.titleOptions && (
+              <>
+                {props.titleOptions} &nbsp; - &nbsp;
+                <FormControl variant="standard" >
+                  <NavbarHeadingSelect
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={props.area}
+                    onChange={props.handleChange}
+                  >
+                    <MenuItem value="Bengaluru" selected>Bengaluru</MenuItem>
+                    <MenuItem value="Mumbai">Mumbai</MenuItem>
+                    <MenuItem value="Delhi">Delhi</MenuItem>
+                  </NavbarHeadingSelect>
+                </FormControl>
+              </>
+            )}
+          </NavbarHeading>}
         <SearchBarBox>
           <StyledSearchbar />
-          <IconButton
-            onClick={props.onOpenSidebar}
-            sx={{ color: "text.primary" }}
-          >
-            <Icon icon={menu2Fill} />
+          <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
+            <IconContainer>
+              <Line />
+              <Line />
+              <Line2 />
+            </IconContainer>
           </IconButton>
         </SearchBarBox>
       </ToolbarStyle>
+
+      <MainSidebar
+        isDrawerOpen={DrawerOpen}
+        onCloseDrawer={() => setDrawerOpen(false)}
+      />
     </RootStyle>
   );
 }

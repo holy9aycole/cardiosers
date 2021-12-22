@@ -1,48 +1,81 @@
-import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/material/styles";
-import { motion } from "framer-motion";
-import { Stack } from "@mui/material";
+import { Button, Typography, TextField } from '@mui/material'
+import { styled } from '@mui/material/styles';
+import LoginBg from '../../assets/images/login-web.png'
 
-export const useStyles = makeStyles(() => ({
-  formText: {
-    color: "white",
-  },
-  card: {
-    backgroundColor: "transparent",
-    border: "2px solid",
-  },
+export const FormContainer = styled('div')(({ theme }) => ({
+  border: '1px solid #3D3DD9',
+  borderRadius: '30px',
+  opacity: 1,
+  backgroundColor: "#0f15a2",
+  mixBlendMode: "luminosity",
+  width: "40vw",
+  padding: "80px 70px 40px 70px",
+  margin: "40px auto",
+  display: "block",
+  [theme.breakpoints.down('sm')]: {
+    width: "100vw",
+    position: "absolute",
+    bottom: 0,
+    margin: 0,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    backgroundColor: "#2e2e80",
+    mixBlendMode: "normal",
+    padding: "80px 30px 100px 30px"
+  }
 }));
 
-export const RootStyle = styled(motion.div)(({ theme }) => ({
-  position: "relative",
-  backgroundColor: theme.palette.grey[400],
-  [theme.breakpoints.up("md")]: {
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    position: "fixed",
-    alignItems: "center",
-  },
+export const MainContainer = styled('div')(() => ({
+  backgroundImage: `url(${LoginBg})`,
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  height: "100vh",
+  paddingTop: "100px",
 }));
 
-export const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(
-  ({ theme }) => ({
-    zIndex: 10,
-    maxWidth: 520,
-    margin: "auto",
-    textAlign: "center",
-    position: "relative",
-    paddingTop: theme.spacing(15),
-    paddingBottom: theme.spacing(15),
-  })
-);
 
-export const HeroOverlayStyle = styled(motion.img)({
-  zIndex: 9,
+export const Button1 = styled(Button)(() => ({
+  backgroundColor: "#3d3dd9",
+  color: "#ffffff",
   width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  position: "absolute",
-});
+  opacity: 1,
+  marginTop: "2rem",
+  position: "relative",
+  textDecorationLine: 'none',
+  height: "45px",
+  '&:hover': {
+    backgroundColor: "#3d3dd9",
+  }
+}));
+
+export const Logo = styled('img')(({ theme }) => ({
+  display: "block",
+  margin: "auto",
+  width: "100px",
+  [theme.breakpoints.up('xl')]: {
+    width: "160px",
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: "120px",
+  }
+}));
+
+export const TextField1 = styled(TextField)(() => ({
+  width: "100%",
+  borderRadius: "6px"
+}));
+
+export const Text1 = styled(Typography)(() => ({
+  color: "#ffffff",
+  fontSize: "14px",
+  textAlign: "center",
+  marginTop: "10px",
+  opacity: 0.8
+}));
+
+export const MailIcon = styled('img')(() => ({
+  position: "relative",
+  left: "90%",
+  marginBottom: "-30px"
+}));
+
