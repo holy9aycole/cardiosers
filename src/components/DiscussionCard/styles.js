@@ -202,6 +202,7 @@ export const CommentBox = styled(Card)(({ theme }) => ({
   background: "#FFFFFF",
   margin: "10px auto",
   display: "flex",
+  alignItems: "center",
   justifyContent: "space-between",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
