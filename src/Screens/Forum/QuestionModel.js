@@ -6,41 +6,9 @@ import Box from "@mui/material/Box";
 import {
   Divider,
   TextField,
-  //   Divider,
-  //   FormControl,
-  //   InputLabel,
   Typography,
-  //   styled,
-  //   InputBase,
 } from "@mui/material";
-import { useStyles, MainContainer, Submit } from "./styles1";
-// import Button from "@mui/material/Button";
-
-// import { useForm, Controller } from "react-hook-form";
-// import * as Yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
-
-// import close from "assets/images/close-big-icon.svg";
-
-// const BootstrapInput = styled(InputBase)(({ theme }) => ({
-//   "label + &": {
-//     marginTop: theme.spacing(3),
-//   },
-//   "& .MuiInputBase-input": {
-//     borderRadius: 4,
-//     position: "relative",
-
-//     border: "1px solid #8489C1",
-//     fontSize: 16,
-//     width: "250px",
-//     padding: "10px 8px",
-
-//     fontFamily: "lato",
-//     "&:focus": {
-//       borderColor: theme.palette.primary.main,
-//     },
-//   },
-// }));
+import { useStyles, MainContainer, Submit } from "./QuestionModalStyles";
 
 const style = {
   position: "absolute",

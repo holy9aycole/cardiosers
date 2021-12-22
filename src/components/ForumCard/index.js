@@ -30,12 +30,6 @@ export default function ForumCard(props) {
           </div>
         </FeedFooter>
       </Feed>
-      {/* <CommentBox>
-        <div className="ask">
-          <Typography className="ques">ASK A QUESTION</Typography>
-          <img src={btnArrow} alt="button arrow" />
-        </div>
-      </CommentBox> */}
     </>
   );
 }

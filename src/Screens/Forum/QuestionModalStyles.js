@@ -24,9 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "left",
   },
   inputContainer: {
-    // border: "1px solid red",
-
-    margin: "30px auto",
+   margin: "30px auto",
   },
   inputtext: {
     width: "100%",
@@ -38,7 +36,6 @@ export const useStyles = makeStyles((theme) => ({
 }));
 
 export const MainContainer = styled("div")(() => ({
-  //   border: "1px solid red",
   width: "100%",
   height: "100%",
   textAlign: "center",

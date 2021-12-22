@@ -74,15 +74,6 @@ export default function Discussion(props) {
         <div className={classes.inputContainer}>
           <BootstrapInput className={classes.input2} />
         </div>
-
-        {/* <TextareaAutosize
-          minRows={5}
-          maxRows={5}
-          aria-label="maximum height"
-          placeholder="Maximum 4 rows"
-          defaultValue="Say something..."
-          className={classes.input}
-        /> */}
         <div>
           <div className="btn" Button>
             <img src={right} alt="right" />

@@ -76,8 +76,6 @@ export default function Forum() {
     }
   };
 
-  // console.log(props);
-
   const handleClick = () => {
     navigate("../discussion");
   };
@@ -103,15 +101,12 @@ export default function Forum() {
       </CommentBox>
       <QuestionModel
         IsModalOpened={modalIsOpen}
-        // eslint-disable-next-line
         onCloseModal={handleCloseModal}
       />
       {window.innerWidth < 768 && (
         <SwipeableEdgeDrawer
           IsModalOpen={swipableModalOpen}
-          // eslint-disable-next-line
           forOpen={swipableOpen}
-          // eslint-disable-next-line
           onCloseModal={closeSwipable}
         />
       )}
