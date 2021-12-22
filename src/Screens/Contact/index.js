@@ -8,10 +8,10 @@ function Contact() {
 	const handlePhone = () => {
 		window.open("tel:08040004000");
 	};
+
 	const handleEmail = () => {
 		window.open("mailto:leasingblr@rmzcorp.com");
 	};
-
 	return (
 		<Container>
 			<GoogleMapReact

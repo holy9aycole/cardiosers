@@ -6,56 +6,60 @@ import { useState } from "react";
 // ----------------------------------------------------------------------
 
 export default function MainLayout() {
-  const { pathname } = useLocation();
-  const [area, setArea] = useState("Bangalore");
+	const { pathname } = useLocation();
+	const [area, setArea] = useState("Bengaluru");
 
 	const handleChange = (e) => setArea(e.target.value);
 
+	let title;
+	let titleOptions;
+	switch (pathname) {
+		case "/whats-new":
+			title = "WHATS NEW";
+			break;
 
-  let title;
-  let titleOptions;
-  switch (pathname) {
-    case "/whats-new":
-      title = "WHATS NEW";
-      break;
+		case "/property":
+			title = "PROPERTIES";
+			break;
 
-    case "/property":
-      title = "PROPERTIES";
-      break;
+		case "/sustainability":
+			title = "SUSTAINABILITY";
+			break;
 
-    case "/sustainability":
-      title = "SUSTAINABILITY";
-      break;
+		case "/branding":
+			title = "BRANDING";
+			break;
+		case "/forum":
+			title = "FORUM";
+			break;
+		case "/discussion":
+			title = "DISCUSSION";
+			break;
 
-    case "/branding":
-      title = "BRANDING";
-      break;
-    case "/forum":
-      title = "FORUM";
-      break;
-    case "/discussion":
-      title = "DISCUSSION";
-      break;
+		case "/about-us":
+			title = "ABOUT RMZ";
+			break;
 
-    case "/about-us":
-      title = "ABOUT RMZ";
-      break;
+		case "/contact":
+			title = "Contact";
+			titleOptions = ["Bengaluru", "Delhi", "Mumbai"];
+			break;
 
-   case "/contact":
-     title ="Contact";
-     titleOptions = ["Bangalore","Delhi","Mumbai"];
-     break;  
+		default:
+			break;
+	}
 
-    default:
-      break;
-  }
-
-  return (
-    <>
-      {/* <MainNavbar title="What's New" /> */}
-      <Header title={title} titleOptions={titleOptions} area={area} handleChange={handleChange}/>
-      <Outlet />
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			{/* <MainNavbar title="What's New" /> */}
+			<Header
+				title={title}
+				titleOptions={titleOptions}
+				area={area}
+				handleChange={handleChange}
+			/>
+			<Outlet />
+			<Footer />
+		</>
+	);
 }
