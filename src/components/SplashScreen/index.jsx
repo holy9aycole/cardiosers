@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { Button1, ButtonContainer, ButtonLine, Text1, Container2, MainContainer, Image1, Logo, Image2, SkipButton } from "./styles";
 import image1 from '../../assets/images/splash-web.png'
@@ -20,7 +20,9 @@ function SplashScreen() {
           <Logo src={logo} alt="" />
           <Text1 >CRAFTING SPACES<br /> THAT CONNECT<br /> SOCIALLY</Text1>
           <SkipButton disableRipple>SKIP</SkipButton>
-          <ButtonContainer><Button1 src={buttonArrow} alt="" /></ButtonContainer>
+          <Link to="/whats-new">
+            <ButtonContainer><Button1 src={buttonArrow} alt="" /></ButtonContainer>
+          </Link>
           <ButtonLine src={buttonLine} alt="" />
           <Image2 src={image2} alt="" />
         </Container2>

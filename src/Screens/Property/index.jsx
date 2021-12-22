@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import indiaMap from "../../assets/images/india-map.svg";
 import { IndiaMap, MainContainer, Text1 } from "./styles";
 
@@ -10,7 +11,9 @@ function Index() {
           We are the
           <br /> Future of Space
         </Text1>
-        <IndiaMap src={indiaMap} alt="" />
+        <Link to="/property-city">
+          <IndiaMap src={indiaMap} alt="" />
+        </Link>
       </MainContainer>
     </>
   );

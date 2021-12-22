@@ -35,6 +35,14 @@ export default function MainLayout() {
       title = "ABOUT RMZ";
       break;
 
+    case "/social-experience":
+      title = "SOCIAL EXPERIENCE";
+      break;
+
+    case "/profile":
+      title = "PROFILE";
+      break;
+
     case "/gallery":
       title = "GALLERY";
       break;
