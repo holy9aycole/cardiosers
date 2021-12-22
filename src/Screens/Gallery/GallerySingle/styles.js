@@ -12,7 +12,7 @@ export const Container = styled("div")(({ theme }) => ({
 	flexDirection: "column",
 	alignItems: "center",
 	marginTop: 81,
-	width: "88vw",
+	width: "97vw",
 	[theme.breakpoints.down("sm")]: {
 		marginTop: 60,
 	},
@@ -34,7 +34,7 @@ export const StyledSwitch = styled(Switch)(({ theme }) => ({
 		width: "10.5%",
 	},
 	[theme.breakpoints.only("sm")]: {
-		width: "24.5%",
+		width: "22%",
 		left: "41.5%",
 	},
 	[theme.breakpoints.only("xs")]: {
