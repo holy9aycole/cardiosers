@@ -1,4 +1,4 @@
-import ExperienceCard from "components/Experience-card";
+import ExperienceCard from "components/ExperienceCard";
 import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 

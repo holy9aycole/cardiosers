@@ -12,7 +12,7 @@ import ForumCard from "components/ForumCard";
 import Discussion from "Screens/Discussion";
 
 import LoadingScreen from "components/LoadingScreen";
-import SocialExperience from "Screens/Social-Experience";
+import SocialExperience from "Screens/SocialExperience";
 
 // layouts
 import MainLayout from "layouts/main";
@@ -21,9 +21,9 @@ import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
 import GuestGuard from "guards/GuestGuard";
-import DiscussionCard from "components/Discussion-card";
+import DiscussionCard from "components/DiscussionCard";
 import Forum from "Screens/Forum";
-import ExperienceCard from "components/Experience-card";
+import ExperienceCard from "components/ExperienceCard";
 // import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
