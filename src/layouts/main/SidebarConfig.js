@@ -6,7 +6,7 @@ const sidebarConfig = [
       { title: "PROPERTIES", path: "/property" },
       { title: "SOCIAL EXPERIENCE", path: "/social-experience" },
       { title: "SUSTAINABLITY", path: "/sustainability" },
-      { title: "GALLLERY", path: "/whats-new" },
+      { title: "GALLERY", path: "/gallery" },
       { title: "FORUM", path: "/forum" },
       { title: "NEWS", path: "/news-feed" },
       { title: "BRANDING", path: "/branding" },

@@ -122,6 +122,8 @@ export default function Router() {
         { path: "forum", element: <Forum /> },
         { path: "discussion", element: <Discussion /> },
         { path: "social-experience", element: <SocialExperience /> },
+        { path: "gallery", element: <Gallery /> },
+        { path: "gallery-single", element: <GallerySingle /> },
       ],
     },
 
@@ -255,6 +257,8 @@ const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
+const Gallery = Loadable(lazy(() => import("Screens/Gallery")));
+const GallerySingle = Loadable(lazy(() => import("Screens/Gallery/GallerySingle")));
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
 const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
 const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));

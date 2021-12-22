@@ -35,6 +35,14 @@ export default function MainLayout() {
       title = "ABOUT RMZ";
       break;
 
+    case "/gallery":
+      title = "GALLERY";
+      break;
+
+    case "/gallery-single":
+      title = "CONNECTING SPACES";
+      break;
+
     default:
       break;
   }

@@ -8029,10 +8029,10 @@
   "resolved" "https://registry.npmjs.org/highlight.js/-/highlight.js-11.2.0.tgz"
   "version" "11.2.0"
 
-"history@^5.0.1", "history@>=5":
-  "integrity" "sha512-5qC/tFUKfVci5kzgRxZxN5Mf1CV8NmJx9ByaPX0YTLx5Vz3Svh7NYp6eA4CpDq4iA9D0C1t8BNIfvQIrUI3mVw=="
-  "resolved" "https://registry.npmjs.org/history/-/history-5.0.1.tgz"
-  "version" "5.0.1"
+"history@^5.0.1", "history@^5.1.0":
+  "integrity" "sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg=="
+  "resolved" "https://registry.npmjs.org/history/-/history-5.1.0.tgz"
+  "version" "5.1.0"
   dependencies:
     "@babel/runtime" "^7.7.6"
 
@@ -12697,6 +12697,11 @@
     "unist-util-visit" "^4.0.0"
     "vfile" "^5.0.0"
 
+"react-masonry-css@^1.0.16":
+  "integrity" "sha512-KSW0hR2VQmltt/qAa3eXOctQDyOu7+ZBevtKgpNDSzT7k5LA/0XntNa9z9HKCdz3QlxmJHglTZ18e4sX4V8zZQ=="
+  "resolved" "https://registry.npmjs.org/react-masonry-css/-/react-masonry-css-1.0.16.tgz"
+  "version" "1.0.16"
+
 "react-modal@^3.11.1":
   "integrity" "sha512-+C2KODVKyu20zHXPJxfOOcf571L1u/EpFlH+oS/3YDn8rgVE51QZuxuuIwabJ8ZFnOEHaD+r6XNjqwtxZnXO0g=="
   "resolved" "https://registry.npmjs.org/react-modal/-/react-modal-3.14.3.tgz"
@@ -12743,17 +12748,20 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
 
-"react-router-dom@^6.0.0-beta.4":
-  "integrity" "sha512-yppoRR8S7FxNMG6OGFn9DPJBPLsjeIuQa7GYnkRlgOSTBSPhAQpD6z7rvRzZnesQ9r6W+ibD9RvnqTcna4w/Pg=="
-  "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.0.0-beta.4.tgz"
-  "version" "6.0.0-beta.4"
+"react-router-dom@^6.0.2":
+  "integrity" "sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA=="
+  "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.0.2.tgz"
+  "version" "6.0.2"
   dependencies:
-    "react-router" "6.0.0-beta.4"
+    "history" "^5.1.0"
+    "react-router" "6.0.2"
 
-"react-router@^6.0.0-beta.4", "react-router@6.0.0-beta.4":
-  "integrity" "sha512-48JRRZJOwmfOKM12Tv3WjmNkVb2NpSEgDTWC4+MEJaud0+eyLJxqy62CKzOydMlk7hrfRFpC/elUYSZAuyx3qA=="
-  "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.0.0-beta.4.tgz"
-  "version" "6.0.0-beta.4"
+"react-router@^6.0.0-beta.4", "react-router@6.0.2":
+  "integrity" "sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q=="
+  "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.0.2.tgz"
+  "version" "6.0.2"
+  dependencies:
+    "history" "^5.1.0"
 
 "react-scripts@^4.0.1":
   "integrity" "sha512-NnniMSC/wjwhcJAyPJCWtxx6CWONqgvGgV9+QXj1bwoW/JI++YF1eEf3Upf/mQ9KmP57IBdjzWs1XvnPq7qMTQ=="
@@ -12834,7 +12842,7 @@
   "resolved" "https://registry.npmjs.org/react-simple-animate/-/react-simple-animate-3.3.12.tgz"
   "version" "3.3.12"
 
-"react-slick@^0.28.0":
+"react-slick@^0.28.1":
   "integrity" "sha512-JwRQXoWGJRbUTE7eZI1rGIHaXX/4YuwX6gn7ulfvUZ4vFDVQAA25HcsHSYaUiRCduTr6rskyIuyPMpuG6bbluw=="
   "resolved" "https://registry.npmjs.org/react-slick/-/react-slick-0.28.1.tgz"
   "version" "0.28.1"
