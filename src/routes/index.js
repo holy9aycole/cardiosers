@@ -5,156 +5,218 @@ import { Navigate, useRoutes, useLocation } from "react-router-dom";
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import sust from "assets/images/sustainable.png";
 import Logo from "assets/images/rmz-logo.png";
+import Restaurant from "assets/images/restaurant.png";
 
 // components
-import LoadingScreen from "../components/LoadingScreen";
+import ForumCard from "components/ForumCard";
+import Discussion from "Screens/Discussion";
+
+import LoadingScreen from "components/LoadingScreen";
+import SocialExperience from "Screens/SocialExperience";
 
 // layouts
-import MainLayout from "../layouts/main";
-import DashboardLayout from "../layouts/dashboard";
-import LogoOnlyLayout from "../layouts/LogoOnlyLayout";
+import MainLayout from "layouts/main";
+import DashboardLayout from "Screens/NewsFeed";
+import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // guards
-import GuestGuard from "../guards/GuestGuard";
-// import RoleBasedGuard from '../guards/RoleBasedGuard';
+import GuestGuard from "guards/GuestGuard";
+import DiscussionCard from "components/DiscussionCard";
+import Forum from "Screens/Forum";
+import ExperienceCard from "components/ExperienceCard";
+// import RoleBasedGuard from 'guards/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
 
 const Loadable = (Component) => (props) => {
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const { pathname } = useLocation();
-	const isDashboard = pathname.includes("/dashboard");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { pathname } = useLocation();
+  const isDashboard = pathname.includes("/dashboard");
 
-	return (
-		<Suspense
-			fallback={
-				<LoadingScreen
-					sx={{
-						...(!isDashboard && {
-							top: 0,
-							left: 0,
-							width: 1,
-							zIndex: 9999,
-							position: "fixed",
-						}),
-					}}
-				/>
-			}
-		>
-			<Component {...props} />
-		</Suspense>
-	);
+  return (
+    <Suspense
+      fallback={
+        <LoadingScreen
+          sx={{
+            ...(!isDashboard && {
+              top: 0,
+              left: 0,
+              width: 1,
+              zIndex: 9999,
+              position: "fixed",
+            }),
+          }}
+        />
+      }
+    >
+      <Component {...props} />
+    </Suspense>
+  );
 };
 
 export default function Router() {
-	return useRoutes([
-		{
-			path: "auth",
-			children: [
-				{
-					path: "login",
-					element: (
-						<GuestGuard>
-							<Login />
-						</GuestGuard>
-					),
-				},
-				{
-					path: "register",
-					element: (
-						<GuestGuard>
-							<Register />
-						</GuestGuard>
-					),
-				},
-				{ path: "login-unprotected", element: <Login /> },
-				{ path: "register-unprotected", element: <Register /> },
-				{ path: "reset-password", element: <ResetPassword /> },
-				{ path: "verify", element: <VerifyCode /> },
-			],
-		},
+  return useRoutes([
+    {
+      path: "auth",
+      children: [
+        {
+          path: "login",
+          element: (
+            <GuestGuard>
+              <Login />
+            </GuestGuard>
+          ),
+        },
+        {
+          path: "register",
+          element: (
+            <GuestGuard>
+              <Register />
+            </GuestGuard>
+          ),
+        },
+        { path: "login-unprotected", element: <Login /> },
+        { path: "register-unprotected", element: <Register /> },
+        { path: "reset-password", element: <ResetPassword /> },
+        { path: "verify", element: <VerifyCode /> },
+      ],
+    },
 
-		// Dashboard Routes
-		{
-			path: "dashboard",
-			element: <DashboardLayout />,
-			children: [
-				{ element: <Navigate to="/dashboard/app" replace /> },
-				{ path: "app", element: <AllAssets /> },
-				{ path: "ecommerce", element: <RMZEcoworld /> },
-				{ path: "analytics", element: <AllAssets /> },
-				{ path: "banking", element: <RMZEcoworld /> },
-				{ path: "booking", element: <AllAssets /> },
-				{ path: "booking1", element: <AllAssets /> },
-				{ path: "booking2", element: <AllAssets /> }
-			],
-		},
+    // Dashboard Routes
+    {
+      path: "news-feed",
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to="/news-feed/ecoworld" replace /> },
+        { path: "assets", element: <AllAssets /> },
+        { path: "ecoworld", element: <RMZEcoworld /> },
+        { path: "millenia", element: <RMZEcoworld /> },
+        { path: "ecospace", element: <AllAssets /> },
+        { path: "infinity", element: <AllAssets /> },
+        { path: "paramount", element: <AllAssets /> },
+      ],
+    },
 
-		// Main Routes
-		{
-			path: "*",
-			element: <LogoOnlyLayout />,
-			children: [
-				{ path: "500", element: <Page500 /> },
-				{ path: "404", element: <NotFound /> },
-				{ path: "*", element: <Navigate to="/404" replace /> },
-			],
-		},
-		{
-			path: "/",
-			element: <MainLayout />,
-			children: [
-				{ path: "property", element: <Property /> },
-				{ path: "whats-new", element: <WhatsNew /> },
-				{ path: "sustainability", element: <Sustainability /> },
-				{ path: "branding", element: <Branding /> },
-				{ path: "gallery", element: <Gallery /> },
-				{ path: "gallery-single", element: <GallerySingle /> },
-			],
-		},
+    // Main Routes
+    {
+      path: "*",
+      element: <LogoOnlyLayout />,
+      children: [
+        { path: "500", element: <Page500 /> },
+        { path: "404", element: <NotFound /> },
+        { path: "*", element: <Navigate to="/404" replace /> },
+      ],
+    },
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        { element: <WhatsNew /> },
+        { path: "news-feed", element: <NewsFeed /> },
+        { path: "property", element: <Property /> },
+        { path: "whats-new", element: <WhatsNew /> },
+        { path: "sustainability", element: <Sustainability /> },
+        { path: "branding", element: <Branding /> },
+        { path: "profile", element: <Profile /> },
+        { path: "about-us", element: <AboutUs /> },
+        { path: "forum", element: <Forum /> },
+        { path: "discussion", element: <Discussion /> },
+        { path: "social-experience", element: <SocialExperience /> },
+        { path: "gallery", element: <Gallery /> },
+        { path: "gallery-single", element: <GallerySingle /> },
+      ],
+    },
 
-		{ path: "/login-screen", element: <LoginScreen /> },
-		{ path: "/splash-screen", element: <SplashScreen /> },
+    { path: "/login-screen", element: <LoginScreen /> },
+    { path: "/splash-screen", element: <SplashScreen /> },
 
-		{
-			path: "/property-card",
-			element: (
-				<PropertyCard
-					RMZ_Ecoworld={siteImage}
-					cetegory="IT Park"
-					name="RMZ Ecoworld"
-					description="An architectural marvel redefining the idea of tech parks in
+    {
+      path: "/property-card",
+      element: (
+        <PropertyCard
+          RMZ_Ecoworld={siteImage}
+          cetegory="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
-					time="1h"
-				/>
-			),
-		},
-		{
-			path: "/brand-card",
-			element: (
-				<BrandCard
-					Logo={Logo}
-					RMZ_Ecoworld={siteImage}
-					cetegory="IT Park"
-					name="RMZ Ecoworld"
-					description="An architectural marvel redefining the idea of tech parks in
+          time="1h"
+        />
+      ),
+    },
+    { path: "/otp", element: <OtpScreen /> },
+
+
+    {
+      path: "/experience-card",
+      element: (
+        <ExperienceCard
+          RMZ_Ecoworld={Restaurant}
+          cetegory="Restaurant"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
+Bangalore, India."
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/social-experience",
+      element: <SocialExperience />,
+    },
+    {
+      path: "/brand-card",
+      element: (
+        <BrandCard
+          Logo={Logo}
+          RMZ_Ecoworld={siteImage}
+          cetegory="IT Park"
+          name="RMZ Ecoworld"
+          description="An architectural marvel redefining the idea of tech parks in
     Bangalore, India."
-					time="1h"
-				/>
-			),
-		},
-		{
-			path: "/sustain-card",
-			element: (
-				<SustainableCard
-					sustainImage={sust}
-					title="The 5’S"
-					description="RMZ were the first to use the 5S - hitherto a concept used in manufacturing units – in the real estate industry."
-				/>
-			),
-		},
-		{ path: "*", element: <Navigate to="/404" replace /> },
-	]);
+          time="1h"
+        />
+      ),
+    },
+    {
+      path: "/forum-card",
+      element: (
+        <ForumCard
+          heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+          description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+          tag="Design"
+          time="1"
+          comments="17"
+        />
+      ),
+    },
+    {
+      path: "/discussion",
+      element: (
+        <DiscussionCard
+          heading="2021 Looking Forward - The New Normal Crafted Through Architect."
+          description="When everybody across the world continues to make the transition back
+          to normalcy from lock-down, we are curious about what will happen in
+          our society."
+          tag="Design"
+          time="1"
+          comments="17"
+        />
+      ),
+    },
+    {
+      path: "/sustain-card",
+      element: (
+        <SustainableCard
+          sustainImage={sust}
+          title="The 5’S"
+          description="RMZ were the first to use the 5S - hitherto a concept used in manufacturing units – in the real estate industry."
+        />
+      ),
+    },
+    { path: "*", element: <Navigate to="/404" replace /> },
+  ]);
 }
 
 // IMPORT COMPONENTS
@@ -162,19 +224,19 @@ export default function Router() {
 // Authentication
 const Login = Loadable(lazy(() => import("Screens/Authentication/Login")));
 const Register = Loadable(
-	lazy(() => import("Screens/Authentication/Register"))
+  lazy(() => import("Screens/Authentication/Register"))
 );
 const ResetPassword = Loadable(
-	lazy(() => import("Screens/Authentication/ResetPassword"))
+  lazy(() => import("Screens/Authentication/ResetPassword"))
 );
 const VerifyCode = Loadable(
-	lazy(() => import("Screens/Authentication/VerifyCode"))
+  lazy(() => import("Screens/Authentication/VerifyCode"))
 );
 
 // Dashboard
-const AllAssets = Loadable(lazy(() => import("Screens/Dashboard/AllAssets")));
+const AllAssets = Loadable(lazy(() => import("Screens/NewsFeed/AllAssets")));
 const RMZEcoworld = Loadable(
-	lazy(() => import("Screens/Dashboard/RMZEcoworld"))
+  lazy(() => import("Screens/NewsFeed/RMZEcoworld"))
 );
 
 // Main
@@ -183,17 +245,20 @@ const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 //  RMZ Components
 const PropertyCard = Loadable(lazy(() => import("components/PropertyCard")));
-const SustainableCard = Loadable(
-	lazy(() => import("components/SustainabilityCard"))
-);
+const SustainableCard = Loadable(lazy(() => import("components/SustainabilityCard")));
 const BrandCard = Loadable(lazy(() => import("components/BrandCard")));
 
 // RMZ Screens
-const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+
 const SplashScreen = Loadable(lazy(() => import("components/SplashScreen")));
+const LoginScreen = Loadable(lazy(() => import("components/LoginScreen")));
+const OtpScreen = Loadable(lazy(() => import('components/OtpScreen')));
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const Gallery = Loadable(lazy(() => import("Screens/Gallery")));
 const GallerySingle = Loadable(lazy(() => import("Screens/Gallery/GallerySingle")));
+const Profile = Loadable(lazy(() => import("Screens/Profile")));
+const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
+const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));

@@ -10,8 +10,3 @@ export const Assets = styled(Typography)(({ theme }) => ({
 	},
 }));
 
-export const StyledDiv = styled("div")(({ theme }) => ({
-	[theme.breakpoints.down("md")]: {
-		padding: "0px 20px",
-	},
-}));
