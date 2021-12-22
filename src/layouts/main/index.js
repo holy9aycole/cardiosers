@@ -44,6 +44,21 @@ export default function MainLayout() {
 			title = "Contact";
 			titleOptions = ["Bengaluru", "Delhi", "Mumbai"];
 			break;
+      case "/social-experience":
+      title = "SOCIAL EXPERIENCE";
+      break;
+
+    case "/profile":
+      title = "PROFILE";
+      break;
+
+    case "/gallery":
+      title = "GALLERY";
+      break;
+
+    case "/gallery-single":
+      title = "CONNECTING SPACES";
+      break;
 
 		default:
 			break;

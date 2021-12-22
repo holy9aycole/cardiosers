@@ -13,10 +13,7 @@ const getIcon = (name) => (
 );
 
 const ICONS = {
-  banking: getIcon("ic_building"),
-  ecommerce: getIcon("ic_building"),
-  analytics: getIcon("ic_building"),
-  booking: getIcon("ic_building"),
+  building: getIcon("ic_building"),
 };
 
 const sidebarConfig = [
@@ -27,32 +24,32 @@ const sidebarConfig = [
       {
         title: "All Assets",
         path: PATH_DASHBOARD.general.assets,
-        icon: ICONS.ecommerce,
+        icon: ICONS.building,
       },
       {
         title: "RMZ Ecoworld",
         path: PATH_DASHBOARD.general.ecoworld,
-        icon: ICONS.analytics,
+        icon: ICONS.building,
       },
       {
         title: "The Millenia",
         path: PATH_DASHBOARD.general.millenia,
-        icon: ICONS.banking,
+        icon: ICONS.building,
       },
       {
         title: "Ecospace",
         path: PATH_DASHBOARD.general.ecospace,
-        icon: ICONS.booking,
+        icon: ICONS.building,
       },
       {
         title: "RMZ Infinity",
         path: PATH_DASHBOARD.general.infinity,
-        icon: ICONS.booking,
+        icon: ICONS.building,
       },
       {
         title: "RMZ One Paramount",
         path: PATH_DASHBOARD.general.paramount,
-        icon: ICONS.booking,
+        icon: ICONS.building,
       },
     ],
   },

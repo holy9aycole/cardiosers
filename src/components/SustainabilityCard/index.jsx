@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Grid, Typography } from "@mui/material";
-// import sust from "assets/images/sustainable.png";
 import left from "assets/images/button-arrow-left.png";
 import right from "assets/images/button-arrow-right.png";
 import Slider from "react-slick";
