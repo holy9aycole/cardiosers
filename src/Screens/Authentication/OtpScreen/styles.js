@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Button, TextField, Typography } from '@mui/material'
-import LoginBg from '../../assets/images/login-web.png'
+import LoginBg from 'assets/images/login-web.png'
 
 
 export const FormContainer = styled('div')(({ theme }) => ({
