@@ -12,8 +12,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Youtube Vid
 import YouTube from "react-youtube";
 // Assets
-import MainNavbar from "layouts/main/MainNavbar";
-// import Mask1 from "assets/images/MaskGroup24.svg";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
 import {
@@ -34,12 +32,6 @@ import {
 
 function PropertyCity({ locations, micromarketID }) {
 	const [expanded, setExpanded] = React.useState(false);
-
-	const [area, setArea] = React.useState("Bengaluru");
-
-	const handleAreaChange = (event) => {
-		setArea(event.target.value);
-	};
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
@@ -67,11 +59,6 @@ function PropertyCity({ locations, micromarketID }) {
 
 	return (
 		<PropertyPage>
-			<MainNavbar
-				titleOptions="Property"
-				handleChange={handleAreaChange}
-				area={area}
-			/>
 			<BannerContainer>
 				<BannerImage src={banner1} alt="" />
 				<Overlay />

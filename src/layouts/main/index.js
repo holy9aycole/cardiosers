@@ -6,75 +6,79 @@ import { useState } from "react";
 // ----------------------------------------------------------------------
 
 export default function MainLayout() {
-	const { pathname } = useLocation();
-	const [area, setArea] = useState("Bengaluru");
+  const { pathname } = useLocation();
+  const [area, setArea] = useState("Bengaluru");
 
-	const handleChange = (e) => setArea(e.target.value);
+  const handleChange = (e) => setArea(e.target.value);
 
-	let title;
-	let titleOptions;
-	switch (pathname) {
-		case "/whats-new":
-			title = "WHATS NEW";
-			break;
+  let title;
+  let titleOptions;
+  switch (pathname) {
+    case "/whats-new":
+      title = "WHATS NEW";
+      break;
 
-		case "/property":
-			title = "PROPERTIES";
-			break;
+    case "/property":
+      title = "PROPERTIES";
+      break;
 
-		case "/sustainability":
-			title = "SUSTAINABILITY";
-			break;
+    case "/property-city":
+      titleOptions = "Property";
+      break;
 
-		case "/branding":
-			title = "BRANDING";
-			break;
-		case "/forum":
-			title = "FORUM";
-			break;
-		case "/discussion":
-			title = "DISCUSSION";
-			break;
+    case "/sustainability":
+      title = "SUSTAINABILITY";
+      break;
 
-		case "/about-us":
-			title = "ABOUT RMZ";
-			break;
+    case "/branding":
+      title = "BRANDING";
+      break;
+    case "/forum":
+      title = "FORUM";
+      break;
+    case "/discussion":
+      title = "DISCUSSION";
+      break;
 
-		case "/contact":
-			title = "CONTACT";
-			titleOptions = ["Bengaluru", "Delhi", "Mumbai"];
-			break;
-		case "/social-experience":
-			title = "SOCIAL EXPERIENCE";
-			break;
+    case "/about-us":
+      title = "ABOUT RMZ";
+      break;
 
-		case "/profile":
-			title = "PROFILE";
-			break;
+    case "/contact":
+      titleOptions = "CONTACT";
+      break;
 
-		case "/gallery":
-			title = "GALLERY";
-			break;
+    case "/social-experience":
+      title = "SOCIAL EXPERIENCE";
+      break;
 
-		case "/gallery-single":
-			title = "CONNECTING SPACES";
-			break;
+    case "/profile":
+      title = "PROFILE";
+      break;
 
-		default:
-			break;
-	}
+    case "/gallery":
+      title = "GALLERY";
+      break;
 
-	return (
-		<>
-			{/* <MainNavbar title="What's New" /> */}
-			<Header
-				title={title}
-				titleOptions={titleOptions}
-				area={area}
-				handleChange={handleChange}
-			/>
-			<Outlet />
-			<Footer />
-		</>
-	);
+    case "/gallery-single":
+      title = "CONNECTING SPACES";
+      break;
+
+    default:
+      break;
+  }
+
+  return (
+    <>
+      {/* <MainNavbar title="What's New" /> */}
+      <Header
+        title={title}
+        titleOptions={titleOptions}
+        area={area}
+        handleChange={handleChange}
+      />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
