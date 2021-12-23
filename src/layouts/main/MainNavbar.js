@@ -59,6 +59,7 @@ const NavbarHeading = styled("div")(({ theme }) => ({
   fontSize: 20,
   fontWeight: "bold",
   textTransform: "uppercase",
+  paddingLeft: '150px',
   [theme.breakpoints.down("sm")]: {
     fontSize: 15,
   },

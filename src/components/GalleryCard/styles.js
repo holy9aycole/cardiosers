@@ -33,7 +33,11 @@ export const GalleryCardText = styled(Typography)(({ theme }) => ({
 	zIndex: 3,
 }));
 
-export const StyledDiv = styled("div")({
+export const StyledDiv = styled("div")(({ theme }) => ({
+	[theme.breakpoints.down("sm")]: {
+		zIndex: 11,
+		top: 181,
+	},
 	width: "100%",
 	height: 100,
 	position: "absolute",
@@ -42,4 +46,4 @@ export const StyledDiv = styled("div")({
 	background:
 		"linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(46,46,128,0.5) 50%, rgba(46,46,128,1) 100%)",
 	borderRadius: "0px 0px 25px 25px "
-});
+}));

@@ -16,21 +16,10 @@ import {
   Collapse,
   ListItemText,
   ListItemIcon,
-  ListSubheader,
   ListItemButton,
 } from "@mui/material";
 
 // ----------------------------------------------------------------------
-
-const ListSubheaderStyle = styled((props) => (
-  <ListSubheader disableSticky disableGutters {...props} />
-))(({ theme }) => ({
-  ...theme.typography.overline,
-  marginTop: theme.spacing(3),
-  marginBottom: theme.spacing(2),
-  paddingLeft: theme.spacing(5),
-  color: theme.palette.text.primary,
-}));
 
 const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
   ...theme.typography.body2,
@@ -197,7 +186,6 @@ export default function NavSection({ navConfig, isShow = true, ...other }) {
         const { subheader, items } = list;
         return (
           <List key={subheader} disablePadding>
-            {isShow && <ListSubheaderStyle>{subheader}</ListSubheaderStyle>}
             {items.map((item) => (
               <NavItem key={item.title} item={item} isShow={isShow} />
             ))}
