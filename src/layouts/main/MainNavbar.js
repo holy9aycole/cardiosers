@@ -3,11 +3,15 @@ import PropTypes from "prop-types";
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import {
-  AppBar, Toolbar, IconButton, MenuItem, FormControl, Select
+  AppBar,
+  Toolbar,
+  IconButton,
+  MenuItem,
+  FormControl,
+  Select,
 } from "@mui/material";
 import Searchbar from "layouts/main/Searchbar";
-import { useLocation } from "react-router";
-import { Link as RouterLink, } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 // components
 import { useState } from "react";
 import MainSidebar from "layouts/main/MainSidebar";
@@ -113,7 +117,6 @@ MainNavbar.propTypes = {
 
 export default function MainNavbar(props) {
   const [DrawerOpen, setDrawerOpen] = useState(false);
-  const { pathname } = useLocation();
 
   return (
     <RootStyle>
@@ -122,28 +125,31 @@ export default function MainNavbar(props) {
           <StyledLogo />
         </RouterLink>
         <StyledSearchIcon />
-        <NavbarHeading>{props.title}</NavbarHeading>
-        {pathname === '/property-city' &&
+        {props.titleOptions ?
           <NavbarHeading>
-            {props.title}
+            {props.titleOptions}
             {props.titleOptions && (
               <>
-                {props.titleOptions} &nbsp; - &nbsp;
-                <FormControl variant="standard" >
+                &nbsp; - &nbsp;
+                <FormControl variant="standard">
                   <NavbarHeadingSelect
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
                     value={props.area}
                     onChange={props.handleChange}
                   >
-                    <MenuItem value="Bengaluru" selected>Bengaluru</MenuItem>
+                    <MenuItem value="Bengaluru" selected>
+                      Bengaluru
+                    </MenuItem>
                     <MenuItem value="Mumbai">Mumbai</MenuItem>
                     <MenuItem value="Delhi">Delhi</MenuItem>
                   </NavbarHeadingSelect>
                 </FormControl>
               </>
             )}
-          </NavbarHeading>}
+          </NavbarHeading>
+          : <NavbarHeading>{props.title}</NavbarHeading>
+        }
         <SearchBarBox>
           <StyledSearchbar />
           <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>

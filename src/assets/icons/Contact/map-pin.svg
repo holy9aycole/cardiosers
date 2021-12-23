@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34.222" height="49.598" viewBox="0 0 34.222 49.598">
+  <g id="map-pin" transform="translate(0)">
+    <path id="Path_107" data-name="Path 107" d="M144.531,189a17.111,17.111,0,0,0-17.111,17.111c0,15.538,17.111,32.487,17.111,32.487s17.111-17.9,17.111-32.487A17.111,17.111,0,0,0,144.531,189Zm0,30.264a13.153,13.153,0,1,1,13.153-13.153A13.153,13.153,0,0,1,144.531,219.264Z" transform="translate(-127.42 -189)" fill="#3d3dd9"/>
+    <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="11.833" cy="11.833" rx="11.833" ry="11.833" transform="translate(1.213 11.886) rotate(-26.83)" fill="#3d3dd9"/>
+  </g>
+</svg>

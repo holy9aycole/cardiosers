@@ -38,7 +38,6 @@ const Loadable = (Component) => (props) => {
 
 export default function Router() {
   return useRoutes([
-
     // Dashboard Routes
     {
       path: "news-feed",
@@ -64,6 +63,7 @@ export default function Router() {
         { path: "*", element: <Navigate to="/404" replace /> },
       ],
     },
+
     { path: "/", element: <LoginScreen /> },
     {
       path: "/",
@@ -80,11 +80,17 @@ export default function Router() {
         { path: "forum", element: <Forum /> },
         { path: "discussion", element: <Discussion /> },
         { path: "social-experience", element: <SocialExperience /> },
+        { path: "contact", element: <Contact /> },
         { path: "gallery", element: <Gallery /> },
         { path: "gallery-single", element: <GallerySingle /> },
         {
-          path: "property-city", element: <PropertyCity locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
-            micromarketID="IJhZ-SfQQJs" />
+          path: "property-city",
+          element: (
+            <PropertyCity
+              locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
+              micromarketID="IJhZ-SfQQJs"
+            />
+          ),
         },
       ],
     },
@@ -120,10 +126,15 @@ const PropertyCity = Loadable(lazy(() => import("Screens/PropertyCity")));
 const Sustainability = Loadable(lazy(() => import("Screens/Sustainability")));
 const Branding = Loadable(lazy(() => import("Screens/Branding")));
 const Gallery = Loadable(lazy(() => import("Screens/Gallery")));
-const GallerySingle = Loadable(lazy(() => import("Screens/Gallery/GallerySingle")));
+const GallerySingle = Loadable(
+  lazy(() => import("Screens/Gallery/GallerySingle"))
+);
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
 const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
 const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
+const Contact = Loadable(lazy(() => import("Screens/Contact")));
 const Forum = Loadable(lazy(() => import("Screens/Forum")));
 const Discussion = Loadable(lazy(() => import("Screens/Discussion")));
-const SocialExperience = Loadable(lazy(() => import("Screens/SocialExperience")));
+const SocialExperience = Loadable(
+  lazy(() => import("Screens/SocialExperience"))
+);

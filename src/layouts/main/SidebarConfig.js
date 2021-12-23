@@ -10,7 +10,7 @@ const sidebarConfig = [
       { title: "FORUM", path: "/forum" },
       { title: "NEWS", path: "/news-feed" },
       { title: "BRANDING", path: "/branding" },
-      { title: "CONTACT", path: "/whats-new" },
+      { title: "CONTACT", path: "/contact" },
       { title: "PROFILE", path: "/profile" },
     ],
   },
