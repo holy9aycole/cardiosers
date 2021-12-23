@@ -41,24 +41,24 @@ export default function MainLayout() {
 			break;
 
 		case "/contact":
-			title = "Contact";
+			title = "CONTACT";
 			titleOptions = ["Bengaluru", "Delhi", "Mumbai"];
 			break;
-      case "/social-experience":
-      title = "SOCIAL EXPERIENCE";
-      break;
+		case "/social-experience":
+			title = "SOCIAL EXPERIENCE";
+			break;
 
-    case "/profile":
-      title = "PROFILE";
-      break;
+		case "/profile":
+			title = "PROFILE";
+			break;
 
-    case "/gallery":
-      title = "GALLERY";
-      break;
+		case "/gallery":
+			title = "GALLERY";
+			break;
 
-    case "/gallery-single":
-      title = "CONNECTING SPACES";
-      break;
+		case "/gallery-single":
+			title = "CONNECTING SPACES";
+			break;
 
 		default:
 			break;

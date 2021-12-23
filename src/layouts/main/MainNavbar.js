@@ -3,11 +3,16 @@ import PropTypes from "prop-types";
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import {
-  AppBar, Toolbar, IconButton, MenuItem, FormControl, Select
+	AppBar,
+	Toolbar,
+	IconButton,
+	MenuItem,
+	FormControl,
+	Select,
 } from "@mui/material";
 import Searchbar from "layouts/main/Searchbar";
-import { useLocation } from "react-router";
-import { Link as RouterLink, } from "react-router-dom";
+// import { useLocation } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
 // components
 import { useState } from "react";
 import MainSidebar from "layouts/main/MainSidebar";
@@ -112,54 +117,58 @@ MainNavbar.propTypes = {
 // ----------------------------------------------------------------------
 
 export default function MainNavbar(props) {
-  const [DrawerOpen, setDrawerOpen] = useState(false);
-  const { pathname } = useLocation();
+	const [DrawerOpen, setDrawerOpen] = useState(false);
+	// const { pathname } = useLocation();
 
-  return (
-    <RootStyle>
-      <ToolbarStyle>
-        <RouterLink to="/">
-          <StyledLogo />
-        </RouterLink>
-        <StyledSearchIcon />
-        <NavbarHeading>{props.title}</NavbarHeading>
-        {pathname === '/property-city' &&
-          <NavbarHeading>
-            {props.title}
-            {props.titleOptions && (
-              <>
-                {props.titleOptions} &nbsp; - &nbsp;
-                <FormControl variant="standard" >
-                  <NavbarHeadingSelect
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    value={props.area}
-                    onChange={props.handleChange}
-                  >
-                    <MenuItem value="Bengaluru" selected>Bengaluru</MenuItem>
-                    <MenuItem value="Mumbai">Mumbai</MenuItem>
-                    <MenuItem value="Delhi">Delhi</MenuItem>
-                  </NavbarHeadingSelect>
-                </FormControl>
-              </>
-            )}
-          </NavbarHeading>}
-        <SearchBarBox>
-          <StyledSearchbar />
-          <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
-            <IconContainer>
-              <Line />
-              <Line />
-              <Line2 />
-            </IconContainer>
-          </IconButton>
-        </SearchBarBox>
-      </ToolbarStyle>
+	return (
+		<RootStyle>
+			<ToolbarStyle>
+				<RouterLink to="/">
+					<StyledLogo />
+				</RouterLink>
+				<StyledSearchIcon />
+				{/* <NavbarHeading>{props.title}</NavbarHeading> */}
+				{/* {pathname === "/property-city" ||
+					(pathname === "/contact" && ( */}
+				<NavbarHeading>
+					{props.title}
+					{props.titleOptions && (
+						<>
+							&nbsp; - &nbsp;
+							<FormControl variant="standard">
+								<NavbarHeadingSelect
+									labelId="demo-simple-select-standard-label"
+									id="demo-simple-select-standard"
+									value={props.area}
+									onChange={props.handleChange}
+								>
+									<MenuItem value="Bengaluru" selected>
+										Bengaluru
+									</MenuItem>
+									<MenuItem value="Mumbai">Mumbai</MenuItem>
+									<MenuItem value="Delhi">Delhi</MenuItem>
+								</NavbarHeadingSelect>
+							</FormControl>
+						</>
+					)}
+				</NavbarHeading>
+				{/* ))} */}
+				<SearchBarBox>
+					<StyledSearchbar />
+					<IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
+						<IconContainer>
+							<Line />
+							<Line />
+							<Line2 />
+						</IconContainer>
+					</IconButton>
+				</SearchBarBox>
+			</ToolbarStyle>
 
-      <MainSidebar
-        isDrawerOpen={DrawerOpen}
-        onCloseDrawer={() => setDrawerOpen(false)}
-      />
-    </RootStyle>
-  );
+			<MainSidebar
+				isDrawerOpen={DrawerOpen}
+				onCloseDrawer={() => setDrawerOpen(false)}
+			/>
+		</RootStyle>
+	);
 }
