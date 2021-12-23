@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import image1 from 'assets/images/splash-web.png'
 import logo from 'assets/images/rmz-logo (1).svg'
 import image2 from 'assets/images/MaskGroup6.svg'
-import buttonArrow from 'assets/images/button-arrow.svg'
+import buttonArrow from 'assets/images/button-arrow-right.png'
 import buttonLine from 'assets/images/button-line-2.svg'
 import { Button1, ButtonContainer, ButtonLine, Text1, Container2, MainContainer, Image1, Logo, Image2, SkipButton } from "./styles";
 

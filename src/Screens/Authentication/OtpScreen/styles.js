@@ -52,7 +52,14 @@ export const Button1 = styled(Button)(() => ({
 export const TextField1 = styled(TextField)(() => ({
   width: "100%",
   borderRadius: "6px",
-  color: "white"
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'grey',
+    },
+    '&:hover fieldset': {
+      borderColor: 'grey',
+    },
+  },
 }));
 
 export const Text1 = styled(Typography)(() => ({
@@ -95,8 +102,18 @@ export const OtpContainer = styled('div')(() => ({
 }));
 
 export const OtpTextField = styled(TextField)(() => ({
-  color: "#ffffff",
-  fontSize: "30px"
+  fontSize: "30px",
+  borderRadius: "10px",
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'grey',
+      borderRadius: "10px",
+    },
+    '&:hover fieldset': {
+      borderColor: 'grey',
+      borderRadius: "10px",
+    },
+  },
 }));
 
 
