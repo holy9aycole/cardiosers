@@ -1,96 +1,172 @@
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import PropTypes from "prop-types";
 // material
-import { styled } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container } from '@mui/material';
-// hooks
-import useOffSetTop from '../../hooks/useOffSetTop';
+import { alpha, styled } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
+import Searchbar from "layouts/main/Searchbar";
+import { Link as RouterLink } from "react-router-dom";
 // components
-import Logo from '../../components/Logo';
-import Label from '../../components/Label';
-import { MHidden } from '../../components/@material-extend';
-//
-import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
-import navConfig from './MenuConfig';
+import { useState } from "react";
+import MainSidebar from "layouts/main/MainSidebar";
+import { ReactComponent as Logo } from "assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 88;
+const APPBAR_MOBILE = 64;
+const APPBAR_DESKTOP = 81;
+
+const RootStyle = styled(AppBar)(({ theme }) => ({
+  boxShadow: "none",
+  backdropFilter: "blur(6px)",
+  WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
+  backgroundColor: alpha("#3D3DD9", 1),
+  [theme.breakpoints.up("lg")]: {
+    width: `calc(100% - 0px)`,
+  },
+}));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
-  height: APP_BAR_MOBILE,
-  transition: theme.transitions.create(['height', 'background-color'], {
-    easing: theme.transitions.easing.easeInOut,
-    duration: theme.transitions.duration.shorter
-  }),
-  [theme.breakpoints.up('md')]: {
-    height: APP_BAR_DESKTOP
-  }
+  minHeight: APPBAR_MOBILE,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "0px 20px",
+  [theme.breakpoints.up("lg")]: {
+    minHeight: APPBAR_DESKTOP,
+    padding: theme.spacing(0, 5),
+  },
 }));
 
-const ToolbarShadowStyle = styled('div')(({ theme }) => ({
-  left: 0,
-  right: 0,
-  bottom: 0,
-  height: 24,
-  zIndex: -1,
-  margin: 'auto',
-  borderRadius: '50%',
-  position: 'absolute',
-  width: `calc(100% - 48px)`,
-  boxShadow: theme.customShadows.z8
+const SearchBarBox = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
+
+const StyledSearchIcon = styled(SearchIcon)(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
+}));
+
+const NavbarHeading = styled("div")(({ theme }) => ({
+  fontSize: 20,
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  paddingLeft: '150px',
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 15,
+  },
+}));
+
+const StyledLogo = styled(Logo)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
+
+const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
+
+const IconContainer = styled("div")(() => ({
+  width: "30px",
+  height: "25px",
+}));
+
+const Line = styled("div")(() => ({
+  width: "100%",
+  height: "3px",
+  background: "#FFFFFF",
+  marginBottom: "8.5px",
+}));
+const Line2 = styled("div")(() => ({
+  width: "50%",
+  height: "3px",
+  display: "flex",
+  justifyContent: "flex-start",
+  background: "#FFFFFF",
+}));
+
+const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
+  marginTop: -3,
+  marginLeft: 2,
+  color: "#FFF",
+  fontSize: 20,
+  textTransform: "capitalize",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 15,
+  },
 }));
 
 // ----------------------------------------------------------------------
 
-export default function MainNavbar() {
-  const isOffset = useOffSetTop(100);
-  const { pathname } = useLocation();
-  const isHome = pathname === '/';
+MainNavbar.propTypes = {
+  onOpenSidebar: PropTypes.func,
+  title: PropTypes.string,
+};
+
+// ----------------------------------------------------------------------
+
+export default function MainNavbar(props) {
+  const [DrawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
-      <ToolbarStyle
-        disableGutters
-        sx={{
-          ...(isOffset && {
-            bgcolor: 'background.default',
-            height: { md: APP_BAR_DESKTOP - 16 }
-          })
-        }}
-      >
-        <Container
-          maxWidth="lg"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}
-        >
-          <RouterLink to="/">
-            <Logo />
-          </RouterLink>
-          <Label color="info" sx={{ ml: 1 }}>
-            v2.6.0
-          </Label>
-          <Box sx={{ flexGrow: 1 }} />
-
-          <MHidden width="mdDown">
-            <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
-          </MHidden>
-
-          <Button variant="contained" target="_blank" href="https://material-ui.com/store/items/minimal-dashboard/">
-            Purchase Now
-          </Button>
-
-          <MHidden width="mdUp">
-            <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
-          </MHidden>
-        </Container>
+    <RootStyle>
+      <ToolbarStyle>
+        <RouterLink to="/">
+          <StyledLogo />
+        </RouterLink>
+        <StyledSearchIcon />
+        {props.titleOptions ?
+          <NavbarHeading>
+            {props.titleOptions}
+            {props.titleOptions && (
+              <>
+                &nbsp; - &nbsp;
+                <FormControl variant="standard">
+                  <NavbarHeadingSelect
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={props.area}
+                    onChange={props.handleChange}
+                  >
+                    <MenuItem value="Bengaluru" selected>
+                      Bengaluru
+                    </MenuItem>
+                    <MenuItem value="Mumbai">Mumbai</MenuItem>
+                    <MenuItem value="Delhi">Delhi</MenuItem>
+                  </NavbarHeadingSelect>
+                </FormControl>
+              </>
+            )}
+          </NavbarHeading>
+          : <NavbarHeading>{props.title}</NavbarHeading>
+        }
+        <SearchBarBox>
+          <StyledSearchbar />
+          <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
+            <IconContainer>
+              <Line />
+              <Line />
+              <Line2 />
+            </IconContainer>
+          </IconButton>
+        </SearchBarBox>
       </ToolbarStyle>
 
-      {isOffset && <ToolbarShadowStyle />}
-    </AppBar>
+      <MainSidebar
+        isDrawerOpen={DrawerOpen}
+        onCloseDrawer={() => setDrawerOpen(false)}
+      />
+    </RootStyle>
   );
 }
