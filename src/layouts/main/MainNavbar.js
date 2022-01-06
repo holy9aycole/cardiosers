@@ -1,23 +1,21 @@
 import PropTypes from "prop-types";
-// import { Icon } from "@iconify/react";
-// import menu2Fill from "@iconify/icons-eva/menu-2-fill";
 // material
 import { alpha, styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import {
-	AppBar,
-	Toolbar,
-	IconButton,
-	Select,
-	FormControl,
-	MenuItem,
+  AppBar,
+  Toolbar,
+  IconButton,
+  MenuItem,
+  FormControl,
+  Select,
 } from "@mui/material";
 import Searchbar from "layouts/main/Searchbar";
-
+import { Link as RouterLink } from "react-router-dom";
 // components
 import { useState } from "react";
 import MainSidebar from "layouts/main/MainSidebar";
-import { ReactComponent as Logo } from "../../assets/rmz-logo.svg";
+import { ReactComponent as Logo } from "assets/rmz-logo.svg";
 
 // ----------------------------------------------------------------------
 
@@ -58,12 +56,13 @@ const StyledSearchIcon = styled(SearchIcon)(({ theme }) => ({
 }));
 
 const NavbarHeading = styled("div")(({ theme }) => ({
-	fontSize: 20,
-	fontWeight: "bold",
-	textTransform: "uppercase",
-	[theme.breakpoints.down("sm")]: {
-		fontSize: 15,
-	},
+  fontSize: 20,
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  paddingLeft: '150px',
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 15,
+  },
 }));
 
 const StyledLogo = styled(Logo)(({ theme }) => ({
@@ -108,6 +107,7 @@ const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
 	},
 }));
 
+
 // ----------------------------------------------------------------------
 
 MainNavbar.propTypes = {
@@ -118,49 +118,56 @@ MainNavbar.propTypes = {
 // ----------------------------------------------------------------------
 
 export default function MainNavbar(props) {
-	const [DrawerOpen, setDrawerOpen] = useState(false);
+  const [DrawerOpen, setDrawerOpen] = useState(false);
 
-	return (
-		<RootStyle>
-			<ToolbarStyle>
-				<StyledLogo />
-				<StyledSearchIcon />
-				<NavbarHeading>
-					{props.title}
-					{props.titleOptions && (
-						<FormControl variant="standard">
-							<NavbarHeadingSelect
-								labelId="demo-simple-select-standard-label"
-								id="demo-simple-select-standard"
-								value={props.area}
-								onChange={props.handleChange}
-							>
-								{props.titleOptions.map((option, index) => (
-									<MenuItem value={option} key={index} selected>
-										{" "}
-										- {option}
-									</MenuItem>
-								))}
-							</NavbarHeadingSelect>
-						</FormControl>
-					)}
-				</NavbarHeading>
-				<SearchBarBox>
-					<StyledSearchbar />
-					<IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
-						<IconContainer>
-							<Line />
-							<Line />
-							<Line2 />
-						</IconContainer>
-					</IconButton>
-				</SearchBarBox>
-			</ToolbarStyle>
+  return (
+    <RootStyle>
+      <ToolbarStyle>
+        <RouterLink to="/">
+          <StyledLogo />
+        </RouterLink>
+        <StyledSearchIcon />
+        {props.titleOptions ?
+          <NavbarHeading>
+            {props.titleOptions}
+            {props.titleOptions && (
+              <>
+                &nbsp; - &nbsp;
+                <FormControl variant="standard">
+                  <NavbarHeadingSelect
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={props.area}
+                    onChange={props.handleChange}
+                  >
+                    <MenuItem value="Bengaluru" selected>
+                      Bengaluru
+                    </MenuItem>
+                    <MenuItem value="Mumbai">Mumbai</MenuItem>
+                    <MenuItem value="Delhi">Delhi</MenuItem>
+                  </NavbarHeadingSelect>
+                </FormControl>
+              </>
+            )}
+          </NavbarHeading>
+          : <NavbarHeading>{props.title}</NavbarHeading>
+        }
+        <SearchBarBox>
+          <StyledSearchbar />
+          <IconButton onClick={() => setDrawerOpen(true)} sx={{}}>
+            <IconContainer>
+              <Line />
+              <Line />
+              <Line2 />
+            </IconContainer>
+          </IconButton>
+        </SearchBarBox>
+      </ToolbarStyle>
 
-			<MainSidebar
-				isDrawerOpen={DrawerOpen}
-				onCloseDrawer={() => setDrawerOpen(false)}
-			/>
-		</RootStyle>
-	);
+      <MainSidebar
+        isDrawerOpen={DrawerOpen}
+        onCloseDrawer={() => setDrawerOpen(false)}
+      />
+    </RootStyle>
+  );
 }

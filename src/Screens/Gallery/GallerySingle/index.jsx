@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import Lightbox from "react-image-lightbox";
-import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import detailedView1 from "assets/images/GalleryDetailed/3.png";
 import detailedView2 from "assets/images/GalleryDetailed/4-1.png";
 import detailedView3 from "assets/images/GalleryDetailed/4.png";
@@ -23,7 +23,14 @@ import detailedView17 from "assets/images/GalleryDetailed/17.png";
 import detailedView18 from "assets/images/GalleryDetailed/18-1.png";
 import detailedView19 from "assets/images/GalleryDetailed/18.png";
 import detailedView20 from "assets/images/GalleryDetailed/19.png";
-import { Container,ImageCard } from "./styles";
+import {
+	Container,
+	ImageCard,
+	StyledSwitch,
+	ImageContainer,
+	FileDownloadButton,
+} from "./styles";
+import "assets/css/gallery-single.css";
 
 const images = [
 	detailedView1,
@@ -52,49 +59,67 @@ console.log(images);
 
 function GallerySinglePage() {
 	const [open, setOpen] = useState(false);
-	const [photoIndex, setPhotoIndex] = useState(0)
+	const [photoIndex, setPhotoIndex] = useState(0);
+	const [checked, setChecked] = useState(false);
 
 	const handleOpen = (index) => {
 		setOpen(!open);
-		setPhotoIndex(index)
+		setPhotoIndex(index);
 	};
+
+	const handleChange = (e) => {
+		setChecked(e.target.checked);
+	};
+
+	const DownloadButton = () => (
+		<FileDownloadButton onClick={() => (alert("clicked"))}>
+			<FileDownloadIcon />
+		</FileDownloadButton>
+	);
 
 	return (
 		<>
-		{!open && <DashboardNavbar title="Connecting Spaces"/>}
-			<Container>
-				<ImageList
-					variant="masonry"
-					cols={window.innerWidth > 600 ? 6 : 2}
-					gap={window.innerWidth > 800 ? 26 : 10}
-				>
-					{images.map((image, index) => (
-						<ImageListItem key={index}>
-							<ImageCard  onClick={()=>handleOpen(index)}>
-								<img
-									src={`${image}`}
-									srcSet={`${image}`}
-									alt=""
-									loading="lazy"
-								/>
-							</ImageCard>
-						</ImageListItem>
-					))}
-				</ImageList>
-			</Container>
+			<ImageContainer>
+				<Container>
+					<StyledSwitch checked={checked} onChange={handleChange} />
+					<ImageList
+						variant="masonry"
+						cols={window.innerWidth > 600 ? 7 : 3}
+						gap={10}
+					>
+						{images.map((image, index) => (
+							<ImageListItem key={index}>
+								<ImageCard onClick={() => handleOpen(index)}>
+									<img
+										src={`${image}`}
+										srcSet={`${image}`}
+										alt=""
+										loading="lazy"
+									/>
+								</ImageCard>
+							</ImageListItem>
+						))}
+					</ImageList>
+				</Container>
+			</ImageContainer>
+
 			{open && (
-				<Lightbox
-					mainSrc={images[photoIndex]}
-					nextSrc={images[(photoIndex + 1) % images.length]}
-					prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-					onCloseRequest={() => setOpen(false)}
-					onMovePrevRequest={() =>
-						setPhotoIndex((photoIndex + images.length - 1) % images.length)
-					}
-					onMoveNextRequest={() =>
-						setPhotoIndex((photoIndex + 1) % images.length)
-					}
-				/>
+				<>
+					<Lightbox
+						mainSrc={images[photoIndex]}
+						nextSrc={images[(photoIndex + 1) % images.length]}
+						prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+						onCloseRequest={() => setOpen(false)}
+						onMovePrevRequest={() =>
+							setPhotoIndex((photoIndex + images.length - 1) % images.length)
+						}
+						onMoveNextRequest={() =>
+							setPhotoIndex((photoIndex + 1) % images.length)
+						}
+					// toolbarButtons={[<DownloadButton/>]}
+					/>
+					<DownloadButton />
+				</>
 			)}
 		</>
 	);

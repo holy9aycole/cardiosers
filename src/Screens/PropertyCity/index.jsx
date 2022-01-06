@@ -15,7 +15,6 @@ import YouTube from "react-youtube";
 // Slider
 import Slider from "react-slick";
 // Assets
-import DashboardNavbar from "layouts/dashboard/DashboardNavbar";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
 import {
@@ -38,12 +37,6 @@ import {
 
 function PropertyCity({ locations, micromarketID }) {
 	const [expanded, setExpanded] = React.useState(false);
-
-	const [area, setArea] = React.useState("Bengaluru");
-
-	const handleAreaChange = (event) => {
-		setArea(event.target.value);
-	};
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
@@ -94,12 +87,6 @@ function PropertyCity({ locations, micromarketID }) {
 
 	return (
 		<PropertyPage>
-			<DashboardNavbar
-				title="Property"
-				titleOptions="Bengaluru"
-				handleChange={handleAreaChange}
-				area={area}
-			/>
 			<BannerContainer>
 				<BannerImage src={banner1} alt="" />
 				<Overlay />

@@ -5,11 +5,10 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import {
   Divider,
-  TextareaAutosize,
   TextField,
   Typography,
 } from "@mui/material";
-import { useStyles, MainContainer } from "./QuestionModalStyles";
+import { useStyles, MainContainer, Submit } from "./QuestionModalStyles";
 
 const style = {
   position: "absolute",
@@ -65,10 +64,12 @@ export default function QuestionModel(props) {
                 <Typography className={classes.inputHeading}>
                   Describe what you've tried
                 </Typography>
-                <TextareaAutosize
-                  aria-label="minimum height"
-                  minRows={5}
-                  className={classes.inputtext}
+                <TextField
+                  id="outlined-multiline-static"
+                  style={{ width: "100%" }}
+                  multiline
+                  rows={4}
+                  defaultValue=""
                 />
               </div>
               <div className={classes.inputContainer}>
@@ -76,6 +77,9 @@ export default function QuestionModel(props) {
                   Category
                 </Typography>
                 <TextField className={classes.inputtext} />
+              </div>
+              <div className={classes.inputContainer}>
+                <Submit>SUBMIT</Submit>
               </div>
             </MainContainer>
           </Box>

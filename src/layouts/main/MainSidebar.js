@@ -44,11 +44,12 @@ export default function MainSidebar(props) {
               </CloseIconContainer>
               <Divider />
               {sidebarConfig[0].items.map((row, index) => (
-                <Links key={index} onClick={closeDrawer} button>
-                  <Link style={{ textDecoration: "none" }} to={row.path}>
+                <Link style={{ textDecoration: "none" }} to={row.path} key={index}>
+                  <Links onClick={closeDrawer} button>
                     <ListItemText className="linkNav">{row.title}</ListItemText>
-                  </Link>
-                </Links>
+                  </Links>
+                </Link>
+
               ))}
               <img className="shadow" src={dShadow} alt="drawer shadow" />
             </LinkContainer>

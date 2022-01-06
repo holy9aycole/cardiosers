@@ -5,7 +5,6 @@ import { styled, useTheme } from "@mui/material/styles";
 // hooks
 import useCollapseDrawer from "hooks/useCollapseDrawer";
 //
-// import DashboardNavbar from './DashboardNavbar';
 import Header from "layouts/main/MainNavbar";
 import DashboardSidebar from "./DashboardSidebar";
 
@@ -44,8 +43,6 @@ export default function DashboardLayout() {
     <>
       <Header title="News Feed" />
       <RootStyle>
-        {/* <DashboardNavbar onOpenSidebar={() => setOpen(true)} title="What's New" /> */}
-
         <DashboardSidebar
           isOpenSidebar={open}
           onCloseSidebar={() => setOpen(false)}
