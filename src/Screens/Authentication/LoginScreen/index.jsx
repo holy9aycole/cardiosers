@@ -22,7 +22,7 @@ function LoginScreen() {
 
         <FormContainer>
           <MailIcon src={mailIcon} alt="" />
-          <TextField1 label="Enter you Email" />
+          <TextField1 placeholder="Enter you Email" />
           <Link to="/otp">
             <Button1>GET OTP</Button1>
           </Link>
