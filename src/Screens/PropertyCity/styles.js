@@ -7,6 +7,7 @@ const {
 	AccordionSummary,
 	Typography,
 	CardContent,
+	AccordionDetails,
 } = require("@mui/material");
 
 export const PropertyPage = styled("div")({
@@ -28,15 +29,18 @@ export const BannerContainer = styled("div")(({ theme }) => ({
 		marginTop: 60,
 	},
 	[theme.breakpoints.down("sm")]: {
-		display: "none",
+		height: 100,
 	},
 }));
 
-export const BannerImage = styled("img")({
+export const BannerImage = styled("img")(({ theme }) => ({
 	position: "absolute",
 	width: "100%",
 	height: 233,
-});
+	[theme.breakpoints.down("sm")]: {
+		display: "none",
+	},
+}));
 
 export const Overlay = styled("div")(({ theme }) => ({
 	width: "100%",
@@ -53,14 +57,18 @@ export const Overlay = styled("div")(({ theme }) => ({
 	zIndex: 2,
 }));
 
-export const StyledSelect = styled(Select)({
+export const StyledSelect = styled(Select)(({ theme }) => ({
 	width: "30%",
 	marginTop: 20,
 	zIndex: 3,
-	border: "1px solid #3D3DD9",
 	color: "#fff",
 	background: "rgba(0,0,0,0.2)",
-});
+	[theme.breakpoints.down("sm")]: {
+		width: "75%",
+		background: "#FFF",
+		color: "#000",
+	},
+}));
 
 export const StyledSelectIcon = styled(ArrowDropDownIcon)({
 	color: "#3D3DD9",
@@ -103,13 +111,17 @@ export const AccordionTypography = styled(Typography)({
 export const StyledCardContent = styled(CardContent)(({ theme }) => ({
 	background: "#2E2E80",
 	color: "#FFF",
-	height: "16vh",
+	height: "18vh",
 	overflow: "hidden",
-	[theme.breakpoints.down("sm")]: {
-		padding: 12,
+	[theme.breakpoints.only("sm")]: {
+		padding: 14,
+		height: "26vh",
+	},
+	[theme.breakpoints.only("md")]: {
+		height: "25vh",
 	},
 	[theme.breakpoints.only("lg")]: {
-		height: "13vh",
+		height: "20vh",
 	},
 	">div": {
 		fontFamily: "IvyPresto Display",
@@ -144,12 +156,12 @@ export const StyledMask = styled("img")(({ theme }) => ({
 		left: "35%",
 	},
 	[theme.breakpoints.only("md")]: {
-		bottom: "17vh",
-		left: "37%",
+		bottom: "27vh",
+		left: "50%",
 	},
 	[theme.breakpoints.only("sm")]: {
-		bottom: "18vh",
-		left: "37%",
+		bottom: "30vh",
+		left: "42%",
 	},
 	[theme.breakpoints.down("sm")]: {
 		bottom: "22vh",
@@ -170,14 +182,18 @@ export const NextButton = styled("div")(({ theme }) => ({
 	background: "#3D3DD9",
 	left: "95%",
 	[theme.breakpoints.only("xs")]: {
-		bottom: "25vh",
+		bottom: "34vh",
 		left: " 84%",
 		width: "40px",
 		height: "40px",
 		borderRadius: "20px",
 	},
 	[theme.breakpoints.only("sm")]: {
-		bottom: "27vh",
+		bottom: "47vh",
+		left: "88%",
+	},
+	[theme.breakpoints.only("md")]: {
+		bottom: "44vh",
 		left: "88%",
 	},
 	[theme.breakpoints.only("xl")]: {
@@ -191,3 +207,48 @@ export const NextButton = styled("div")(({ theme }) => ({
 	justifyContent: "center",
 	cursor: "pointer",
 }));
+
+export const NextArrowDiv = styled("div")(({ theme }) => ({
+	background: "transparent",
+	height: 40,
+	width: 40,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	"> svg": {
+		fill: "#3D3DD9",
+	},
+	position: "relative",
+	top: 0,
+	left: "96%",
+	cursor: "pointer",
+	[theme.breakpoints.down("sm")]: {
+		top: "-0.3vh",
+		left: "90%",
+	},
+}));
+export const PrevArrowDiv = styled("div")(({ theme }) => ({
+	background: "transparent",
+	height: 40,
+	width: 40,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	"> svg": {
+		fill: "#555",
+	},
+	position: "relative",
+	top: "51vh",
+	left: "92%",
+	cursor: "pointer",
+	[theme.breakpoints.up("sm")]: {
+		top: 646,
+	},
+	[theme.breakpoints.down("sm")]: {
+		top: "96vh",
+		left: "80%",
+	},
+}));
+export const StyledAccordionDetails = styled(AccordionDetails)({
+	background:"transparent"
+})

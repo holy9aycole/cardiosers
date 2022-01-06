@@ -23,36 +23,36 @@ const APPBAR_MOBILE = 64;
 const APPBAR_DESKTOP = 81;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
-  boxShadow: "none",
-  backdropFilter: "blur(6px)",
-  WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
-  backgroundColor: alpha("#3D3DD9", 1),
-  [theme.breakpoints.up("lg")]: {
-    width: `calc(100% - 0px)`,
-  },
+	boxShadow: "none",
+	backdropFilter: "blur(6px)",
+	WebkitBackdropFilter: "blur(6px)", // Fix on Mobile
+	backgroundColor: alpha("#3D3DD9", 1),
+	[theme.breakpoints.up("lg")]: {
+		width: `calc(100% - 0px)`,
+	},
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
-  minHeight: APPBAR_MOBILE,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0px 20px",
-  [theme.breakpoints.up("lg")]: {
-    minHeight: APPBAR_DESKTOP,
-    padding: theme.spacing(0, 5),
-  },
+	minHeight: APPBAR_MOBILE,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "space-between",
+	padding: "0px 20px",
+	[theme.breakpoints.up("lg")]: {
+		minHeight: APPBAR_DESKTOP,
+		padding: theme.spacing(0, 5),
+	},
 }));
 
 const SearchBarBox = styled("div")({
-  display: "flex",
-  alignItems: "center",
+	display: "flex",
+	alignItems: "center",
 });
 
 const StyledSearchIcon = styled(SearchIcon)(({ theme }) => ({
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
+	[theme.breakpoints.up("sm")]: {
+		display: "none",
+	},
 }));
 
 const NavbarHeading = styled("div")(({ theme }) => ({
@@ -66,52 +66,53 @@ const NavbarHeading = styled("div")(({ theme }) => ({
 }));
 
 const StyledLogo = styled(Logo)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
-  },
+	[theme.breakpoints.down("sm")]: {
+		display: "none",
+	},
 }));
 
 const StyledSearchbar = styled(Searchbar)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
-  },
+	[theme.breakpoints.down("sm")]: {
+		display: "none",
+	},
 }));
 
 const IconContainer = styled("div")(() => ({
-  width: "30px",
-  height: "25px",
+	width: "30px",
+	height: "25px",
 }));
 
 const Line = styled("div")(() => ({
-  width: "100%",
-  height: "3px",
-  background: "#FFFFFF",
-  marginBottom: "8.5px",
+	width: "100%",
+	height: "3px",
+	background: "#FFFFFF",
+	marginBottom: "8.5px",
 }));
 const Line2 = styled("div")(() => ({
-  width: "50%",
-  height: "3px",
-  display: "flex",
-  justifyContent: "flex-start",
-  background: "#FFFFFF",
+	width: "50%",
+	height: "3px",
+	display: "flex",
+	justifyContent: "flex-start",
+	background: "#FFFFFF",
 }));
 
 const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
-  marginTop: -3,
-  marginLeft: 2,
-  color: "#FFF",
-  fontSize: 20,
-  textTransform: "capitalize",
-  [theme.breakpoints.down("sm")]: {
-    fontSize: 15,
-  },
+	marginTop: -3,
+	marginLeft: 2,
+	color: "#FFF",
+	fontSize: 20,
+	textTransform: "capitalize",
+	[theme.breakpoints.down("sm")]: {
+		fontSize: 15,
+	},
 }));
+
 
 // ----------------------------------------------------------------------
 
 MainNavbar.propTypes = {
-  onOpenSidebar: PropTypes.func,
-  title: PropTypes.string,
+	onOpenSidebar: PropTypes.func,
+	title: PropTypes.string,
 };
 
 // ----------------------------------------------------------------------
