@@ -7,6 +7,7 @@ const {
 	AccordionSummary,
 	Typography,
 	CardContent,
+	AccordionDetails,
 } = require("@mui/material");
 
 export const PropertyPage = styled("div")({
@@ -110,7 +111,7 @@ export const AccordionTypography = styled(Typography)({
 export const StyledCardContent = styled(CardContent)(({ theme }) => ({
 	background: "#2E2E80",
 	color: "#FFF",
-	height: "16vh",
+	height: "18vh",
 	overflow: "hidden",
 	[theme.breakpoints.only("sm")]: {
 		padding: 14,
@@ -222,7 +223,7 @@ export const NextArrowDiv = styled("div")(({ theme }) => ({
 	left: "96%",
 	cursor: "pointer",
 	[theme.breakpoints.down("sm")]: {
-		top: "0.3vh",
+		top: "-0.3vh",
 		left: "90%",
 	},
 }));
@@ -237,7 +238,7 @@ export const PrevArrowDiv = styled("div")(({ theme }) => ({
 		fill: "#555",
 	},
 	position: "relative",
-	top: "51.3vh",
+	top: "51vh",
 	left: "92%",
 	cursor: "pointer",
 	[theme.breakpoints.up("sm")]: {
@@ -248,3 +249,6 @@ export const PrevArrowDiv = styled("div")(({ theme }) => ({
 		left: "80%",
 	},
 }));
+export const StyledAccordionDetails = styled(AccordionDetails)({
+	background:"transparent"
+})
