@@ -83,16 +83,13 @@ export const AccordionContainer = styled("div")({
 });
 
 export const StyledAccordion = styled(Accordion)(({ theme }) => ({
-	width: "80%",
+	width: "90%",
 	padding: 20,
-	boxShadow: "none",
+	boxShadow: "none!important",
 	background: "transparent",
 	[theme.breakpoints.down("sm")]: {
 		width: "100%",
-	},
-	"& .Mui-expanded": {
-		boxShadow: "none",
-	},
+	}
 }));
 
 export const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
