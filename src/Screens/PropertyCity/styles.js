@@ -76,14 +76,11 @@ export const StyledSelectIcon = styled(ArrowDropDownIcon)({
 	color: "#3D3DD9",
 });
 
-export const AccordionContainer = styled("div")(({ theme }) => ({
+export const AccordionContainer = styled("div")({
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	[theme.breakpoints.down("sm")]: {
-		marginTop: 81,
-	},
-}));
+});
 
 export const StyledAccordion = styled(Accordion)(({ theme }) => ({
 	width: "80%",
