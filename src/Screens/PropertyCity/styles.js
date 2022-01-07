@@ -1,4 +1,5 @@
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 const {
 	styled,
@@ -8,6 +9,7 @@ const {
 	Typography,
 	CardContent,
 	AccordionDetails,
+	Card,
 } = require("@mui/material");
 
 export const PropertyPage = styled("div")({
@@ -83,29 +85,42 @@ export const AccordionContainer = styled("div")(({ theme }) => ({
 	},
 }));
 
-export const StyledAccordion = styled(Accordion)({
+export const StyledAccordion = styled(Accordion)(({ theme }) => ({
 	width: "80%",
 	padding: 20,
-	"& MuiPaper-root-MuiAccordion-root.Mui-expanded": {
+	boxShadow: "none",
+	background: "transparent",
+	[theme.breakpoints.down("sm")]: {
+		width: "100%",
+	},
+	"& .Mui-expanded": {
 		boxShadow: "none",
 	},
-});
+}));
 
-export const StyledAccordionSummary = styled(AccordionSummary)({
+export const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
 	color: "#90A4AE",
+	[theme.breakpoints.down("sm")]: {
+		padding: "0px 10%",
+	},
 	"& .Mui-expanded": {
 		color: "#3D3DD9",
+		boxShadow: "none",
 		">p": {
 			fontFamily: "IvyPresto Display",
 			fontSize: 24,
 			transition: "all 300ms ease-in-out",
 		},
 	},
-});
+}));
 
 export const AccordionTypography = styled(Typography)({
 	fontFamily: "IvyPresto Display",
 	fontSize: 20,
+});
+
+export const StyledCard = styled(Card)({
+	background: "transparent",
 });
 
 export const StyledCardContent = styled(CardContent)(({ theme }) => ({
@@ -250,5 +265,47 @@ export const PrevArrowDiv = styled("div")(({ theme }) => ({
 	},
 }));
 export const StyledAccordionDetails = styled(AccordionDetails)({
-	background:"transparent"
-})
+	background: "transparent",
+});
+export const StyledAccordionDetails2 = styled(AccordionDetails)({
+	marginTop: -40,
+	background: "transparent",
+});
+
+export const FloorPlans = styled("div")({
+	width: "100%",
+	height: "100%",
+	position: "absolute",
+	top: 0,
+	background: "#3d3dd978",
+	display: "flex",
+	alignItems: "center",
+	padding: 20,
+	borderRadius: "inherit",
+	justifyContent: "space-between",
+});
+
+export const Text1 = styled(Typography)(({ theme }) => ({
+	fontFamily: "IvyPresto Display",
+	fontSize: 60,
+	[theme.breakpoints.down("md")]: {
+		fontSize: 30,
+	},
+}));
+export const Text2 = styled(Typography)(({ theme }) => ({
+	fontFamily: "Poppins",
+	fontWeight: 500,
+	fontSize: 22,
+	[theme.breakpoints.down("md")]: {
+		fontSize: 15,
+	},
+}));
+export const TextBox = styled("div")({
+	display: "flex",
+	flexDirection: "column",
+});
+
+export const PDFDownload = styled(FileDownloadIcon)({
+	height: "80%",
+	width: "20%",
+});

@@ -3,7 +3,6 @@ import React from "react";
 import {
 	MenuItem,
 	Typography,
-	Card,
 	CardMedia,
 	ImageList,
 	ImageListItem,
@@ -21,7 +20,7 @@ import image2 from "assets/images/PropertyCity/7.png";
 import image3 from "assets/images/PropertyCity/13.png";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
-import banner2 from "assets/images/PropertyCity/g-3.png"
+import banner2 from "assets/images/PropertyCity/g-3.png";
 import {
 	BannerContainer,
 	BannerImage,
@@ -33,12 +32,19 @@ import {
 	StyledAccordion,
 	StyledAccordionSummary,
 	AccordionTypography,
+	StyledCard,
 	StyledCardContent,
 	StyledMask,
 	NextButton,
 	NextArrowDiv,
 	PrevArrowDiv,
-	StyledAccordionDetails
+	StyledAccordionDetails,
+	StyledAccordionDetails2,
+	FloorPlans,
+	TextBox,
+	Text1,
+	Text2,
+	PDFDownload,
 } from "./styles";
 
 const images = [image1, image2, image3, image1, image2, image3];
@@ -125,7 +131,7 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 						<AccordionTypography>About Property</AccordionTypography>
 					</StyledAccordionSummary>
 					<StyledAccordionDetails>
-						<Card>
+						<StyledCard>
 							<CardMedia
 								component="img"
 								alt="banner1"
@@ -145,7 +151,7 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 									<ArrowForwardIosIcon />
 								</NextButton>
 							</StyledCardContent>
-						</Card>
+						</StyledCard>
 					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
@@ -155,12 +161,12 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Micromarket Video</AccordionTypography>
 					</StyledAccordionSummary>
-					<StyledAccordionDetails>
+					<StyledAccordionDetails2>
 						<Slider {...settings}>
 							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
 							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
 						</Slider>
-					</StyledAccordionDetails>
+					</StyledAccordionDetails2>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel3"}
@@ -171,8 +177,8 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 					</StyledAccordionSummary>
 					<StyledAccordionDetails>
 						<ImageList
-							sx={{ width: "100%", height: 350 }}
-							cols={window.innerWidth > 600 ? 4 : 2}
+							sx={{ width: "100%", height: 850 }}
+							cols={window.innerWidth > 600 ? 3 : 2}
 							rowHeight={window.innerWidth > 600 ? 400 : 200}
 							gap={15}
 						>
@@ -224,8 +230,8 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 					</StyledAccordionSummary>
 					<StyledAccordionDetails>
 						<ImageList
-							sx={{ width: "100%", height: 350 }}
-							cols={window.innerWidth > 600 ? 4 : 3}
+							sx={{ width: "100%", height: 850 }}
+							cols={window.innerWidth > 600 ? 3 : 2}
 							rowHeight={window.innerWidth > 600 ? 400 : 100}
 							gap={15}
 						>
@@ -245,9 +251,21 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 						<AccordionTypography>Floor Plans</AccordionTypography>
 					</StyledAccordionSummary>
 					<StyledAccordionDetails>
-						<Card>
-							<img src={banner2} alt="" />
-						</Card>
+						<StyledCard>
+							<CardMedia
+								component="img"
+								alt="banner2"
+								height={window.innerWidth > 600 ? "400" : "200"}
+								image={banner2}
+							/>
+							<FloorPlans>
+								<TextBox>
+									<Text1>RMZ Ecoworld</Text1>
+									<Text2>Download the floor Plans</Text2>
+								</TextBox>
+								<PDFDownload />
+							</FloorPlans>
+						</StyledCard>
 					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
@@ -258,11 +276,21 @@ function PropertyCity({ locations, micromarketID, assetavID }) {
 						<AccordionTypography>Asset Brochure</AccordionTypography>
 					</StyledAccordionSummary>
 					<StyledAccordionDetails>
-						<Typography>
-							Donec placerat, lectus sed mattis semper, neque lectus feugiat
-							lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-							laoreet laoreet.
-						</Typography>
+						<StyledCard>
+							<CardMedia
+								component="img"
+								alt="banner2"
+								height={window.innerWidth > 600 ? "400" : "200"}
+								image={banner2}
+							/>
+							<FloorPlans>
+								<TextBox>
+									<Text1>RMZ Ecoworld</Text1>
+									<Text2>Download the Asset Brochure</Text2>
+								</TextBox>
+								<PDFDownload />
+							</FloorPlans>
+						</StyledCard>
 					</StyledAccordionDetails>
 				</StyledAccordion>
 			</AccordionContainer>
