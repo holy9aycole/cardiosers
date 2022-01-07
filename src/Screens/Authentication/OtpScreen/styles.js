@@ -109,6 +109,10 @@ export const OtpTextField = styled(TextField)(() => ({
 	alignItems: "center",
 	justifyContent: "center",
 	"& .MuiOutlinedInput-root": {
+		"& input": {
+			color: "#fff",
+			textAlign: "center",
+		},
 		"& fieldset": {
 			borderColor: "grey",
 			borderRadius: "10px",

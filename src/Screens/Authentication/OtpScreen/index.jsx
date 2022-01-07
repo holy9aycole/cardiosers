@@ -43,36 +43,16 @@ function LoginScreen() {
 						/>
 						<OtpContainer>
 							<OtpInnerContainer>
-								<OtpTextField
-									defaultValue="1"
-									InputLabelProps={{
-										style: { color: "#fff" },
-									}}
-								/>
+								<OtpTextField placeholder="-" />
 							</OtpInnerContainer>
 							<OtpInnerContainer>
-								<OtpTextField
-									defaultValue="2"
-									InputLabelProps={{
-										style: { color: "#fff" },
-									}}
-								/>
+								<OtpTextField placeholder="-" />
 							</OtpInnerContainer>
 							<OtpInnerContainer>
-								<OtpTextField
-									defaultValue="3"
-									InputLabelProps={{
-										style: { color: "#fff" },
-									}}
-								/>
+								<OtpTextField placeholder="-" />
 							</OtpInnerContainer>
 							<OtpInnerContainer>
-								<OtpTextField
-									defaultValue="4"
-									InputLabelProps={{
-										style: { color: "#fff" },
-									}}
-								/>
+								<OtpTextField placeholder="-" />
 							</OtpInnerContainer>
 						</OtpContainer>
 						<Link to="/splash-screen">
