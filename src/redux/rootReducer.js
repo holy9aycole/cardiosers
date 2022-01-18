@@ -8,6 +8,8 @@ import forum from 'redux/slices/forum'
 import news from 'redux/slices/news'
 import profile from 'redux/slices/profile'
 
+import control from 'redux/slices/control';
+
 // ----------------------------------------------------------------------
 
 const rootPersistConfig = {
@@ -22,7 +24,8 @@ const rootReducer = combineReducers({
   gallery,
   forum,
   news,
-  profile
+  profile,
+  control
 });
 
 export { rootPersistConfig, rootReducer };

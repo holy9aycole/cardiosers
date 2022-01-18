@@ -1,11 +1,30 @@
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/JWTContext';
+/* eslint-disable*/
+import { useContext, useCallback, useState } from "react";
+import { AuthContext } from "../contexts/JWTContext";
 // import { AuthContext } from '../contexts/FirebaseContext';
 // import { AuthContext } from '../contexts/AwsCognitoContext';
 // import { AuthContext } from '../contexts/Auth0Context';
+import axios from "utils/axios";
 
 // ----------------------------------------------------------------------
 
-const useAuth = () => useContext(AuthContext);
+const useAuth = () => {
+  const [isInitialized, setIsInitialized] = useState(true);
+
+  const getOtp = useCallback(async (data) => {
+    const response = await axios.post("/auth/get-otp", data);
+    console.log(response);
+  });
+
+  const register = useCallback(async (data)=>{
+    //post request 
+  })
+
+  return {
+    getOtp,
+    register,
+    isInitialized,
+  };
+};
 
 export default useAuth;

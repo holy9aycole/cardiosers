@@ -1,3 +1,4 @@
+import React, { useRef, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import { SnackbarProvider } from 'notistack';
@@ -8,7 +9,9 @@ import checkmarkCircle2Fill from '@iconify/icons-eva/checkmark-circle-2-fill';
 // material
 import { alpha, useTheme } from '@mui/material/styles';
 import { Box, GlobalStyles } from '@mui/material';
-
+import useControl from 'hooks/useControl';
+import closeFill from '@iconify/icons-eva/close-fill';
+import { MIconButton } from './@material-extend';
 // ----------------------------------------------------------------------
 
 function SnackbarStyles() {
@@ -27,11 +30,10 @@ function SnackbarStyles() {
             borderRadius: theme.shape.borderRadius,
             color: theme.palette.grey[isLight ? 0 : 800],
             backgroundColor: theme.palette.grey[isLight ? 900 : 0],
-            '&.SnackbarItem-variantSuccess, &.SnackbarItem-variantError, &.SnackbarItem-variantWarning, &.SnackbarItem-variantInfo':
-              {
-                color: theme.palette.text.primary,
-                backgroundColor: theme.palette.background.paper
-              }
+            '&.SnackbarItem-variantSuccess, &.SnackbarItem-variantError, &.SnackbarItem-variantWarning, &.SnackbarItem-variantInfo': {
+              color: theme.palette.text.primary,
+              backgroundColor: theme.palette.background.paper
+            }
           },
           '& .SnackbarItem-message': {
             padding: '0 !important',
@@ -78,13 +80,30 @@ NotistackProvider.propTypes = {
   children: PropTypes.node
 };
 
-export default function NotistackProvider({ children }) {
+function NotistackProvider({ children }) {
+  const { snack, hideSnackbar } = useControl();
+  const providerRef = useRef();
+
+  useEffect(() => {
+    if (snack.type) {
+      providerRef.current.enqueueSnackbar(snack.text, {
+        variant: snack.type,
+        onClose: () => hideSnackbar(),
+        action: (key) => (
+          <MIconButton size="small" onClick={() => providerRef.current.closeSnackbar(key)}>
+            <Icon icon={closeFill} />
+          </MIconButton>
+        )
+      });
+    }
+  }, [snack]);
+
   return (
     <>
       <SnackbarStyles />
-
       <SnackbarProvider
         dense
+        ref={providerRef}
         maxSnack={5}
         // preventDuplicate
         autoHideDuration={3000}
@@ -104,3 +123,5 @@ export default function NotistackProvider({ children }) {
     </>
   );
 }
+
+export default memo(NotistackProvider);
