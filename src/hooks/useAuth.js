@@ -17,7 +17,8 @@ const useAuth = () => {
   });
 
   const register = useCallback(async (data)=>{
-    //post request 
+    const resposne = await axios.post('/auth/local/register',data);
+    console.log(resposne);
   })
 
   return {

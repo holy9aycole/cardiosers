@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Form, TextField } from "components/custom";
 import { Link } from "react-router-dom";
 import useAuth from "hooks/useAuth";
-
+import OtpInput from "react-otp-input";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import logo from "assets/images/rmz-logo (1).svg";
 import mailIcon from "assets/images/email-icon.svg";
@@ -33,22 +33,38 @@ const theme = createTheme({
 });
 
 function LoginScreen() {
+  const [otp,setotp] = React.useState("");
   const methods = useForm({
     resolver: yupResolver(
       Yup.object().shape({
         email: Yup.string().email().required("email is required!"),
-        password:Yup.string().required(),
-        confirmPassword:Yup.string().required(),
-
+        password: Yup.string().required(),
+        confirmPassword: Yup.string().oneOf(
+          [Yup.ref("password"), null],
+          "Passwords must match"
+        ),
       })
     ),
   });
 
-  const {regi} = useAuth();
+  const handleOtpChange = (otp) =>{
+    setotp(otp);
+  } 
+
+  const { register } = useAuth();
 
   const onSubmit = (data) => {
     console.log(data);
+    if(otp.length !== 4){
+      return;
+    }
+    const registerData = {
+      email:data.email,
+      password:data.password,
+      otp:otp,
+    }
 
+    register(registerData);
   };
   return (
     <>
@@ -67,13 +83,40 @@ function LoginScreen() {
                   style: { color: "whitesmoke" },
                 }}
               />
-              <OtpContainer>
+              <OtpInput
+                value={otp}
+                onChange={handleOtpChange}
+                numInputs={4}
+                // separator={<span>-</span>}
+                inputStyle={{
+                  width: "4rem",
+                  height: "4rem",
+                  margin: "0 1rem",
+                  fontSize: "2rem",
+                  borderRadius: 4,
+                  backgroundColor:'red',
+                  color:'white',
+                  border: "1px solid rgba(0,0,0,0.3)"
+                }}
+                containerStyle={{
+                  margin:'5px auto 20px auto',
+                  flexDirection:'row',
+                  justifyContent:'center'
+                }}
+                focusStyle={{
+                  outline:'none',
+                  color:'white'
+                }}
+                isInputNum
+              />
+              {/* <OtpContainer>
                 <OtpInnerContainer>
                   <OtpTextField
                     defaultValue="1"
                     InputLabelProps={{
                       style: { color: "#fff" },
                     }}
+                    type="Number"
                   />
                 </OtpInnerContainer>
                 <OtpInnerContainer>
@@ -100,7 +143,7 @@ function LoginScreen() {
                     }}
                   />
                 </OtpInnerContainer>
-              </OtpContainer>
+              </OtpContainer> */}
               <TextField
                 variant="outlined"
                 fullWidth
@@ -109,6 +152,7 @@ function LoginScreen() {
                 InputLabelProps={{
                   style: { color: "whitesmoke" },
                 }}
+                type="password"
               />
               <TextField
                 variant="outlined"
@@ -118,10 +162,11 @@ function LoginScreen() {
                 InputLabelProps={{
                   style: { color: "whitesmoke" },
                 }}
+                type="password"
               />
-        
-                <Button1 type="submit">Verify</Button1>
-      
+
+              <Button1 type="submit">Verify</Button1>
+
               <ResendButton>RESEND</ResendButton>
             </FormContainer>
           </Form>
