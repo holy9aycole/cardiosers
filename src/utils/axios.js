@@ -22,7 +22,7 @@ axiosInstance.interceptors.request.use((config) => {
 axiosInstance.interceptors.response.use((response) => {
   if (isDevelopment) console.info(response.data);
   if (!response.config.backGround) store.dispatch({ type: 'control/stopLoading' });
-  if (response.data) return response.data?.data || 'Success';
+  if (response.data) return response.data || 'Success';
   const error = response.data?.msg || 'Something went wrong';
   if (response.config.showSnackbar !== false)
     store.dispatch({ type: 'control/showSnackbar', payload: { text: error, type: 'error' } });
