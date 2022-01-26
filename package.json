@@ -86,6 +86,7 @@
     "i18next": "^20.6.1",
     "i18next-browser-languagedetector": "^6.1.2",
     "immutable": "^4.0.0-rc.14",
+    "js-file-download": "^0.4.12",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "lazysizes": "^5.3.2",
