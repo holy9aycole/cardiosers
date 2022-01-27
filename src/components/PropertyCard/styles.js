@@ -19,7 +19,7 @@ export const useStyles = makeStyles((theme) => ({
 export const CardFooter = styled(Card)(() => ({
   background: "#2E2E80 0% 0% no-repeat padding-box",
   borderRadius: "15px",
-  height: "auto",
+  minHeight: "200px",
   width: "100%",
   marginTop: "-20px",
   textAlign: "left",
