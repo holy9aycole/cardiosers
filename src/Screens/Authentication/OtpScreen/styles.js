@@ -10,7 +10,7 @@ export const FormContainer = styled('div')(({ theme }) => ({
   backgroundColor: "#0f15a2",
   mixBlendMode: "luminosity",
   width: "40vw",
-  padding: "80px 70px 40px 70px",
+  padding: "50px 70px 20px 70px",
   margin: "40px auto",
   display: "block",
   [theme.breakpoints.down('sm')]: {
@@ -23,6 +23,17 @@ export const FormContainer = styled('div')(({ theme }) => ({
     backgroundColor: "#2e2e80",
     mixBlendMode: "normal",
     padding: "80px 30px 50px 30px"
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'grey',
+    },
+    '&:hover fieldset': {
+      borderColor: 'grey',
+    },
+  },
+  '& input':{
+    color:'white',
   }
 }));
 
@@ -31,7 +42,7 @@ export const MainContainer = styled('div')(() => ({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   height: "100vh",
-  paddingTop: "100px",
+  paddingTop: "20px",
 }));
 
 
@@ -40,7 +51,7 @@ export const Button1 = styled(Button)(() => ({
   color: "#ffffff",
   width: "100%",
   opacity: 1,
-  marginTop: "2rem",
+  marginTop: "15px",
   position: "relative",
   height: "45px",
   textDecorationLine: 'none',
@@ -52,6 +63,7 @@ export const Button1 = styled(Button)(() => ({
 export const TextField1 = styled(TextField)(() => ({
   width: "100%",
   borderRadius: "6px",
+  margin:'10px 0',
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: 'grey',
@@ -81,7 +93,7 @@ export const ResendButton = styled(Button)(() => ({
   display: "block",
   marginLeft: "auto",
   marginRight: "auto",
-  marginTop: "50px",
+  marginTop: "20px",
 }));
 
 export const OtpInnerContainer = styled('div')(() => ({
@@ -98,7 +110,8 @@ export const OtpContainer = styled('div')(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  marginTop: "25px",
+  // marginTop: "25px",
+  margin:"15px 0 30px 0",
 }));
 
 export const OtpTextField = styled(TextField)(() => ({

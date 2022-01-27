@@ -22,6 +22,9 @@ export const FormContainer = styled('div')(({ theme }) => ({
     backgroundColor: "#2e2e80",
     mixBlendMode: "normal",
     padding: "80px 30px 100px 30px"
+  },
+  '& input':{
+    color:'white'
   }
 }));
 
