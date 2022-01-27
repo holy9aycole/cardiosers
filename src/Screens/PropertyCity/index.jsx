@@ -2,18 +2,25 @@ import React from "react";
 // material
 import {
 	MenuItem,
-	AccordionDetails,
 	Typography,
-	Card,
 	CardMedia,
+	ImageList,
+	ImageListItem,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 // Youtube Vid
 import YouTube from "react-youtube";
+// Slider
+import Slider from "react-slick";
 // Assets
+import image1 from "assets/images/PropertyCity/6.png";
+import image2 from "assets/images/PropertyCity/7.png";
+import image3 from "assets/images/PropertyCity/13.png";
 import Mask2 from "assets/images/PropertyCity/Mask Group 21.svg";
 import banner1 from "assets/images/brand_sust.png";
+import banner2 from "assets/images/PropertyCity/g-3.png";
 import {
 	BannerContainer,
 	BannerImage,
@@ -25,12 +32,24 @@ import {
 	StyledAccordion,
 	StyledAccordionSummary,
 	AccordionTypography,
+	StyledCard,
 	StyledCardContent,
 	StyledMask,
 	NextButton,
+	NextArrowDiv,
+	PrevArrowDiv,
+	StyledAccordionDetails,
+	StyledAccordionDetails2,
+	FloorPlans,
+	TextBox,
+	Text1,
+	Text2,
+	PDFDownload,
 } from "./styles";
 
-function PropertyCity({ locations, micromarketID }) {
+const images = [image1, image2, image3, image1, image2, image3];
+
+function PropertyCity({ locations, micromarketID, assetavID }) {
 	const [expanded, setExpanded] = React.useState(false);
 
 	const handleChange = (panel) => (event, isExpanded) => {
@@ -47,6 +66,29 @@ function PropertyCity({ locations, micromarketID }) {
 		playerVars: {
 			autoplay: 1,
 		},
+	};
+
+	const NextArrow = ({ onClick }) => (
+		<NextArrowDiv onClick={onClick}>
+			<ArrowForwardIosIcon />
+		</NextArrowDiv>
+	);
+
+	const PrevArrow = ({ onClick }) => (
+		<PrevArrowDiv onClick={onClick}>
+			<ArrowBackIosIcon />
+		</PrevArrowDiv>
+	);
+
+	const settings = {
+		dots: false,
+		infinite: true,
+		autoplay: false,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		nextArrow: <NextArrow />,
+		prevArrow: <PrevArrow />,
 	};
 
 	const ReadMoreMobile = ({ children }) => {
@@ -88,8 +130,8 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>About Property</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Card>
+					<StyledAccordionDetails>
+						<StyledCard>
 							<CardMedia
 								component="img"
 								alt="banner1"
@@ -104,14 +146,13 @@ function PropertyCity({ locations, micromarketID }) {
 									Plaza still enjoys a comforting breeze during the summer
 									months.
 								</ReadMoreMobile>
-								{/* <StyledMask src={Mask1} /> */}
 								<StyledMask src={Mask2} />
 								<NextButton>
 									<ArrowForwardIosIcon />
 								</NextButton>
 							</StyledCardContent>
-						</Card>
-					</AccordionDetails>
+						</StyledCard>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel2"}
@@ -120,9 +161,12 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Micromarket Video</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
-					</AccordionDetails>
+					<StyledAccordionDetails2>
+						<Slider {...settings}>
+							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
+							<YouTube videoId={micromarketID} opts={opts} onReady={onReady} />
+						</Slider>
+					</StyledAccordionDetails2>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel3"}
@@ -131,12 +175,25 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>3D View</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-							feugiat. Aliquam eget maximus est, id dignissim quam.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<ImageList
+							sx={{ width: "100%", height: 850 }}
+							cols={window.innerWidth > 600 ? 3 : 2}
+							rowHeight={window.innerWidth > 600 ? 400 : 200}
+							gap={15}
+						>
+							{images.map((image, index) => (
+								<ImageListItem key={index}>
+									<img
+										src={`${image}?w=164&h=164&fit=crop&auto=format`}
+										srcSet={`${image}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+										alt=""
+										loading="lazy"
+									/>
+								</ImageListItem>
+							))}
+						</ImageList>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel4"}
@@ -145,13 +202,11 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Assest AV</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Donec placerat, lectus sed mattis semper, neque lectus feugiat
-							lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-							laoreet laoreet.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<Slider {...settings}>
+							<YouTube videoId={assetavID} opts={opts} onReady={onReady} />
+						</Slider>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel5"}
@@ -160,12 +215,11 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Progress Video</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-							feugiat. Aliquam eget maximus est, id dignissim quam.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<Slider {...settings}>
+							<YouTube videoId={assetavID} opts={opts} onReady={onReady} />
+						</Slider>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel6"}
@@ -174,13 +228,20 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Gallery</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Donec placerat, lectus sed mattis semper, neque lectus feugiat
-							lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-							laoreet laoreet.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<ImageList
+							sx={{ width: "100%", height: 850 }}
+							cols={window.innerWidth > 600 ? 3 : 2}
+							rowHeight={window.innerWidth > 600 ? 400 : 100}
+							gap={15}
+						>
+							{images.map((image, index) => (
+								<ImageListItem key={index}>
+									<img src={image} alt="" loading="lazy" />
+								</ImageListItem>
+							))}
+						</ImageList>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel7"}
@@ -189,12 +250,23 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Floor Plans</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-							feugiat. Aliquam eget maximus est, id dignissim quam.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<StyledCard>
+							<CardMedia
+								component="img"
+								alt="banner2"
+								height={window.innerWidth > 600 ? "400" : "200"}
+								image={banner2}
+							/>
+							<FloorPlans>
+								<TextBox>
+									<Text1>RMZ Ecoworld</Text1>
+									<Text2>Download the floor Plans</Text2>
+								</TextBox>
+								<PDFDownload />
+							</FloorPlans>
+						</StyledCard>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 				<StyledAccordion
 					expanded={expanded === "panel8"}
@@ -203,13 +275,23 @@ function PropertyCity({ locations, micromarketID }) {
 					<StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
 						<AccordionTypography>Asset Brochure</AccordionTypography>
 					</StyledAccordionSummary>
-					<AccordionDetails>
-						<Typography>
-							Donec placerat, lectus sed mattis semper, neque lectus feugiat
-							lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-							laoreet laoreet.
-						</Typography>
-					</AccordionDetails>
+					<StyledAccordionDetails>
+						<StyledCard>
+							<CardMedia
+								component="img"
+								alt="banner2"
+								height={window.innerWidth > 600 ? "400" : "200"}
+								image={banner2}
+							/>
+							<FloorPlans>
+								<TextBox>
+									<Text1>RMZ Ecoworld</Text1>
+									<Text2>Download the Asset Brochure</Text2>
+								</TextBox>
+								<PDFDownload />
+							</FloorPlans>
+						</StyledCard>
+					</StyledAccordionDetails>
 				</StyledAccordion>
 			</AccordionContainer>
 		</PropertyPage>

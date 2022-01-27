@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Form, TextField } from "components/custom";
@@ -28,13 +28,13 @@ function LoginScreen() {
   });
   const navigate = useNavigate();
 
-  const {getOtp} = useAuth();
+  const { getOtp } = useAuth();
 
 
 
   const onSubmit = (data) => {
     console.log(data);
-    getOtp({email:data.email});
+    getOtp({ email: data.email });
     navigate('/otp');
   };
 

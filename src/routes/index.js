@@ -89,6 +89,7 @@ export default function Router() {
             <PropertyCity
               locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
               micromarketID="IJhZ-SfQQJs"
+              assetavID="E9KlKtw9fHw"
             />
           ),
         },
