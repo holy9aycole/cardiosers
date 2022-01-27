@@ -7,6 +7,7 @@ import gallery from 'redux/slices/gallery'
 import forum from 'redux/slices/forum'
 import news from 'redux/slices/news'
 import profile from 'redux/slices/profile'
+import branding from 'redux/slices/branding'
 
 import control from 'redux/slices/control';
 import authJwt from 'redux/slices/authJwt';
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
   news,
   profile,
   control,
-  authJwt:persistReducer(authPersistConfig, authJwt)
+  branding,
+  authJwt: persistReducer(authPersistConfig, authJwt)
 });
 
 export { rootPersistConfig, rootReducer };

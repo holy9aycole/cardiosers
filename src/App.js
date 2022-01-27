@@ -9,7 +9,6 @@ import useAuth from "./hooks/useAuth";
 // components
 import ScrollToTop from "./components/ScrollToTop";
 import NotistackProvider from "./components/NotistackProvider";
-import ThemePrimaryColor from "./components/ThemePrimaryColor";
 import ThemeLocalization from "./components/ThemeLocalization";
 import LoadingScreen, { ProgressBarStyle } from "./components/LoadingScreen";
 // ----------------------------------------------------------------------
@@ -19,18 +18,16 @@ export default function App() {
 
   return (
     <ThemeConfig>
-      <ThemePrimaryColor>
-        <ThemeLocalization>
-          <NotistackProvider>
-            <GlobalStyles />
-            <ProgressBarStyle />
-            <JwtProvider>
-              <ScrollToTop />
-              {isInitialized ? <Router /> : <LoadingScreen />}
-            </JwtProvider>
-          </NotistackProvider>
-        </ThemeLocalization>
-      </ThemePrimaryColor>
+      <ThemeLocalization>
+        <NotistackProvider>
+          <GlobalStyles />
+          <ProgressBarStyle />
+          <JwtProvider>
+            <ScrollToTop />
+            {isInitialized ? <Router /> : <LoadingScreen />}
+          </JwtProvider>
+        </NotistackProvider>
+      </ThemeLocalization>
     </ThemeConfig>
   );
 }
