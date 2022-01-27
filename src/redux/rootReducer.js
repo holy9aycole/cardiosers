@@ -1,15 +1,16 @@
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
 // slices
-import mailReducer from './slices/mail';
-import chatReducer from './slices/chat';
-import blogReducer from './slices/blog';
-import userReducer from './slices/user';
-import productReducer from './slices/product';
-import calendarReducer from './slices/calendar';
-import kanbanReducer from './slices/kanban';
+import properties from 'redux/slices/properties'
+import gallery from 'redux/slices/gallery'
+import forum from 'redux/slices/forum'
+import news from 'redux/slices/news'
+import profile from 'redux/slices/profile'
+import branding from 'redux/slices/branding'
 
+import control from 'redux/slices/control';
+import authJwt from 'redux/slices/authJwt';
 // ----------------------------------------------------------------------
 
 const rootPersistConfig = {
@@ -19,21 +20,22 @@ const rootPersistConfig = {
   whitelist: []
 };
 
-const productPersistConfig = {
-  key: 'product',
+const authPersistConfig = {
+  key: 'authJwt',
   storage,
   keyPrefix: 'redux-',
-  whitelist: ['sortBy', 'checkout']
+  blacklist: ['isAuthenticated']
 };
 
 const rootReducer = combineReducers({
-  mail: mailReducer,
-  chat: chatReducer,
-  blog: blogReducer,
-  user: userReducer,
-  calendar: calendarReducer,
-  kanban: kanbanReducer,
-  product: persistReducer(productPersistConfig, productReducer)
+  properties,
+  gallery,
+  forum,
+  news,
+  profile,
+  control,
+  branding,
+  authJwt: persistReducer(authPersistConfig, authJwt)
 });
 
 export { rootPersistConfig, rootReducer };

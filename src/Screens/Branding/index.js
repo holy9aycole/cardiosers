@@ -3,19 +3,35 @@ import React from "react";
 import BrandCard from "components/BrandCard";
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import Logo from "assets/images/rmz-logo.png";
+import useBranding from 'hooks/useBranding'
+import { Grid } from "@mui/material";
+import { useStyles } from "./styles";
+
+
 
 export default function Branding() {
+
+  const { branding } = useBranding();
+  const classes = useStyles();
+
   return (
     <>
-      <BrandCard
-        Logo={Logo}
-        RMZ_Ecoworld={siteImage}
-        cetegory="IT Park"
-        name="RMZ Ecoworld"
-        description="An architectural marvel redefining the idea of tech parks in
-    Bangalore, India."
-        time="1h"
-      />
+      <Grid container className={classes.gridItemContainer}>
+        {
+          branding.map((item, index) =>
+            <BrandCard
+              key={index}
+              Logo={Logo}
+              RMZ_Ecoworld={siteImage}
+              name={item.title}
+              fileType={item.fileType}
+
+            />
+          )
+        }
+
+      </Grid>
+
     </>
   );
 }

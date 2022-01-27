@@ -2,27 +2,30 @@ import { Button, Typography, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import LoginBg from "assets/images/login-web.png";
 
-export const FormContainer = styled("div")(({ theme }) => ({
-	border: "1px solid #3D3DD9",
-	borderRadius: "30px",
+export const FormContainer = styled('div')(({ theme }) => ({
+	border: '1px solid #3D3DD9',
+	borderRadius: '30px',
 	opacity: 1,
-	backgroundColor: "rgba(46,46,128,0.5)",
-	filter: "brightness(80%)",
+	backgroundColor: "#0f15a2",
+	mixBlendMode: "luminosity",
 	width: "40vw",
 	padding: "80px 70px 40px 70px",
 	margin: "40px auto",
 	display: "block",
-	[theme.breakpoints.down("sm")]: {
+	[theme.breakpoints.down('sm')]: {
 		width: "100vw",
 		position: "absolute",
 		bottom: 0,
 		margin: 0,
-		border: "none",
 		borderBottomLeftRadius: 0,
 		borderBottomRightRadius: 0,
-		backgroundColor: "#2E2E80",
-		padding: "80px 30px 100px 30px",
+		backgroundColor: "#2e2e80",
+		mixBlendMode: "normal",
+		padding: "80px 30px 100px 30px"
 	},
+	'& input': {
+		color: 'white'
+	}
 }));
 
 export const MainContainer = styled("div")(() => ({
@@ -63,8 +66,8 @@ export const Logo = styled("img")(({ theme }) => ({
 export const TextField1 = styled(TextField)(() => ({
 	width: "100%",
 	borderRadius: "6px",
-  backgroundColor:"#2E2E80",
-  filter:"contrast(120%)"
+	backgroundColor: "#2E2E80",
+	filter: "contrast(120%)"
 }));
 
 export const Text1 = styled(Typography)(() => ({

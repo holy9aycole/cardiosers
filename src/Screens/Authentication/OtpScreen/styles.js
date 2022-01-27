@@ -2,17 +2,18 @@ import { styled } from "@mui/material/styles";
 import { Button, TextField, Typography } from "@mui/material";
 import LoginBg from "assets/images/login-web.png";
 
-export const FormContainer = styled("div")(({ theme }) => ({
-	border: "1px solid #3D3DD9",
-	borderRadius: "30px",
+
+export const FormContainer = styled('div')(({ theme }) => ({
+	border: '1px solid #3D3DD9',
+	borderRadius: '30px',
 	opacity: 1,
-	backgroundColor: "rgba(46,46,128,0.5)",
-	filter: "brightness(80%)",
+	backgroundColor: "#0f15a2",
+	mixBlendMode: "luminosity",
 	width: "40vw",
-	padding: "60px 70px 40px 70px",
+	padding: "50px 70px 20px 70px",
 	margin: "40px auto",
 	display: "block",
-	[theme.breakpoints.down("sm")]: {
+	[theme.breakpoints.down('sm')]: {
 		width: "100vw",
 		position: "absolute",
 		bottom: 0,
@@ -21,16 +22,27 @@ export const FormContainer = styled("div")(({ theme }) => ({
 		borderBottomRightRadius: 0,
 		backgroundColor: "#2e2e80",
 		mixBlendMode: "normal",
-		padding: "80px 30px 50px 30px",
+		padding: "80px 30px 50px 30px"
 	},
+	'& .MuiOutlinedInput-root': {
+		'& fieldset': {
+			borderColor: 'grey',
+		},
+		'&:hover fieldset': {
+			borderColor: 'grey',
+		},
+	},
+	'& input': {
+		color: 'white',
+	}
 }));
 
-export const MainContainer = styled("div")(() => ({
+export const MainContainer = styled('div')(() => ({
 	backgroundImage: `url(${LoginBg})`,
 	backgroundRepeat: "no-repeat",
 	backgroundSize: "cover",
 	height: "100vh",
-	paddingTop: "100px",
+	paddingTop: "20px",
 }));
 
 export const Button1 = styled(Button)(() => ({
