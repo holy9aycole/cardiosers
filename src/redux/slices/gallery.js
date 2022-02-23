@@ -1,17 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
-    pulled: false
-}
+  gallery: [],
+  pulled: "false",
+};
 
 const slice = createSlice({
-    name: 'gallery',
-    initialState,
-    reducers: {
-
-    }
-})
+  name: "gallery",
+  initialState,
+  reducers: {
+    getGallerySuccess(state, action) {
+      state.gallery = action.payload;
+      state.pulled = moment.toString();
+      return state;
+    },
+  },
+});
 
 // Export reducers
 
-export default slice.reducer 
+export default slice.reducer;
+
+// Export action
+
+export const { getGallerySuccess } = slice.actions;

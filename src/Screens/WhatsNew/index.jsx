@@ -23,19 +23,16 @@ export default function WhatsNew() {
           promote entrepreneurship and new ideas to bring our ambitions to life.
         </Text2>
         <Grid container className={classes.gridItemContainer}>
-          {
-            properties.map((item, index) =>
-              <PropertyCard
-                key={index}
-                RMZ_Ecoworld={siteImage}
-                category="IT Park"
-                name={item.PropertyName}
-                description={item.About.description}
-                time="1h"
-              />
-            )
-          }
-
+          {properties.map((item, index) => (
+            <PropertyCard
+              key={index}
+              RMZ_Ecoworld={siteImage}
+              category={item.tag}
+              name={item.PropertyName}
+              description={item.About.description}
+              time={item.updated_at}
+            />
+          ))}
         </Grid>
       </MainContainer>
     </div>

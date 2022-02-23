@@ -78,11 +78,11 @@ export default function Router() {
         { path: "profile", element: <Profile /> },
         { path: "about-us", element: <AboutUs /> },
         { path: "forum", element: <Forum /> },
-        { path: "discussion", element: <Discussion /> },
+        { path: "discussion/:id", element: <Discussion /> },
         { path: "social-experience", element: <SocialExperience /> },
         { path: "contact", element: <Contact /> },
         { path: "gallery", element: <Gallery /> },
-        { path: "gallery-single", element: <GallerySingle /> },
+        { path: "gallery/:id", element: <GallerySingle /> },
         {
           path: "property-city",
           element: (
@@ -117,9 +117,15 @@ const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 // RMZ Screens
 
-const SplashScreen = Loadable(lazy(() => import("Screens/Authentication/SplashScreen")));
-const LoginScreen = Loadable(lazy(() => import("Screens/Authentication/LoginScreen")));
-const OtpScreen = Loadable(lazy(() => import('Screens/Authentication/OtpScreen')));
+const SplashScreen = Loadable(
+  lazy(() => import("Screens/Authentication/SplashScreen"))
+);
+const LoginScreen = Loadable(
+  lazy(() => import("Screens/Authentication/LoginScreen"))
+);
+const OtpScreen = Loadable(
+  lazy(() => import("Screens/Authentication/OtpScreen"))
+);
 
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));

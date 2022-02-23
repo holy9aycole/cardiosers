@@ -2,18 +2,20 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GalleryCard, GalleryCardText, StyledDiv } from "./styles";
 
-function GalleryCardComp({ title, images }) {
-	const navigate = useNavigate();
+function GalleryCardComp({ title, image, id }) {
+  const navigate = useNavigate();
 
-	return (
-		<GalleryCard onClick={()=>(
-			navigate("/gallery-single")
-		)}>
-			<img src={images[0]} alt="" />
-			<GalleryCardText>{title}</GalleryCardText>
-			<StyledDiv />
-		</GalleryCard>
-	);
+  const handleGallery = (id) => {
+    navigate(`/gallery/${id}`);
+  };
+
+  return (
+    <GalleryCard onClick={handleGallery(id)}>
+      <img src={image} alt="" />
+      <GalleryCardText>{title}</GalleryCardText>
+      <StyledDiv />
+    </GalleryCard>
+  );
 }
 
 export default GalleryCardComp;

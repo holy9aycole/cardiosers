@@ -1,30 +1,30 @@
-import { combineReducers } from 'redux';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import { combineReducers } from "redux";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 // slices
-import properties from 'redux/slices/properties'
-import gallery from 'redux/slices/gallery'
-import forum from 'redux/slices/forum'
-import news from 'redux/slices/news'
-import profile from 'redux/slices/profile'
-import branding from 'redux/slices/branding'
+import properties from "redux/slices/properties";
+import gallery from "redux/slices/gallery";
+import forum from "redux/slices/forum";
+import news from "redux/slices/news";
+import profile from "redux/slices/profile";
+import branding from "redux/slices/branding";
 
-import control from 'redux/slices/control';
-import authJwt from 'redux/slices/authJwt';
+import control from "redux/slices/control";
+import authJwt from "redux/slices/authJwt";
 // ----------------------------------------------------------------------
 
 const rootPersistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  keyPrefix: 'redux-',
-  whitelist: []
+  keyPrefix: "redux-",
+  whitelist: [],
 };
 
 const authPersistConfig = {
-  key: 'authJwt',
+  key: "authJwt",
   storage,
-  keyPrefix: 'redux-',
-  blacklist: ['isAuthenticated']
+  keyPrefix: "redux-",
+  blacklist: ["isAuthenticated"],
 };
 
 const rootReducer = combineReducers({
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   profile,
   control,
   branding,
-  authJwt: persistReducer(authPersistConfig, authJwt)
+  authJwt: persistReducer(authPersistConfig, authJwt),
 });
 
 export { rootPersistConfig, rootReducer };

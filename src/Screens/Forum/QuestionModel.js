@@ -3,11 +3,11 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
-import {
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Divider, Typography } from "@mui/material";
+import { TextField, Form } from "components/custom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import { useStyles, MainContainer, Submit } from "./QuestionModalStyles";
 
 const style = {
@@ -28,18 +28,36 @@ export default function QuestionModel(props) {
   const classes = useStyles();
 
   function onModalClose() {
-    // eslint-disable-next-line react/prop-types
     props.onCloseModal();
   }
+
+  const formData = useForm({
+    mode: "onBlur",
+    reValidateMode: "onChange",
+    shouldFocusError: true,
+    resolver: yupResolver(
+      Yup.object().shape({
+        question: Yup.string().required("Question is requried"),
+        description: Yup.string().required("Description is required"),
+        category: Yup.string().required("Category is required"),
+      })
+    ),
+    defaultValues: {
+      question: "",
+      description: "",
+      category: "",
+    },
+  });
+  const onFormSubmit = async (data) => {
+    console.log("data", data);
+  };
 
   return (
     <div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        // eslint-disable-next-line react/prop-types
         open={props.IsModalOpened}
-        // eslint-disable-next-line
         onClose={onModalClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -49,39 +67,47 @@ export default function QuestionModel(props) {
       >
         <Fade in={props.IsModalOpened}>
           <Box sx={style}>
-            <MainContainer>
-              <Typography className={classes.heading}>
-                Ask a Question
-              </Typography>
-              <Divider className={classes.line} />
-              <div className={classes.inputContainer}>
-                <Typography className={classes.inputHeading}>
-                  Tell us your question
+            <Form onSubmit={onFormSubmit} methods={formData}>
+              <MainContainer>
+                <Typography className={classes.heading}>
+                  Ask a Question
                 </Typography>
-                <TextField className={classes.inputtext} />
-              </div>
-              <div className={classes.inputContainer}>
-                <Typography className={classes.inputHeading}>
-                  Describe what you've tried
-                </Typography>
-                <TextField
-                  id="outlined-multiline-static"
-                  style={{ width: "100%" }}
-                  multiline
-                  rows={4}
-                  defaultValue=""
-                />
-              </div>
-              <div className={classes.inputContainer}>
-                <Typography className={classes.inputHeading}>
-                  Category
-                </Typography>
-                <TextField className={classes.inputtext} />
-              </div>
-              <div className={classes.inputContainer}>
-                <Submit>SUBMIT</Submit>
-              </div>
-            </MainContainer>
+                <Divider className={classes.line} />
+                <div className={classes.inputContainer}>
+                  <Typography className={classes.inputHeading}>
+                    Tell us your question
+                  </Typography>
+                  <TextField className={classes.inputtext} name="question" />
+                </div>
+                <div className={classes.inputContainer}>
+                  <Typography className={classes.inputHeading}>
+                    Describe what you've tried
+                  </Typography>
+                  <TextField
+                    id="outlined-multiline-static"
+                    style={{ width: "100%" }}
+                    multiline
+                    rows={4}
+                    name="description"
+                  />
+                </div>
+                <div className={classes.inputContainer}>
+                  <Typography className={classes.inputHeading}>
+                    Category
+                  </Typography>
+                  <TextField className={classes.inputtext} name="category" />
+                </div>
+                <div className={classes.inputContainer}>
+                  <Submit
+                    onClick={formData.handleSubmit(onFormSubmit, (e) =>
+                      console.log(e)
+                    )}
+                  >
+                    SUBMIT
+                  </Submit>
+                </div>
+              </MainContainer>
+            </Form>
           </Box>
         </Fade>
       </Modal>
