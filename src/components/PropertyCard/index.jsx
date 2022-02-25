@@ -4,6 +4,7 @@ import { Typography, Grid, Card } from "@mui/material";
 import tag from "assets/images/tag-icon.png";
 import clock from "assets/images/clock-icon.png";
 import mask2 from "assets/images/mask2.png";
+import moment from "moment";
 import {
   CardFooter,
   useStyles,
@@ -34,7 +35,9 @@ export default function PropertyCard(props) {
           <Typography className="text3">{props.description}</Typography>
           <Time>
             <img className="clock" src={clock} alt="clock" />
-            <Typography className="ago">{props.time} ago</Typography>
+            <Typography className="ago">
+              {props.time - moment().toString()} ago
+            </Typography>
           </Time>
           <FooterShadow src={mask2} alt="footer shadow" />
         </CardFooter>

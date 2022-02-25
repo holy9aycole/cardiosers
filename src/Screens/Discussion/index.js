@@ -15,9 +15,10 @@ export default function Discussion() {
         .map((item, index) => (
           <DiscussionCard
             key={index}
+            id={item.id}
             heading={item.question}
             description={item.description}
-            tag={item.category}
+            tag={item.category.name}
             time={item.updated_at}
             comments={item.comments}
           />

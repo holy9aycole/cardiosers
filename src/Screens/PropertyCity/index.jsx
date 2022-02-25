@@ -42,11 +42,11 @@ import {
   ImageContainer,
 } from "./styles";
 // import { Player } from "video-react";
+// const fileDownload = require("js-file-download");
 
 function PropertyCity({ assetavID }) {
-  const { properties } = useProperties();
   const [expanded, setExpanded] = React.useState(false);
-
+  const { properties } = useProperties();
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -94,7 +94,7 @@ function PropertyCity({ assetavID }) {
     return <Typography variant="body2">{text}</Typography>;
   };
 
-  const [selectvalue, setSelectValue] = React.useState(null);
+  const [selectvalue, setSelectValue] = React.useState(1);
   const handleOnChange = (e) => setSelectValue(e.target.value);
 
   function filterArrayElementById(array) {
@@ -103,6 +103,9 @@ function PropertyCity({ assetavID }) {
 
   const accordionArray = filterArrayElementById(properties);
 
+  // const handleDownload = (x) => {
+  //   fileDownload(`http://52.172.227.233${x.url}`, "filenam");
+  // };
   return (
     <PropertyPage>
       <BannerContainer>
@@ -257,7 +260,12 @@ function PropertyCity({ assetavID }) {
                 <FloorPlans>
                   <TextBox>
                     <Text1>{item.PropertyName}</Text1>
-                    <Text2>Download the floor Plans</Text2>
+                    <a
+                      href={`http://52.172.227.233${item.FloorPlan[0].url}`}
+                      download
+                    >
+                      <Text2>Download the floor Plans</Text2>
+                    </a>
                   </TextBox>
                   <PDFDownload src={pdf} />
                 </FloorPlans>

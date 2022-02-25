@@ -1,7 +1,7 @@
 import React from "react";
 
 import mask from "assets/images/mask.svg";
-import siteImage from "assets/images/RMZ_Ecoworld.png";
+// import siteImage from "assets/images/RMZ_Ecoworld.png";
 import PropertyCard from "components/PropertyCard";
 import { Grid } from "@mui/material";
 import useProperties from "hooks/useProperties";
@@ -26,7 +26,7 @@ export default function WhatsNew() {
           {properties.map((item, index) => (
             <PropertyCard
               key={index}
-              RMZ_Ecoworld={siteImage}
+              RMZ_Ecoworld={`http://52.172.227.233${item.About.image.url}`}
               category={item.tag}
               name={item.PropertyName}
               description={item.About.description}

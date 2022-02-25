@@ -8,7 +8,7 @@ import forum from "redux/slices/forum";
 import news from "redux/slices/news";
 import profile from "redux/slices/profile";
 import branding from "redux/slices/branding";
-
+import category from "redux/slices/category";
 import control from "redux/slices/control";
 import authJwt from "redux/slices/authJwt";
 // ----------------------------------------------------------------------
@@ -35,6 +35,7 @@ const rootReducer = combineReducers({
   profile,
   control,
   branding,
+  category,
   authJwt: persistReducer(authPersistConfig, authJwt),
 });
 

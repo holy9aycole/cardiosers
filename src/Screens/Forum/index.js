@@ -84,13 +84,13 @@ export default function Forum() {
     <MainContainer>
       {forum.map((row, index) => (
         <ForumCard
-          onClick={handleClick(row.id)}
+          onClick={() => handleClick(row.id)}
           key={index}
           heading={row.question}
           description={row.description}
-          tag={row.tag}
+          tag={row?.category?.name}
           time={row.updated_at}
-          comments={row.comments}
+          comments={row.comments.length}
         />
       ))}
       <CommentBox>

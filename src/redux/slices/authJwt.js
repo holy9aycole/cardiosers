@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isAuthenticated: null,
-  user: null,
+  user: { id: 1 },
 };
 
 const slice = createSlice({
@@ -22,4 +22,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { registerSuccess,getInitialize } = slice.actions;
+export const { registerSuccess, getInitialize } = slice.actions;

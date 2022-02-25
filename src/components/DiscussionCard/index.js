@@ -6,6 +6,11 @@ import message from "assets/images/message-icon.svg";
 import user from "assets/images/user-icon.svg";
 import edit from "assets/images/edit-icon.svg";
 import right from "assets/images/button-arrow-right.png";
+import useForum from "hooks/useForum";
+import { Form, TextField } from "components/custom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import {
   useStyles,
   Feed,
@@ -14,11 +19,33 @@ import {
   CommentSection,
   TagTime,
   CommentBox,
-  BootstrapInput,
+  // BootstrapInput,
 } from "./styles";
 
 export default function Discussion(props) {
   const classes = useStyles();
+  const { forum, postComment } = useForum();
+
+  const data = forum.filter((element) => element.id === props.id);
+
+  const formData = useForm({
+    mode: "onBlur",
+    reValidateMode: "onChange",
+    shouldFocusError: true,
+    resolver: yupResolver(
+      Yup.object().shape({
+        comment: Yup.string().required("Comment is requried"),
+      })
+    ),
+    defaultValues: {
+      comment: "",
+    },
+  });
+  const onFormSubmit = async (data,) => {
+    console.log("data", data);
+    postComment(data);
+  };
+
   return (
     <>
       <Feed>
@@ -35,46 +62,54 @@ export default function Discussion(props) {
           <div className="tag">
             <img src={message} alt="tag" />
             <Typography style={{ color: "#3D3DD9" }} className="text1">
-              {props.comments} Comments
+              {props.comments.length} Comments
             </Typography>
           </div>
         </FeedFooter>
         <Typography className="subheading">{props.description}</Typography>
       </Feed>
+
       <Comments>
         <Typography className="text3">Comments</Typography>
         <Divider className="line" />
-        <CommentSection>
-          <div className="userContainer">
-            <div className="user">
-              <img src={user} alt="user" />
-            </div>
-          </div>
-
-          <div className="comment">
-            <Typography className="commentHeading">Sanya Arora</Typography>
-            <Typography className="commentDesc">
-              When everybody across the world continues to make the transition
-              back to normalcy from lock-down, we are curious about what will
-              happen in our society.
-            </Typography>
-            <Divider className="line" />
-            <TagTime>
-              <div className="time">
-                <img src={clock} alt="tag" />
-                <Typography className="ago">1h ago</Typography>
+        {data[0]?.comments.map((item, index) => (
+          <>
+            <CommentSection key={index}>
+              <div className="userContainer">
+                <div className="user">
+                  <img src={user} alt="user" />
+                </div>
               </div>
-              <img className="edit" src={edit} alt="edit" />
-            </TagTime>
-          </div>
-        </CommentSection>
-        <Divider className="commentDivider" />
+
+              <div className="comment">
+                <Typography className="commentHeading">
+                  {item?.users_permissions_user}
+                </Typography>
+                <Typography className="commentDesc">{item?.comment}</Typography>
+                <Divider className="line" />
+                <TagTime>
+                  <div className="time">
+                    <img src={clock} alt="tag" />
+                    <Typography className="ago">{item.updated_at}</Typography>
+                  </div>
+                  <img className="edit" src={edit} alt="edit" />
+                </TagTime>
+              </div>
+            </CommentSection>
+            <Divider className="commentDivider" />
+          </>
+        ))}
       </Comments>
       <CommentBox>
         <div className={classes.inputContainer}>
-          <BootstrapInput className={classes.input2} />
+          <Form onSubmit={onFormSubmit} methods={formData}>
+            <TextField className={classes.input2} name="comment" />
+          </Form>
         </div>
-        <div>
+        <div
+          onClick={formData.handleSubmit(onFormSubmit, (e) => console.log(e))}
+          aria-hidden="true"
+        >
           <div className="btn" Button>
             <img src={right} alt="right" />
           </div>

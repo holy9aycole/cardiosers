@@ -10,7 +10,7 @@ function GalleryCardComp({ title, image, id }) {
   };
 
   return (
-    <GalleryCard onClick={handleGallery(id)}>
+    <GalleryCard onClick={() => handleGallery(id)}>
       <img src={image} alt="" />
       <GalleryCardText>{title}</GalleryCardText>
       <StyledDiv />
