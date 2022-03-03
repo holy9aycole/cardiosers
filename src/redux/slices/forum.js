@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
+// import { useParams } from "react-router";
 
 const initialState = {
   forum: [],
@@ -13,7 +14,12 @@ const slice = createSlice({
     getForumSuccess(state, action) {
       state.forum = action.payload;
       state.pulled = moment.toString();
-      return state;
+    },
+    updateComments(state, action) {
+      const index = state.forum.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (index !== -1) state.forum[index] = action.payload;
     },
   },
 });
@@ -21,4 +27,4 @@ const slice = createSlice({
 // Export Reducer
 export default slice.reducer;
 
-export const { getForumSuccess } = slice.actions;
+export const { getForumSuccess, updateComments } = slice.actions;
