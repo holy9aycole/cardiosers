@@ -36,7 +36,7 @@ export default function PropertyCard(props) {
           <Time>
             <img className="clock" src={clock} alt="clock" />
             <Typography className="ago">
-              {props.time - moment().toString()} ago
+              {moment(props.time).fromNow()}
             </Typography>
           </Time>
           <FooterShadow src={mask2} alt="footer shadow" />

@@ -10,6 +10,10 @@ export const useStyles = makeStyles(() => ({
     color: "#3D3DD9",
     background: "white",
   },
+
+  gridItemContainer: {
+    textAlign: "center",
+  },
 }));
 
 export const MainContainer = styled("div")(({ theme }) => ({
