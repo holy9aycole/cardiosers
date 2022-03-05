@@ -54,6 +54,7 @@ export default function QuestionModel(props) {
   const onFormSubmit = async (data) => {
     console.log("data", data);
     postForum(data);
+    onModalClose();
   };
 
   return (

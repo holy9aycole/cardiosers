@@ -6,80 +6,79 @@ import { useState } from "react";
 // ----------------------------------------------------------------------
 
 export default function MainLayout() {
-	const { pathname } = useLocation();
-	const [area, setArea] = useState("Bengaluru");
+  const { pathname } = useLocation();
+  const [area, setArea] = useState("Bengaluru");
 
-	const handleChange = (e) => setArea(e.target.value);
+  const handleChange = (e) => setArea(e.target.value);
 
-	let title;
-	let titleOptions;
-	switch (pathname) {
-		case "/whats-new":
-			title = "WHATS NEW";
-			break;
+  let title;
+  let titleOptions;
+  switch (pathname) {
+    case "/whats-new":
+      title = "WHATS NEW";
+      break;
 
-		case "/property":
-			title = "PROPERTIES";
-			break;
+    case "/property":
+      title = "PROPERTIES";
+      break;
 
-		case "/property-city":
-			title = "Property";
-			titleOptions = ["Bengaluru", "Mumbai", "Chennai"];
-			break;
+    case "/property-city":
+      title = "Property";
+      titleOptions = ["Bengaluru", "Mumbai", "Chennai"];
+      break;
 
-		case "/sustainability":
-			title = "SUSTAINABILITY";
-			break;
+    case "/sustainability":
+      title = "SUSTAINABILITY";
+      break;
 
-		case "/branding":
-			title = "BRANDING";
-			break;
-		case "/forum":
-			title = "FORUM";
-			break;
-		case "/discussion":
-			title = "DISCUSSION";
-			break;
+    case "/branding":
+      title = "BRANDING";
+      break;
+    case "/forum":
+      title = "FORUM";
+      break;
+    case "/discussion":
+      title = "DISCUSSION";
+      break;
 
-		case "/about-us":
-			title = "ABOUT RMZ";
-			break;
+    case "/about-us":
+      title = "ABOUT RMZ";
+      break;
 
-		case "/contact":
-			titleOptions = "CONTACT";
-			break;
+    case "/contact":
+      title = "CONTACT";
+      break;
 
-		case "/social-experience":
-			title = "SOCIAL EXPERIENCE";
-			break;
+    case "/social-experience":
+      title = "SOCIAL EXPERIENCE";
+      break;
 
-		case "/profile":
-			title = "PROFILE";
-			break;
+    case "/profile":
+      title = "PROFILE";
+      break;
 
-		case "/gallery":
-			title = "GALLERY";
-			break;
+    case "/gallery":
+      title = "GALLERY";
+      break;
 
-		case "/gallery-single":
-			title = "CONNECTING SPACES";
-			break;
+    case "/gallery-single":
+      title = "CONNECTING SPACES";
+      break;
 
-		default:
-			break;
-	}
+    default:
+      break;
+  }
 
-	return (
-		<>
-			{/* <MainNavbar title="What's New" /> */}
-			<Header
-				title={title}
-				titleOptions={titleOptions}
-				area={area}
-				handleChange={handleChange}
-			/>
-			<Outlet />
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <Header
+        title={title}
+        titleOptions={titleOptions}
+        area={area}
+        handleChange={handleChange}
+      />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }

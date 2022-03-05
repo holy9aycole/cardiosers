@@ -6,6 +6,7 @@ import message from "assets/images/message-icon.svg";
 import user from "assets/images/user-icon.svg";
 import edit from "assets/images/edit-icon.svg";
 import right from "assets/images/button-arrow-right.png";
+import moment from "moment";
 import useForum from "hooks/useForum";
 import { Form, TextField } from "components/custom";
 import { useForm } from "react-hook-form";
@@ -19,7 +20,6 @@ import {
   CommentSection,
   TagTime,
   CommentBox,
-  // BootstrapInput,
 } from "./styles";
 
 export default function Discussion(props) {
@@ -34,16 +34,16 @@ export default function Discussion(props) {
     shouldFocusError: true,
     resolver: yupResolver(
       Yup.object().shape({
-        comment: Yup.string().required("Comment is requried"),
+        comment: Yup.string(),
       })
     ),
     defaultValues: {
       comment: "",
     },
   });
-  const onFormSubmit = async (data,) => {
+  const onFormSubmit = async (data) => {
     console.log("data", data);
-    postComment(data);
+    if (data.comment !== "") postComment(data);
   };
 
   return (
@@ -57,7 +57,7 @@ export default function Discussion(props) {
           </div>
           <div className="tag">
             <img src={clock} alt="tag" />
-            <Typography className="text1">{props.time}h ago</Typography>
+            <Typography className="text1">{props.time}</Typography>
           </div>
           <div className="tag">
             <img src={message} alt="tag" />
@@ -90,31 +90,43 @@ export default function Discussion(props) {
                 <TagTime>
                   <div className="time">
                     <img src={clock} alt="tag" />
-                    <Typography className="ago">{item.updated_at}</Typography>
+                    <Typography className="ago">
+                      {moment(item.updated_at).fromNow()}
+                    </Typography>
                   </div>
-                  <img className="edit" src={edit} alt="edit" />
+                  <img
+                    className="edit"
+                    src={edit}
+                    alt="edit"
+                    style={{ marginLeft: "10px" }}
+                  />
                 </TagTime>
               </div>
             </CommentSection>
+
             <Divider className="commentDivider" />
           </>
         ))}
       </Comments>
-      <CommentBox>
-        <div className={classes.inputContainer}>
-          <Form onSubmit={onFormSubmit} methods={formData}>
-            <TextField className={classes.input2} name="comment" />
-          </Form>
-        </div>
-        <div
-          onClick={formData.handleSubmit(onFormSubmit, (e) => console.log(e))}
-          aria-hidden="true"
-        >
-          <div className="btn" Button>
-            <img src={right} alt="right" />
+
+      <Form onSubmit={onFormSubmit} methods={formData}>
+        <CommentBox>
+          <TextField
+            className={classes.input2}
+            style={{ marginTop: "20px" }}
+            placeholder="Say something..."
+            name="comment"
+          />
+          <div
+            onClick={formData.handleSubmit(onFormSubmit, (e) => console.log(e))}
+            aria-hidden="true"
+          >
+            <div className="btn" Button>
+              <img src={right} alt="right" />
+            </div>
           </div>
-        </div>
-      </CommentBox>
+        </CommentBox>
+      </Form>
     </>
   );
 }

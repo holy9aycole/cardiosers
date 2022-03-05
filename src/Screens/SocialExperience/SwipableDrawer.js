@@ -93,7 +93,7 @@ function SwipeableEdgeDrawer(props) {
           <MainContainer>
             <Grid container>
               {category.map((item, index) => (
-                <Grid className="gridItems" item md={4} xs={4}>
+                <Grid className="gridItems" item md={4} xs={4} key={index}>
                   <div key={index} className="filterContainer">
                     {item.name}
                   </div>

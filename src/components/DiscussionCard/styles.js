@@ -20,7 +20,7 @@ export const BootstrapInput = withStyles((theme) => ({
   },
 }))(InputBase);
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles({
   input: {
     width: "87%",
     border: ".5px solid #90A4AE",
@@ -29,19 +29,9 @@ export const useStyles = makeStyles((theme) => ({
     color: "#90A4AE",
   },
   input2: {
-    width: "400px",
-    [theme.breakpoints.only("sm")]: {
-      width: "300px",
-    },
-    [theme.breakpoints.only("xs")]: {
-      width: "200px",
-    },
+    width: "85%",
   },
-  inputContainer: {
-    // border: ".5px solid red",
-    width: "90%",
-  },
-}));
+});
 
 export const Feed = styled(Card)(({ theme }) => ({
   //   border: ".5px solid red",
@@ -134,7 +124,6 @@ export const Comments = styled(Card)(({ theme }) => ({
 export const CommentSection = styled("div")(({ theme }) => ({
   margin: "10px 10px",
   display: "flex",
-  justifyContent: "space-between",
 
   "& .userContainer": {
     marginRight: "10px",
@@ -169,6 +158,7 @@ export const CommentSection = styled("div")(({ theme }) => ({
   },
   "& .comment": {
     marginRight: "2px",
+    width: "100%",
   },
 }));
 

@@ -5,11 +5,11 @@ import { persistReducer } from "redux-persist";
 import properties from "redux/slices/properties";
 import gallery from "redux/slices/gallery";
 import forum from "redux/slices/forum";
-import news from "redux/slices/news";
 import profile from "redux/slices/profile";
 import branding from "redux/slices/branding";
 import category from "redux/slices/category";
 import control from "redux/slices/control";
+import newsFeed from "redux/slices/newsFeed";
 import authJwt from "redux/slices/authJwt";
 // ----------------------------------------------------------------------
 
@@ -31,11 +31,11 @@ const rootReducer = combineReducers({
   properties,
   gallery,
   forum,
-  news,
   profile,
   control,
   branding,
   category,
+  newsFeed,
   authJwt: persistReducer(authPersistConfig, authJwt),
 });
 

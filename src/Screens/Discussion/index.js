@@ -3,6 +3,7 @@ import React from "react";
 import DiscussionCard from "components/DiscussionCard";
 import { useParams } from "react-router";
 import useForum from "hooks/useForum";
+import moment from "moment";
 import { MainContainer } from "./styles";
 
 export default function Discussion() {
@@ -19,7 +20,7 @@ export default function Discussion() {
             heading={item.question}
             description={item.description}
             tag={item.category.name}
-            time={item.updated_at}
+            time={moment(item.created_at).fromNow()}
             comments={item.comments}
           />
         ))}

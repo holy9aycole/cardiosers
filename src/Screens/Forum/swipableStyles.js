@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-import { InputBase, styled, Button } from "@mui/material";
+import { styled, Button } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
   heading: {
@@ -49,55 +49,5 @@ export const Submit = styled(Button)(({ theme }) => ({
   "&:hover": {
     background: "#3D3DD9",
     color: "white",
-  },
-}));
-
-export const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
-  "label + &": {
-    marginTop: theme.spacing(3),
-  },
-  "& .MuiInputBase-input": {
-    marginTop: "5px",
-    borderRadius: 10,
-    position: "relative",
-
-    border: "1px solid #8489C1",
-    fontSize: 16,
-    width: "300px",
-    padding: "10px 8px",
-    height: "30px",
-
-    fontFamily: "Poppins",
-    [theme.breakpoints.only("xs")]: {
-      width: "250px",
-    },
-    "&:focus": {
-      borderColor: theme.palette.primary.main,
-    },
-  },
-}));
-export const BootstrapInput = styled(InputBase)(({ theme }) => ({
-  "label + &": {
-    marginTop: theme.spacing(3),
-  },
-  "& .MuiInputBase-input": {
-    marginTop: "5px",
-    borderRadius: 10,
-    position: "relative",
-
-    border: "1px solid #8489C1",
-    fontSize: 16,
-    width: "300px",
-    padding: "10px 8px",
-
-    height: "70px",
-
-    fontFamily: "Poppins",
-    [theme.breakpoints.only("xs")]: {
-      width: "250px",
-    },
-    "&:focus": {
-      borderColor: theme.palette.primary.main,
-    },
   },
 }));

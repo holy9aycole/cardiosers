@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography } from "@mui/material";
 import useForum from "hooks/useForum";
 import ForumCard from "components/ForumCard";
 import { useNavigate } from "react-router-dom";
 import btnArrow from "assets/images/button-arrow.svg";
+import moment from "moment";
 import { MainContainer, CommentBox } from "./styles";
 
 import QuestionModel from "./QuestionModel";
@@ -45,9 +46,12 @@ import SwipeableEdgeDrawer from "./SwipableModal";
 // ];
 
 export default function Forum() {
-  const { forum } = useForum();
+  const { forum, getForum } = useForum();
   const navigate = useNavigate();
-  // const classes = useStyles();
+
+  useEffect(() => {
+    getForum();
+  }, [handleCloseModal, closeSwipable]);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [swipableModalOpen, setSwipableModalOpen] = React.useState(false);
@@ -89,7 +93,7 @@ export default function Forum() {
           heading={row.question}
           description={row.description}
           tag={row?.category?.name}
-          time={row.updated_at}
+          time={moment(row.created_at).fromNow()}
           comments={row.comments.length}
         />
       ))}

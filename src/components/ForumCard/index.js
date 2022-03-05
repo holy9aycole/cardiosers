@@ -20,7 +20,7 @@ export default function ForumCard(props) {
           </div>
           <div className="tag">
             <img src={clock} alt="tag" />
-            <Typography className="text1">{props.time}h ago</Typography>
+            <Typography className="text1">{props.time}</Typography>
           </div>
           <div className="tag">
             <img src={message} alt="tag" />

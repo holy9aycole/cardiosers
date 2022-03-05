@@ -1,58 +1,23 @@
 import { Suspense, lazy } from "react";
-import { Navigate, useRoutes, useLocation } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 
 import LoadingScreen from "components/LoadingScreen";
 
 // layouts
 import MainLayout from "layouts/main";
-import DashboardLayout from "Screens/NewsFeed";
 import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // ----------------------------------------------------------------------
 
-const Loadable = (Component) => (props) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { pathname } = useLocation();
-  const isDashboard = pathname.includes("/dashboard");
-
-  return (
-    <Suspense
-      fallback={
-        <LoadingScreen
-          sx={{
-            ...(!isDashboard && {
-              top: 0,
-              left: 0,
-              width: 1,
-              zIndex: 9999,
-              position: "fixed",
-            }),
-          }}
-        />
-      }
-    >
+const Loadable = (Component) => (props) =>
+  (
+    <Suspense fallback={<LoadingScreen />}>
       <Component {...props} />
     </Suspense>
   );
-};
 
 export default function Router() {
   return useRoutes([
-    // Dashboard Routes
-    {
-      path: "news-feed",
-      element: <DashboardLayout />,
-      children: [
-        { element: <Navigate to="/news-feed/ecoworld" replace /> },
-        { path: "assets", element: <AllAssets /> },
-        { path: "ecoworld", element: <RMZEcoworld /> },
-        { path: "millenia", element: <RMZEcoworld /> },
-        { path: "ecospace", element: <AllAssets /> },
-        { path: "infinity", element: <AllAssets /> },
-        { path: "paramount", element: <AllAssets /> },
-      ],
-    },
-
     // Main Routes
     {
       path: "*",
@@ -83,16 +48,7 @@ export default function Router() {
         { path: "contact", element: <Contact /> },
         { path: "gallery", element: <Gallery /> },
         { path: "gallery/:id", element: <GallerySingle /> },
-        {
-          path: "property-city",
-          element: (
-            <PropertyCity
-              locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
-              micromarketID="IJhZ-SfQQJs"
-              assetavID="E9KlKtw9fHw"
-            />
-          ),
-        },
+        { path: "property-city", element: <PropertyCity /> },
       ],
     },
 
@@ -104,12 +60,6 @@ export default function Router() {
 }
 
 // IMPORT COMPONENTS
-
-// Dashboard
-const AllAssets = Loadable(lazy(() => import("Screens/NewsFeed/AllAssets")));
-const RMZEcoworld = Loadable(
-  lazy(() => import("Screens/NewsFeed/RMZEcoworld"))
-);
 
 // Extra
 const Page500 = Loadable(lazy(() => import("Screens/Page500")));
@@ -138,7 +88,7 @@ const GallerySingle = Loadable(
 );
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
 const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
-const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
+const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed/index")));
 const Contact = Loadable(lazy(() => import("Screens/Contact")));
 const Forum = Loadable(lazy(() => import("Screens/Forum")));
 const Discussion = Loadable(lazy(() => import("Screens/Discussion")));

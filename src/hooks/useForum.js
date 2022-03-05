@@ -9,8 +9,7 @@ export default function useForum() {
   const dispatch = useDispatch();
   const { forum } = useSelector((state) => state.forum);
   const { id } = useParams();
-  console.log("id", id);
-  // const { user } = useSelector((state) => state.user);
+
   useEffect(() => {
     getForum();
   }, []);
@@ -51,5 +50,5 @@ export default function useForum() {
     dispatch(updateComments(cloned));
   }, []);
 
-  return { forum, postForum, postComment };
+  return { forum, postForum, postComment, getForum };
 }
