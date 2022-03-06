@@ -3,6 +3,9 @@ import { styled, Typography } from "@mui/material";
 
 export const useStyles = makeStyles(() => ({
   mainContainer: {},
+  gridItemContainer: {
+    textAlign: "center",
+  },
 }));
 
 export const MainContainer = styled("div")(({ theme }) => ({

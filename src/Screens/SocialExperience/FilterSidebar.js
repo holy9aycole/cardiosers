@@ -3,7 +3,7 @@ import React from "react";
 import Drawer from "@mui/material/Drawer";
 
 import Divider from "@mui/material/Divider";
-
+import useCategory from "hooks/useCategory";
 import { Typography } from "@mui/material";
 
 import {
@@ -15,7 +15,7 @@ import {
 
 export default function FilterSidebar(props) {
   const classes = useStyles();
-
+  const { category } = useCategory();
   const closeDrawer = () => {
     props.onCloseDrawer();
   };
@@ -32,16 +32,9 @@ export default function FilterSidebar(props) {
             <LinkContainer>
               <Typography className={classes.heading}>Sort / Filter</Typography>
               <Divider sx={{ mb: 2 }} />
-              {[
-                "All",
-                "Restaurant",
-                "Wellness",
-                "Art Walk",
-                "Retail",
-                "Events",
-              ].map((f, index) => (
+              {category.map((item, index) => (
                 <Filter key={index}>
-                  <div className="filterContainer">{f}</div>
+                  <div className="filterContainer">{item.name}</div>
                 </Filter>
               ))}
             </LinkContainer>

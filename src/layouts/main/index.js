@@ -23,7 +23,8 @@ export default function MainLayout() {
       break;
 
     case "/property-city":
-      titleOptions = "Property";
+      title = "Property";
+      titleOptions = ["Bengaluru", "Mumbai", "Chennai"];
       break;
 
     case "/sustainability":
@@ -45,7 +46,7 @@ export default function MainLayout() {
       break;
 
     case "/contact":
-      titleOptions = "CONTACT";
+      title = "CONTACT";
       break;
 
     case "/social-experience":
@@ -70,7 +71,6 @@ export default function MainLayout() {
 
   return (
     <>
-      {/* <MainNavbar title="What's New" /> */}
       <Header
         title={title}
         titleOptions={titleOptions}

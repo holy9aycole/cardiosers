@@ -3,8 +3,6 @@ import { useMemo } from 'react';
 // material
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-// hooks
-import useSettings from '../hooks/useSettings';
 //
 import shape from './shape';
 import palette from './palette';
@@ -20,8 +18,7 @@ ThemeConfig.propTypes = {
 };
 
 export default function ThemeConfig({ children }) {
-  const { themeMode, themeDirection } = useSettings();
-  const isLight = themeMode === 'light';
+  const isLight = 'light';
 
   const themeOptions = useMemo(
     () => ({
@@ -29,11 +26,10 @@ export default function ThemeConfig({ children }) {
       shape,
       typography,
       breakpoints,
-      direction: themeDirection,
       shadows: isLight ? shadows.light : shadows.dark,
       customShadows: isLight ? customShadows.light : customShadows.dark
     }),
-    [isLight, themeDirection]
+    [isLight]
   );
 
   const theme = createTheme(themeOptions);

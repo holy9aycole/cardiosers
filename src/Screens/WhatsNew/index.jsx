@@ -1,13 +1,16 @@
 import React from "react";
 
 import mask from "assets/images/mask.svg";
-import siteImage from "assets/images/RMZ_Ecoworld.png";
+// import siteImage from "assets/images/RMZ_Ecoworld.png";
 import PropertyCard from "components/PropertyCard";
-
-import { MainContainer, Line, Text1, Text2 } from "./styles";
+import { Grid } from "@mui/material";
+import useProperties from "hooks/useProperties";
+import { MainContainer, Line, Text1, Text2, useStyles } from "./styles";
 
 export default function WhatsNew() {
-  //   const classes = useStyles();
+  const classes = useStyles();
+  const { properties } = useProperties();
+
   return (
     <div>
       <MainContainer>
@@ -19,14 +22,18 @@ export default function WhatsNew() {
           We relentlessly pursue innovation. By empowering our talented team, we
           promote entrepreneurship and new ideas to bring our ambitions to life.
         </Text2>
-        <PropertyCard
-          RMZ_Ecoworld={siteImage}
-          category="IT Park"
-          name="RMZ Ecoworld"
-          description="An architectural marvel redefining the idea of tech parks in
-    Bangalore, India."
-          time="1h"
-        />
+        <Grid container className={classes.gridItemContainer}>
+          {properties.map((item, index) => (
+            <PropertyCard
+              key={index}
+              RMZ_Ecoworld={`http://52.172.227.233${item.About.image.url}`}
+              category={item.tag}
+              name={item.PropertyName}
+              description={item.About.description}
+              time={item.updated_at}
+            />
+          ))}
+        </Grid>
       </MainContainer>
     </div>
   );

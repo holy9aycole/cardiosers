@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { grey } from "@mui/material/colors";
 import { Divider, Grid } from "@mui/material";
-
+import useCategory from "hooks/useCategory";
 import Box from "@mui/material/Box";
 // import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
@@ -39,10 +39,9 @@ const Puller = styled(Box)(({ theme }) => ({
 
 function SwipeableEdgeDrawer(props) {
   const { window } = props;
-  console.log(props);
 
   const classes = useStyles();
-
+  const { category } = useCategory();
   const toggleDrawer = () => {
     props.onCloseModal();
   };
@@ -93,18 +92,10 @@ function SwipeableEdgeDrawer(props) {
           <Divider />
           <MainContainer>
             <Grid container>
-              {[
-                "All",
-                "Restaurant",
-                "Wellness",
-                "Art Walk",
-                "Retail",
-                "Events",
-              ].map((f, index) => (
-                // eslint-disable-next-line react/jsx-key
-                <Grid className="gridItems" item md={4} xs={4}>
+              {category.map((item, index) => (
+                <Grid className="gridItems" item md={4} xs={4} key={index}>
                   <div key={index} className="filterContainer">
-                    {f}
+                    {item.name}
                   </div>
                 </Grid>
               ))}

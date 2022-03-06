@@ -1,16 +1,14 @@
 import ExperienceCard from "components/ExperienceCard";
 import React from "react";
 import MenuItem from "@mui/material/MenuItem";
-
+import { Grid } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Restaurant from "assets/images/restaurant.png";
 // import Button from "@mui/material/Button";
 
 import filter from "assets/images/filter-icon.png";
-
+import useProperties from "hooks/useProperties";
 import FilterSidebar from "./FilterSidebar";
-
 import {
   MainContainer,
   FilterContainer,
@@ -21,14 +19,20 @@ import SwipeableEdgeDrawer from "./SwipableDrawer";
 
 export default function SocialExperience() {
   const classes = useStyles();
-
-  const [age, setAge] = React.useState("");
+  const { properties } = useProperties();
+  const [selectvalue, setSelectValue] = React.useState(1);
   const [DrawerOpen, setDrawerOpen] = React.useState(false);
   const [swipableModalOpen, setSwipableModalOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSelectValue(event.target.value);
   };
+
+  function filterArrayElementById(array) {
+    return array.filter((element) => element.id === selectvalue);
+  }
+
+  const filteredProperties = filterArrayElementById(properties);
 
   const openOnClick = () => {
     const w = window.innerWidth;
@@ -55,32 +59,35 @@ export default function SocialExperience() {
                 fontSize: "13px",
                 fontWeight: 600,
               }}
-              value={age}
+              value={selectvalue}
               onChange={handleChange}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem className={classes.option} value={10}>
-                Ten
-              </MenuItem>
-              <MenuItem className={classes.option} value={20}>
-                Twenty
-              </MenuItem>
-              <MenuItem className={classes.option} value={30}>
-                Thirty
-              </MenuItem>
+              {properties.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  value={item.id}
+                  divider={index !== properties.length - 1}
+                >
+                  {item.PropertyName}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </FilterContainer>
-
-        <ExperienceCard
-          RMZ_Ecoworld={Restaurant}
-          cetegory="Restaurant"
-          name="RMZ Ecoworld"
-          description="An architectural marvel redefining the idea of tech parks in
-Bangalore, India."
-          time="1h"
-        />
+        <Grid container className={classes.gridItemContainer}>
+          {filteredProperties.map((item, index) => (
+            <ExperienceCard
+              key={index}
+              RMZ_Ecoworld={`http://52.172.227.233${item.About.image.url}`}
+              category={item.tag}
+              name={item.PropertyName}
+              description={item.About.description}
+              time={item.updated_at}
+            />
+          ))}
+        </Grid>
       </MainContainer>
       <FilterSidebar
         isDrawerOpen={DrawerOpen}
@@ -89,7 +96,6 @@ Bangalore, India."
       {window.innerWidth < 768 && (
         <SwipeableEdgeDrawer
           IsModalOpen={swipableModalOpen}
-          // eslint-disable-next-line
           onCloseModal={() => setSwipableModalOpen(false)}
         />
       )}

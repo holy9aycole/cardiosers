@@ -1,58 +1,23 @@
 import { Suspense, lazy } from "react";
-import { Navigate, useRoutes, useLocation } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 
 import LoadingScreen from "components/LoadingScreen";
 
 // layouts
 import MainLayout from "layouts/main";
-import DashboardLayout from "Screens/NewsFeed";
 import LogoOnlyLayout from "layouts/LogoOnlyLayout";
 
 // ----------------------------------------------------------------------
 
-const Loadable = (Component) => (props) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { pathname } = useLocation();
-  const isDashboard = pathname.includes("/dashboard");
-
-  return (
-    <Suspense
-      fallback={
-        <LoadingScreen
-          sx={{
-            ...(!isDashboard && {
-              top: 0,
-              left: 0,
-              width: 1,
-              zIndex: 9999,
-              position: "fixed",
-            }),
-          }}
-        />
-      }
-    >
+const Loadable = (Component) => (props) =>
+  (
+    <Suspense fallback={<LoadingScreen />}>
       <Component {...props} />
     </Suspense>
   );
-};
 
 export default function Router() {
   return useRoutes([
-    // Dashboard Routes
-    {
-      path: "news-feed",
-      element: <DashboardLayout />,
-      children: [
-        { element: <Navigate to="/news-feed/ecoworld" replace /> },
-        { path: "assets", element: <AllAssets /> },
-        { path: "ecoworld", element: <RMZEcoworld /> },
-        { path: "millenia", element: <RMZEcoworld /> },
-        { path: "ecospace", element: <AllAssets /> },
-        { path: "infinity", element: <AllAssets /> },
-        { path: "paramount", element: <AllAssets /> },
-      ],
-    },
-
     // Main Routes
     {
       path: "*",
@@ -78,20 +43,12 @@ export default function Router() {
         { path: "profile", element: <Profile /> },
         { path: "about-us", element: <AboutUs /> },
         { path: "forum", element: <Forum /> },
-        { path: "discussion", element: <Discussion /> },
+        { path: "discussion/:id", element: <Discussion /> },
         { path: "social-experience", element: <SocialExperience /> },
         { path: "contact", element: <Contact /> },
         { path: "gallery", element: <Gallery /> },
-        { path: "gallery-single", element: <GallerySingle /> },
-        {
-          path: "property-city",
-          element: (
-            <PropertyCity
-              locations={["RMZ Ecoworld", "RMZ Ecoworld", "RMZ Ecoworld"]}
-              micromarketID="IJhZ-SfQQJs"
-            />
-          ),
-        },
+        { path: "gallery/:id", element: <GallerySingle /> },
+        { path: "property-city", element: <PropertyCity /> },
       ],
     },
 
@@ -104,21 +61,21 @@ export default function Router() {
 
 // IMPORT COMPONENTS
 
-// Dashboard
-const AllAssets = Loadable(lazy(() => import("Screens/NewsFeed/AllAssets")));
-const RMZEcoworld = Loadable(
-  lazy(() => import("Screens/NewsFeed/RMZEcoworld"))
-);
-
 // Extra
 const Page500 = Loadable(lazy(() => import("Screens/Page500")));
 const NotFound = Loadable(lazy(() => import("Screens/Page404")));
 
 // RMZ Screens
 
-const SplashScreen = Loadable(lazy(() => import("Screens/Authentication/SplashScreen")));
-const LoginScreen = Loadable(lazy(() => import("Screens/Authentication/LoginScreen")));
-const OtpScreen = Loadable(lazy(() => import('Screens/Authentication/OtpScreen')));
+const SplashScreen = Loadable(
+  lazy(() => import("Screens/Authentication/SplashScreen"))
+);
+const LoginScreen = Loadable(
+  lazy(() => import("Screens/Authentication/LoginScreen"))
+);
+const OtpScreen = Loadable(
+  lazy(() => import("Screens/Authentication/OtpScreen"))
+);
 
 const WhatsNew = Loadable(lazy(() => import("Screens/WhatsNew")));
 const Property = Loadable(lazy(() => import("Screens/Property")));
@@ -131,7 +88,7 @@ const GallerySingle = Loadable(
 );
 const Profile = Loadable(lazy(() => import("Screens/Profile")));
 const AboutUs = Loadable(lazy(() => import("Screens/AboutUs")));
-const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed")));
+const NewsFeed = Loadable(lazy(() => import("Screens/NewsFeed/index")));
 const Contact = Loadable(lazy(() => import("Screens/Contact")));
 const Forum = Loadable(lazy(() => import("Screens/Forum")));
 const Discussion = Loadable(lazy(() => import("Screens/Discussion")));

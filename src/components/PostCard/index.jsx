@@ -1,58 +1,61 @@
 import React from "react";
 // material
-import { CardContent, CardMedia } from "@mui/material";
-
+// import { CardContent, CardMedia } from "@mui/material";
+import { LinkPreview } from "@dhaiwat10/react-link-preview";
 // assests
 import { ReactComponent as WebIcon } from "assets/web-icon.svg";
 import { ReactComponent as ClockIcon } from "assets/clock-icon.svg";
-import { ReactComponent as ShareIcon } from "assets/share-icon.svg";
+// import { ReactComponent as ShareIcon } from "assets/share-icon.svg";
 
 // styles
 import {
-	StyledCard,
-	StyledContentDiv,
-	MediaBox,
-	CardMediaBox1,
-	CardMediaBox2,
-	CardMediaBox3,
-	StyledButton,
-	FooterContainer,
-	Footer,
-	FooterDiv,
-	FooterFont,
-	MediaDiv,
-	Title,
-	ReadMoreText
+  StyledCard,
+  //   StyledContentDiv,
+  //   MediaBox,
+  //   CardMediaBox1,
+  //   CardMediaBox2,
+  //   CardMediaBox3,
+  //   StyledButton,
+  FooterContainer,
+  Footer,
+  FooterDiv,
+  FooterFont,
+  //   MediaDiv,
+  //   Title,
+  //   ReadMoreText,
 } from "./styles";
 
-export default function PostCard({ images = [], title, bodyText, link, time, style }) {
-	const ReadMore = ({ children }) => {
-		const text = children;
-		const [isReadMore, setIsReadMore] = React.useState(true);
-		const toggleReadMore = () => {
-			setIsReadMore(!isReadMore);
-		};
-		if (text.length > 50) {
-			return (
-				<ReadMoreText>
-					{isReadMore ? text.slice(0, 30) : text}
-					<span onClick={toggleReadMore} onKeyDown={toggleReadMore} aria-hidden>
-						{isReadMore ? "[...]" : "."}
-					</span>
-				</ReadMoreText>
-			);
-		}
+export default function PostCard({
+  //   images = [],
+  //   title,
+  //   bodyText,
+  link,
+  time,
+  style,
+}) {
+  //   const ReadMore = ({ children }) => {
+  //     const text = children;
+  //     const [isReadMore, setIsReadMore] = React.useState(true);
+  //     const toggleReadMore = () => {
+  //       setIsReadMore(!isReadMore);
+  //     };
+  //     if (text.length > 50) {
+  //       return (
+  //         <ReadMoreText>
+  //           {isReadMore ? text.slice(0, 30) : text}
+  //           <span onClick={toggleReadMore} onKeyDown={toggleReadMore} aria-hidden>
+  //             {isReadMore ? "[...]" : "."}
+  //           </span>
+  //         </ReadMoreText>
+  //       );
+  //     }
 
-		return (
-			<ReadMoreText>
-				{text}
-			</ReadMoreText>
-		);
-	};
+  //     return <ReadMoreText>{text}</ReadMoreText>;
+  //   };
 
-	return (
-		<StyledCard style={style}>
-			<StyledContentDiv>
+  return (
+    <StyledCard style={style}>
+      {/* <StyledContentDiv>
 				<CardContent>
 					<Title>
 						{title}
@@ -90,22 +93,23 @@ export default function PostCard({ images = [], title, bodyText, link, time, sty
 					</CardMediaBox3>
 				</MediaDiv>
 				<StyledButton>+{images.length - 3}</StyledButton>
-			</MediaBox>
-			<FooterContainer>
-				<Footer>
-					<FooterDiv>
-						<WebIcon width={24} height={24} />
-						<FooterFont>{link}</FooterFont>
-					</FooterDiv>
-					<FooterDiv>
-						<ClockIcon />
-						<FooterFont>{time}</FooterFont>
-					</FooterDiv>
-				</Footer>
-				<FooterDiv>
-					<ShareIcon />
-				</FooterDiv>
-			</FooterContainer>
-		</StyledCard>
-	);
+			</MediaBox> */}
+      <LinkPreview url={link} />
+      <FooterContainer>
+        <Footer>
+          <FooterDiv>
+            <WebIcon width={24} height={24} />
+            <FooterFont>{link}</FooterFont>
+          </FooterDiv>
+          <FooterDiv>
+            <ClockIcon />
+            <FooterFont>{time}</FooterFont>
+          </FooterDiv>
+        </Footer>
+        {/* <FooterDiv>
+          <ShareIcon />
+        </FooterDiv> */}
+      </FooterContainer>
+    </StyledCard>
+  );
 }

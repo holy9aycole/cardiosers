@@ -1,20 +1,29 @@
 import React from "react";
 
 import DiscussionCard from "components/DiscussionCard";
+import { useParams } from "react-router";
+import useForum from "hooks/useForum";
+import moment from "moment";
 import { MainContainer } from "./styles";
 
 export default function Discussion() {
+  const { id } = useParams();
+  const { forum } = useForum();
   return (
     <MainContainer>
-      <DiscussionCard
-        heading="2021 Looking Forward - The New Normal Crafted Through Architect."
-        description="When everybody across the world continues to make the transition back
-          to normalcy from lock-down, we are curious about what will happen in
-          our society."
-        tag="Design"
-        time="1"
-        comments="17"
-      />
+      {forum
+        .filter((element) => element.id === parseInt(id, 10))
+        .map((item, index) => (
+          <DiscussionCard
+            key={index}
+            id={item.id}
+            heading={item.question}
+            description={item.description}
+            tag={item.category.name}
+            time={moment(item.created_at).fromNow()}
+            comments={item.comments}
+          />
+        ))}
     </MainContainer>
   );
 }
