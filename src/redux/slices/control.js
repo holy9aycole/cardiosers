@@ -5,8 +5,8 @@ const initialState = {
   loading: false,
   snack: {
     text: null,
-    type: null
-  }
+    type: null,
+  },
 };
 
 const slice = createSlice({
@@ -47,8 +47,8 @@ const slice = createSlice({
     },
     stopLoading(state) {
       state.loading = false;
-    }
-  }
+    },
+  },
 });
 
 // Reducer

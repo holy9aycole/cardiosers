@@ -32,19 +32,19 @@ function SnackbarStyles() {
             backgroundColor: theme.palette.grey[isLight ? 900 : 0],
             '&.SnackbarItem-variantSuccess, &.SnackbarItem-variantError, &.SnackbarItem-variantWarning, &.SnackbarItem-variantInfo': {
               color: theme.palette.text.primary,
-              backgroundColor: theme.palette.background.paper
-            }
+              backgroundColor: theme.palette.background.paper,
+            },
           },
           '& .SnackbarItem-message': {
             padding: '0 !important',
-            fontWeight: theme.typography.fontWeightMedium
+            fontWeight: theme.typography.fontWeightMedium,
           },
           '& .SnackbarItem-action': {
             marginRight: 0,
             color: theme.palette.action.active,
-            '& svg': { width: 20, height: 20 }
-          }
-        }
+            '& svg': { width: 20, height: 20 },
+          },
+        },
       }}
     />
   );
@@ -52,7 +52,7 @@ function SnackbarStyles() {
 
 SnackbarIcon.propTypes = {
   icon: PropTypes.object,
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 function SnackbarIcon({ icon, color }) {
@@ -68,7 +68,7 @@ function SnackbarIcon({ icon, color }) {
         alignItems: 'center',
         justifyContent: 'center',
         color: `${color}.main`,
-        bgcolor: (theme) => alpha(theme.palette[color].main, 0.16)
+        bgcolor: (theme) => alpha(theme.palette[color].main, 0.16),
       }}
     >
       <Icon icon={icon} width={24} height={24} />
@@ -77,7 +77,7 @@ function SnackbarIcon({ icon, color }) {
 }
 
 NotistackProvider.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 function NotistackProvider({ children }) {
@@ -93,7 +93,7 @@ function NotistackProvider({ children }) {
           <MIconButton size="small" onClick={() => providerRef.current.closeSnackbar(key)}>
             <Icon icon={closeFill} />
           </MIconButton>
-        )
+        ),
       });
     }
   }, [snack]);
@@ -109,13 +109,13 @@ function NotistackProvider({ children }) {
         autoHideDuration={3000}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         iconVariant={{
           success: <SnackbarIcon icon={checkmarkCircle2Fill} color="success" />,
           error: <SnackbarIcon icon={infoFill} color="error" />,
           warning: <SnackbarIcon icon={alertTriangleFill} color="warning" />,
-          info: <SnackbarIcon icon={alertCircleFill} color="info" />
+          info: <SnackbarIcon icon={alertCircleFill} color="info" />,
         }}
       >
         {children}

@@ -96,7 +96,7 @@
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.4.1",
     "moment": "^2.29.1",
-    "notistack": "^1.0.6-next.3",
+    "notistack": "^2.0.3",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
@@ -144,7 +144,6 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/eslint-parser": "^7.15.4",
-    "babel-loader": "^8.2.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

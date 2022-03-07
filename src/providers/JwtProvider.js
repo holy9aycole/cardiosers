@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { useEffect } from "react";
-import useAuth from "hooks/useAuth";
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import useAuth from 'hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
