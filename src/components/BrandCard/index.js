@@ -12,9 +12,15 @@ import {
   Download,
 } from "./styles";
 
+const fileDownload = require("js-file-download");
+
+const handleDownload = (src, name) => {
+  fileDownload(`http://52.172.227.233${src}`, name);
+};
+
 export default function BrandCard(props) {
   const classes = useStyles();
-  console.log("props.url", props.url);
+
   return (
     <>
       <Grid item md={6} xs={12} className={classes.cardContainer}>
@@ -30,11 +36,7 @@ export default function BrandCard(props) {
           <Typography className="text3">Format: {props.fileType}</Typography>
 
           <FooterShadow src={mask2} alt="footer shadow" />
-          <Download
-            onClick={() =>
-              (window.location.href = `http://52.172.227.233${props.url}`)
-            }
-          >
+          <Download onClick={() => handleDownload(props.url, props.fileName)}>
             <img src={DIcon} alt="download icon" className="DIcon" />
           </Download>
         </CardFooter>

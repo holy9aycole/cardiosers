@@ -22,6 +22,7 @@ export default function Branding() {
             name={item.title}
             fileType={item.fileType}
             url={item.file.url}
+            fileName={item.file.name}
           />
         ))}
       </Grid>

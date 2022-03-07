@@ -1,6 +1,6 @@
 // material
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import React, { useState } from "react";
 //
 import Header from "layouts/main/MainNavbar";
 import useProperties from "hooks/useProperties";
@@ -11,7 +11,11 @@ import {
   ListItemText,
   ListItemIcon,
   Typography,
+  FormControl,
+  Select,
+  MenuItem,
 } from "@mui/material";
+
 import SvgIconStyle from "components/SvgIconStyle";
 import PostCard from "components/PostCard";
 import useNewsFeed from "hooks/useNewsFeed";
@@ -26,6 +30,24 @@ const Assets = styled(Typography)(({ theme }) => ({
   marginBottom: "10px",
   [theme.breakpoints.down("md")]: {
     fontSize: "20px",
+  },
+}));
+
+const GridStyle = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {},
+}));
+
+const FilterContainer = styled("div")(({ theme }) => ({
+  width: "100%",
+  //   border: "1px solid green",
+  height: "auto",
+  padding: "1px 5%",
+  marginTop: "5%",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
   },
 }));
 
@@ -44,11 +66,17 @@ const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
 // ----------------------------------------------------------------------
 
-const ListMain = styled(List)({
+const ListMain = styled(List)(({ theme }) => ({
   padding: "20px 0px 0px 250px",
   position: "fixed",
   cursor: "pointer",
-});
+  display: "flex",
+  justifyContent: "flex-end",
+  flexDirection: "column",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
 const ListItemStyle = styled("div")(({ theme }) => ({
   ...theme.typography.body2,
@@ -80,7 +108,7 @@ const MainStyle = styled("div")(({ theme }) => ({
   overflow: "auto",
   minHeight: "100%",
   paddingTop: APP_BAR_MOBILE + 24,
-  paddingBottom: theme.spacing(10),
+
   backgroundColor: "#EEEEEE",
   [theme.breakpoints.up("lg")]: {
     paddingTop: APP_BAR_DESKTOP + 24,
@@ -95,26 +123,26 @@ export default function DashboardLayout() {
   const { properties } = useProperties();
   const [active, setActive] = useState(properties.map((item) => item.id));
   const { newsFeed } = useNewsFeed();
+
+  const [selectvalue, setSelectValue] = React.useState(1);
+
+  const handleChange = (event) => {
+    setSelectValue(event.target.value);
+  };
+
   return (
     <>
       <Header title="News Feed" />
       <RootStyle>
         <Grid container>
-          <Grid
+          <GridStyle
             item
             md={4}
+            xs={12}
             style={{ display: "flex", flexDirection: "column" }}
           >
             <MainStyle>
-              <ListMain
-                component="div"
-                disablePadding
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  flexDirection: "column",
-                }}
-              >
+              <ListMain component="div" disablePadding>
                 <ListItemStyle>
                   <ListItemIconStyle>
                     <Box
@@ -154,9 +182,36 @@ export default function DashboardLayout() {
                   </ListItemStyle>
                 ))}
               </ListMain>
+
+              <FilterContainer>
+                <FormControl sx={{ m: 1, minWidth: 180, width: "100%" }}>
+                  <Select
+                    style={{
+                      color: "#3D3DD9",
+                      fontFamily: "Poppins",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                    }}
+                    value={selectvalue}
+                    onChange={handleChange}
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                  >
+                    {properties.map((item, index) => (
+                      <MenuItem
+                        key={index}
+                        value={item.id}
+                        divider={index !== properties.length - 1}
+                      >
+                        {item.PropertyName}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </FilterContainer>
             </MainStyle>
-          </Grid>
-          <Grid item md={8}>
+          </GridStyle>
+          <Grid item md={8} xs={12}>
             <MainStyle>
               {newsFeed.map((item, index) => (
                 <>

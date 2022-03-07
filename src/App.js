@@ -10,7 +10,7 @@ import useAuth from "./hooks/useAuth";
 import ScrollToTop from "./components/ScrollToTop";
 import NotistackProvider from "./components/NotistackProvider";
 import ThemeLocalization from "./components/ThemeLocalization";
-import LoadingScreen, { ProgressBarStyle } from "./components/LoadingScreen";
+import LoadingScreen from "./components/LoadingScreen";
 // ----------------------------------------------------------------------
 
 export default function App() {
@@ -21,7 +21,6 @@ export default function App() {
       <ThemeLocalization>
         <NotistackProvider>
           <GlobalStyles />
-          <ProgressBarStyle />
           <JwtProvider>
             <ScrollToTop />
             {isInitialized ? <Router /> : <LoadingScreen />}

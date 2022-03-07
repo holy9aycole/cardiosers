@@ -1,18 +1,18 @@
 // highlight
-import './utils/highlight';
-import 'simplebar/src/simplebar.css';
-import 'react-image-lightbox/style.css';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { Provider as ReduxProvider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { store, persistor } from './redux/store';
-import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
-import LoadingScreen from './components/LoadingScreen';
-import App from './App';
+import "./utils/highlight";
+import "simplebar/src/simplebar.css";
+import "react-image-lightbox/style.css";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { Provider as ReduxProvider } from "react-redux";
+import { PersistGate } from "redux-persist/lib/integration/react";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import { store, persistor } from "./redux/store";
+// import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
+import LoadingScreen from "./components/LoadingScreen";
+import App from "./App";
 
 // ----------------------------------------------------------------------
 
@@ -21,16 +21,16 @@ ReactDOM.render(
     <ReduxProvider store={store}>
       <PersistGate loading={<LoadingScreen />} persistor={persistor}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <CollapseDrawerProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </CollapseDrawerProvider>
+          {/* <CollapseDrawerProvider> */}
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+          {/* </CollapseDrawerProvider> */}
         </LocalizationProvider>
       </PersistGate>
     </ReduxProvider>
   </HelmetProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

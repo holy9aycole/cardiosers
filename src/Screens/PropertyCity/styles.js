@@ -113,10 +113,19 @@ export const AccordionTypography = styled(Typography)({
   fontSize: 20,
 });
 
-export const StyledCard = styled(Card)(({ theme }) => ({
+export const StyledCard2 = styled(Card)(({ theme }) => ({
   background: "transparent",
   [theme.breakpoints.up("md")]: {
     width: "40%",
+  },
+}));
+
+export const StyledCard = styled(Card)(({ theme }) => ({
+  background: "transparent",
+  marginBottom: "10px",
+  [theme.breakpoints.up("md")]: {
+    width: "30%",
+    marginRight: "10px",
   },
 }));
 
@@ -129,12 +138,13 @@ export const StyledCardContent = styled(CardContent)(({ theme }) => ({
     padding: 18,
     height: "26vh",
   },
+  [theme.breakpoints.down("md")]: {
+    height: "25vh",
+  },
   [theme.breakpoints.only("md")]: {
     height: "25vh",
   },
-  [theme.breakpoints.only("lg")]: {
-    height: "20vh",
-  },
+
   ">div": {
     fontFamily: "IvyPresto Display",
     fontSize: 24,
@@ -205,14 +215,15 @@ export const NextButton = styled("div")(({ theme }) => ({
     left: "92%",
   },
   [theme.breakpoints.only("md")]: {
-    bottom: "44vh",
-    left: "92%",
+    bottom: "23vh",
+    left: "18vh",
   },
-  [theme.breakpoints.only("xl")]: {
+  [theme.breakpoints.down("lg")]: {
     bottom: "24vh",
   },
   [theme.breakpoints.only("lg")]: {
     bottom: "25vh",
+    left: "27vw",
   },
   display: "flex",
   alignItems: "center",
@@ -264,10 +275,17 @@ export const PrevArrowDiv = styled("div")(({ theme }) => ({
 export const StyledAccordionDetails = styled(AccordionDetails)({
   background: "transparent",
 });
-export const StyledAccordionDetails2 = styled(AccordionDetails)({
-  marginTop: -40,
-  background: "transparent",
-});
+export const StyledAccordionDetails2 = styled(AccordionDetails)(
+  ({ theme }) => ({
+    background: "transparent",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "row",
+    },
+  })
+);
 
 export const FloorPlans = styled("div")({
   width: "100%",
@@ -304,19 +322,19 @@ export const TextBox = styled("div")({
   flexDirection: "column",
 });
 
-export const PDFDownload = styled("img")({
-  height: "65%",
-  width: "30%",
-});
+export const PDFDownload = styled("img")({ cursor: "pointer" });
 
 export const ModelImage = styled("img")(({ theme }) => ({
   maxWidth: "fit-content",
-  width: "300px",
-  height: "300px",
-  [theme.breakpoints.down("sm")]: {
+  width: "250px",
+  height: "250px",
+  marginLeft: "10px",
+  flexWrap: "wrap",
+  cursor: "pointer",
+  [theme.breakpoints.down("md")]: {
     maxWidth: "fit-content",
-    width: "115px",
-    height: "115px",
+    width: "105px",
+    height: "105px",
     marginTop: "8px",
   },
 }));
@@ -324,6 +342,5 @@ export const ModelImage = styled("img")(({ theme }) => ({
 export const ImageContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
   flexWrap: "wrap",
 });

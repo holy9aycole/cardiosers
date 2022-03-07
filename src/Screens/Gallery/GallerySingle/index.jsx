@@ -82,8 +82,6 @@ function GallerySinglePage() {
     </FileDownloadButton>
   );
 
-  console.log("first", gallery[id]);
-
   return (
     <>
       <ImageContainer>
@@ -98,14 +96,26 @@ function GallerySinglePage() {
               .filter((element) => element.id === parseInt(id, 10))[0]
               ?.media.map((image, index) => (
                 <ImageListItem key={index}>
-                  <ImageCard onClick={() => handleOpen(index)}>
-                    <img
-                      src={`http://52.172.227.233${image.url}`}
-                      srcSet={`http://52.172.227.233${image.url}`}
-                      alt=""
-                      loading="lazy"
-                    />
-                  </ImageCard>
+                  {!checked && image.ext === ".png" && (
+                    <ImageCard onClick={() => handleOpen(index)}>
+                      <img
+                        src={`http://52.172.227.233${image.url}`}
+                        srcSet={`http://52.172.227.233${image.url}`}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </ImageCard>
+                  )}
+                  {checked && image.ext === ".jpeg" && (
+                    <ImageCard onClick={() => handleOpen(index)}>
+                      <img
+                        src={`http://52.172.227.233${image.url}`}
+                        srcSet={`http://52.172.227.233${image.url}`}
+                        alt=""
+                        loading="lazy"
+                      />
+                    </ImageCard>
+                  )}
                 </ImageListItem>
               ))}
           </ImageList>

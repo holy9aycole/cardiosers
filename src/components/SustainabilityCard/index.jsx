@@ -36,8 +36,8 @@ export default function SustainabilityCard(props) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
     afterChange: () => setUpdateCount(updateCount + 1),
     // beforeChange: (current, next) => setSlideIndex(next),
   };
@@ -49,9 +49,9 @@ export default function SustainabilityCard(props) {
           <Grid items md={6} xs={12}>
             <Slider ref={slider} {...settings}>
               <SustainableImage src={props.sustainImage} alt="sustainable" />
+              {/* <SustainableImage src={props.sustainImage} alt="sustainable" />
               <SustainableImage src={props.sustainImage} alt="sustainable" />
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
+              <SustainableImage src={props.sustainImage} alt="sustainable" /> */}
             </Slider>
           </Grid>
           <TextContainer item md={6} xs={12}>
