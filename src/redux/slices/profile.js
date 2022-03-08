@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
-  pulled: "false",
+  pulled: false,
   profile: {},
 };
 
@@ -11,10 +12,12 @@ const slice = createSlice({
   reducers: {
     getProfileDetails(state, action) {
       state.profile = action.payload;
+      state.pulled = moment().toISOString();
       return state;
     },
     updateProfileDetails(state, action) {
       state.profile = action.payload;
+      state.pulled = moment().toISOString();
       return state;
     },
   },

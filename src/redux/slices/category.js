@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
 
 const initialState = {
-  pulled: "false",
+  pulled: false,
   category: [],
 };
 

@@ -5,13 +5,14 @@ import { getCategorySuccess } from "redux/slices/category";
 
 export default function useCategory() {
   const dispatch = useDispatch();
-  const { category } = useSelector((state) => state.category);
+  const { category, pulled } = useSelector((state) => state.category);
 
   useEffect(() => {
     getCategory();
   }, []);
 
   const getCategory = useCallback(async () => {
+    if (pulled) return;
     const response = await axios.get("http://52.172.227.233/categories");
     if (response) dispatch(getCategorySuccess(response.data));
   }, []);

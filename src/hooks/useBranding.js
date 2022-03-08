@@ -5,13 +5,14 @@ import { getBrandingSuccess } from "redux/slices/branding";
 
 export default function useBranding() {
   const dispatch = useDispatch();
-  const { branding } = useSelector((state) => state.branding);
+  const { branding, pulled } = useSelector((state) => state.branding);
 
   useEffect(() => {
     getBranding();
   }, []);
 
   const getBranding = useCallback(async () => {
+    if (pulled) return;
     const response = await axios.get("http://52.172.227.233/brandings");
     if (response) dispatch(getBrandingSuccess(response.data));
   }, []);

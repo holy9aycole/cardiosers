@@ -208,22 +208,38 @@ function PropertyCity() {
                 <AccordionTypography>Assest AV</AccordionTypography>
               </StyledAccordionSummary>
               <StyledAccordionDetails2>
-                {[...Array(5)].map((e) => (
-                  <div
-                    key={e}
-                    style={{ marginLeft: "15px", marginBottom: "10px" }}
-                  >
-                    <Player
-                      poster="assets/poster.png"
-                      src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-                      width={320}
-                      height={170}
-                      fluid={false}
-                      onClick={() => alert("jnbh")}
-                      style={{ marginRight: "10px" }}
-                    />
-                  </div>
+                <div style={{ marginLeft: "15px", marginBottom: "10px" }}>
+                  <Player
+                    poster="assets/poster.png"
+                    src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                    width={320}
+                    height={170}
+                    fluid={false}
+                    style={{ marginRight: "10px" }}
+                  />
+                </div>
+                {item.Models3d.map((item, index) => (
+                  <ModelImage
+                    src={`http://52.172.227.233${item.poster.url}`}
+                    alt=""
+                    loading="lazy"
+                    key={index}
+                    style={{ height: 170, width: 170 }}
+                    onClick={() =>
+                      handleDownload(item.file3d.url, item.file3d.name)
+                    }
+                  />
                 ))}
+                <div style={{ marginLeft: "15px", marginBottom: "10px" }}>
+                  <Player
+                    poster="assets/poster.png"
+                    src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                    width={320}
+                    height={170}
+                    fluid={false}
+                    style={{ marginRight: "10px" }}
+                  />
+                </div>
               </StyledAccordionDetails2>
             </StyledAccordion>
             <StyledAccordion

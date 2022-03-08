@@ -38,8 +38,6 @@ export const CardFooter = styled(Card)(() => ({
     fontSize: "15px",
     fontFamily: "Poppins",
     marginTop: "15px",
-
-    maxWidth: "90%",
   },
 }));
 
@@ -71,7 +69,6 @@ export const FooterShadow = styled("img")(() => ({
 export const CardHeader = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
-  // border: "1px solid red",
 
   "& .ImageContainer": {
     width: "95%",

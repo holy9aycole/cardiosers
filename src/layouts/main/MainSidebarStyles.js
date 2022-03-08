@@ -33,7 +33,6 @@ export const CloseIconContainer = styled(ListItem)(() => ({
 }));
 
 export const Links = styled(ListItem)(() => ({
-  //   border: ".5px solid red",
   width: "360px",
   marginLeft: "5%",
   padding: "17px 20px",

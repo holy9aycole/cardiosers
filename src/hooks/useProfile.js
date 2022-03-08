@@ -6,7 +6,7 @@ import { cloneDeep } from "lodash";
 
 export default function useProfile() {
   const dispatch = useDispatch();
-  const { profile } = useSelector((state) => state.profile);
+  const { profile, pulled } = useSelector((state) => state.profile);
   const userId = 1;
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function useProfile() {
   }, []);
 
   const getUser = useCallback(async () => {
+    if (pulled) return;
     const response = await axios.get(`http://52.172.227.233/users/${userId}`);
     if (response) dispatch(getProfileDetails(response.data));
   }, []);
@@ -29,7 +30,7 @@ export default function useProfile() {
       `http://52.172.227.233/users/${userId}`,
       clone
     );
-    console.log("response after updating", response);
+
     if (response) dispatch(updateProfileDetails(clone));
   }, []);
 

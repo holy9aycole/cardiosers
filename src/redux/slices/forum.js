@@ -4,7 +4,7 @@ import moment from "moment";
 
 const initialState = {
   forum: [],
-  pulled: "false",
+  pulled: false,
 };
 
 const slice = createSlice({

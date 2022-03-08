@@ -6,6 +6,8 @@ import message from "assets/images/message-icon.svg";
 import user from "assets/images/user-icon.svg";
 import edit from "assets/images/edit-icon.svg";
 import right from "assets/images/button-arrow-right.png";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import { useNavigate } from "react-router";
 import moment from "moment";
 import useForum from "hooks/useForum";
 import { Form, TextField } from "components/custom";
@@ -25,7 +27,7 @@ import {
 export default function Discussion(props) {
   const classes = useStyles();
   const { forum, postComment } = useForum();
-
+  const navigate = useNavigate();
   const data = forum.filter((element) => element.id === props.id);
 
   const formData = useForm({
@@ -42,12 +44,26 @@ export default function Discussion(props) {
     },
   });
   const onFormSubmit = async (data) => {
-    console.log("data", data);
     if (data.comment !== "") postComment(data);
   };
 
   return (
     <>
+      <CommentBox style={{ boxShadow: "none", padding: 0, marginTop: 0 }}>
+        <div
+          className="btn"
+          Button
+          onClick={() => navigate(-1)}
+          onKeyDown={() => navigate(-1)}
+          aria-hidden="true"
+        >
+          <KeyboardArrowLeftIcon
+            fontSize="28"
+            style={{ height: "1.7em", width: "1.7em", color: "#fff" }}
+          />
+        </div>
+      </CommentBox>
+
       <Feed>
         <Typography className="heading">{props.heading}</Typography>
         <FeedFooter>

@@ -97,12 +97,25 @@ export default function Forum() {
           comments={row.comments.length}
         />
       ))}
-      <CommentBox>
-        <div onClick={openOnClick} aria-hidden="true" className="ask">
-          <Typography className="ques">ASK A QUESTION</Typography>
-          <img src={btnArrow} alt="button arrow" />
-        </div>
-      </CommentBox>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "center",
+          position: "fixed",
+          bottom: 10,
+          zIndex: 111,
+        }}
+      >
+        {" "}
+        <CommentBox>
+          <div onClick={openOnClick} aria-hidden="true" className="ask">
+            <Typography className="ques">ASK A QUESTION</Typography>
+            <img src={btnArrow} alt="button arrow" />
+          </div>
+        </CommentBox>
+      </div>
+
       <QuestionModel
         IsModalOpened={modalIsOpen}
         onCloseModal={handleCloseModal}

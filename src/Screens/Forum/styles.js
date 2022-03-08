@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme) => ({
 
 export const MainContainer = styled("div")(({ theme }) => ({
   marginTop: "8%",
-  // border: "1px solid red",
   width: "auto",
   height: "auto",
   [theme.breakpoints.only("sm")]: {

@@ -3,7 +3,7 @@ import moment from "moment";
 
 const initialState = {
   gallery: [],
-  pulled: "false",
+  pulled: false,
 };
 
 const slice = createSlice({

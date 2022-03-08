@@ -7,7 +7,7 @@ import { cloneDeep } from "lodash";
 
 export default function useForum() {
   const dispatch = useDispatch();
-  const { forum } = useSelector((state) => state.forum);
+  const { forum, pulled } = useSelector((state) => state.forum);
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,6 +15,7 @@ export default function useForum() {
   }, []);
 
   const getForum = useCallback(async () => {
+    if (pulled) return;
     const response = await axios.get("http://52.172.227.233/forums");
     if (response) dispatch(getForumSuccess(response.data));
   }, []);
