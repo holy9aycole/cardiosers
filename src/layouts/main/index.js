@@ -1,6 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "layouts/main/MainNavbar";
-import Footer from "layouts/main/MainFooter";
 import { useState } from "react";
 import useControl from "hooks/useControl";
 import LoadingScreen from "components/LoadingScreen";
@@ -26,7 +25,7 @@ export default function MainLayout() {
 
     case "/property-city":
       title = "Property";
-      titleOptions = ["Bengaluru", "Mumbai", "Chennai"];
+      titleOptions = 1;
       break;
 
     case "/sustainability":
@@ -81,7 +80,6 @@ export default function MainLayout() {
         handleChange={handleChange}
       />
       <Outlet />
-      <Footer />
     </>
   );
 }

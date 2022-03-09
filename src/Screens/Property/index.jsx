@@ -1,3 +1,4 @@
+import MainFooter from "layouts/main/MainFooter";
 import React from "react";
 import { Link } from "react-router-dom";
 import indiaMap from "../../assets/images/india-map.svg";
@@ -15,6 +16,7 @@ function Index() {
           <IndiaMap src={indiaMap} alt="" />
         </Link>
       </MainContainer>
+      <MainFooter />
     </>
   );
 }

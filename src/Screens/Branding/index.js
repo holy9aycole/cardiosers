@@ -3,6 +3,7 @@ import React from "react";
 import BrandCard from "components/BrandCard";
 import siteImage from "assets/images/RMZ_Ecoworld.png";
 import Logo from "assets/images/rmz-logo.png";
+import MainFooter from "layouts/main/MainFooter";
 import useBranding from "hooks/useBranding";
 import { Grid } from "@mui/material";
 import { useStyles } from "./styles";
@@ -26,6 +27,7 @@ export default function Branding() {
           />
         ))}
       </Grid>
+      <MainFooter />
     </>
   );
 }

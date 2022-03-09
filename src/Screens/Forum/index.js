@@ -5,45 +5,11 @@ import ForumCard from "components/ForumCard";
 import { useNavigate } from "react-router-dom";
 import btnArrow from "assets/images/button-arrow.svg";
 import moment from "moment";
+import MainFooter from "layouts/main/MainFooter";
 import { MainContainer, CommentBox } from "./styles";
 
 import QuestionModel from "./QuestionModel";
 import SwipeableEdgeDrawer from "./SwipableModal";
-
-// const ForumData = [
-//   {
-//     heading: "2021 Looking Forward - The New Normal Crafted Through Architect.",
-//     description:
-//       "When everybody across the world continues to make the transition back to normalcy from lock-down, we are curious about what will happen in our society.",
-//     tag: "Design",
-//     time: "1",
-//     comments: "17",
-//   },
-//   {
-//     heading: "2021 Looking Forward - The New Normal Crafted Through Architect.",
-//     description:
-//       "When everybody across the world continues to make the transition back to normalcy from lock-down, we are curious about what will happen in our society.",
-//     tag: "Design",
-//     time: "1",
-//     comments: "17",
-//   },
-//   {
-//     heading: "2021 Looking Forward - The New Normal Crafted Through Architect.",
-//     description:
-//       "When everybody across the world continues to make the transition back to normalcy from lock-down, we are curious about what will happen in our society.",
-//     tag: "Design",
-//     time: "1",
-//     comments: "17",
-//   },
-//   {
-//     heading: "2021 Looking Forward - The New Normal Crafted Through Architect.",
-//     description:
-//       "When everybody across the world continues to make the transition back to normalcy from lock-down, we are curious about what will happen in our society.",
-//     tag: "Design",
-//     time: "1",
-//     comments: "17",
-//   },
-// ];
 
 export default function Forum() {
   const { forum, getForum } = useForum();
@@ -85,48 +51,51 @@ export default function Forum() {
   };
 
   return (
-    <MainContainer>
-      {forum.map((row, index) => (
-        <ForumCard
-          onClick={() => handleClick(row.id)}
-          key={index}
-          heading={row.question}
-          description={row.description}
-          tag={row?.category?.name}
-          time={moment(row.created_at).fromNow()}
-          comments={row.comments.length}
-        />
-      ))}
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "center",
-          position: "fixed",
-          bottom: 10,
-          zIndex: 111,
-        }}
-      >
-        {" "}
-        <CommentBox>
-          <div onClick={openOnClick} aria-hidden="true" className="ask">
-            <Typography className="ques">ASK A QUESTION</Typography>
-            <img src={btnArrow} alt="button arrow" />
-          </div>
-        </CommentBox>
-      </div>
+    <>
+      <MainContainer>
+        {forum.map((row, index) => (
+          <ForumCard
+            onClick={() => handleClick(row.id)}
+            key={index}
+            heading={row.question}
+            description={row.description}
+            tag={row?.category?.name}
+            time={moment(row.created_at).fromNow()}
+            comments={row.comments.length}
+            id={row?.id}
+          />
+        ))}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "center",
+            position: "fixed",
+            bottom: 10,
+            zIndex: 111,
+          }}
+        >
+          <CommentBox>
+            <div onClick={openOnClick} aria-hidden="true" className="ask">
+              <Typography className="ques">ASK A QUESTION</Typography>
+              <img src={btnArrow} alt="button arrow" />
+            </div>
+          </CommentBox>
+        </div>
 
-      <QuestionModel
-        IsModalOpened={modalIsOpen}
-        onCloseModal={handleCloseModal}
-      />
-      {window.innerWidth < 768 && (
-        <SwipeableEdgeDrawer
-          IsModalOpen={swipableModalOpen}
-          forOpen={swipableOpen}
-          onCloseModal={closeSwipable}
+        <QuestionModel
+          IsModalOpened={modalIsOpen}
+          onCloseModal={handleCloseModal}
         />
-      )}
-    </MainContainer>
+        {window.innerWidth < 768 && (
+          <SwipeableEdgeDrawer
+            IsModalOpen={swipableModalOpen}
+            forOpen={swipableOpen}
+            onCloseModal={closeSwipable}
+          />
+        )}
+        <MainFooter />
+      </MainContainer>
+    </>
   );
 }

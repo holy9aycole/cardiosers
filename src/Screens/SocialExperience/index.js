@@ -4,8 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-// import Button from "@mui/material/Button";
-
+import MainFooter from "layouts/main/MainFooter";
 import filter from "assets/images/filter-icon.png";
 import useProperties from "hooks/useProperties";
 import FilterSidebar from "./FilterSidebar";
@@ -80,15 +79,16 @@ export default function SocialExperience() {
           {filteredProperties.map((item, index) => (
             <ExperienceCard
               key={index}
-              RMZ_Ecoworld={`http://52.172.227.233${item.About.image.url}`}
-              category={item.tag}
-              name={item.PropertyName}
-              description={item.About.description}
-              time={item.updated_at}
+              RMZ_Ecoworld={`http://52.172.227.233${item?.About?.image?.url}`}
+              category={item?.tag}
+              name={item?.PropertyName}
+              description={item?.About?.description}
+              time={item?.updated_at}
             />
           ))}
         </Grid>
       </MainContainer>
+      <MainFooter />
       <FilterSidebar
         isDrawerOpen={DrawerOpen}
         onCloseDrawer={() => setDrawerOpen(false)}

@@ -4,7 +4,6 @@ import { Grid } from "@mui/material";
 import Dp from "assets/images/sanya.png";
 import email from "assets/icons/email.svg";
 import location from "assets/icons/location.svg";
-import password from "assets/icons/password.svg";
 import phone from "assets/icons/phone.svg";
 import user from "assets/icons/user.svg";
 import EditIcon from "assets/icons/edit.svg";
@@ -14,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useProfile from "hooks/useProfile";
 
+import MainFooter from "layouts/main/MainFooter";
 import * as Yup from "yup";
 // import { useSelector } from "react-redux";
 import {
@@ -97,7 +97,7 @@ function Profile() {
           <GridItem item md={6} xs={12} style={{}}>
             <FormField>
               <Circle>
-                <Icon src={email} />
+                <Icon src={user} />
               </Circle>
               {edit ? (
                 <TextField
@@ -131,7 +131,7 @@ function Profile() {
           <GridItem item md={6} xs={12}>
             <FormField>
               <Circle>
-                <Icon src={password} />
+                <Icon src={email} />
               </Circle>
               {edit ? (
                 <TextField
@@ -162,26 +162,10 @@ function Profile() {
             </FormField>
             {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}
           </GridItem>
-          <GridItem item md={6} xs={12}>
-            <FormField>
-              <Circle>
-                <Icon src={user} />
-              </Circle>
-              {edit ? (
-                <TextField
-                  name="password"
-                  variant="outlined"
-                  style={{ marginLeft: "20px", marginTop: "-10px" }}
-                />
-              ) : (
-                <Text>*********</Text>
-              )}
-            </FormField>
-            {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}
-          </GridItem>
         </GridStyle>
       </Form>
       <LogOut disableRipple>LOG OUT</LogOut>
+      <MainFooter />
     </>
   );
 }

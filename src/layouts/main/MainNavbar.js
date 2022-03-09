@@ -19,6 +19,8 @@ import MainSidebar from "layouts/main/MainSidebar";
 import { ReactComponent as Logo } from "assets/rmz-logo.svg";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
+import useProperties from "hooks/useProperties";
+import _ from "lodash";
 // ----------------------------------------------------------------------
 
 const APPBAR_MOBILE = 64;
@@ -62,8 +64,10 @@ const NavbarHeading = styled("div")(({ theme }) => ({
   fontSize: 20,
   fontWeight: "bold",
   textTransform: "uppercase",
+  marginLeft: "50px",
   [theme.breakpoints.down("sm")]: {
     fontSize: 15,
+    marginLeft: "0px",
   },
 }));
 
@@ -80,7 +84,7 @@ const FormControlStyled = styled(FormControl)(({ theme }) => ({
 }));
 
 const BootstrapInput = styled(TextField)(({ theme }) => ({
-  backgroundColor: "#fcfcfb",
+  backgroundColor: "#ffffff",
   border: "1px solid #ced4da",
   borderRadius: 6,
   outline: "none",
@@ -142,6 +146,13 @@ MainNavbar.propTypes = {
 
 export default function MainNavbar(props) {
   const [DrawerOpen, setDrawerOpen] = useState(false);
+  const { properties } = useProperties();
+  const cities = [];
+  properties.map((item) => cities.push(item?.City));
+  const uniqueCities = _.uniq(cities);
+
+  const [selectValue, setSelectValue] = useState(uniqueCities[0]);
+  const handleChange = (e) => setSelectValue(e.target.value);
 
   return (
     <RootStyle>
@@ -160,11 +171,15 @@ export default function MainNavbar(props) {
                   <NavbarHeadingSelect
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
-                    value={props.area}
-                    onChange={props.handleChange}
+                    value={selectValue}
+                    onChange={handleChange}
+                    defaultValue="all"
                   >
-                    {props.titleOptions.map((option) => (
-                      <MenuItem key={option} value={option} selected>
+                    <MenuItem value="all" selected>
+                      All
+                    </MenuItem>
+                    {uniqueCities.map((option) => (
+                      <MenuItem key={option} value={option}>
                         {option}
                       </MenuItem>
                     ))}

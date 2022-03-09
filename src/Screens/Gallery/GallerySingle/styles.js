@@ -1,4 +1,4 @@
-import { styled, Card } from "@mui/material";
+import { styled, Card, Box } from "@mui/material";
 import Switch from "@mui/material/Switch";
 
 export const ImageContainer = styled("div")({
@@ -121,8 +121,8 @@ export const FileDownloadButton = styled("div")(({ theme }) => ({
   backgroundColor: "#3D3DD9",
   zIndex: 2000,
   position: "fixed",
-  left: "38%",
-  bottom: "7.5vh",
+  left: "74%",
+  bottom: "12vh",
   height: "50px",
   width: "50px",
   display: "flex",
@@ -137,7 +137,25 @@ export const FileDownloadButton = styled("div")(({ theme }) => ({
     left: "20%",
   },
   [theme.breakpoints.down("sm")]: {
-    bottom: "5.5vh",
-    left: "15%",
+    bottom: "21.5vh",
+    left: "84%",
+  },
+}));
+
+export const ModalBox = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  bgcolor: "background.paper",
+  borderRadius: "10px",
+  boxShadow: 24,
+  [theme.breakpoints.down("md")]: {
+    width: 600,
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "95%",
+    margin: "auto",
   },
 }));

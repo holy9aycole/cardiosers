@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import ImageList from "@mui/material/ImageList";
+import { ImageList, Modal } from "@mui/material";
 import ImageListItem from "@mui/material/ImageListItem";
-import Lightbox from "react-image-lightbox";
+// import Lightbox from "react-image-lightbox";
 import useGallery from "hooks/useGallery";
 import { useParams } from "react-router";
+import MainFooter from "layouts/main/MainFooter";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import detailedView1 from "assets/images/GalleryDetailed/3.png";
 import detailedView2 from "assets/images/GalleryDetailed/4-1.png";
@@ -31,8 +32,11 @@ import {
   StyledSwitch,
   ImageContainer,
   FileDownloadButton,
+  ModalBox,
 } from "./styles";
 import "assets/css/gallery-single.css";
+
+const fileDownload = require("js-file-download");
 
 const images = [
   detailedView1,
@@ -61,29 +65,58 @@ console.log(images);
 
 function GallerySinglePage() {
   const [open, setOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  // const [photoIndex, setPhotoIndex] = useState(0);
+  const [currentPic, setCurrentPic] = React.useState("");
   const [checked, setChecked] = useState(false);
+  const [picName, setPicName] = React.useState("");
 
   const { gallery } = useGallery();
   const { id } = useParams();
-  console.log("id", id);
-  const handleOpen = (index) => {
-    setOpen(!open);
-    setPhotoIndex(index);
+  const handleOpen = (src, name) => {
+    setCurrentPic(src);
+    setOpen(true);
+    setPicName(name);
+    // setPhotoIndex(src);
   };
+
+  const handleClose = () => setOpen(false);
 
   const handleChange = (e) => {
     setChecked(e.target.checked);
   };
 
-  const DownloadButton = () => (
-    <FileDownloadButton onClick={() => alert("clicked")}>
-      <FileDownloadIcon />
-    </FileDownloadButton>
-  );
+  const handleDownload = (src, name) => {
+    fileDownload(`${process.env.REACT_APP_BACKEND_URL}${src}`, name);
+  };
 
   return (
     <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <>
+          <ModalBox>
+            <img
+              src={`${process.env.REACT_APP_BACKEND_URL}${currentPic}`}
+              alt=""
+              style={{ width: "100%" }}
+            />
+          </ModalBox>
+          <FileDownloadButton
+            onClick={() =>
+              handleDownload(
+                `${process.env.REACT_APP_BACKEND_URL}${currentPic}`,
+                picName
+              )
+            }
+          >
+            <FileDownloadIcon />
+          </FileDownloadButton>
+        </>
+      </Modal>
       <ImageContainer>
         <Container>
           <StyledSwitch checked={checked} onChange={handleChange} />
@@ -97,20 +130,24 @@ function GallerySinglePage() {
               ?.media.map((image, index) => (
                 <ImageListItem key={index}>
                   {!checked && image.ext === ".png" && (
-                    <ImageCard onClick={() => handleOpen(index)}>
+                    <ImageCard
+                      onClick={() => handleOpen(image.url, image.name)}
+                    >
                       <img
-                        src={`http://52.172.227.233${image.url}`}
-                        srcSet={`http://52.172.227.233${image.url}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
+                        srcSet={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
                         alt=""
                         loading="lazy"
                       />
                     </ImageCard>
                   )}
                   {checked && image.ext === ".jpeg" && (
-                    <ImageCard onClick={() => handleOpen(index)}>
+                    <ImageCard
+                      onClick={() => handleOpen(image.url, image.name)}
+                    >
                       <img
-                        src={`http://52.172.227.233${image.url}`}
-                        srcSet={`http://52.172.227.233${image.url}`}
+                        src={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
+                        srcSet={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
                         alt=""
                         loading="lazy"
                       />
@@ -121,11 +158,12 @@ function GallerySinglePage() {
           </ImageList>
         </Container>
       </ImageContainer>
+      <MainFooter />
 
-      {open && (
+      {/* {open && (
         <>
           <Lightbox
-            mainSrc={gallery[id].media[photoIndex]}
+            mainSrc={`${process.env.REACT_APP_BACKEND_URL}${currentPic}`}
             nextSrc={
               gallery[id].media[photoIndex + 1] % gallery[id].media.length
             }
@@ -147,7 +185,7 @@ function GallerySinglePage() {
           />
           <DownloadButton />
         </>
-      )}
+      )} */}
     </>
   );
 }

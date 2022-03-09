@@ -9,6 +9,7 @@ const {
   CardContent,
   AccordionDetails,
   Card,
+  Box,
 } = require("@mui/material");
 
 export const PropertyPage = styled("div")({
@@ -75,11 +76,15 @@ export const StyledSelectIcon = styled(ArrowDropDownIcon)({
   color: "#3D3DD9",
 });
 
-export const AccordionContainer = styled("div")({
+export const AccordionContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-});
+  marginBottom: "40px",
+  [theme.breakpoints.down("sm")]: {
+    marginBottom: "100px",
+  },
+}));
 
 export const StyledAccordion = styled(Accordion)(({ theme }) => ({
   width: "90%",
@@ -123,6 +128,7 @@ export const StyledCard2 = styled(Card)(({ theme }) => ({
 export const StyledCard = styled(Card)(({ theme }) => ({
   background: "transparent",
   marginBottom: "10px",
+  cursor: "pointer",
   [theme.breakpoints.up("md")]: {
     width: "30%",
     marginRight: "10px",
@@ -322,7 +328,7 @@ export const TextBox = styled("div")({
   flexDirection: "column",
 });
 
-export const PDFDownload = styled("img")({ cursor: "pointer" });
+export const PDFDownload = styled("img")({});
 
 export const ModelImage = styled("img")(({ theme }) => ({
   maxWidth: "fit-content",
@@ -344,3 +350,46 @@ export const ImageContainer = styled("div")({
   flexDirection: "row",
   flexWrap: "wrap",
 });
+
+export const FileDownloadButton = styled("div")(({ theme }) => ({
+  backgroundColor: "#3D3DD9",
+  zIndex: 2000,
+  position: "fixed",
+  left: "74%",
+  bottom: "12vh",
+  height: "50px",
+  width: "50px",
+  display: "flex",
+  borderRadius: "50%",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  "> svg": {
+    fill: "#FFF",
+  },
+  [theme.breakpoints.down("md")]: {
+    left: "20%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    bottom: "21.5vh",
+    left: "84%",
+  },
+}));
+
+export const ModalBox = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  bgcolor: "background.paper",
+  borderRadius: "10px",
+  boxShadow: 24,
+  [theme.breakpoints.down("md")]: {
+    width: 600,
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "95%",
+    margin: "auto",
+  },
+}));

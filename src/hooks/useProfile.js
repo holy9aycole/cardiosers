@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "utils/axios";
 import { useCallback, useEffect } from "react";
 import { getProfileDetails, updateProfileDetails } from "redux/slices/profile";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +15,8 @@ export default function useProfile() {
 
   const getUser = useCallback(async () => {
     if (pulled) return;
-    const response = await axios.get(`http://52.172.227.233/users/${userId}`);
-    if (response) dispatch(getProfileDetails(response.data));
+    const response = await axios.get(`/users/${userId}`);
+    if (response) dispatch(getProfileDetails(response));
   }, []);
 
   const updateUser = useCallback(async (data) => {
@@ -26,10 +26,7 @@ export default function useProfile() {
     clone.mobileNo = data.mobileNo;
     clone.city = data.city;
 
-    const response = await axios.put(
-      `http://52.172.227.233/users/${userId}`,
-      clone
-    );
+    const response = await axios.put(`/users/${userId}`, clone);
 
     if (response) dispatch(updateProfileDetails(clone));
   }, []);

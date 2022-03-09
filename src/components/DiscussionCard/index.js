@@ -126,22 +126,35 @@ export default function Discussion(props) {
       </Comments>
 
       <Form onSubmit={onFormSubmit} methods={formData}>
-        <CommentBox>
-          <TextField
-            className={classes.input2}
-            style={{ marginTop: "20px" }}
-            placeholder="Say something..."
-            name="comment"
-          />
-          <div
-            onClick={formData.handleSubmit(onFormSubmit, (e) => console.log(e))}
-            aria-hidden="true"
-          >
-            <div className="btn" Button>
-              <img src={right} alt="right" />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "center",
+            position: "fixed",
+            bottom: 0,
+            zIndex: 111,
+          }}
+        >
+          <CommentBox>
+            <TextField
+              className={classes.input2}
+              style={{ marginTop: "20px" }}
+              placeholder="Say something..."
+              name="comment"
+            />
+            <div
+              onClick={formData.handleSubmit(onFormSubmit, (e) =>
+                console.log(e)
+              )}
+              aria-hidden="true"
+            >
+              <div className="btn" Button>
+                <img src={right} alt="right" />
+              </div>
             </div>
-          </div>
-        </CommentBox>
+          </CommentBox>
+        </div>
       </Form>
     </>
   );

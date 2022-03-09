@@ -20,7 +20,7 @@ export const MainContainer = styled("div")(({ theme }) => ({
   windth: "100%",
   //   border: "1px solid red",
   height: "auto",
-  padding: "1px 8%",
+  padding: "1px 8% 25px 8%",
   marginTop: "5.5%",
   position: "relative",
   [theme.breakpoints.down("sm")]: {

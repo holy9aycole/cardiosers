@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "utils/axios";
 import { useCallback, useEffect } from "react";
 import { getGallerySuccess } from "redux/slices/gallery";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,8 +13,8 @@ export default function useGallery() {
 
   const getGallery = useCallback(async () => {
     if (pulled) return;
-    const response = await axios.get("http://52.172.227.233/galleries");
-    if (response) dispatch(getGallerySuccess(response.data));
+    const response = await axios.get("/galleries");
+    if (response) dispatch(getGallerySuccess(response));
   }, []);
 
   return { gallery };

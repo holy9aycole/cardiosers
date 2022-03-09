@@ -99,7 +99,7 @@ export const Comments = styled(Card)(({ theme }) => ({
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px auto",
+  margin: "10px auto 35px auto",
   [theme.breakpoints.only("xs")]: {
     width: "100%",
     padding: "0px 10px",
@@ -190,7 +190,7 @@ export const CommentBox = styled(Card)(({ theme }) => ({
   width: "40%",
   height: "auto",
   background: "#FFFFFF",
-  margin: "10px auto",
+  margin: "10px auto 10px auto",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

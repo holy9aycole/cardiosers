@@ -20,6 +20,7 @@ import SvgIconStyle from "components/SvgIconStyle";
 import PostCard from "components/PostCard";
 import useNewsFeed from "hooks/useNewsFeed";
 import moment from "moment";
+import MainFooter from "layouts/main/MainFooter";
 
 // ----------------------------------------------------------------------
 
@@ -227,6 +228,7 @@ export default function DashboardLayout() {
           </Grid>
         </Grid>
       </RootStyle>
+      <MainFooter />
     </>
   );
 }

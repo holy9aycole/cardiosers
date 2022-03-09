@@ -9,10 +9,10 @@ export const useStyles = makeStyles(() => ({
 }));
 
 export const MainContainer = styled("div")(({ theme }) => ({
-  windth: "100%",
+  width: "100%",
 
   height: "auto",
-  padding: "1px 8%",
+  padding: "1px 8% 25px 8%",
   marginTop: "5.5%",
   position: "relative",
   [theme.breakpoints.down("sm")]: {
@@ -36,7 +36,7 @@ export const Line = styled("div")(({ theme }) => ({
   width: "12%",
   height: "2px",
   border: "1px solid #D6D6D6",
-  backgroundColor: '#D6D6D6',
+  backgroundColor: "#D6D6D6",
   marginLeft: "2.4%",
   [theme.breakpoints.down("md")]: {
     width: "15%",
@@ -46,7 +46,7 @@ export const Line = styled("div")(({ theme }) => ({
 
 export const Text1 = styled(Typography)(({ theme }) => ({
   fontSize: "48px",
-  lineHeight: '40px',
+  lineHeight: "40px",
   fontWeight: 500,
   textAlign: "left",
   color: "#3D3DD9",

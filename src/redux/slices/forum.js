@@ -21,10 +21,17 @@ const slice = createSlice({
       );
       if (index !== -1) state.forum[index] = action.payload;
     },
+    deleteForumUpdate(state, action) {
+      const index = state.forum.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (index !== -1) state.forum.filter((item) => action.payload !== item);
+    },
   },
 });
 
 // Export Reducer
 export default slice.reducer;
 
-export const { getForumSuccess, updateComments } = slice.actions;
+export const { getForumSuccess, updateComments, deleteForumUpdate } =
+  slice.actions;

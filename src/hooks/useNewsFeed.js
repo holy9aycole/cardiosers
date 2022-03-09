@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "utils/axios";
 import { useCallback, useEffect } from "react";
 import { getNewsFeedSuccess } from "redux/slices/newsFeed";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,8 +13,8 @@ export default function useGallery() {
 
   const getNewsFeed = useCallback(async () => {
     if (pulled) return;
-    const response = await axios.get("http://52.172.227.233/news-feeds");
-    if (response) dispatch(getNewsFeedSuccess(response.data));
+    const response = await axios.get("/news-feeds");
+    if (response) dispatch(getNewsFeedSuccess(response));
   }, []);
 
   return { newsFeed, getNewsFeed };
