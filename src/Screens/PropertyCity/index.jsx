@@ -14,8 +14,8 @@ import Modal from "@mui/material/Modal";
 import pdf from "assets/icons/pdf.png";
 import "../../../node_modules/video-react/dist/video-react.css";
 import MainFooter from "layouts/main/MainFooter";
+import { useSelector } from "react-redux";
 import ReactPlayer from "react-player";
-import play from "assets/icons/play.png";
 import {
   BannerContainer,
   BannerImage,
@@ -73,12 +73,18 @@ function PropertyCity() {
     return <Typography variant="body2">{text}</Typography>;
   };
 
-  const [selectvalue, setSelectValue] = React.useState(1);
-  const handleOnChange = (e) => setSelectValue(e.target.value);
-
   function filterArrayElementById(array) {
     return array.filter((element) => element.id === selectvalue);
   }
+
+  const { location } = useSelector((state) => state.location);
+
+  const selectedProperties = properties.filter(
+    (item) => item.City === location
+  );
+
+  const [selectvalue, setSelectValue] = React.useState("");
+  const handleOnChange = (e) => setSelectValue(e.target.value);
 
   const accordionArray = filterArrayElementById(properties);
 
@@ -123,15 +129,25 @@ function PropertyCity() {
             onChange={handleOnChange}
             value={selectvalue}
           >
-            {properties.map((item, index) => (
-              <MenuItem
-                key={index}
-                value={item?.id}
-                divider={index !== properties.length - 1}
-              >
-                {item?.PropertyName}
-              </MenuItem>
-            ))}
+            {location === undefined || location === "all"
+              ? properties.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    value={item?.id}
+                    divider={index !== properties.length - 1}
+                  >
+                    {item?.PropertyName}
+                  </MenuItem>
+                ))
+              : selectedProperties.map((item, index) => (
+                  <MenuItem
+                    key={index}
+                    value={item?.id}
+                    divider={index !== properties.length - 1}
+                  >
+                    {item?.PropertyName}
+                  </MenuItem>
+                ))}
           </StyledSelect>
         </BannerContainer>
         {accordionArray.map((item, index) => (
@@ -184,10 +200,7 @@ function PropertyCity() {
                       className="react-video"
                       width={310}
                       height={170}
-                      playIcon={<img src={play} alt="" />}
-                      light="https://i.stack.imgur.com/zw9Iz.png"
                       style={{ borderRadius: "10px" }}
-                      playing
                     />
                   </div>
                 ))}
@@ -232,10 +245,7 @@ function PropertyCity() {
                     className="react-video"
                     width={310}
                     height={170}
-                    playIcon={<img src={play} alt="" />}
-                    light="https://i.stack.imgur.com/zw9Iz.png"
                     style={{ borderRadius: "10px" }}
-                    playing
                   />
                 </div>
                 {item?.Models3d.map((item, index) => (
@@ -256,10 +266,7 @@ function PropertyCity() {
                     className="react-video"
                     width={310}
                     height={170}
-                    playIcon={<img src={play} alt="" />}
-                    light="https://i.stack.imgur.com/zw9Iz.png"
                     style={{ borderRadius: "10px" }}
-                    playing
                   />
                 </div>
               </StyledAccordionDetails2>
@@ -284,10 +291,7 @@ function PropertyCity() {
                       className="react-video"
                       width={310}
                       height={170}
-                      playIcon={<img src={play} alt="" />}
-                      light="https://i.stack.imgur.com/zw9Iz.png"
                       style={{ borderRadius: "10px" }}
-                      playing
                     />
                   </div>
                 ))}

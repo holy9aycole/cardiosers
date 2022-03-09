@@ -4,6 +4,7 @@ import {
   getForumSuccess,
   updateComments,
   deleteForumUpdate,
+  deleteCommentUpdate,
 } from "redux/slices/forum";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
@@ -37,6 +38,13 @@ export default function useForum() {
     if (response) dispatch(deleteForumUpdate(response));
   }, []);
 
+  const deleteComment = useCallback(async (id, forumId) => {
+    const response = await axios.delete(`/comments/${id}`);
+    response.forumId = forumId;
+
+    if (response) dispatch(deleteCommentUpdate(response));
+  }, []);
+
   const postComment = useCallback(async (data) => {
     data.users_permissions_user = 1;
 
@@ -61,5 +69,12 @@ export default function useForum() {
     dispatch(updateComments(cloned));
   }, []);
 
-  return { forum, postForum, postComment, getForum, deleteForum };
+  return {
+    forum,
+    postForum,
+    postComment,
+    getForum,
+    deleteForum,
+    deleteComment,
+  };
 }

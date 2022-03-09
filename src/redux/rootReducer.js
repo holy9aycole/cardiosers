@@ -10,6 +10,7 @@ import branding from "redux/slices/branding";
 import category from "redux/slices/category";
 import control from "redux/slices/control";
 import newsFeed from "redux/slices/newsFeed";
+import location from "redux/slices/location";
 import authJwt from "redux/slices/authJwt";
 // ----------------------------------------------------------------------
 
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   branding,
   category,
   newsFeed,
+  location,
   authJwt: persistReducer(authPersistConfig, authJwt),
 });
 

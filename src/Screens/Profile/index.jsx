@@ -12,7 +12,7 @@ import { TextField, Form } from "components/custom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useProfile from "hooks/useProfile";
-
+import Dropzone from "react-dropzone";
 import MainFooter from "layouts/main/MainFooter";
 import * as Yup from "yup";
 // import { useSelector } from "react-redux";
@@ -73,14 +73,27 @@ function Profile() {
   return (
     <>
       <ProfileBackground>
-        <BadgeStyle
-          overlap="circular"
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          badgeContent={<SmallAvatar alt="Edit" src={camera} />}
+        <Dropzone
+          onDrop={(acceptedFiles = "image/jpeg,image/png,image/jpg") =>
+            console.log(acceptedFiles)
+          }
         >
-          <DisplayPic alt="Sanya" src={Dp} />
-        </BadgeStyle>
+          {({ getRootProps, getInputProps }) => (
+            <BadgeStyle
+              style={{ cursor: "pointer" }}
+              overlap="circular"
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              badgeContent={<SmallAvatar alt="Edit" src={camera} />}
+            >
+              <div {...getRootProps()}>
+                <DisplayPic alt="Sanya" src={Dp} />
+                <input {...getInputProps()} />
+              </div>
+            </BadgeStyle>
+          )}
+        </Dropzone>
       </ProfileBackground>
+
       <Form onSubmit={onFormSubmit} methods={formData}>
         <GridStyle container spacing={2}>
           <Grid item md={12} xs={12}>

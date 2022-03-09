@@ -55,7 +55,10 @@ const FilterContainer = styled("div")(({ theme }) => ({
 const getIcon = (name) => (
   <SvgIconStyle
     src={`/static/icons/navbar/${name}.svg`}
-    sx={{ width: "100%", height: "100%" }}
+    sx={{
+      width: "100%",
+      height: "100%",
+    }}
   />
 );
 
@@ -122,7 +125,7 @@ const MainStyle = styled("div")(({ theme }) => ({
 
 export default function DashboardLayout() {
   const { properties } = useProperties();
-  const [active, setActive] = useState(properties.map((item) => item.id));
+  const [active, setActive] = useState(-1);
   const { newsFeed } = useNewsFeed();
 
   const [selectvalue, setSelectValue] = React.useState(1);
@@ -130,7 +133,7 @@ export default function DashboardLayout() {
   const handleChange = (event) => {
     setSelectValue(event.target.value);
   };
-
+  console.log("active", active);
   return (
     <>
       <Header title="News Feed" />
@@ -145,7 +148,11 @@ export default function DashboardLayout() {
             <MainStyle>
               <ListMain component="div" disablePadding>
                 <ListItemStyle>
-                  <ListItemIconStyle>
+                  <ListItemIconStyle
+                    style={{
+                      color: active === -1 ? "#3D3DD9" : "#637381",
+                    }}
+                  >
                     <Box
                       component="span"
                       sx={{
@@ -159,11 +166,20 @@ export default function DashboardLayout() {
                       {ICONS.building}
                     </Box>
                   </ListItemIconStyle>
-                  <ListItemText>All Assets</ListItemText>
+                  <ListItemText
+                    onClick={() => setActive(-1)}
+                    style={{ color: active === -1 ? "#3D3DD9" : "#637381" }}
+                  >
+                    All Assets
+                  </ListItemText>
                 </ListItemStyle>
                 {properties.map((item, index) => (
-                  <ListItemStyle key={index} onClick={() => setActive(!active)}>
-                    <ListItemIconStyle>
+                  <ListItemStyle key={index} onClick={() => setActive(item.id)}>
+                    <ListItemIconStyle
+                      style={{
+                        color: active === item.id ? "#3D3DD9" : "#637381",
+                      }}
+                    >
                       <Box
                         component="span"
                         sx={{
@@ -177,7 +193,11 @@ export default function DashboardLayout() {
                         {ICONS.building}
                       </Box>
                     </ListItemIconStyle>
-                    <ListItemText style={{ color: active ? "blue" : "grey" }}>
+                    <ListItemText
+                      style={{
+                        color: active === item.id ? "#3D3DD9" : "#637381",
+                      }}
+                    >
                       {item.PropertyName}
                     </ListItemText>
                   </ListItemStyle>
@@ -214,16 +234,37 @@ export default function DashboardLayout() {
           </GridStyle>
           <Grid item md={8} xs={12}>
             <MainStyle>
-              {newsFeed.map((item, index) => (
-                <>
-                  <Assets key={index}>{item.property.PropertyName}</Assets>
-                  <PostCard
-                    link={item.ArticleLink}
-                    time={moment(item.updated_at).fromNow()}
-                    style={{ margin: "40px 0px" }}
-                  />
-                </>
-              ))}
+              <Assets>
+                {active === -1
+                  ? "All Assets"
+                  : newsFeed.filter((list) => list.property.id === active)[0]
+                      ?.property.PropertyName}
+              </Assets>
+              {active === -1
+                ? newsFeed.map((item, index) => (
+                    <>
+                      {/* <Assets key={index}>{item.property.PropertyName}</Assets> */}
+                      <PostCard
+                        key={index}
+                        link={item.ArticleLink}
+                        time={moment(item.updated_at).fromNow()}
+                        style={{ margin: "40px 0px" }}
+                      />
+                    </>
+                  ))
+                : newsFeed
+                    .filter((list) => list.property.id === active)
+                    .map((item, index) => (
+                      <>
+                        {/* <Assets key={index}>{item.property.PropertyName}</Assets> */}
+                        <PostCard
+                          key={index}
+                          link={item.ArticleLink}
+                          time={moment(item.updated_at).fromNow()}
+                          style={{ margin: "40px 0px" }}
+                        />
+                      </>
+                    ))}
             </MainStyle>
           </Grid>
         </Grid>

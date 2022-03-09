@@ -5,10 +5,32 @@ import clock from "assets/images/clock-icon.svg";
 import message from "assets/images/message-icon.svg";
 import useForum from "hooks/useForum";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { Feed, FeedFooter } from "./styles";
 
 export default function ForumCard(props) {
   const { deleteForum } = useForum();
+
+  const handleDelete = () => {
+    confirmAlert({
+      title: "Confirm to delete",
+      message: "Are you sure to ddelete this forum?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => deleteForum(props.id),
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+    });
+  };
+
   return (
     <>
       <Feed>
@@ -19,7 +41,7 @@ export default function ForumCard(props) {
           <DeleteIcon
             fontSize="28"
             style={{ color: "#3D3DD9", marginTop: "3px", cursor: "pointer" }}
-            onClick={() => deleteForum(props.id)}
+            onClick={handleDelete}
           />
         </div>
         <Typography className="subheading" onClick={props.onClick}>

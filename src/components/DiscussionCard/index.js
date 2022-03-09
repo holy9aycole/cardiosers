@@ -4,14 +4,17 @@ import tag from "assets/images/tag-icon.svg";
 import clock from "assets/images/clock-icon.svg";
 import message from "assets/images/message-icon.svg";
 import user from "assets/images/user-icon.svg";
-import edit from "assets/images/edit-icon.svg";
+// import edit from "assets/images/edit-icon.svg";
 import right from "assets/images/button-arrow-right.png";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { useNavigate } from "react-router";
 import moment from "moment";
-import useForum from "hooks/useForum";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { Form, TextField } from "components/custom";
 import { useForm } from "react-hook-form";
+import useForum from "hooks/useForum";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import {
@@ -26,7 +29,7 @@ import {
 
 export default function Discussion(props) {
   const classes = useStyles();
-  const { forum, postComment } = useForum();
+  const { forum, postComment, deleteComment } = useForum();
   const navigate = useNavigate();
   const data = forum.filter((element) => element.id === props.id);
 
@@ -45,6 +48,26 @@ export default function Discussion(props) {
   });
   const onFormSubmit = async (data) => {
     if (data.comment !== "") postComment(data);
+    formData.reset();
+  };
+
+  const handleDelete = (id, forumId) => {
+    confirmAlert({
+      title: "Confirm to delete",
+      message: "Are you sure to ddelete this comment?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => deleteComment(id, forumId),
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+    });
   };
 
   return (
@@ -110,11 +133,21 @@ export default function Discussion(props) {
                       {moment(item.updated_at).fromNow()}
                     </Typography>
                   </div>
-                  <img
+                  {/* <img
                     className="edit"
                     src={edit}
                     alt="edit"
                     style={{ marginLeft: "10px" }}
+                  /> */}
+                  <DeleteIcon
+                    fontSize="28"
+                    className="edit"
+                    style={{
+                      color: "#3D3DD9",
+                      marginLeft: "10px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleDelete(item.id, props.id)}
                   />
                 </TagTime>
               </div>

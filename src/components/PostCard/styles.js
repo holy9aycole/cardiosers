@@ -1,10 +1,10 @@
 import { Card, Button, Typography, styled } from "@mui/material";
 
 export const StyledCard = styled(Card)(({ theme }) => ({
-  width: "50%",
+  width: "75%",
   padding: 10,
   paddingBottom: 0,
-  borderRadius: "0px",
+  borderRadius: "10px",
   boxShadow: "none",
   border: "none",
   background: "#FFFFFF",
@@ -71,7 +71,7 @@ export const CardMediaBox3 = styled("div")({
 });
 
 export const FooterContainer = styled("div")({
-  margin: "20px 10px",
+  margin: "10px 10px 5px 10px",
 });
 
 export const Footer = styled("div")({

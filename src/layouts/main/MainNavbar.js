@@ -21,6 +21,8 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import useProperties from "hooks/useProperties";
 import _ from "lodash";
+import { getLocation } from "redux/slices/location";
+import { useDispatch } from "react-redux";
 // ----------------------------------------------------------------------
 
 const APPBAR_MOBILE = 64;
@@ -153,6 +155,9 @@ export default function MainNavbar(props) {
 
   const [selectValue, setSelectValue] = useState(uniqueCities[0]);
   const handleChange = (e) => setSelectValue(e.target.value);
+
+  const dispatch = useDispatch();
+  dispatch(getLocation(selectValue));
 
   return (
     <RootStyle>
