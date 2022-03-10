@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Typography } from "@mui/material";
 import useForum from "hooks/useForum";
 import ForumCard from "components/ForumCard";
@@ -12,12 +12,12 @@ import QuestionModel from "./QuestionModel";
 import SwipeableEdgeDrawer from "./SwipableModal";
 
 export default function Forum() {
-  const { forum, getForum } = useForum();
+  const { forum } = useForum();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getForum();
-  }, [handleCloseModal, closeSwipable]);
+  // useEffect(() => {
+  //   getForum();
+  // }, [handleCloseModal, closeSwipable]);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [swipableModalOpen, setSwipableModalOpen] = React.useState(false);
