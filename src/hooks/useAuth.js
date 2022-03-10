@@ -28,17 +28,18 @@ const useAuth = () => {
 
   const verifyOtp = useCallback(async (data) => {
     const response = await axios.post('/auth/verifyOtp', data);
-    if (response.data) {
+    if (response) {
       const { jwt, ...user } = response;
       window.localStorage.setItem('accessToken', jwt);
       showSnackbar('success');
       dispatch(
         userSuccess({
-          user: user,
+          user,
           isAuthenticated: true,
         })
       );
-      navigate('/profile');
+      console.log('calling navigate');
+      navigate('/home');
     }
   }, []);
 
@@ -48,7 +49,6 @@ const useAuth = () => {
     if (isValidToken(accessToken)) {
       setSession(accessToken);
       const response = await axios.get('/users/me', { showSnackbar: false });
-      console.log(response, 'this is initaialize response');
       if (response) {
         dispatch(
           initialize({
