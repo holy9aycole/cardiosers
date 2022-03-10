@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import LoadingScreen from 'components/LoadingScreen';
+import AuthGuard from 'guards/AuthGuard';
 
 // layouts
 import MainLayout from 'layouts/main';
@@ -35,20 +36,118 @@ export default function Router() {
       element: <MainLayout />,
       children: [
         { index: true, element: <Navigate to="/login" /> },
-        { path: 'news-feed', element: <NewsFeed /> },
-        { path: 'property', element: <Property /> },
-        { path: 'whats-new', element: <WhatsNew /> },
-        { path: 'sustainability', element: <Sustainability /> },
-        { path: 'branding', element: <Branding /> },
-        { path: 'profile', element: <Profile /> },
-        { path: 'about-us', element: <AboutUs /> },
-        { path: 'forum', element: <Forum /> },
-        { path: 'discussion/:id', element: <Discussion /> },
-        { path: 'social-experience', element: <SocialExperience /> },
-        { path: 'contact', element: <Contact /> },
-        { path: 'gallery', element: <Gallery /> },
-        { path: 'gallery/:id', element: <GallerySingle /> },
-        { path: 'property-city', element: <PropertyCity /> },
+        {
+          path: 'news-feed',
+          element: (
+            <AuthGuard>
+              <NewsFeed />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'property',
+          element: (
+            <AuthGuard>
+              <Property />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'home',
+          element: (
+            <AuthGuard>
+              <WhatsNew />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'sustainability',
+          element: (
+            <AuthGuard>
+              <Sustainability />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'branding',
+          element: (
+            <AuthGuard>
+              <Branding />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'profile',
+          element: (
+            <AuthGuard>
+              <Profile />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'about-us',
+          element: (
+            <AuthGuard>
+              <AboutUs />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'forum',
+          element: (
+            <AuthGuard>
+              <Forum />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'discussion/:id',
+          element: (
+            <AuthGuard>
+              <Discussion />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'social-experience',
+          element: (
+            <AuthGuard>
+              <SocialExperience />{' '}
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'contact',
+          element: (
+            <AuthGuard>
+              <Contact />{' '}
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'gallery',
+          element: (
+            <AuthGuard>
+              <Gallery />{' '}
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'gallery/:id',
+          element: (
+            <AuthGuard>
+              <GallerySingle />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'property-city',
+          element: (
+            <AuthGuard>
+              <PropertyCity />{' '}
+            </AuthGuard>
+          ),
+        },
       ],
     },
 

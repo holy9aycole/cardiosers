@@ -1,21 +1,16 @@
 // routes
-import JwtProvider from "providers/JwtProvider";
-import Router from "./routes";
+import JwtProvider from 'providers/JwtProvider';
+import Router from './routes';
 // theme
-import ThemeConfig from "./theme";
-import GlobalStyles from "./theme/globalStyles";
-// hooks
-import useAuth from "./hooks/useAuth";
-// components
-import ScrollToTop from "./components/ScrollToTop";
-import NotistackProvider from "./components/NotistackProvider";
-import ThemeLocalization from "./components/ThemeLocalization";
-import LoadingScreen from "./components/LoadingScreen";
+import ThemeConfig from './theme';
+import GlobalStyles from './theme/globalStyles';
+import ScrollToTop from './components/ScrollToTop';
+import NotistackProvider from './components/NotistackProvider';
+import ThemeLocalization from './components/ThemeLocalization';
+
 // ----------------------------------------------------------------------
 
 export default function App() {
-  const { isInitialized } = useAuth();
-
   return (
     <ThemeConfig>
       <ThemeLocalization>
@@ -23,7 +18,7 @@ export default function App() {
           <GlobalStyles />
           <JwtProvider>
             <ScrollToTop />
-            {isInitialized ? <Router /> : <LoadingScreen />}
+            <Router />
           </JwtProvider>
         </NotistackProvider>
       </ThemeLocalization>

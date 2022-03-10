@@ -1,11 +1,10 @@
-import React from "react";
-
-import DiscussionCard from "components/DiscussionCard";
-import { useParams } from "react-router";
-import useForum from "hooks/useForum";
-import MainFooter from "layouts/main/MainFooter";
-import moment from "moment";
-import { MainContainer } from "./styles";
+import React from 'react';
+import DiscussionCard from 'components/DiscussionCard';
+import { useParams } from 'react-router';
+import useForum from 'hooks/useForum';
+import MainFooter from 'layouts/main/MainFooter';
+import moment from 'moment';
+import { MainContainer } from './styles';
 
 export default function Discussion() {
   const { id } = useParams();
@@ -26,7 +25,7 @@ export default function Discussion() {
               comments={item.comments}
             />
           ))}
-      </MainContainer>{" "}
+      </MainContainer>{' '}
       <MainFooter />
     </>
   );

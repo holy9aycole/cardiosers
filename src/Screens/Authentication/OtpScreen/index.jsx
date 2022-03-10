@@ -1,120 +1,80 @@
 /* eslint-disable */
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Form, TextField } from "components/custom";
-import { Link } from "react-router-dom";
-import useAuth from "hooks/useAuth";
-import OtpInput from "react-otp-input";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import logo from "assets/images/rmz-logo (1).svg";
-import mailIcon from "assets/images/email-icon.svg";
-import {
-  FormContainer,
-  Logo,
-  MainContainer,
-  MailIcon,
-  Button1,
-  ResendButton,
-} from "./styles";
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import useControl from 'hooks/useControl';
+import OtpInput from 'react-otp-input';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import logo from 'assets/images/rmz-logo (1).svg';
+import mailIcon from 'assets/images/email-icon.svg';
+import { FormContainer, Logo, MainContainer, MailIcon, Button1, ResendButton } from './styles';
 
 const theme = createTheme({
   components: {
     MuiInputBase: {
-      color: "#ffffff",
+      color: '#ffffff',
     },
   },
 });
 
-function LoginScreen() {
-  const [otp, setotp] = React.useState("");
-  const methods = useForm({
-    resolver: yupResolver(
-      Yup.object().shape({
-        email: Yup.string().email().required("email is required!"),
-        password: Yup.string().required(),
-        confirmPassword: Yup.string().oneOf(
-          [Yup.ref("password"), null],
-          "Passwords must match"
-        ),
-      })
-    ),
-  });
+function OtpScreen() {
+  const location = useLocation();
+  const { showSnackbar } = useControl();
+  const navigate = useNavigate();
+  const { verifyOtp, getOtp } = useAuth();
+  const [otp, setOtp] = React.useState('');
 
-  const handleOtpChange = (otp) => {
-    setotp(otp);
-  }
-
-  const { register } = useAuth();
-
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     if (otp.length !== 4) {
+      showSnackbar('Enter a valid otp', 'error');
       return;
     }
-    const registerData = {
-      email: data.email,
-      password: data.password,
+    verifyOtp({
+      email: location.state?.email,
       otp: otp,
-    }
-
-    register(registerData);
+    });
   };
+
+  if (!location.state?.email) return navigate('/login');
   return (
     <>
       <ThemeProvider theme={theme}>
         <MainContainer>
           <Logo src={logo} alt="" />
-          <Form methods={methods} onSubmit={onSubmit}>
-            <FormContainer>
-              <MailIcon src={mailIcon} alt="" />
-              <TextField
-                variant="outlined"
-                fullWidth
-                label="Enter you Email"
-                name="email"
-                InputLabelProps={{
-                  style: { color: "whitesmoke" },
-                }}
-              />
-              <OtpInput
-                value={otp}
-                onChange={handleOtpChange}
-                numInputs={4}
-                // separator={<span>-</span>}
-                inputStyle={{
-                  width: "4rem",
-                  height: "4rem",
-                  margin: "0 1rem",
-                  fontSize: "2rem",
-                  borderRadius: 4,
-                  backgroundColor: 'red',
-                  color: 'white',
-                  border: "1px solid rgba(0,0,0,0.3)"
-                }}
-                containerStyle={{
-                  margin: '5px auto 20px auto',
-                  flexDirection: 'row',
-                  justifyContent: 'center'
-                }}
-                focusStyle={{
-                  outline: 'none',
-                  color: 'white'
-                }}
-                isInputNum
-              />
-
-              <Button1 type="submit">Verify</Button1>
-
-              <ResendButton>RESEND</ResendButton>
-            </FormContainer>
-          </Form>
+          <FormContainer>
+            <MailIcon src={mailIcon} alt="" />
+            <OtpInput
+              value={otp}
+              onChange={(otp) => setOtp(otp)}
+              numInputs={4}
+              inputStyle={{
+                width: '4rem',
+                height: '4rem',
+                margin: '0 1rem',
+                fontSize: '2rem',
+                borderRadius: 4,
+                backgroundColor: 'red',
+                color: 'white',
+                border: '1px solid rgba(0,0,0,0.3)',
+              }}
+              containerStyle={{
+                margin: '5px auto 20px auto',
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}
+              focusStyle={{
+                outline: 'none',
+                color: 'white',
+              }}
+              isInputNum
+            />
+            <Button1 onClick={onSubmit}>Verify</Button1>
+            <ResendButton onClick={() => getOtp({ email: location.state?.email }, false)}>RESEND</ResendButton>
+          </FormContainer>
         </MainContainer>
       </ThemeProvider>
     </>
   );
 }
 
-export default LoginScreen;
+export default OtpScreen;
