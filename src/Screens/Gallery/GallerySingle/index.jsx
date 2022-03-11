@@ -26,6 +26,8 @@ import detailedView17 from "assets/images/GalleryDetailed/17.png";
 import detailedView18 from "assets/images/GalleryDetailed/18-1.png";
 import detailedView19 from "assets/images/GalleryDetailed/18.png";
 import detailedView20 from "assets/images/GalleryDetailed/19.png";
+import ReactPlayer from "react-player";
+import "assets/css/video.css";
 import {
   Container,
   ImageCard,
@@ -122,39 +124,73 @@ function GallerySinglePage() {
           <StyledSwitch checked={checked} onChange={handleChange} />
           <ImageList
             variant="masonry"
-            cols={window.innerWidth > 600 ? 7 : 3}
+            cols={
+              !checked && window.innerWidth > 600
+                ? 7
+                : !checked && window.innerWidth < 600
+                ? 3
+                : checked && window.innerWidth < 600
+                ? 1
+                : checked && window.innerWidth > 600
+                ? 4
+                : 3
+            }
             gap={10}
           >
             {gallery
               .filter((element) => element.id === parseInt(id, 10))[0]
-              ?.media.map((image, index) => (
-                <ImageListItem key={index}>
-                  {!checked && image.ext === ".png" && (
-                    <ImageCard
-                      onClick={() => handleOpen(image.url, image.name)}
-                    >
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
-                        srcSet={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
-                        alt=""
-                        loading="lazy"
-                      />
-                    </ImageCard>
-                  )}
-                  {checked && image.ext === ".jpeg" && (
-                    <ImageCard
-                      onClick={() => handleOpen(image.url, image.name)}
-                    >
-                      <img
-                        src={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
-                        srcSet={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
-                        alt=""
-                        loading="lazy"
-                      />
-                    </ImageCard>
-                  )}
-                </ImageListItem>
-              ))}
+              ?.media.map(
+                (image, index) => {
+                  if (
+                    !checked &&
+                    (image.ext === ".png" ||
+                      image.ext === ".jpg" ||
+                      image.ext === ".jpeg")
+                  )
+                    return (
+                      <ImageListItem key={index}>
+                        <ImageCard
+                          onClick={() => handleOpen(image.url, image.name)}
+                        >
+                          <img
+                            src={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
+                            srcSet={`${process.env.REACT_APP_BACKEND_URL}${image.url}`}
+                            alt=""
+                            loading="lazy"
+                          />
+                        </ImageCard>
+                      </ImageListItem>
+                    );
+                  if (checked && image.ext === ".mp4")
+                    return (
+                      <div
+                        key={index}
+                        style={{ marginLeft: "15px", marginBottom: "10px" }}
+                      >
+                        <ReactPlayer
+                          url={`${process.env.REACT_APP_BACKEND_URL}${image?.url}`}
+                          download
+                          controls
+                          className="react-video"
+                          width={300}
+                          height={170}
+                          style={{ borderRadius: "10px" }}
+                        />
+                      </div>
+                    );
+                  return null;
+                }
+
+                // {!checked &&
+                //   (image.ext === ".png" ||
+                //     image.ext === ".jpg" ||
+                //     image.ext === ".jpeg") && return(
+
+                //   )}
+                // {checked && image.ext === ".mp4" && (
+
+                // )}
+              )}
           </ImageList>
         </Container>
       </ImageContainer>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import camera from "assets/images/camera-icon.png";
 import { Grid } from "@mui/material";
-import Dp from "assets/images/sanya.png";
+// import Dp from "assets/images/sanya.png";
 import email from "assets/icons/email.svg";
 import location from "assets/icons/location.svg";
 import phone from "assets/icons/phone.svg";
-import user from "assets/icons/user.svg";
+import userIcon from "assets/icons/user.svg";
 import EditIcon from "assets/icons/edit.svg";
 import SaveIcon from "assets/icons/save.png";
 import { TextField, Form } from "components/custom";
@@ -15,7 +15,7 @@ import useProfile from "hooks/useProfile";
 import Dropzone from "react-dropzone";
 import MainFooter from "layouts/main/MainFooter";
 import * as Yup from "yup";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   ProfileBackground,
   SmallAvatar,
@@ -35,13 +35,14 @@ import {
 
 function Profile() {
   const [edit, setEdit] = useState(false);
-  const { updateUser, profile, getUser } = useProfile();
+  const { updateUser } = useProfile();
 
   const handleEdit = () => {
     setEdit(!edit);
   };
 
-  //   const { profile } = useSelector((state) => state.profile);
+  const { user } = useSelector((state) => state.authJwt);
+  const { profile } = useSelector((state) => state.profile);
 
   const formData = useForm({
     mode: "onBlur",
@@ -53,30 +54,29 @@ function Profile() {
         city: Yup.string(),
         email: Yup.string(),
         mobileNo: Yup.number(),
-        password: Yup.string(),
       })
     ),
     defaultValues: {
-      name: profile.name,
-      city: profile.city,
-      email: profile.email,
-      mobileNo: profile.emailNo,
-      password: "*********",
+      name: user.name,
+      city: user.city,
+      email: user.email,
+      mobileNo: user.mobileNo,
     },
   });
   const onFormSubmit = async (data) => {
     updateUser(data);
     setEdit(!edit);
-    getUser();
   };
-
+  const [name, setName] = useState("");
+  console.log("name", name);
   return (
     <>
       <ProfileBackground>
         <Dropzone
-          onDrop={(acceptedFiles = "image/jpeg,image/png,image/jpg") =>
-            console.log(acceptedFiles)
-          }
+          onDrop={(acceptedFiles = "image/jpeg,image/png,image/jpg") => {
+            console.log(acceptedFiles);
+            setName(acceptedFiles);
+          }}
         >
           {({ getRootProps, getInputProps }) => (
             <BadgeStyle
@@ -86,7 +86,10 @@ function Profile() {
               badgeContent={<SmallAvatar alt="Edit" src={camera} />}
             >
               <div {...getRootProps()}>
-                <DisplayPic alt="Sanya" src={Dp} />
+                <DisplayPic
+                  alt="Sanya"
+                  src={`${process.env.REACT_APP_BACKEND_URL}${profile?.profile_pic?.url}`}
+                />
                 <input {...getInputProps()} />
               </div>
             </BadgeStyle>
@@ -97,20 +100,21 @@ function Profile() {
       <Form onSubmit={onFormSubmit} methods={formData}>
         <GridStyle container spacing={2}>
           <Grid item md={12} xs={12}>
-            <Edit src={EditIcon} onClick={handleEdit} />
-            {edit && (
+            {edit ? (
               <Edit
                 src={SaveIcon}
                 onClick={formData.handleSubmit(onFormSubmit, (err) =>
                   console.log(err)
                 )}
               />
+            ) : (
+              <Edit src={EditIcon} onClick={handleEdit} />
             )}
           </Grid>
           <GridItem item md={6} xs={12} style={{}}>
             <FormField>
               <Circle>
-                <Icon src={user} />
+                <Icon src={userIcon} />
               </Circle>
               {edit ? (
                 <TextField
@@ -119,7 +123,7 @@ function Profile() {
                   style={{ marginLeft: "20px", marginTop: "-10px" }}
                 />
               ) : (
-                <Text>{profile.name}</Text>
+                <Text>{user.name}</Text>
               )}
             </FormField>
             {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}
@@ -136,7 +140,7 @@ function Profile() {
                   style={{ marginLeft: "20px", marginTop: "-10px" }}
                 />
               ) : (
-                <Text>{profile.city}</Text>
+                <Text>{user.city}</Text>
               )}
             </FormField>
             {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}
@@ -153,7 +157,7 @@ function Profile() {
                   style={{ marginLeft: "20px", marginTop: "-10px" }}
                 />
               ) : (
-                <Text>{profile.email}</Text>
+                <Text>{user.email}</Text>
               )}
             </FormField>
             {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}
@@ -170,7 +174,7 @@ function Profile() {
                   style={{ marginLeft: "20px", marginTop: "-10px" }}
                 />
               ) : (
-                <Text>{profile.mobileNo}</Text>
+                <Text>{user.mobileNo}</Text>
               )}
             </FormField>
             {/* <EditMobile src={EditIcon} onClick={handleEdit} /> */}

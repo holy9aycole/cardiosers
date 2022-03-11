@@ -1,13 +1,14 @@
 import axios from "utils/axios";
 import { useCallback, useEffect } from "react";
-import { getProfileDetails, updateProfileDetails } from "redux/slices/profile";
+import { getProfileDetails } from "redux/slices/profile";
+import { updateUserDetails } from "redux/slices/authJwt";
 import { useDispatch, useSelector } from "react-redux";
 import { cloneDeep } from "lodash";
 
 export default function useProfile() {
   const dispatch = useDispatch();
   const { profile, pulled } = useSelector((state) => state.profile);
-  const userId = 1;
+  const { user, isAuthenticated } = useSelector((state) => state.authJwt);
 
   useEffect(() => {
     getUser();
@@ -15,20 +16,20 @@ export default function useProfile() {
 
   const getUser = useCallback(async () => {
     if (pulled) return;
-    const response = await axios.get(`/users/${userId}`);
+    const response = await axios.get(`/users/${user.id}`);
     if (response) dispatch(getProfileDetails(response));
   }, []);
 
   const updateUser = useCallback(async (data) => {
-    const clone = cloneDeep(profile);
+    const clone = cloneDeep(user);
     clone.name = data.name;
     clone.email = data.email;
     clone.mobileNo = data.mobileNo;
     clone.city = data.city;
-
-    const response = await axios.put(`/users/${userId}`, clone);
-
-    if (response) dispatch(updateProfileDetails(clone));
+    if (isAuthenticated) {
+      const response = await axios.put(`/users/${user.id}`, clone);
+      if (response) dispatch(updateUserDetails(clone));
+    }
   }, []);
 
   return { getUser, profile, updateUser };
