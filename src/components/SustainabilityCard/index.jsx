@@ -109,14 +109,14 @@ export default function SustainabilityCard(props) {
 								</div>
 								<div className="arrowContaiiner">
 									<div
-										onClick={previous}
+										onClick={next}
 										className="leftContainer"
 										aria-hidden="true"
 									>
 										<img className="leftIcon" src={left} alt="shadow" />
 									</div>
 									<div
-										onClick={next}
+										onClick={previous}
 										className="rightConatiner"
 										aria-hidden="true"
 									>
