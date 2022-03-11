@@ -28,12 +28,12 @@ export default function SustainabilityCard(props) {
 	const [updateCount, setUpdateCount] = useState(1);
 
 	const next = () => {
-		slider.current.slickNext();
-		slider2.current.slickNext();
-	};
-	const previous = () => {
 		slider.current.slickPrev();
 		slider2.current.slickPrev();
+	};
+	const previous = () => {
+		slider.current.slickNext();
+		slider2.current.slickNext();
 	};
 
 	const settings = {
@@ -42,8 +42,8 @@ export default function SustainabilityCard(props) {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		afterChange: () =>
-			setUpdateCount((updateCount + 1) % 6 === 0 ? 6 : (updateCount + 1) % 6),
+		afterChange: (index) =>
+			setUpdateCount((index + 1) % 6 === 0 ? 6 : (index + 1) % 6),
 		// beforeChange: (current, next) => setSlideIndex(next),
 	};
 
@@ -57,13 +57,38 @@ export default function SustainabilityCard(props) {
 							<SustainableImage src={props.sustainImage} alt="sustainable" />
 							<SustainableImage src={props.sustainImage} alt="sustainable" />
 							<SustainableImage src={props.sustainImage} alt="sustainable" />
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
 						</Slider>
 					</Grid>
-					{/* <Slider ref={slider2} {...settings}> */}
 					<TextContainer item md={6} xs={12}>
 						<Description>
-							<Typography className="text1"> {props.title}</Typography>
-							<Typography className="text2">{props.description}</Typography>
+							<Slider ref={slider2} {...settings}>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+								<div>
+									<Typography className="text1"> {props.title}</Typography>
+									<Typography className="text2">{props.description}</Typography>
+								</div>
+							</Slider>
 							<LeftIconContainer onClick={next}>
 								<img className="leftIcon" src={left} alt="shadow" />
 							</LeftIconContainer>
@@ -84,14 +109,14 @@ export default function SustainabilityCard(props) {
 								</div>
 								<div className="arrowContaiiner">
 									<div
-										onClick={next}
+										onClick={previous}
 										className="leftContainer"
 										aria-hidden="true"
 									>
 										<img className="leftIcon" src={left} alt="shadow" />
 									</div>
 									<div
-										onClick={previous}
+										onClick={next}
 										className="rightConatiner"
 										aria-hidden="true"
 									>
@@ -103,7 +128,6 @@ export default function SustainabilityCard(props) {
 
 						<Shadow src={mask3} alt="shadow" />
 					</TextContainer>
-					{/* </Slider> */}
 				</Grid>
 			</div>
 		</>
