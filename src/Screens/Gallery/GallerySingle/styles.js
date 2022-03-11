@@ -2,160 +2,161 @@ import { styled, Card, Box } from "@mui/material";
 import Switch from "@mui/material/Switch";
 
 export const ImageContainer = styled("div")({
-  display: "flex",
-  justifyContent: "center",
+	display: "flex",
+	justifyContent: "center",
 });
 
 export const Container = styled("div")(({ theme }) => ({
-  padding: 10,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginTop: 81,
-  width: "97vw",
-  [theme.breakpoints.down("sm")]: {
-    marginTop: 60,
-  },
+	padding: 10,
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
+	marginTop: 81,
+	width: "97vw",
+	[theme.breakpoints.down("sm")]: {
+		marginTop: 60,
+	},
 }));
 
 export const ImageCard = styled(Card)({
-  borderRadius: 2,
-  cursor: "pointer",
+	borderRadius: 2,
+	cursor: "pointer",
 });
 
 export const StyledSwitch = styled(Switch)(({ theme }) => ({
-  left: "46.5%",
-  marginBottom: 10,
-  width: "8%",
-  [theme.breakpoints.only("lg")]: {
-    width: "8.5%",
-  },
-  [theme.breakpoints.only("md")]: {
-    width: "10.5%",
-  },
-  [theme.breakpoints.only("sm")]: {
-    width: "22%",
-    left: "41.5%",
-  },
-  [theme.breakpoints.only("xs")]: {
-    width: "29.5%",
-    left: "36.5%",
-  },
-  padding: 10,
-  height: 55,
-  "& .MuiSwitch-switchBase": {
-    top: 4,
-    left: 1,
-    [theme.breakpoints.only("xs")]: {
-      left: 3,
-    },
-    [theme.breakpoints.only("md")]: {
-      left: 5,
-    },
-    [theme.breakpoints.only("xl")]: {
-      left: 4,
-    },
-    "&.Mui-checked": {
-      color: "#000",
-      opacity: 0.5,
-      [theme.breakpoints.only("xs")]: {
-        transform: "translateX(125%)",
-      },
-      [theme.breakpoints.only("sm")]: {
-        transform: "translateX(196%)",
-      },
-      [theme.breakpoints.only("md")]: {
-        transform: "translateX(105%)",
-      },
-      [theme.breakpoints.up("lg")]: {
-        transform: "translateX(140%)",
-      },
-      [theme.breakpoints.only("xl")]: {
-        transform: "translateX(155%)",
-      },
-      "+ .MuiSwitch-track": {
-        backgroundColor: "#3D3DD9",
-        opacity: 1,
-        "&:after": {
-          display: "block",
-        },
-        "&:before": {
-          display: "none",
-        },
-      },
-    },
-  },
-  "& .MuiSwitch-thumb": {
-    boxShadow: "none",
-    width: 24,
-    height: 24,
-    margin: 0,
-    marginTop: 2,
-  },
-  "& .MuiSwitch-track": {
-    borderRadius: 40 / 2,
-    backgroundColor: "#444",
-    transition: theme.transitions.create(["background-color"], {
-      duration: 500,
-    }),
-    "&:after , &:before": {
-      position: "absolute",
-      transform: "translateY(-50%)",
-      top: "50%",
-      color: "#fff",
-      fontSize: "90%",
-    },
-    "&:after": {
-      display: "none",
-      content: "'Videos'",
-      left: "16%",
-    },
-    "&:before": {
-      content: "'Photos'",
-      left: "40%",
-    },
-  },
+	left: "46.5%",
+	marginBottom: 10,
+	width: "8%",
+	[theme.breakpoints.only("lg")]: {
+		width: "8.5%",
+	},
+	[theme.breakpoints.only("md")]: {
+		width: "10.5%",
+	},
+	[theme.breakpoints.only("sm")]: {
+		width: "22%",
+		left: "41.5%",
+	},
+	[theme.breakpoints.only("xs")]: {
+		width: "29.5%",
+		left: "36.5%",
+	},
+	padding: 10,
+	height: 55,
+	"& .MuiSwitch-switchBase": {
+		top: 4,
+		left: 1,
+		[theme.breakpoints.only("xs")]: {
+			left: 3,
+		},
+		[theme.breakpoints.only("md")]: {
+			left: 5,
+		},
+		[theme.breakpoints.only("xl")]: {
+			left: 4,
+		},
+		"&.Mui-checked": {
+			color: "#000",
+			opacity: 0.5,
+			[theme.breakpoints.only("xs")]: {
+				transform: "translateX(125%)",
+			},
+			[theme.breakpoints.only("sm")]: {
+				transform: "translateX(196%)",
+			},
+			[theme.breakpoints.only("md")]: {
+				transform: "translateX(105%)",
+			},
+			[theme.breakpoints.up("lg")]: {
+				transform: "translateX(140%)",
+			},
+			[theme.breakpoints.only("xl")]: {
+				transform: "translateX(155%)",
+			},
+			"+ .MuiSwitch-track": {
+				backgroundColor: "#3D3DD9",
+				opacity: 1,
+				"&:after": {
+					display: "block",
+				},
+				"&:before": {
+					display: "none",
+				},
+			},
+		},
+	},
+	"& .MuiSwitch-thumb": {
+		boxShadow: "none",
+		width: 24,
+		height: 24,
+		margin: 0,
+		marginTop: 2,
+	},
+	"& .MuiSwitch-track": {
+		borderRadius: 40 / 2,
+		backgroundColor: "#444",
+		transition: theme.transitions.create(["background-color"], {
+			duration: 500,
+		}),
+		"&:after , &:before": {
+			position: "absolute",
+			transform: "translateY(-50%)",
+			top: "50%",
+			color: "#fff",
+			fontSize: "90%",
+		},
+		"&:after": {
+			display: "none",
+			content: "'Videos'",
+			left: "16%",
+		},
+		"&:before": {
+			content: "'Photos'",
+			left: "40%",
+		},
+	},
 }));
 
 export const FileDownloadButton = styled("div")(({ theme }) => ({
-  backgroundColor: "#3D3DD9",
-  zIndex: 2000,
-  position: "fixed",
-  left: "74%",
-  bottom: "12vh",
-  height: "50px",
-  width: "50px",
-  display: "flex",
-  borderRadius: "50%",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  "> svg": {
-    fill: "#FFF",
-  },
-  [theme.breakpoints.down("md")]: {
-    left: "20%",
-  },
-  [theme.breakpoints.down("sm")]: {
-    bottom: "21.5vh",
-    left: "84%",
-  },
+	backgroundColor: "#3D3DD9",
+	zIndex: 2000,
+	position: "fixed",
+	left: "63%",
+	bottom: "7vh",
+	height: "50px",
+	width: "50px",
+	display: "flex",
+	borderRadius: "50%",
+	alignItems: "center",
+	justifyContent: "center",
+	cursor: "pointer",
+	"> svg": {
+		fill: "#FFF",
+	},
+	[theme.breakpoints.down("md")]: {
+		left: "20%",
+		bottom: "5.7vh",
+	},
+	[theme.breakpoints.down("sm")]: {
+		bottom: "6.5vh",
+		left: "84%",
+	},
 }));
 
 export const ModalBox = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 600,
-  bgcolor: "background.paper",
-  borderRadius: "10px",
-  boxShadow: 24,
-  [theme.breakpoints.down("md")]: {
-    width: 600,
-  },
-  [theme.breakpoints.down("sm")]: {
-    width: "95%",
-    margin: "auto",
-  },
+	position: "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	width: 600,
+	bgcolor: "background.paper",
+	borderRadius: "10px",
+	boxShadow: 24,
+	[theme.breakpoints.down("md")]: {
+		width: 600,
+	},
+	[theme.breakpoints.down("sm")]: {
+		width: "95%",
+		margin: "auto",
+	},
 }));

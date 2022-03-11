@@ -8,98 +8,104 @@ import "slick-carousel/slick/slick-theme.css";
 import mask3 from "assets/images/mask3.svg";
 
 import {
-  useStyles,
-  SustainableImage,
-  Description,
-  TextContainer,
-  Shadow,
-  LeftIconContainer,
-  RightIconContainer,
-  NumberContainer,
-  BottomMobile,
+	useStyles,
+	SustainableImage,
+	Description,
+	TextContainer,
+	Shadow,
+	LeftIconContainer,
+	RightIconContainer,
+	NumberContainer,
+	BottomMobile,
 } from "./styles";
 
 export default function SustainabilityCard(props) {
-  const classes = useStyles();
+	const classes = useStyles();
 
-  const slider = useRef(null);
+	const slider = useRef(null);
+	const slider2 = useRef(null);
 
-  const [updateCount, setUpdateCount] = useState(1);
+	const [updateCount, setUpdateCount] = useState(1);
 
-  const next = () => {
-    slider.current.slickNext();
-  };
-  const previous = () => {
-    slider.current.slickPrev();
-  };
+	const next = () => {
+		slider.current.slickNext();
+		slider2.current.slickNext();
+	};
+	const previous = () => {
+		slider.current.slickPrev();
+		slider2.current.slickPrev();
+	};
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    afterChange: () => setUpdateCount(updateCount + 1),
-    // beforeChange: (current, next) => setSlideIndex(next),
-  };
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		afterChange: () =>
+			setUpdateCount((updateCount + 1) % 6 === 0 ? 6 : (updateCount + 1) % 6),
+		// beforeChange: (current, next) => setSlideIndex(next),
+	};
 
-  return (
-    <>
-      <div className={classes.container}>
-        <Grid container className={classes.mainContainer}>
-          <Grid items md={6} xs={12}>
-            <Slider ref={slider} {...settings}>
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
-              <SustainableImage src={props.sustainImage} alt="sustainable" />
-            </Slider>
-          </Grid>
-          <TextContainer item md={6} xs={12}>
-            <Description>
-              <Typography className="text1"> {props.title}</Typography>
-              <Typography className="text2">{props.description}</Typography>
-              <LeftIconContainer onClick={next}>
-                <img className="leftIcon" src={left} alt="shadow" />
-              </LeftIconContainer>
-              <RightIconContainer onClick={previous}>
-                <img className="rightIcon" src={right} alt="shadow" />
-              </RightIconContainer>
-              <NumberContainer>
-                <Typography className="one">0{updateCount}</Typography>
-                <div className="line" />
-                <Typography className="six">06</Typography>
-              </NumberContainer>
+	return (
+		<>
+			<div className={classes.container}>
+				<Grid container className={classes.mainContainer}>
+					<Grid items md={6} xs={12}>
+						<Slider ref={slider} {...settings}>
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
+							<SustainableImage src={props.sustainImage} alt="sustainable" />
+						</Slider>
+					</Grid>
+					{/* <Slider ref={slider2} {...settings}> */}
+					<TextContainer item md={6} xs={12}>
+						<Description>
+							<Typography className="text1"> {props.title}</Typography>
+							<Typography className="text2">{props.description}</Typography>
+							<LeftIconContainer onClick={next}>
+								<img className="leftIcon" src={left} alt="shadow" />
+							</LeftIconContainer>
+							<RightIconContainer onClick={previous}>
+								<img className="rightIcon" src={right} alt="shadow" />
+							</RightIconContainer>
+							<NumberContainer>
+								<Typography className="one">0{updateCount}</Typography>
+								<div className="line" />
+								<Typography className="six">06</Typography>
+							</NumberContainer>
 
-              <BottomMobile>
-                <div className="number">
-                  <Typography className="one">0{updateCount}</Typography>
-                  <div className="MobileLine" />
-                  <Typography className="six">06</Typography>
-                </div>
-                <div className="arrowContaiiner">
-                  <div
-                    onClick={next}
-                    className="leftContainer"
-                    aria-hidden="true"
-                  >
-                    <img className="leftIcon" src={left} alt="shadow" />
-                  </div>
-                  <div
-                    onClick={previous}
-                    className="rightConatiner"
-                    aria-hidden="true"
-                  >
-                    <img className="rightIcon" src={right} alt="shadow" />
-                  </div>
-                </div>
-              </BottomMobile>
-            </Description>
+							<BottomMobile>
+								<div className="number">
+									<Typography className="one">0{updateCount}</Typography>
+									<div className="MobileLine" />
+									<Typography className="six">06</Typography>
+								</div>
+								<div className="arrowContaiiner">
+									<div
+										onClick={next}
+										className="leftContainer"
+										aria-hidden="true"
+									>
+										<img className="leftIcon" src={left} alt="shadow" />
+									</div>
+									<div
+										onClick={previous}
+										className="rightConatiner"
+										aria-hidden="true"
+									>
+										<img className="rightIcon" src={right} alt="shadow" />
+									</div>
+								</div>
+							</BottomMobile>
+						</Description>
 
-            <Shadow src={mask3} alt="shadow" />
-          </TextContainer>
-        </Grid>
-      </div>
-    </>
-  );
+						<Shadow src={mask3} alt="shadow" />
+					</TextContainer>
+					{/* </Slider> */}
+				</Grid>
+			</div>
+		</>
+	);
 }
