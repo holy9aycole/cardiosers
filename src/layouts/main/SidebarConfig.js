@@ -12,6 +12,7 @@ const sidebarConfig = [
       { title: "BRANDING", path: "/branding" },
       { title: "CONTACT", path: "/contact" },
       { title: "PROFILE", path: "/profile" },
+      { title: "LOG OUT", path: "/" },
     ],
   },
 ];
