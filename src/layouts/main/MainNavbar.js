@@ -20,6 +20,7 @@ import { ReactComponent as Logo } from "assets/rmz-logo.svg";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import useProperties from "hooks/useProperties";
+import { makeStyles } from "@mui/styles";
 import _ from "lodash";
 import { getLocation } from "redux/slices/location";
 import { useDispatch, useSelector } from "react-redux";
@@ -129,6 +130,7 @@ const Line2 = styled("div")(() => ({
 const NavbarHeadingSelect = styled(Select)(({ theme }) => ({
   marginTop: -3,
   marginLeft: 2,
+  outline: "none",
   color: "#FFF",
   fontSize: 20,
   textTransform: "capitalize",
@@ -146,6 +148,15 @@ MainNavbar.propTypes = {
 
 // ----------------------------------------------------------------------
 
+const useStyles = makeStyles({
+  icon: {
+    fill: "white",
+  },
+  root: {
+    color: "white",
+  },
+});
+
 export default function MainNavbar(props) {
   const [DrawerOpen, setDrawerOpen] = useState(false);
   const { properties } = useProperties();
@@ -160,7 +171,7 @@ export default function MainNavbar(props) {
   const handleChange = (e) => {
     dispatch(getLocation(e.target.value));
   };
-
+  const classes = useStyles();
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -180,9 +191,16 @@ export default function MainNavbar(props) {
                     id="demo-simple-select-standard"
                     value={location}
                     onChange={handleChange}
-                    defaultValue="all"
+                    displayEmpty
+                    disableUnderline
+                    inputProps={{
+                      classes: {
+                        icon: classes.icon,
+                        root: classes.root,
+                      },
+                    }}
                   >
-                    <MenuItem value="all">All</MenuItem>
+                    <MenuItem value="">All</MenuItem>
                     {uniqueCities.map((option) => (
                       <MenuItem key={option} value={option}>
                         {option}

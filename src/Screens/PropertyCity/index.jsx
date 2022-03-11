@@ -84,7 +84,15 @@ function PropertyCity() {
   );
 
   const [selectvalue, setSelectValue] = React.useState("");
+
   const handleOnChange = (e) => setSelectValue(e.target.value);
+  React.useEffect(() => {
+    setSelectValue(
+      location === undefined || location === ""
+        ? properties[0]?.id
+        : selectedProperties[0]?.id
+    );
+  }, [properties[0]?.id, selectedProperties[0]?.id]);
 
   const accordionArray = filterArrayElementById(properties);
 
@@ -129,7 +137,7 @@ function PropertyCity() {
             onChange={handleOnChange}
             value={selectvalue}
           >
-            {location === undefined || location === "all"
+            {location === undefined || location === ""
               ? properties.map((item, index) => (
                   <MenuItem
                     key={index}
