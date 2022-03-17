@@ -1,14 +1,14 @@
 import React from "react";
 import { Typography, Grid, Card } from "@mui/material";
-import moment from "moment";
+// import moment from "moment";
 import tag from "assets/images/tag-icon.png";
-import clock from "assets/images/clock-icon.png";
+// import clock from "assets/images/clock-icon.png";
 import mask2 from "assets/images/mask2.png";
 
 import {
   CardFooter,
   useStyles,
-  Time,
+  // Time,
   FooterShadow,
   CardHeader,
   ImageTag,
@@ -32,12 +32,12 @@ export default function ExperienceCard(props) {
       <CardFooter>
         <Typography className="text2">{props.name}</Typography>
         <Typography className="text3">{props.description}</Typography>
-        <Time>
+        {/* <Time>
           <img className="clock" src={clock} alt="clock" />
           <Typography className="ago">
             {moment(props.time).fromNow()}
           </Typography>
-        </Time>
+        </Time> */}
         <FooterShadow src={mask2} alt="footer shadow" />
       </CardFooter>
     </Grid>

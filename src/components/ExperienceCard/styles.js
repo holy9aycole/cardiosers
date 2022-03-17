@@ -23,7 +23,7 @@ export const CardFooter = styled(Card)(() => ({
   width: "100%",
   marginTop: "-20px",
   textAlign: "left",
-  padding: "0px 35px",
+  padding: "0px 35px 20px 35px",
   position: "relative",
   "& .text2": {
     color: "#FFFFFF",
