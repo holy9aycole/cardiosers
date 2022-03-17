@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/assets/css/video.css"],"names":[],"mappings":"AAIA,6BACE,kBACF","file":"23.30bcd037.chunk.css","sourcesContent":["video {\n  border-radius: 10px;\n}\n\n.react-player__preview {\n  border-radius: 10px;\n}\n"]}
