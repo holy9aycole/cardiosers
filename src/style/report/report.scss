@@ -1,0 +1,65 @@
+.report {
+    .report__title {
+        margin-top: 2rem;
+        font-size: .82rem;
+        background: $background-1-color;
+        padding: .65rem 1rem;
+        color: #fff;
+        text-transform: uppercase;
+
+    }
+    .report__principal {
+        margin-top: 1rem;
+        display: flex;
+        .report__principal__image {
+            width: 11rem;
+            height: 9rem;
+            margin-right: 2rem;
+            background: red;
+
+        }
+        .report__principal__info {
+            .report__principal__percentage {
+                display: flex;
+                align-items: center;
+                .principal__percentage__progress {
+                    $out_circule_size: 3.5rem;
+                    height: $out_circule_size;
+                    width: $out_circule_size;
+                    position: relative;
+                    border-radius: 50%;
+                    background: conic-gradient($background-1-color 300deg, #ccc 0deg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    &::before {
+                        $inner_circule_size: $out_circule_size - .75rem;
+                        content: "";
+                        position: absolute;
+                        height: $inner_circule_size;
+                        width: $inner_circule_size;
+                        border-radius: 50%;
+                        background-color: #fff;
+                    }
+                    .principal__percentage__value {
+                        position: relative;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: $text-2-color;
+                    }
+                }
+                .report__principal__text {
+                    margin-left: 1rem;
+                    font-size: 1.5rem;
+                    color: $text-2-color;
+                    font-weight: 600;
+                }
+            }
+            .report__principal__heart-size {
+                margin-top: 1rem;
+                font-size: 1rem;
+                color: $text-2-color;
+            }
+        }
+    }
+}

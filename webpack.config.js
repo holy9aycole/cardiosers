@@ -1,6 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -17,6 +16,7 @@ module.exports = {
     port: 3000,
     open: true,
   },
+  devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx"],
   },

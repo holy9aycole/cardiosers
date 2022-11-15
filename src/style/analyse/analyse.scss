@@ -1,0 +1,36 @@
+@import "./analyseForm.scss";
+
+.analyse {
+    display: flex;
+    justify-content: center;
+    .analyse__container {
+        margin-top: -.5rem;
+        background: #fff;
+        box-shadow: 0 0 10px 1px #aaa;;
+        width: 70%;
+        height: max-content;
+        padding: 1rem 2rem;
+        .analyse__title {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.5rem;
+            font-weight: 500;
+            &::after {
+                content: "";
+                height: 2px;
+                width: 2rem;
+                background: $text-4-color;
+            }
+        }
+        .analyse__description {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: .92rem;
+        }
+        .analyse__label {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            font-size: .92rem;
+        }
+    }
+}

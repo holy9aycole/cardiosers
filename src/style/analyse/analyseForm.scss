@@ -1,0 +1,18 @@
+.analyse__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .analyse__form__input {
+        border: 1px solid #ccc;
+    }
+    .analyse__form__button {
+        margin-top: 1rem;
+        width: max-content;
+        padding: .6rem 1rem;
+        background: #ddd;
+        border: 1px solid #aaa;
+        border-radius: .2rem;
+        cursor: pointer;
+    }
+}
