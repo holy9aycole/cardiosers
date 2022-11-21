@@ -1,0 +1,79 @@
+.header {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header_height;
+    display: flex;
+    justify-content: space-between;
+    background: $background-0-color;
+    padding: 0 10rem;
+    .header__nav {
+        display: flex;
+        .header__nav__link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 1.5rem;
+            margin:  0 .5rem;
+            font-weight: 600;
+            font-size: $normal;
+            color: $text-2-color;
+            &::before {
+                /* To hide the bottom bar (line) */
+                content: "";
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                height: 2px;
+                width: 100%;
+                background: $background-1-color;
+                animation: link-slide-out .25s ease-in forwards;
+                @keyframes link-slide-out {
+                    0% {
+                        width: 100%;
+                    }
+                    100% {
+                        width: 0;
+                    }
+                }
+            }
+            &.active, &:hover {
+                /* To show the bottom bar (line) */
+                &::before {
+                    animation: link-slide-in .25s ease-in forwards;
+                    @keyframes link-slide-in {
+                        0% {
+                            width: 0;
+                        }
+                        100% {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .header__sign {
+        display: flex;
+        align-items: center;
+        .header__sign__link {
+            display: flex;
+            align-items: center;
+            height: max-content;
+            padding: .5rem 2rem;
+            font-size: $normal;
+            color: $text-2-color;
+            font-weight: 600;
+            border-radius: 2rem;
+            transition: ease-in .25s;
+            &:hover {
+                background: $background-1-color;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.poster {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(http://localhost:3000/img/poster.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+
+    .poster__info {
+        position: absolute;
+        left: 10rem;
+        max-width: 30rem;
+        .poster___title {
+            margin-bottom: 2rem;
+            font-weight: 700;
+            font-size: $big-title;
+            color: $text-2-color;
+        }
+        .poster__text {
+            color: $text-3-color;
+            font-size: $medium;
+        }
+        .poster__btn {
+            display: flex;
+            margin-top: 1.5rem;
+            border-radius: 2rem;
+            font-size: $normal;
+            color: $background-0-color;
+            background: $background-1-color;
+            padding: .75rem 3rem;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

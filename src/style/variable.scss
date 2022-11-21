@@ -1,6 +1,12 @@
 /* header height */
 $header-height: 3rem;
 
+/* Text fonts */
+$medium: .92rem;
+$normal: 1rem;
+$title: 1.8rem;
+$big-title: 4rem;
+
 
 /* Text color */
 $text-1-color: blue;
@@ -9,4 +15,8 @@ $text-3-color: lighten(#000, 20);
 $text-4-color: darken(orange, 10);
 
 /* Background color */
-$background-1-color: lighten($text-1-color, 15);
+$background-0-color: #fff;
+// $background-1-color: #B8DFFA;
+$background-1-color: #08596A;
+$background-2-color: #9EE6AA;
+// $background-1-color: lighten($text-1-color, 15);

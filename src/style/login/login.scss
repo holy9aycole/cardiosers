@@ -1,0 +1,49 @@
+@import "./input.scss";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .login__title {
+        font-size: $title;
+        font-weight: 600;
+        margin:  2rem 0;
+    }
+    .login__form {
+        width: 25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 3rem;
+        border-radius: .2rem;
+        background: #ddd;
+        .login__btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .login__btn__login {
+                padding: .5rem 1rem;
+                font-size: $medium;
+                border-radius: 2rem;
+                padding: .5rem 2rem;
+                border: none;
+                color: $background-0-color;
+                background: $background-1-color;
+                cursor: pointer;
+            }
+            .login__btn__register {
+                padding: .5rem 2rem;
+                border-radius: 2rem;
+                font-size: $medium;
+                color: $background-1-color;
+                &:hover {
+                    background: #ccc;
+                }
+            }
+        }
+    }
+}
