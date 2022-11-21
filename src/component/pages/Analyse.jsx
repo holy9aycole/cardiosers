@@ -27,10 +27,7 @@ const Analyse = () => {
             Analyse X-Ray Chest for a Cardiomegaly Detection
           </h2>
           <p className="analyse__description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            reprehenderit cupiditate dicta, et voluptates eveniet sint rem
-            tempore quibusdam, sapiente illum velit laboriosam, laudantium
-            accusantium. Fuga ducimus obcaecati amet rerum.
+          A medical tool used by health facilities for the diagnoses  of cardiomegally with the use of digital chest x ray.
           </p>
           <label htmlFor="image" className="analyse__label">
             Upload your digital x-ray chest image, to start the detection
