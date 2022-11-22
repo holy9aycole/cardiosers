@@ -1,0 +1,66 @@
+.dash__report__container {
+    .dash__report__box {
+        min-width: 40rem;
+        display: flex;
+        flex-direction: column;
+        .dash__report__title {
+            margin-top: 1rem;
+            font-size: .82rem;
+            background: $background-1-color;
+            padding: .65rem 1rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .dash__report__item {
+            margin-top: 1rem;
+            padding: 0 1rem;
+            display: flex;
+            .dash__report__image {
+                width: 11rem;
+                height: 9rem;
+                margin: .5rem 0 1rem;
+                margin-right: 2rem;
+                background: #eee;
+            }
+            .dash__report__info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .dash__report__heart-size {
+                    margin-left: 4.5rem;
+                    font-size: $normal;
+                    color: $text-3-color;
+                }
+                .dash__report__data {
+                    display: flex;
+                    align-items: center;
+                    padding: .5rem;
+                    font-size: $normal;
+                    .report__data__key {
+                        font-weight: 600;
+                        margin-right: 1rem;
+                    }
+                    .report__data__span {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        .dash__report__btn {
+            width: max-content;
+            margin-left: auto;
+            margin-top: .5rem;
+            padding: .5rem 1rem;
+            font-size: $normal;
+            border-radius: 2rem;
+            padding: .65rem 2rem;
+            border: none;
+            color: $background-0-color;
+            background: red;
+            cursor: pointer;
+            &:hover {
+                background: lighten($background-1-color, 20);
+            }
+        }
+    }
+}

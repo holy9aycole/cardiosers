@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import DashHeader from "./Dash.Header";
-import DashNavigation from "./Dash.Navigation";
+import DashHeader from "../Dash.Header";
+import DashNavigation from "../Dash.Navigation";
 import DashScanForm from "./Dash.Scan.Form";
 
 const DashScan = () => {
@@ -10,13 +10,12 @@ const DashScan = () => {
   const handlSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const firstname = formData.get("firstname");
-    const lastname = formData.get("lastname");
+    const fullname = formData.get("fullname");
     const email = formData.get("email");
     const phone = formData.get("phone");
     const date_of_birth = formData.get("date_of_birth");
 
-    console.log({ firstname, lastname, email, phone, date_of_birth });
+    console.log({ fullname, email, phone, date_of_birth });
 
     const scan_id = "123456";
     navigate("/dash/scan/" + scan_id);

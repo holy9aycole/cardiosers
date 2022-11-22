@@ -1,7 +1,9 @@
 @import "./dashHeader.scss";
 @import "./dashNavigation.scss";
-@import "./dashContainer.scss";
-@import "./dashScanForm.scss";
+@import "./static/dashStatic.scss";
+@import "./scan/dashScan.scss";
+@import "./report/dashReport.scss";
+@import "./history/dashHistory.scss";
 
 .dash {
     display: grid;

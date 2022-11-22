@@ -1,0 +1,106 @@
+.dash__history__container {
+    display: flex;
+    flex-direction: column;
+    .dash__history__action, .dash__history__box {
+        min-width: 35rem;
+    }
+    .dash__history__action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        .dash__history__search {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 15rem;
+            .history__search__bar {
+                height: 2.7rem;
+                width: 100%;
+                border: 1px solid #ccc;
+                padding: 0 2.5rem 0 1rem;
+                border-radius: .2rem;
+            }
+            .icon {
+                position: absolute;
+                right: .5rem;
+                width: 1.5rem;
+                height: 1.2rem;
+                color: $text-3-color;
+            }
+        }
+        .dash__history__filter {
+            .history__filter__icon {
+                display: flex;
+                align-items: center;
+                background: $background-1-color;
+                padding: .5rem;
+                border-radius: .2rem;
+                cursor: pointer;
+                &:hover {
+                    background: lighten($background-1-color, 20);
+                }
+                .icon {
+                    width: 2rem;
+                    height: 1.5rem;
+                    color: $text-3-color;
+                    color: #fff;
+                }
+                span {
+                    margin-left: .2rem;
+                    color: $text-3-color;
+                    font-size: $normal;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .dash__history__box {
+        .dash__history__header, .dash__history__info {
+            display: grid;
+            grid-template-columns: 15rem 7rem 7rem auto;
+            align-items: center;
+            gap: 1rem;
+        }
+        .dash__history__header {
+            .dash__history__title {
+                font-weight: 500;
+                font-size: $normal;
+                padding: .5rem 1rem;
+            }
+        }
+        .dash__history__info {
+            padding: .2rem;
+            margin: 1rem 0;
+            &:nth-child(odd) {
+                background: #b8dffa;
+            }
+            &:hover {
+                background: #eee;
+            }
+            .dash__history__label {
+                font-weight: 500;
+                font-size: $normal;
+                padding: .5rem 1rem;
+                color: $text-3-color;
+            }
+            .dash__report__percentage {
+                display: flex;
+                justify-content: center;
+                .report__percentage__progress {
+                    $out_circule_size: 2.5rem;
+                    height: $out_circule_size;
+                    width: $out_circule_size;
+                    &::before {
+                        $inner_circule_size: $out_circule_size - .45rem;
+                        height: $inner_circule_size;
+                        width: $inner_circule_size;
+                    }
+                    .report__percentage__value {
+                        font-size: $small;
+                    }
+                }
+            }
+        }
+    }
+}

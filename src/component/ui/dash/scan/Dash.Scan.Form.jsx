@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillCamera } from "react-icons/ai";
-import Input from "../shared/Input";
+import Input from "../../shared/Input";
 
 const DashScanForm = ({ onSubmit }) => {
   const [image, setImage] = useState(null);
@@ -13,11 +13,8 @@ const DashScanForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className="dash__container">
-      <form
-        className="dash__container__box dash__scan__form"
-        onSubmit={onSubmit}
-      >
+    <section className="dash__static__container">
+      <form className="dash__static__box dash__scan__form" onSubmit={onSubmit}>
         <figure className="dash__scan__image">
           <input
             type="file"
@@ -40,16 +37,9 @@ const DashScanForm = ({ onSubmit }) => {
         <div className="dash__scan__info">
           <Input
             type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="First Name"
-            required={true}
-          />
-          <Input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Last Name"
+            name="fullname"
+            id="fullname"
+            placeholder="Full Name"
             required={true}
           />
           <Input
@@ -73,7 +63,7 @@ const DashScanForm = ({ onSubmit }) => {
         </div>
         <button className="dash__scan__btn">Scan</button>
       </form>
-    </div>
+    </section>
   );
 };
 
