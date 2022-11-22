@@ -42,6 +42,7 @@
                 }
             }
             &.active, &:hover {
+                color: $background-1-color;
                 /* To show the bottom bar (line) */
                 &::before {
                     animation: link-slide-in .25s ease-in forwards;
@@ -53,6 +54,12 @@
                             width: 100%;
                         }
                     }
+                }
+            }
+            &:hover {
+                color: lighten($background-1-color, 15);
+                &::before {
+                    background: lighten($background-1-color, 15);
                 }
             }
         }

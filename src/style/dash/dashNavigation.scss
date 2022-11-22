@@ -16,12 +16,12 @@
             display: flex;
             align-items: center;
             padding: .65rem 1rem;
-            &.active {
-                // background: lighten($background-1-color, 20);
-                background: #eee;
-            }
             &:hover {
                 background: #eee;
+            }
+            &.active {
+                // background: lighten($background-1-color, 65);
+                background: #b8dffa;
             }
             .dash__navigation__icon {
                 margin-right: .5rem;

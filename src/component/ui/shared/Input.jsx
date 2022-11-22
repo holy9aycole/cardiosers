@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ type, name, id, placeholder }) => (
+const Input = ({ type, name, id, placeholder, required }) => (
   <div className="input">
     <input
       type={type}
@@ -8,6 +8,7 @@ const Input = ({ type, name, id, placeholder }) => (
       id={id}
       className="input__entry"
       placeholder={placeholder}
+      required={required}
     />
   </div>
 );

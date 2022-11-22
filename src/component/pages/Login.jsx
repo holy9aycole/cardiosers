@@ -24,12 +24,14 @@ const Login = () => {
           name="username"
           id="username"
           placeholder="Username"
+          required={true}
         />
         <Input
           type="password"
           name="password"
           id="password"
           placeholder="Password"
+          required={true}
         />
         <div className="login__btn">
           <button className="btn-1 login__btn__btn-1">LogIn</button>

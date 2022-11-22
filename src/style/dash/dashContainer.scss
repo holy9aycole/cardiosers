@@ -2,12 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #b8dffa;
+    // background: #20beff;
 
     .dash__container__box {
         min-width: 35rem;
         border-radius: .5rem;
         padding: 1.5rem;
         box-shadow: 0 0 5px 1px #ccc;
+        background: #fff;
 
         .dash__container__title {
             font-size: $subtitle;

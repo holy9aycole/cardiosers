@@ -1,0 +1,77 @@
+.dash__scan__form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    justify-content: space-between;
+    .dash__scan__image {
+        $size: 10rem;
+        width: $size;
+        input[type=file] {
+            display: none;
+        }
+        label {
+            position: relative;
+            display: inline-block;
+            width: $size;
+            height: $size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #aaa;
+            border-radius: .2rem;
+            cursor: pointer;
+            transition: ease .2s;
+            .icon {
+                position: absolute;
+                display: inline-block;
+                $size: 5rem;
+                width: $size;
+                height: $size;
+                opacity: 0;
+                color: $text-3-color;
+                transition: ease .5s;
+                &.show {
+                    opacity: 1;
+                }
+            }
+            img {
+                position: absolute;
+                transition: ease .2s;
+            }
+            &:hover {
+                background: #ddd;
+                .icon {
+                    opacity: 1;
+                }
+                img {
+                    opacity: .5;
+                }
+            }
+        }
+        .scan__image__warning {
+            margin-top: .5rem;
+            display: inline-block;
+            text-align: center;
+            font-size: $small;
+            color: $text-3-color;
+        }
+    }
+    .dash__scan__btn {
+        grid-column: 1 / span 2;
+        justify-self: end;
+        padding: .5rem 1rem;
+        font-size: $normal;
+        border-radius: 2rem;
+        padding: .65rem 2rem;
+        border: none;
+
+
+        color: $background-0-color;
+        background: $background-1-color;
+        cursor: pointer;
+        &:hover {
+            background: lighten($background-1-color, 20);
+        }
+        // padding: .75rem 1rem;
+    }
+}
