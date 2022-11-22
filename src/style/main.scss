@@ -1,6 +1,8 @@
 @import "./variable.scss";
+@import "./shared/shared.scss";
 @import "./home/home.scss";
 @import "./login/login.scss";
+@import "./dash/dash.scss";
 
 * {
     padding: 0;

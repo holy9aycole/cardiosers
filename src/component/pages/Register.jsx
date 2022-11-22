@@ -8,8 +8,9 @@ const Register = () => {
     const formData = new FormData(e.currentTarget);
     const username = formData.get("username");
     const password = formData.get("password");
+    const password2 = formData.get("password-2");
 
-    console.log({ username, password });
+    console.log({ username, password, password2 });
   };
 
   return (
@@ -35,8 +36,8 @@ const Register = () => {
           placeholder="Repeat password"
         />
         <div className="login__btn">
-          <button className="btn-1 login__btn__login">Register</button>
-          <Link to="/login" className="login__btn__register">
+          <button className="btn-1 login__btn__btn-1">Register</button>
+          <Link to="/login" className="login__btn__btn-2">
             Login
           </Link>
         </div>

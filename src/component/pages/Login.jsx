@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../ui/shared/Input";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -10,6 +12,7 @@ const Login = () => {
     const password = formData.get("password");
 
     console.log({ username, password });
+    navigate("/dash");
   };
 
   return (
@@ -29,8 +32,8 @@ const Login = () => {
           placeholder="Password"
         />
         <div className="login__btn">
-          <button className="btn-1 login__btn__login">LogIn</button>
-          <Link to="/register" className="login__btn__register">
+          <button className="btn-1 login__btn__btn-1">LogIn</button>
+          <Link to="/register" className="login__btn__btn-2">
             Register
           </Link>
         </div>

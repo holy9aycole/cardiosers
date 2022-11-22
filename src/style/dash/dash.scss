@@ -1,0 +1,20 @@
+@import "./dashHeader.scss";
+@import "./dashNavigation.scss";
+@import "./dashContainer.scss";
+
+.dash {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "nav header"
+                         "nav container";
+    .dash__header {
+        grid-area: header;
+    }
+    .dash__navigation {
+        grid-area: nav;
+    }
+    .dash__container {
+        grid-area: container;
+    }
+}

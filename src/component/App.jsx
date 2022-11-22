@@ -1,14 +1,14 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-// import Analyse from "./pages/Analyse";
-// import Report from "./pages/Report";
+import React, { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
+import Dash from "./pages/Dash";
 
 const App = () => {
-  // const [user]
+  const [user, setUser] = useState({ session: true });
+
+  console.log({ user });
 
   return (
     <React.StrictMode>
@@ -16,7 +16,10 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route path="/dash" children={({}) => <Dashboard />} />
+        <Route
+          path="/dash/*"
+          element={user.session ? <Dash /> : <Navigate to="/" />}
+        />
       </Routes>
     </React.StrictMode>
   );

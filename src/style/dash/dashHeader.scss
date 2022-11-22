@@ -1,0 +1,32 @@
+.dash__header {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 5px 0 #ccc;
+    padding-right: 3rem;
+    .dash__header__profile {
+        padding: 0 2rem;
+        .dash__header__username {
+            margin-bottom: .1rem;
+            font-size: $normal;
+            font-weight: 600;
+            color: $text-2-color;
+        }
+        .dash__header__time {
+            font-size: $small;
+            color: $text-3-color;
+        }
+    }
+    .dash__header__icon {
+        .header__icon__notification {
+            width: 2rem;
+            height: 1.8rem;
+            cursor: pointer;
+            padding: .2rem;
+            &:hover {
+                background: #eee;
+            }
+        }
+    }
+}

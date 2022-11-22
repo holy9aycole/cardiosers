@@ -25,20 +25,23 @@
             align-items: center;
             justify-content: space-between;
 
-            .login__btn__login {
+            .login__btn__btn-1 {
                 padding: .5rem 1rem;
-                font-size: $medium;
+                font-size: $normal;
                 border-radius: 2rem;
-                padding: .5rem 2rem;
+                padding: .65rem 2rem;
                 border: none;
                 color: $background-0-color;
                 background: $background-1-color;
                 cursor: pointer;
+                &:hover {
+                    background: lighten($background-1-color, 20);
+                }
             }
-            .login__btn__register {
+            .login__btn__btn-2 {
                 padding: .5rem 2rem;
                 border-radius: 2rem;
-                font-size: $medium;
+                font-size: $normal;
                 color: $background-1-color;
                 &:hover {
                     background: #ccc;

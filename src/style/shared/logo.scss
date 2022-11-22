@@ -1,0 +1,14 @@
+.logo {
+    display: flex;
+    align-items: center;
+    .logo__title {
+        width: 100%;
+        padding: .5rem;
+        font-size: $subtitle + .3rem;
+        color: $text-2-color;
+        font-weight: 500;
+        &:hover {
+            background: #eee;
+        }
+    }
+}

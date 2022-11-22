@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Poster = () => (
   <div className="poster">
@@ -9,7 +10,9 @@ const Poster = () => (
       of cardiomegally with the use of digital chest x ray.This platform will ease the analyses and detection of Cardiiomegally 
       from digital chest x-ray.
       </span>
-      <button className="poster__btn">Get Started</button>
+      <Link to="/dash" className="poster__btn">
+        Get Started
+      </Link>
     </div>
   </div>
 );
