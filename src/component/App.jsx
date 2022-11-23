@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dash from "./pages/Dash";
 
+export const API_URL = "";
+
 const App = () => {
   const [user, setUser] = useState({ session: true });
 

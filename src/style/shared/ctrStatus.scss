@@ -1,35 +1,5 @@
-.dash__report__percentage {
-    display: flex;
-    align-items: center;
-    .report__percentage__progress {
-        $out_circule_size: 3.5rem;
-        height: $out_circule_size;
-        width: $out_circule_size;
-        position: relative;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &::before {
-            $inner_circule_size: $out_circule_size - .75rem;
-            content: "";
-            position: absolute;
-            height: $inner_circule_size;
-            width: $inner_circule_size;
-            border-radius: 50%;
-            background-color: #fff;
-        }
-        .report__percentage__value {
-            position: relative;
-            font-size: $normal;
-            font-weight: 500;
-            color: $text-2-color;
-        }
-    }
-    .dash__report__text {
-        margin-left: 1rem;
-        font-size: $subtitle;
-        color: $text-3-color;
-        font-weight: 600;
-    }
+.ctr__status {
+    font-size: $subtitle;
+    color: $text-2-color;
+    font-weight: 600;
 }

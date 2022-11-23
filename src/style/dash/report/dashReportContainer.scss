@@ -22,7 +22,21 @@
                 margin-right: 2rem;
                 background: #eee;
             }
-            .dash__report__info {
+            .dash__report__primary {
+                display: flex;
+                align-items: center;
+                .report__primary__text {
+                    margin-left: 1rem;
+                    .report__primary__heart-size, .report__primary__precision {
+                        display: inline-block;
+                        width: 100%;
+                        margin-top: .5rem;
+                        font-weight: 600;
+                        color: $text-3-color;
+                    }
+                }
+            }
+            .dash__report__secondary {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -44,6 +58,7 @@
                         font-weight: 500;
                     }
                 }
+
             }
         }
         .dash__report__btn {

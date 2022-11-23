@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import DashHeader from "../Dash.Header";
 import DashNavigation from "../Dash.Navigation";
 import DashHistoryContainer from "./Dash.History.Container";
 
 const DashHistory = () => {
+  const [filter, setFilter] = useState(null);
+
   const histories = [
     {
       id: "123456",
@@ -40,7 +42,12 @@ const DashHistory = () => {
     <main className="dash">
       <DashHeader username="Enrique Boriesa" time="4:45 pm, 19 Jan 2022" />
       <DashNavigation />
-      <DashHistoryContainer onSearch={handleSearch} histories={histories} />
+      <DashHistoryContainer
+        onSearch={handleSearch}
+        histories={histories}
+        filter={filter}
+        setFilter={(value) => setFilter(value)}
+      />
     </main>
   );
 };

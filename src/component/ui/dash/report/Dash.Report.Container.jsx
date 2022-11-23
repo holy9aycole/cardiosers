@@ -1,10 +1,11 @@
 import React from "react";
+import CTRPercentage from "../../shared/CTR.Percentage";
 import CTRStatus from "../../shared/CTR.Status";
 
 const DashReportContainer = ({
-  ctr /* ctr (???) */,
-  status /* status of the condition */,
+  ctr /* ctr (Cardio toracix ratio) */,
   heartSize,
+  precision,
   image,
   fullname,
   email,
@@ -21,16 +22,22 @@ const DashReportContainer = ({
           <figure className="dash__report__image">
             <img src={image} alt="" />
           </figure>
-          <div className="dash__report__info">
-            <CTRStatus ctr={ctr} status={status} />
-            <div className="dash__report__heart-size">
-              Heart size of {heartSize} in
+          <div className="dash__report__primary">
+            <CTRPercentage ctr={ctr} />
+            <div className="report__primary__text">
+              <CTRStatus ctr={ctr} />
+              <span className="report__primary__heart-size">
+                Heart size of {heartSize} in
+              </span>
+              <span className="report__primary__precision">
+                Precision of {precision}%
+              </span>
             </div>
           </div>
         </div>
         <h2 className="dash__report__title">Personal Information</h2>
         <div className="dash__report__item">
-          <div className="dash__report__info">
+          <div className="dash__report__secondary">
             <div className="dash__report__data">
               <span className="report__data__key">Fullname:</span>
               <span className="report__data__span">{fullname}</span>

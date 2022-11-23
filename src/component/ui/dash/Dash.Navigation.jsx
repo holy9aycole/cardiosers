@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { MdDashboard, MdAccountCircle } from "react-icons/md";
 import { AiOutlineScan } from "react-icons/ai";
 import { RiHistoryLine } from "react-icons/ri";
+import { HiUsers } from "react-icons/hi";
+import { FiSettings } from "react-icons/fi";
 import Logo from "../shared/Logo";
 
 const DashNavigation = () => (
@@ -38,12 +40,21 @@ const DashNavigation = () => (
         <span className="dash__navigation__text">History</span>
       </NavLink>
       <NavLink
+        to="/dash/patient"
+        className={({ isActive }) =>
+          isActive ? "dash__navigation__link active" : "dash__navigation__link"
+        }
+      >
+        <HiUsers className="dash__navigation__icon" />
+        <span className="dash__navigation__text">Patient</span>
+      </NavLink>
+      <NavLink
         to="/dash/account"
         className={({ isActive }) =>
           isActive ? "dash__navigation__link active" : "dash__navigation__link"
         }
       >
-        <MdAccountCircle className="dash__navigation__icon" />
+        <FiSettings className="dash__navigation__icon" />
         <span className="dash__navigation__text">Account</span>
       </NavLink>
     </div>

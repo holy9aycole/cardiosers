@@ -30,7 +30,10 @@
             }
         }
         .dash__history__filter {
+            display: flex;
+            align-items: center;
             .history__filter__icon {
+                position: relative;
                 display: flex;
                 align-items: center;
                 background: $background-1-color;
@@ -46,11 +49,57 @@
                     color: $text-3-color;
                     color: #fff;
                 }
-                span {
+                .history__filter__text {
                     margin-left: .2rem;
                     color: $text-3-color;
                     font-size: $normal;
                     color: #fff;
+                }
+                .history__filter__options {
+                    position: absolute;
+                    z-index: 100;
+                    top: 100%;
+                    left: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-width: 10rem;
+                    box-shadow: 0 0 5px 1px #ccc;
+                    border-radius: .2rem;
+                    background: #fff;
+                    opacity: 0;
+                    transition: .5s;
+                    &.show {
+                        margin-top: 1rem;
+                        opacity: 1;
+                    }
+                    .history__filter__option {
+                        padding: .65rem 1rem;
+                        border-bottom: 1px solid #ddd;
+                        font-size: $medium;
+                        color: $text-3-color;
+                        cursor: pointer;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                        &:hover {
+                            background: #eee;
+                        }
+                    }
+                }
+            }
+            .history__filter__exit {
+                display: flex;
+                align-items: center;
+                margin-left: 1rem;
+                width: max-content;
+                height: max-content;
+                background: $background-1-color;
+                padding: .5rem;
+                border-radius: .2rem;
+                color: #fff;
+                cursor: pointer;
+                &:hover {
+                    background: lighten($background-1-color, 20);
                 }
             }
         }
@@ -84,10 +133,10 @@
                 padding: .5rem 1rem;
                 color: $text-3-color;
             }
-            .dash__report__percentage {
+            .ctr__percentage__box {
                 display: flex;
                 justify-content: center;
-                .report__percentage__progress {
+                .ctr__percentage {
                     $out_circule_size: 2.5rem;
                     height: $out_circule_size;
                     width: $out_circule_size;
@@ -96,7 +145,7 @@
                         height: $inner_circule_size;
                         width: $inner_circule_size;
                     }
-                    .report__percentage__value {
+                    .ctr__percentage__value {
                         font-size: $small;
                     }
                 }
