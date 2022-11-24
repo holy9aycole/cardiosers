@@ -77,7 +77,16 @@
       "type": "string"
     },
     "hospital": {
-      "type": "string"
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hospital.hospital"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Doctor",
+        "Techician"
+      ]
     }
   }
 }
