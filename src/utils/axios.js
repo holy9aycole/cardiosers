@@ -10,7 +10,7 @@ const errorHandler = (err) => {
   if (isDevelopment) console.info(err);
   const error = err?.response?.data?.msg || 'Something went wrong';
   store.dispatch({ type: 'control/stopLoading' });
-  store.dispatch({ type: 'control/showSnackbar', payload: { text: error, type: 'error' } });
+  // store.dispatch({ type: 'control/showSnackbar', payload: { text: error, type: 'error' } });
   return null;
 };
 

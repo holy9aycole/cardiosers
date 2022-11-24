@@ -4,14 +4,7 @@
     "browser": true,
     "node": true
   },
-  "extends": [
-    "airbnb",
-    "prettier",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
-  ],
+  "extends": ["airbnb", "prettier", "plugin:jsx-a11y/recommended", "plugin:react-hooks/recommended", "plugin:import/errors", "plugin:import/warnings"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -63,7 +56,7 @@
     "react-hooks/rules-of-hooks": "error",
     "no-nested-ternary": 0,
     "no-unused-vars": [
-      2,
+      0,
       {
         "ignoreRestSiblings": false
       }

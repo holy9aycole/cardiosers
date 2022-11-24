@@ -29,7 +29,6 @@ function LoginScreen() {
   return (
     <>
       <MainContainer>
-        <Logo src={logo} alt="" />
         <Form methods={methods} onSubmit={onSubmit}>
           <FormContainer>
             <TextField name="identifier" variant="outlined" label="Enter your Username" fullWidth sx={{ color: 'white' }} />

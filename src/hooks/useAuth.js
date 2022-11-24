@@ -46,7 +46,7 @@ const useAuth = () => {
   const login = useCallback(async (data) => {
     const response = await axios.post('/api/auth/local', data);
     if (response) {
-      const { jwt, ...user } = response;
+      const { jwt, user } = response;
       window.localStorage.setItem('accessToken', jwt);
       showSnackbar('success');
       dispatch(
@@ -62,32 +62,14 @@ const useAuth = () => {
   const getInitialize = useCallback(async () => {
     const accessToken = window.localStorage.getItem('accessToken');
     setSession(accessToken);
-    if (isValidToken(accessToken)) {
-      setSession(accessToken);
-      const response = await axios.get('/users/me', { showSnackbar: false });
-      if (response) {
-        dispatch(
-          initialize({
-            user: response,
-            isAuthenticated: true,
-          })
-        );
-      } else {
-        dispatch(
-          initialize({
-            user: null,
-            isAuthenticated: false,
-          })
-        );
-      }
-    } else {
+    if (isValidToken(accessToken)) setSession(accessToken);
+    else
       dispatch(
         initialize({
           user: null,
           isAuthenticated: false,
         })
       );
-    }
   }, []);
 
   return {

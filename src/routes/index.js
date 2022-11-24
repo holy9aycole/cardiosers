@@ -93,10 +93,18 @@ export default function Router() {
           ),
         },
         {
-          path: 'forum',
+          path: 'patients',
           element: (
             <AuthGuard>
               <Forum />
+            </AuthGuard>
+          ),
+        },
+        {
+          path: 'scans',
+          element: (
+            <AuthGuard>
+              <Forum1 />
             </AuthGuard>
           ),
         },
@@ -182,5 +190,6 @@ const AboutUs = Loadable(lazy(() => import('Screens/AboutUs')));
 const NewsFeed = Loadable(lazy(() => import('Screens/NewsFeed/index')));
 const Contact = Loadable(lazy(() => import('Screens/Contact')));
 const Forum = Loadable(lazy(() => import('Screens/Forum')));
+const Forum1 = Loadable(lazy(() => import('Screens/Forum1')));
 const Discussion = Loadable(lazy(() => import('Screens/Discussion')));
 const SocialExperience = Loadable(lazy(() => import('Screens/SocialExperience')));

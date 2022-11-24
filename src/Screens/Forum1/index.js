@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import btnArrow from 'assets/images/button-arrow.svg';
 import MainFooter from 'layouts/main/MainFooter';
-import { usePatients, useAddPatient } from 'hooks/useDoctor';
+import { useScans, useAddScan, usePatients } from 'hooks/useDoctor';
 import LoadingScreen from 'components/LoadingScreen';
 import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
@@ -14,48 +14,42 @@ import QuestionModel from './QuestionModel';
 import SwipeableEdgeDrawer from './SwipableModal';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
   {
-    field: 'name',
-    headerName: 'Name',
+    field: 'patientId',
+    headerName: 'Patient Id',
     sortable: true,
     width: 160,
-    valueGetter: (params) => `${params.row.attributes.firstName || ''} ${params.row.attributes.lastName || ''}`,
+    valueGetter: (params) => params.row.attributes?.patient?.data?.id || '',
   },
   {
-    field: 'email',
-    headerName: 'Email',
+    field: 'patient',
+    headerName: 'Patient',
     sortable: true,
     width: 160,
-    valueGetter: (params) => params.row.attributes.email || '',
+    valueGetter: (params) => `${params.row.attributes?.patient?.data?.attributes?.firstName || ''} ${params.row.attributes?.patient?.data?.attributes?.lastName || ''}`,
   },
   {
-    field: 'mobileNo',
-    headerName: 'Mobile No',
+    field: 'result',
+    headerName: 'Status Scan',
     sortable: true,
     width: 160,
-    valueGetter: (params) => params.row.attributes.mobileNo || '',
+    valueGetter: (params) => params.row.attributes.result || '',
   },
   {
-    field: 'gender',
-    headerName: 'Gender',
+    field: 'confidenceScore',
+    headerName: 'Confidence Score',
     sortable: true,
     width: 160,
-    valueGetter: (params) => params.row.attributes.gender || '',
-  },
-  {
-    field: 'createdAt',
-    headerName: 'Created At',
-    sortable: true,
-    width: 190,
-    valueGetter: (params) => moment(params.row.attributes.createdAt).format('DD-MM-YYYY, h:mm a') || '',
+    valueGetter: (params) => params.row.attributes.confidenceScore || '',
   },
 ];
 
 export default function Forum() {
-  const { data, isLoading: isLoadingPatient } = usePatients();
-  const { mutateAsync: addPatient, isLoading: isLoadingAddPatient } = useAddPatient();
+  const { data, isLoading: isLoadingScan } = useScans();
+  const { data: patients, isLoading: isLoadingPatients } = usePatients();
+  const { mutateAsync: addScan, isLoading: isLoadingAddScan } = useAddScan();
 
+  console.log('data', data);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [swipableModalOpen, setSwipableModalOpen] = React.useState(false);
 
@@ -85,7 +79,7 @@ export default function Forum() {
 
   return (
     <>
-      {(isLoadingPatient || isLoadingAddPatient) && <LoadingScreen key="loader" style={{ zIndex: 100 }} />}
+      {(isLoadingScan || isLoadingPatients) && <LoadingScreen key="loader" style={{ zIndex: 1 }} />}
       <MainContainer>
         <Box sx={{ height: 400, width: '100%', padding: '2rem' }}>
           <DataGrid rows={data || []} columns={columns} pageSize={5} rowsPerPageOptions={[5]} disableSelectionOnClick experimentalFeatures={{ newEditingApi: true }} />
@@ -102,13 +96,13 @@ export default function Forum() {
         >
           <CommentBox>
             <div onClick={openOnClick} aria-hidden="true" className="ask">
-              <Typography className="ques">ADD A PATIENT</Typography>
+              <Typography className="ques">START A SCAN</Typography>
               <img src={btnArrow} alt="button arrow" />
             </div>
           </CommentBox>
         </div>
 
-        <QuestionModel IsModalOpened={modalIsOpen} onCloseModal={handleCloseModal} addPatient={addPatient} />
+        <QuestionModel IsModalOpened={modalIsOpen} onCloseModal={handleCloseModal} addScan={addScan} isLoadingAddScan={isLoadingAddScan} patients={patients} />
         {window.innerWidth < 768 && <SwipeableEdgeDrawer IsModalOpen={swipableModalOpen} forOpen={swipableOpen} onCloseModal={closeSwipable} />}
         <MainFooter />
       </MainContainer>

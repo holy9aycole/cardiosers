@@ -8,7 +8,7 @@ export default function useProperties() {
   const { properties, pulled } = useSelector((state) => state.properties);
 
   useEffect(() => {
-    getProperties();
+    // getProperties();
   }, []);
 
   const getProperties = useCallback(async () => {
